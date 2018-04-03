@@ -27,6 +27,7 @@ GRAPH config:Theatre {
   config:HomepageData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
+      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       prefix elmo1: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
         [] rdfs:label "Linked Data Theatre 2.0";
