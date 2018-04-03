@@ -1,0 +1,12 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+
+<http://data.aquo.nl/id/begrip/35769> a skos:Concept;
+  rdfs:label "actiefkoolfiltraat";
+  skos:prefLabel "actiefkoolfiltraat";
+  skos:definition '''vloeistof welke ontdaan is van een bepaalde stof door middel van een actief koolfilter''';
+  dc:source '''NCS''';
+  skos:broader <http://data.aquo.nl/id/begrip/24955>;
+.
