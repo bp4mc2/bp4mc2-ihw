@@ -28,5 +28,6 @@ GRAPH config:Theatre {
   config:StageLayout a elmo:Layout;
     xhtml:stylesheet "stage-layout.css";
   .
+  
 
 }
