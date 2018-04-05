@@ -138,10 +138,10 @@ GRAPH config:Theatre {
 			<p>Welkom op de website van de Aquo-standaard.</p>
 			<p>Op deze website kunt u:</p>
 			<ul>
-			<li><strong><a href="/concepten">Termen en definities</a></strong> raadplegen in de Aquo LOC</li>
+			<li><strong><a href="http://localhost:8080/concepten">Termen en definities</a></strong> raadplegen in de Aquo LOC</li>
 			</ul>
 			<ul>
-			<li><strong><a href="/domeinen">Domeinwaarden en domeintabellen</a></strong> raadplegen in de Aquo DS</li>
+			<li><strong><a href="http://localhost:8080/domeinen">Domeinwaarden en domeintabellen</a></strong> raadplegen in de Aquo DS</li>
 			</ul>
 			<ul>
 			<li>Meer lezen over de Aquo-standaard</li>
@@ -161,77 +161,37 @@ GRAPH config:Theatre {
       WHERE {}
     """
   .
-  
-  config:Menu a elmo:Representation;
-  elmo:stage config:Stage;
-  elmo:informationProduct config:MenuData;
-  elmo:appearance config:MenuAppearance;
+    
+  config:ConceptenLijst a elmo:Representation;
+    elmo:pathPattern "/concepten";
+	elmo:appearance [a elmo:HtmlAppearance];
+	elmo:stage config:Stage;
+	elmo:contains config:Menu;
+	elmo:contains config:Footer;
+	elmo:informationProduct config:ConceptenLijstData;
   .
-  config:MenuAppearance a elmo:NavbarSearchAppearance
-  .
-  config:MenuData a elmo:InformationProduct;
+
+  config:ConceptenLijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
-	elmo:query """
-	    prefix elmo1: <http://bp4mc2.org/elmo/def#>
-        prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
-		prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-        CONSTRUCT {
-        [] rdfs:label "HOME";
-          xhtml:search "search";
-          elmo1:data [elmo1:index "1"; rdfs:label "Concepten"; xhtml:link "/concepten"];
-		  elmo1:data [elmo1:index "2"; rdfs:label "Domeinen"; xhtml:link "/domeinen"]
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        [] rdfs:label "Linked Data Theatre 2.0 Pagina 2";
+          elmo1:html '''
+            <h1>It works!</h1>
+            <p>Welcome at the Linked Data Theatre 2.0 demo site</p>
+            <p><i>(Running at: %{dotwebstack.config.host})</i></p>
+            <p>Please update /config/model to create your own configuration</p>
+            <p>You can check this demo configuration via the following links:</p>
+            <ul>
+              <li><a href="/demo/amersfoort">Amersfoort triples from dbpedia</a></li>
+              <li><a href="/dbp/ld/v1/graph-breweries">Breweries triples from local triplestore</a></li>
+              <li><a href="/dbp/ld/v1/tuple-breweries">Breweries tuples from local triplestore</a></li>
+            </ul>
+          '''
         .
       }
       WHERE {}
-    """;
+    """
   .
- 
-# ==========================
-#
-# Conceptenpage
-#
-# ==========================
-  config:Concepten a elmo:Representation;
-    elmo:pathPattern "/concepten";
-    elmo:stage config:Stage;
-    elmo:contains config:Menu;
-	elmo:contains config:FormatIndex;
-    elmo:appearance config:ConceptenAppearance;
-	elmo:informationProduct config:ConceptenData;
-  .
-  config:ConceptenAppearance a elmo:Appearance;
-    elmo:fragment [
-	  elmo:appliesTo skos:Concept;
-	  rdfs:label "Begrip";
-	  elmo:index 1;
-	  ];
-	elmo:fragment [
-	  elmo:index 2;
-	  elmo:appliesTo rdfs:label;
-	  rdfs:label "Label";
-	];
-	elmo:fragment [
-	  elmo:index 3;
-	  elmo:appliesTo skos:prefLabel;
-	  rdfs:label "Naam";
-	];
-	elmo:fragment [ 
-	  elmo:index 4;
-	  elmo:appliesTo skos:definition;
-	  rdfs:label "Definitie";
-	];
-.
-  config:ConceptenData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
-	elmo:query """
-	  prefix skos:<http://www.w3.org/2004/02/skos/core#>
-	  prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>
-	  SELECT ?s ?naam ?definitie
-	  WHERE {
-	    ?s rdf:type skos:Concept
-		?s skos:prefLabel ?naam
-		?s skos:definition ? definitie
-	    }
-	  """;
-	.  
 }
