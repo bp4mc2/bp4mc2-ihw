@@ -9,8 +9,108 @@
 @prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>.
 @prefix http: <http://www.w3.org/2011/http#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
 GRAPH config:Theatre {
+
+# ==========================
+#
+# Menu
+#
+# ==========================
+  
+  config:Menu a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:MenuData;
+    elmo:appearance config:MenuAppearance;
+  .
+  config:MenuAppearance a elmo:NavbarSearchAppearance
+  .
+  config:MenuData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+	elmo:query """
+	    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+        prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+		prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+        CONSTRUCT {
+        [] rdfs:label "HOME";
+          xhtml:search "search";
+          elmo1:data [elmo1:index "1"; rdfs:label "Concepten"; xhtml:link "/concepten"];
+		  elmo1:data [elmo1:index "2"; rdfs:label "Domeinen"; xhtml:link "/domeinen"]
+        .
+      }
+      WHERE {}
+    """;
+  .
+
+# ==========================
+#
+# Footer
+#
+# ==========================
+
+  config:Footer a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:FooterData;
+    elmo:appearance config:FooterAppearance;
+  .
+  config:FooterAppearance a elmo:FooterAppearance;
+  .
+  config:FooterData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        [] elmo1:html '''<div class="row">
+			<div class="col-sm-4">
+				<h4>Links</h4>
+				<ul class="list-unstyled">
+					<li>
+						<a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+					</li>
+					<li>
+						<a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<h4>configuration</h4>
+				<p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
+			</div>
+			<div class="col-sm-4">
+				<h4>License</h4>
+				<p>GPL 3.0 / CC-BY-SA</p>
+			</div>
+		</div>'''
+      }
+      WHERE {}
+    """;
+  .
+
+# ==========================
+#
+# Format index
+#
+# ==========================
+
+  config:FormatIndex a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:FormatIndexData;
+    elmo:appearance config:FormatIndexAppearance;
+  .
+  config:FormatIndexAppearance a elmo:IndexAppearance;
+    elmo:index "1"
+  .
+  config:FormatIndexData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      CONSTRUCT {
+        [] rdfs:label "a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z";
+           rdf:value "a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z";
+      }
+      WHERE {}
+    """;
+  .
 
 # ==========================
 #
@@ -24,6 +124,7 @@ GRAPH config:Theatre {
     elmo:informationProduct config:HomepageData;
     elmo:appearance [a elmo:HtmlAppearance];
 	elmo:contains config:Menu;
+	elmo:contains config:Footer;
   .
   config:HomepageData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
@@ -73,7 +174,7 @@ GRAPH config:Theatre {
 	elmo:query """
 	    prefix elmo1: <http://bp4mc2.org/elmo/def#>
         prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
-		prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+		prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
         CONSTRUCT {
         [] rdfs:label "HOME";
           xhtml:search "search";
@@ -84,35 +185,53 @@ GRAPH config:Theatre {
       WHERE {}
     """;
   .
-  
+ 
 # ==========================
 #
 # Conceptenpage
 #
 # ==========================
-
   config:Concepten a elmo:Representation;
     elmo:pathPattern "/concepten";
     elmo:stage config:Stage;
-	elmo:contains config:Menu;
-	elmo:appearance config:ConceptenAppearance;
+    elmo:contains config:Menu;
+	elmo:contains config:FormatIndex;
+    elmo:appearance config:ConceptenAppearance;
 	elmo:informationProduct config:ConceptenData;
-  .	
+  .
   config:ConceptenAppearance a elmo:Appearance;
     elmo:fragment [
-		elmo:applies-to rdfs:label;
-		elmo:appearance elmo:HiddenAppearance;
-		elmo:index "1";
+	  elmo:appliesTo skos:Concept;
+	  rdfs:label "Begrip";
+	  elmo:index 1;
+	  ];
+	elmo:fragment [
+	  elmo:index 2;
+	  elmo:appliesTo rdfs:label;
+	  rdfs:label "Label";
 	];
 	elmo:fragment [
-		elmo:applies-to skos:prefLabel;
-		rdfs:label "Naam";
-		elmo:index "2";
+	  elmo:index 3;
+	  elmo:appliesTo skos:prefLabel;
+	  rdfs:label "Naam";
 	];
-	.
-  config:ConceptData a elmo:InformationProduct;
+	elmo:fragment [ 
+	  elmo:index 4;
+	  elmo:appliesTo skos:definition;
+	  rdfs:label "Definitie";
+	];
+.
+  config:ConceptenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
 	elmo:query """
-	""";
-	.
+	  prefix skos:<http://www.w3.org/2004/02/skos/core#>
+	  prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+	  SELECT ?s ?naam ?definitie
+	  WHERE {
+	    ?s rdf:type skos:Concept
+		?s skos:prefLabel ?naam
+		?s skos:definition ? definitie
+	    }
+	  """;
+	.  
 }
