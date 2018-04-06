@@ -28,13 +28,13 @@ GRAPH config:Theatre {
     elmo:sequentialFlow (
       [
         a elmo:UpdateStep;
-        elmo:backend config:LocalBackend;
+        elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://data.aquo.nl/id/dataset/begrippen>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:LocalBackend;
+        elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://data.aquo.nl/id/dataset/begrippen>
       ]
     )
