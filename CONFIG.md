@@ -14,9 +14,10 @@ Voer de volgende stappen uit:
 
 1. Download [Apache Fuseki, versie 3.6.0](http://www-eu.apache.org/dist/jena/binaries/apache-jena-fuseki-3.6.0.zip);
 2. Pak de bestanden uit naar `bp4mc2-ihw/target/fuseki` (waarbij `bp4mc2-ihw` de map is met de lokale repo, en zodat `fuseki-server.bat` aanwezig is in de `fuseki` map.
-3. Start Apache Fuseki via `fuseki-server`.
-4. Ga naar [http://localhost:3030](http://localhost:3030) en kies voor "Add dataset";
-5. Geef als naam voor de dataset `ihw` op.
+3. Download het bestand [jetty-web.xml](resources/jetty-web.xml) en zet deze in de map `/target/fuseki/webapp/WEB-INF` (hierin staat de maximale omvang van een post upload, verhoog deze als het uploade van grote bestanden niet goed gaat)
+4. Start Apache Fuseki via `fuseki-server`.
+5. Ga naar [http://localhost:3030](http://localhost:3030) en kies voor "Add dataset";
+6. Geef als naam voor de dataset `ihw` op.
 
 ### Installeren van Dotwebstack LDT 2.0
 

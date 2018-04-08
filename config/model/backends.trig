@@ -26,5 +26,8 @@ GRAPH config:Theatre {
   config:LocalBackend a elmo:SparqlBackend;
     elmo:endpoint "http://localhost:3030/ihw/query"^^xsd:anyURI
   .
+  config:UpdateBackend a elmo:SparqlBackend;
+    elmo:endpoint "http://localhost:3030/ihw/update"^^xsd:anyURI
+  .
 
 }

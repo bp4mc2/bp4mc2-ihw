@@ -27,16 +27,16 @@ GRAPH config:Theatre {
   config:MenuAppearance a elmo:NavbarSearchAppearance
   .
   config:MenuData a elmo:InformationProduct;
-    elmo:backend config:VirtuosoBackend;
-	elmo:query """
-	    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+    elmo:backend config:LocalBackend;
+    elmo:query """
+        prefix elmo1: <http://bp4mc2.org/elmo/def#>
         prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
-		prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+        prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
         CONSTRUCT {
         [] rdfs:label "HOME";
           xhtml:search "search";
           elmo1:data [elmo1:index "1"; rdfs:label "Concepten"; xhtml:link "/concepten"];
-		  elmo1:data [elmo1:index "2"; rdfs:label "Domeinen"; xhtml:link "/domeinen"]
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeinen"; xhtml:link "/domeinen"]
         .
       }
       WHERE {}
@@ -62,26 +62,26 @@ GRAPH config:Theatre {
       prefix elmo1: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
         [] elmo1:html '''<div class="row">
-			<div class="col-sm-4">
-				<h4>Links</h4>
-				<ul class="list-unstyled">
-					<li>
-						<a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
-					</li>
-					<li>
-						<a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
-					</li>
-				</ul>
-			</div>
-			<div class="col-sm-4">
-				<h4>configuration</h4>
-				<p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
-			</div>
-			<div class="col-sm-4">
-				<h4>License</h4>
-				<p>GPL 3.0 / CC-BY-SA</p>
-			</div>
-		</div>'''
+          <div class="col-sm-4">
+            <h4>Links</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+              </li>
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h4>configuration</h4>
+            <p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
+          </div>
+          <div class="col-sm-4">
+            <h4>License</h4>
+            <p>GPL 3.0 / CC-BY-SA</p>
+          </div>
+        </div>'''
       }
       WHERE {}
     """;
@@ -127,7 +127,7 @@ GRAPH config:Theatre {
 	elmo:contains config:Footer;
   .
   config:HomepageData a elmo:InformationProduct;
-    elmo:backend config:VirtuosoBackend;
+    elmo:backend config:LocalBackend;
     elmo:query """
       prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       prefix elmo1: <http://bp4mc2.org/elmo/def#>
@@ -135,27 +135,27 @@ GRAPH config:Theatre {
         [] rdfs:label "Linked Data Theatre 2.0";
           elmo1:html '''
             <h1>It works!</h1>
-			<p>Welkom op de website van de Aquo-standaard.</p>
-			<p>Op deze website kunt u:</p>
-			<ul>
-			<li><strong><a href="http://localhost:8080/concepten">Termen en definities</a></strong> raadplegen in de Aquo LOC</li>
-			</ul>
-			<ul>
-			<li><strong><a href="http://localhost:8080/domeinen">Domeinwaarden en domeintabellen</a></strong> raadplegen in de Aquo DS</li>
-			</ul>
-			<ul>
-			<li>Meer lezen over de Aquo-standaard</li>
-			</ul>
-			<ul>
-			<li>Achterhalen welke delen uit de standaard van belang zijn voor uw werkveld</li>
-			</ul>
-			<ul>
-			<li>Informatie over de tool die de Aquo-standaard ontsluiten</li>
-			</ul>
-			<ul>
-			<li>Veel informatie direct downloaden</li>
-			</ul>
-		    '''
+        <p>Welkom op de website van de Aquo-standaard.</p>
+        <p>Op deze website kunt u:</p>
+        <ul>
+        <li><strong><a href="http://localhost:8080/concepten">Termen en definities</a></strong> raadplegen in de Aquo LOC</li>
+        </ul>
+        <ul>
+        <li><strong><a href="http://localhost:8080/domeinen">Domeinwaarden en domeintabellen</a></strong> raadplegen in de Aquo DS</li>
+        </ul>
+        <ul>
+        <li>Meer lezen over de Aquo-standaard</li>
+        </ul>
+        <ul>
+        <li>Achterhalen welke delen uit de standaard van belang zijn voor uw werkveld</li>
+        </ul>
+        <ul>
+        <li>Informatie over de tool die de Aquo-standaard ontsluiten</li>
+        </ul>
+        <ul>
+        <li>Veel informatie direct downloaden</li>
+        </ul>
+          '''
         .
       }
       WHERE {}
@@ -164,34 +164,28 @@ GRAPH config:Theatre {
     
   config:ConceptenLijst a elmo:Representation;
     elmo:pathPattern "/concepten";
-	elmo:appearance [a elmo:HtmlAppearance];
-	elmo:stage config:Stage;
-	elmo:contains config:Menu;
-	elmo:contains config:Footer;
-	elmo:informationProduct config:ConceptenLijstData;
+    elmo:appearance config:ConceptenLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ConceptenLijstData;
+  .
+  config:ConceptenLijstAppearance a elmo:TableAppearance;
   .
 
   config:ConceptenLijstData a elmo:InformationProduct;
-    elmo:backend config:VirtuosoBackend;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
     elmo:query """
-      prefix elmo1: <http://bp4mc2.org/elmo/def#>
-      CONSTRUCT {
-        [] rdfs:label "Linked Data Theatre 2.0 Pagina 2";
-          elmo1:html '''
-            <h1>It works!</h1>
-            <p>Welcome at the Linked Data Theatre 2.0 demo site</p>
-            <p><i>(Running at: %{dotwebstack.config.host})</i></p>
-            <p>Please update /config/model to create your own configuration</p>
-            <p>You can check this demo configuration via the following links:</p>
-            <ul>
-              <li><a href="/demo/amersfoort">Amersfoort triples from dbpedia</a></li>
-              <li><a href="/dbp/ld/v1/graph-breweries">Breweries triples from local triplestore</a></li>
-              <li><a href="/dbp/ld/v1/tuple-breweries">Breweries tuples from local triplestore</a></li>
-            </ul>
-          '''
-        .
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT *
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          ?begrip a skos:Concept.
+          ?begrip rdfs:label ?begrip_label.
+        }
       }
-      WHERE {}
     """
   .
 }
