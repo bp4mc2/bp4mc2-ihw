@@ -29,8 +29,9 @@ GRAPH config:Theatre {
   .
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
-	  elmo:appliesTo skos:Concept;
-	  elmo:appearance elmo:HiddenAppearance;
+	  elmo:appliesTo "begrip";
+	  xhtml:link "begrip";
+	  elmo:name "begrip";
 	  ];
 	elmo:fragment [
 	  elmo:appliesTo rdfs:label;
@@ -63,4 +64,5 @@ GRAPH config:Theatre {
         }
     """
   .
+
 }
