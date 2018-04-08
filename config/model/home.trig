@@ -27,7 +27,7 @@ GRAPH config:Theatre {
   config:MenuAppearance a elmo:NavbarSearchAppearance
   .
   config:MenuData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
+    elmo:backend config:VirtuosoBackend;
 	elmo:query """
 	    prefix elmo1: <http://bp4mc2.org/elmo/def#>
         prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
@@ -127,7 +127,7 @@ GRAPH config:Theatre {
 	elmo:contains config:Footer;
   .
   config:HomepageData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
+    elmo:backend config:VirtuosoBackend;
     elmo:query """
       prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       prefix elmo1: <http://bp4mc2.org/elmo/def#>
@@ -172,7 +172,7 @@ GRAPH config:Theatre {
   .
 
   config:ConceptenLijstData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
+    elmo:backend config:VirtuosoBackend;
     elmo:query """
       prefix elmo1: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {

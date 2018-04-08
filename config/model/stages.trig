@@ -29,5 +29,4 @@ GRAPH config:Theatre {
     xhtml:stylesheet "stage-layout.css";
   .
   
-
 }
