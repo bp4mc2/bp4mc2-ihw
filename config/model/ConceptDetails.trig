@@ -21,16 +21,15 @@ GRAPH config:Theatre {
 	elmo:informationProduct config:ConceptDetailData;
   .
   
-  config:ConceptDetailAppearance a elmo:TableAppearance;
+  config:ConceptDetailAppearance a elmo:Appearance;
 	elmo:fragment [
-	  elmo:appliesTo skos:Concept;
-	  elmo:index 1;
+	  elmo:appliesTo rdf:type;
+    elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Begrip"@nl;
 	];
 	elmo:fragment [
 	  elmo:appliesTo rdfs:label;
-	  elmo:index 2;
-	  rdfs:label "Label"@nl;
+    elmo:appearance elmo:HiddenAppearance;
 	];
 	elmo:fragment [
 	  elmo:index 3;
@@ -46,42 +45,45 @@ GRAPH config:Theatre {
 	  elmo:index 5;
 	  elmo:appliesTo skos:broader;
 	  rdfs:label "Bredere term"@nl;
+    xhtml:link "begrip";
+    elmo:name "begrip";
 	];
 	elmo:fragment [
 	  elmo:index 6;
 	  elmo:appliesTo skos:narrower;
 	  rdfs:label "Engere term"@nl;
-    ];
+    xhtml:link "begrip";
+    elmo:name "begrip";
+  ];
 	elmo:fragment [
 	  elmo:index 7;
 	  elmo:appliesTo skos:related;
-	  rdfs:label "Gerelateerde  term"@nl;
+	  rdfs:label "Gerelateerde term"@nl;
+    xhtml:link "begrip";
 	];
 	.
 	
   config:ConceptTabelParameter a elmo:TermParameter;
-    elmo:name "begrip";
+    elmo:name "subject";
 	  elmo:shape [
-	    sh:nodekind sh:IRI
+	    sh:nodeKind sh:IRI
 		]
 	.
 	
   config:ConceptDetailData a elmo:InformationProduct;
     elmo:requiredParameter config:ConceptTabelParameter;
 	elmo:backend config:LocalBackend;
-	elmo:resultType elmo-rt:Tuple;
 	elmo:query """
 	  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-	  SELECT ?begrip ?Naam ?Definitie ?BT ?ET ?GT
+	  CONSTRUCT {
+      ?subject ?p ?o.
+      ?o rdfs:label ?olabel
+    }
 	  WHERE {
-	    GRAPH ?begrip {
-		  ?begrip a skos:Concept.
-		  ?begrip skos:prefLabel ?Naam.
-		  ?begrip skos:definition ?Defintie.
-		  OPTIONAL {?begrip skos:broader ?BT}
-		  OPTIONAL {?begrip skos:narrower ?ET}
-		  OPTIONAL {?begrip skos:related ?RT}
+	    GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+        ?subject ?p ?o
+        OPTIONAL {?o rdfs:label ?olabel}
 		  }
 		}
 	  """

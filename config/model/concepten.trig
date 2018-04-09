@@ -29,25 +29,17 @@ GRAPH config:Theatre {
   .
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
-	  elmo:appliesTo "begrip";
-	  xhtml:link "begrip";
-	  elmo:name "begrip";
-	  ];
-	elmo:fragment [
-	  elmo:appliesTo rdfs:label;
-	  elmo:index 1;
-	  rdfs:label "Begrip"@nl;
-	];
-	elmo:fragment [
-	  elmo:index 1;
-	  elmo:appliesTo skos:preflabel;
-	  rdfs:label "Naam"@nl;
-	];
-	elmo:fragment [ 
-	  elmo:index 2;
-	  elmo:appliesTo skos:definition;
-	  rdfs:label "Definitie"@nl;
-	];
+      elmo:index 1;
+      elmo:appliesTo "begrip";
+      xhtml:link "begrip";
+      elmo:name "begrip";
+      rdfs:label "Begrip"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "definitie";
+      rdfs:label "Definitie"@nl;
+    ];
   .
   config:ConceptenLijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
@@ -55,13 +47,16 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      SELECT ?begrip ?label ?naam ?definitie
+      SELECT ?begrip ?begrip_label ?definitie
       WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?begrip a skos:Concept.
-		  ?s rdfs:label ?label.
-          ?begrip skos:prefLabel ?naam.
-		  ?begrip skos:definition ?definitie
+          ?begrip rdfs:label ?begrip_label.
+          OPTIONAL {?begrip skos:definition ?definitie}
         }
+      }
+      order by ?begrip_label
+      limit 100
     """
   .
 
