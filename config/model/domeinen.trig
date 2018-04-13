@@ -19,7 +19,7 @@ GRAPH config:Theatre {
 # ==========================
 
   config:DomeinenLijst a elmo:Representation;
-    elmo:pathPattern "/domeinen";
+    elmo:pathPattern "/domeintabellen";
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;

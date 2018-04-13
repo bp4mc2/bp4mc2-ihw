@@ -20,12 +20,14 @@ GRAPH config:Theatre {
 # ==========================
   
   config:Menu a elmo:Representation;
-    elmo:stage config:Stage;
+	elmo:stage config:Stage;
+	elmo:appearance config:MenuAppearance;
     elmo:informationProduct config:MenuData;
-    elmo:appearance config:MenuAppearance;
   .
-  config:MenuAppearance a elmo:NavbarSearchAppearance
+  
+  config:MenuAppearance a elmo:NavbarSearchAppearance;
   .
+  
   config:MenuData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
@@ -33,10 +35,10 @@ GRAPH config:Theatre {
         prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
         prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
         CONSTRUCT {
-        [] rdfs:label "HOME";
+        [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
           xhtml:search "search";
-          elmo1:data [elmo1:index "1"; rdfs:label "Concepten"; xhtml:link "/concepten"];
-          elmo1:data [elmo1:index "2"; rdfs:label "Domeinen"; xhtml:link "/domeinen"]
+          elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "/begrippen"];
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "/domeintabellen"]
         .
       }
       WHERE {}
@@ -87,79 +89,35 @@ GRAPH config:Theatre {
     """;
   .
 
-# ==========================
-#
-# Format index
-#
-# ==========================
+#========================== 
+# 
+# Format index 
+# 
+# ========================== 
 
-  config:FormatIndex a elmo:Representation;
-    elmo:stage config:Stage;
-    elmo:informationProduct config:FormatIndexData;
-    elmo:appearance config:FormatIndexAppearance;
-  .
-  config:FormatIndexAppearance a elmo:IndexAppearance;
-    elmo:index "1"
-  .
-  config:FormatIndexData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      CONSTRUCT {
-        [] rdfs:label "a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z";
-           rdf:value "a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z";
-      }
-      WHERE {}
-    """;
-  .
 
-# ==========================
-#
-# Homepage
-#
-# ==========================
-
-  config:Homepage a elmo:Representation;
-    elmo:pathPattern "";
-    elmo:stage config:Stage;
-    elmo:informationProduct config:HomepageData;
-    elmo:appearance [a elmo:HtmlAppearance];
-	elmo:contains config:Menu;
-	elmo:contains config:Footer;
-  .
-  config:HomepageData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      prefix elmo1: <http://bp4mc2.org/elmo/def#>
-      CONSTRUCT {
-        [] rdfs:label "Linked Data Theatre 2.0";
-          elmo1:html '''
-            <h1>It works!</h1>
-        <p>Welkom op de website van de Aquo-standaard.</p>
-        <p>Op deze website kunt u:</p>
-        <ul>
-        <li><strong><a href="http://localhost:8080/concepten">Termen en definities</a></strong> raadplegen in de Aquo LOC</li>
-        </ul>
-        <ul>
-        <li><strong><a href="http://localhost:8080/domeinen">Domeinwaarden en domeintabellen</a></strong> raadplegen in de Aquo DS</li>
-        </ul>
-        <ul>
-        <li>Meer lezen over de Aquo-standaard</li>
-        </ul>
-        <ul>
-        <li>Achterhalen welke delen uit de standaard van belang zijn voor uw werkveld</li>
-        </ul>
-        <ul>
-        <li>Informatie over de tool die de Aquo-standaard ontsluiten</li>
-        </ul>
-        <ul>
-        <li>Veel informatie direct downloaden</li>
-        </ul>
-          '''
-        .
-      }
-      WHERE {}
-    """
-  .
+  config:FormatIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:FormatIndexData; 
+    elmo:appearance config:FormatIndexAppearance; 
+   . 
+   config:FormatIndexAppearance a elmo:IndexAppearance;
+     elmo:index 2;   
+   . 
+   
+   config:FormatIndexData a elmo:InformationProduct;      
+   elmo:backend config:LocalBackend; 
+     elmo:query """ 
+	 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	 PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
+     PREFIX xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+	   CONSTRUCT { 
+         [] 	rdfs:label "0-9|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|toon alles";
+		        rdf:value "%5B0-9%5D|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|"
+       } 
+       WHERE {} 
+    """; 
+  . 
 
 }
