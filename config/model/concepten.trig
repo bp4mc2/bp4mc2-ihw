@@ -25,7 +25,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
-	elmo:contains config:FormatIndex;
+	elmo:contains config:ConceptenIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
   config:ConceptenLijstAppearance a elmo:TableAppearance;
@@ -42,9 +42,18 @@ GRAPH config:Theatre {
       rdfs:label "Definitie"@nl;
     ];
   .
+  
+  config:TermParameter a elmo:TermParameter;
+    elmo:name "term"; 
+	  elmo:shape [
+	    sh:datatype xsd:string;
+      sh:defaultValue "[0-9]";
+		]
+  .
   config:ConceptenLijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -54,11 +63,37 @@ GRAPH config:Theatre {
           ?begrip a skos:Concept.
           ?begrip rdfs:label ?begrip_label.
           OPTIONAL {?begrip skos:definition ?definitie}
+          FILTER regex(?begrip_label,concat("^",?term),"i")
         }
       }
       order by ?begrip_label
       limit 100
     """
   .
+
+  config:ConceptenIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:ConceptenIndexData; 
+    elmo:appearance config:ConceptenIndexAppearance;
+   . 
+   config:ConceptenIndexAppearance a elmo:IndexAppearance;
+     elmo:index 2;
+   . 
+   
+   config:ConceptenIndexData a elmo:InformationProduct;      
+   elmo:backend config:LocalBackend; 
+     elmo:query """ 
+	 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+	 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	 PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
+     PREFIX xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+	   CONSTRUCT { 
+         [] 	rdfs:label "0-9|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|toon alles";
+		        rdf:value "[0-9]|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|";
+            elmo1:name "term"
+       } 
+       WHERE {} 
+    """; 
+  . 
 
 }
