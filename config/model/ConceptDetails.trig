@@ -18,16 +18,17 @@ GRAPH config:Theatre {
 
 
   config:ConceptenDetails a elmo:Representation; 
-    elmo:pathPattern "/begrip"; 
+	elmo:pathPattern "/begrip";
 	elmo:stage config:Stage;
 	elmo:contains config:Menu; 
-	elmo:contains config:GraphDisplay;
+#	elmo:contains config:GraphDisplay;
+	elmo:layer elmo:MiddleLayer;
 	elmo:appearance config:ConceptDetailAppearance;
 	elmo:informationProduct config:ConceptDetailData;
   . 
    
-  config:ConceptDetailAppearance a elmo:Appearance; 
-    elmo:index 2;
+  config:ConceptDetailAppearance a elmo:Appearance;
+	elmo:index 2;
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
       elmo:appearance elmo:HiddenAppearance; 
@@ -36,35 +37,35 @@ GRAPH config:Theatre {
 	elmo:fragment [ 
 	  elmo:appliesTo rdfs:label; 
       elmo:appearance elmo:HiddenAppearance;
-	  rdfs:label "Term"@nl;
+	  rdfs:label "Label"@nl;
 	]; 
 	elmo:fragment [ 
-	  elmo:index 3; 
-	  elmo:appliesTo skos:preflabel; 
-	  rdfs:label "Term"@nl; 
+	  elmo:index 03; 
+	  elmo:appliesTo skos:prefLabel; 
+	  rdfs:label "Naam"@nl; 
 	]; 
 	elmo:fragment [
-	  elmo:index 4;
+	  elmo:index 04;
 	  elmo:appliesTo skos:altlabel;
 	  rdfs:label "Synoniem"@nl;
 	];
 	elmo:fragment [  
-	  elmo:index 5; 
+	  elmo:index 05; 
 	  elmo:appliesTo skos:definition; 
 	  rdfs:label "Definitie"@nl; 
 	]; 
 	elmo:fragment [
-	  elmo:index 6;
+	  elmo:index 06;
 	  elmo:appliesTo skos:note;
 	  rdfs:label "Toelichting"@nl;
 	];
 	elmo:fragment [
-	  elmo:index 7;
+	  elmo:index 07;
 	  elmo:appliesTo rdfs:comment;
 	  rdfs:label "Uitleg"@nl;
 	];
 	elmo:fragment [ 
-	  elmo:index 8;
+	  elmo:index 08;
 	  elmo:appliesTo dc:source;
 	  rdfs:label "Bron"@nl;
 	];
@@ -93,7 +94,7 @@ GRAPH config:Theatre {
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
-	  rdfs:label "Smallere term"@nl; 
+	  rdfs:label "Nauwere term"@nl; 
       xhtml:link "begrip"; 
       elmo:name "begrip"; 
   ]; 
@@ -114,6 +115,18 @@ GRAPH config:Theatre {
 	  elmo:appliesTo thes:narrowerPartitive;
 	  rdfs:label "Heeft onderdeel"@nl;
 	  xhtml:link "begrip";
+	];
+	elmo:fragment [
+		elmo:index 25;
+		elmo:appliesTo dct:isReplacedBy;
+		rdfs:label "Gebruik"@nl;
+		xhtml:link "begrip";
+	];
+	elmo:fragment [
+		elmo:index 26;
+		elmo:appliesTo dct:replaces;
+		rdfs:label "Gebruik in plaats van"@nl;
+		xhtm:link "begrip";
 	];
   . 
 	 

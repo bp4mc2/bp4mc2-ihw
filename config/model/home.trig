@@ -23,9 +23,11 @@ GRAPH config:Theatre {
 	elmo:stage config:Stage;
 	elmo:appearance config:MenuAppearance;
     elmo:informationProduct config:MenuData;
+	elmo:layer elmo:TopLayer;
   .
   
   config:MenuAppearance a elmo:NavbarSearchAppearance;
+    elmo:index 1;
   .
   
   config:MenuData a elmo:InformationProduct;
