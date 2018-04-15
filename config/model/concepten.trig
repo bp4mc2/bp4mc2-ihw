@@ -33,7 +33,7 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo "begrip";
       xhtml:link "begrip";
-      elmo:name "begrip";
+#      elmo:name "begrip";
       rdfs:label "Begrip"@nl;
     ];
     elmo:fragment [ 
