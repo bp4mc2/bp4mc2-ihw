@@ -76,20 +76,17 @@ GRAPH config:Theatre {
   config:DomeintabelData a elmo:InformationProduct;
     elmo:requiredParameter config:DomeintabelParameter;
     elmo:backend config:LocalBackend;
-    elmo:resultType elmo-rt:Tuple;
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-      SELECT ?id ?id_label ?code ?afkorting ?omschrijving ?begindatum ?einddatum
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      CONSTRUCT {
+        ?id ?p ?o
+      }
       WHERE {
         GRAPH ?domeintabel {
-          ?id a ?type.
-          ?id aquo:ID ?id_label.
-          ?id aquo:beginDate ?begindatum.
-          ?id aquo:endDate ?einddatum.
-          OPTIONAL {?id aquo:Code ?code}
-          OPTIONAL {?id aquo:Afkorting ?afkorting}
-          OPTIONAL {?id aquo:Omschrijving ?omschrijving}
+          ?id ?p ?o
+          FILTER (?p!=rdf:type)
         }
       }
     """
