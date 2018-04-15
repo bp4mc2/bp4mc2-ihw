@@ -9,6 +9,7 @@
 @prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>.
 @prefix http: <http://www.w3.org/2011/http#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix aquo: <http://data.aquo.nl/def/aquo#>.
 
 GRAPH config:Theatre {
 
@@ -65,6 +66,30 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeintabelData;
   .
   config:DomeintabelAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo aquo:ID;
+      elmo:index 1;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Omschrijving;
+      elmo:index 2;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Cijfercode;
+      elmo:index 3;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Groep;
+      elmo:index 4;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:beginDate;
+      elmo:index 98;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:endDate;
+      elmo:index 99;
+    ]
   .
 
   config:DomeintabelParameter a elmo:TermParameter;
