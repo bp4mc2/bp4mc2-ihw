@@ -125,7 +125,7 @@ GRAPH config:Theatre {
 		elmo:index 26;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
-		xhtm:link "begrip";
+		xhtml:link "begrip";
 	];
   . 
 	 
