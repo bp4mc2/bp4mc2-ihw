@@ -1,0 +1,75 @@
+GRAPH config:Theatre { 
+
+  config:ConceptenDetailGraph a elmo:InformationProduct;
+    elmo:requiredParameter config:ConceptTabelParameter;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+      PREFIX thes: <http://purl.org/iso25964/skos-thes#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      
+      CONSTRUCT {
+        ?subject ?p ?o.
+        ?subject rdfs:label ?begriplabel.
+        ?subject elmo1:style ?type.
+        
+        ?o rdfs:label ?olabel.
+        ?o elmo1:style ?oelmostyle.
+        
+        ?s ?sp ?subject.
+        ?s rdfs:label ?slabel.
+        ?s elmo1:style ?selmostyle.
+        
+        skos:Concept elmo1:name "begrip".
+        dct:subject rdfs:label "Categorie".
+        skos:broader rdfs:label "Bredere term".
+        skos:narrower rdfs:label "Nauwere term".
+        skos:related rdfs:label "Gerelateerd term".
+        thes:broaderPartitive rdfs:label "Onderdeel van".
+        thes:narrowerPartitive rdfs:label "Heeft onderdeel".
+        dct:isReplacedBy rdfs:label "Gebruik".
+        dct:replaces rdfs:label "Gebruik in plaats van".
+      }
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          {
+            ?subject a ?type.
+            OPTIONAL
+            {
+              ?subject rdfs:label ?subjectlabel.
+            }
+            OPTIONAL
+            {
+              ?subject ?p ?o.
+              FILTER (
+                ?p = dct:subject
+              ||?p = skos:broader
+              ||?p = skos:narrower
+              ||?p = skos:related
+              ||?p = thes:broaderPartitive
+              ||?p = thes:narrowerPartitive
+              ||?p = dct:isReplacedBy
+              ||?p = dct:replaces
+              )
+            }
+          }
+          UNION
+          {
+            ?subject ?p ?o.
+            ?o rdfs:label ?olabel.
+            ?o a ?otype.
+          }
+          UNION
+          {
+            ?s ?sp ?subject.
+            ?s rdfs:label ?slabel.
+            ?s a ?stype.
+          }
+        }
+      }
+    """
+  .
+    
+}
