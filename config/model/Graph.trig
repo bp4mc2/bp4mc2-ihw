@@ -1,6 +1,7 @@
 @prefix elmo: <http://dotwebstack.org/def/elmo#> . 
 @prefix elmo-rt: <http://dotwebstack.org/def/elmo/result-type/>. 
 @prefix elmo-ps: <http://dotwebstack.org/def/elmo/persistence-strategy/>. 
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 @prefix config: <http://dotwebstack.org/configuration/>. 
@@ -48,6 +49,7 @@ GRAPH config:Theatre {
     elmo:requiredParameter config:ConceptTabelParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
+	  PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 	  PREFIX thes: <http://purl.org/iso25964/skos-thes#>

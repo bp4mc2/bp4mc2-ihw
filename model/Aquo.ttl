@@ -1,13 +1,14 @@
+@prefix adms: 		<http://www.w3.org/ns/adms#>.
+@prefix dc:			<http://purl.org/dc/elements/1.1/>.	
+@prefix dcat:		<http://www.w3.org/ns/dcat#>.
+@prefix dct:		<http://purl.org/dc/terms/>. 
+@prefix prov:		<http://www.w3.org/ns/prov#>. 
 @prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
 @prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#>. 
-@prefix xsd:		<http://www.w3.org/2001/XMLSchema#>. 
 @prefix sh:			<http://www.w3.org/ns/shacl#>. 
-@prefix dcat:		<http://www.w3.org/ns/dcat#>. 
-@prefix dct:		<http://purl.org/dc/terms/>. 
-@prefix dc:			<http://purl.org/dc/elements/1.1/>.	
 @prefix skos:		<http://www.w3.org/2004/02/skos/core#>. 
-@prefix prov:		<http://www.w3.org/ns/prov#>. 
-@prefix adms: 		<http://www.w3.org/ns/adms#>. 
+@prefix thes: 		<http://purl.org/iso25964/skos-thes#>.
+@prefix xsd:		<http://www.w3.org/2001/XMLSchema#>. 
 
 @prefix aquo:		<http://linkeddata.ordina.nl/aquo/def/model/>.
 
@@ -20,12 +21,18 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NameShape;
 	sh:property aquo:DefinitieShape;
 	sh:property aquo:ToelichtingShape;
+	sh:property aquo:AfbeeldingShape
 	sh:property aquo:BronShape;
 	sh:property aquo:AfkortingShape;
 	sh:property aquo:CategorieShape;
+	sh:property aquo:CodeShape;
 	sh:property aquo:BredereTermShape;
 	sh:property aquo:NauwereTermShape;
 	sh:property aquo:GerelateerdTermShape;
+	sh:property aquo:HeeftOnderdeelShape;
+	sh:property aquo:IsOnderdeelVanShape;
+	sh:property aquo:GebruikShape;
+	sh:property aquo:GebruikInPlaatsVanShape;
 	sh:property aquo:StatusShape;
 .
 aquo:DomeinTabelShape rdf:type sh:NodeShape;
@@ -129,11 +136,20 @@ aquo:BronShape rdf:type sh:PropertyShape;
 .
 aquo:AfkortingShape rdf:type skos:PropertyShape;
 	rdfs:label "Afkorting"@nl;
-	sh:name "skos:notation";
-	sh:path skos:notation;
+#	sh:name "skos:notation"; Is nog onduidelijk welk predicate we moeten hanteren voor het vastleggen van een afkorting.
+#	sh:path skos:notation;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
 	sh:severity sh:info;
+.
+aquo:CodeShape rdf:type sh:PropertyShape;
+	rdfs:label "Code"@nl;
+	sh:name "skos:notation";
+	sh:path skos:notation;
+	sh:datatype xsd:string;
+	sh:minCount 1;
+	sh:maxCount 1;
+	sh:severity sh:Violation;
 .
 aquo:CategorieShape rdf:type sh:PropertyShape;
 	rdfs:label "Categorie"@nl;
@@ -147,18 +163,56 @@ aquo:BredereTermShape rdf:type sh:PropertyShape;
 	sh:name "skos:broader";
 	sh:path skos:broader;
 	sh:datatype sh:IRI;
+	sh:class skos:Concept;
 .
 aquo:NauwereTermShape rdf:type sh:PropertyShape;
 	rdfs:label "Nauwer Term"@nl;
 	sh:name "skos:narrower";
 	sh:path skos:Narrower;
 	sh:datatype sh:IRI;
+	sh:class skos:Concept;
 .
 aquo:GerelateerdTermShape rdf:type sh:PropertyShape;
 	rdfs:label "Gerelateerde Term"@nl;
 	sh:name "skos:related";
 	sh:path skos:related;
 	sh:datatype sh:IRI;
+	sh:class skos:Concept;
+.
+aquo:HeeftOnderdeelShape rdf:type sh:PropertyShape;
+	rdfs:label "Heeft onderdeel"@nl;
+	sh:name "thes:broaderPartitive";
+	sh:path thes:broaderPartitive;
+	sh:datatype sh:IRI;
+	sh:class skos:Concept;
+.
+aquo:IsOnderdeelVanShape rdf:type sh:PropertyShape;
+	rdfs:label "Is onderdeel van"@nl;
+	sh:name "thes:narrowerPartitive";
+	sh:path thes:narrowerPartitive;
+	sh:datatype sh:IRI;
+	sh:class skos:Concept;
+.
+aquo:GebruikShape rdf:type sh:PropertyShape;
+	rdfs:label "Gebruik"@nl;
+	sh:name "dct:isReplacedBy";
+	sh:path dct:isReplacedBy;
+	sh:datatype sh:IRI;
+	sh:class skos:Concept;
+.
+aquo:GebruikInPlaatsVanShape rdf:type sh:PropertyShape;
+	rdfs:label "Gebruik in plaats van"@nl;
+	sh:name "dct:replaces";
+	sh:path dct:replaces;
+	sh:datatype sh:IRI;
+	sh:class skos:Concept;
+.
+aquo:AfbeeldingShape rdf:type sh:PropertyShape;
+	rdfs:label "Afbeelding"@nl;
+	sh:name "skos:example";
+	sh:path skos:example;
+#	Welke datatype moeten we vastleggen voor een skos:example??????
+#   Maken we afbeelding een aparte klasse? zo ja wat voor type klasse gaat dat dan worden.
 .
 aquo:StatusShape rdf:type sh:PropertyShape;
 	rdfs:label "Status"@nl;

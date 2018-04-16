@@ -1,3 +1,4 @@
+@prefix adms: 			<http://www.w3.org/ns/adms#>.
 @prefix elmo: <http://dotwebstack.org/def/elmo#> . 
 @prefix elmo-rt: <http://dotwebstack.org/def/elmo/result-type/>. 
 @prefix elmo-ps: <http://dotwebstack.org/def/elmo/persistence-strategy/>. 
@@ -39,6 +40,12 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
 	]; 
+	elmo:fragment [
+	  elmo:index 02;
+	  elmo:appliesTo skos:example;
+	  rdfs:label "Afbeelding"@nl;
+	  elmo:appearance elmo:ImageAppearance;
+	];
 	elmo:fragment [ 
 	  elmo:index 03; 
 	  elmo:appliesTo skos:prefLabel; 
@@ -117,16 +124,21 @@ GRAPH config:Theatre {
 	  xhtml:link "begrip";
 	];
 	elmo:fragment [
-		elmo:index 25;
-		elmo:appliesTo dct:isReplacedBy;
-		rdfs:label "Gebruik"@nl;
-		xhtml:link "begrip";
+	  elmo:index 25;
+	  elmo:appliesTo dct:isReplacedBy;
+	  rdfs:label "Gebruik"@nl;
+	  xhtml:link "begrip";
 	];
 	elmo:fragment [
-		elmo:index 26;
-		elmo:appliesTo dct:replaces;
-		rdfs:label "Gebruik in plaats van"@nl;
-		xhtm:link "begrip";
+	  elmo:index 26;
+	  elmo:appliesTo dct:replaces;
+	  rdfs:label "Gebruik in plaats van"@nl;
+	  xhtml:link "begrip";
+	];
+	elmo:fragment [
+	  elmo:index 27;
+	  elmo:appliesTo adms:status;
+	  rdfs:label "Status"@nl;
 	];
   . 
 	 
