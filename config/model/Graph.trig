@@ -1,7 +1,6 @@
 @prefix elmo: <http://dotwebstack.org/def/elmo#> . 
 @prefix elmo-rt: <http://dotwebstack.org/def/elmo/result-type/>. 
 @prefix elmo-ps: <http://dotwebstack.org/def/elmo/persistence-strategy/>. 
-@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 @prefix config: <http://dotwebstack.org/configuration/>. 
@@ -17,30 +16,35 @@
 
 GRAPH config:Theatre { 
 
+  config:GraphDisplayEndpoint a elmo:Representation;
+    elmo:pathPattern "/resource"; # Hack
+    elmo:stage config:Stage;
+    elmo:informationProduct config:ConceptenDetailGraph;
+  .
+
   config:GraphDisplay a elmo:Representation;
     elmo:stage config:Stage;
-	elmo:layer elmo:BottomLayer;
-	elmo:appearance config:ConceptenGraphAppearance;
-	elmo:informationProduct config:ConceptenDetailGraph;
+    elmo:appearance config:ConceptenGraphAppearance;
+    elmo:informationProduct config:ConceptenDetailGraph;
   .
   
   config:ConceptenGraphAppearance a elmo:GraphAppearance;
     elmo:fragment [
 	  elmo:appliesTo "begrip";
-	  xhtml:stylesheet '''
+	  xhtml:stylesheet """
 	    fill: blue;
 		fill-opacity: .3;
 		stroke #666;
-	  ''';
+	  """;
 	  elmo:index 1;
 	];
 	elmo:fragment [
 	  elmo:appliesTo "domeintabel";
-	  xhtml:stylesheet '''
+	  xhtml:stylesheet """
 	    fill: yellow;
 		fill-opacity: .3;
 		stroke #666;
-	  ''';
+	  """;
 	  elmo:index 2;
 	];
   .
@@ -49,7 +53,7 @@ GRAPH config:Theatre {
     elmo:requiredParameter config:ConceptTabelParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
-	  PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 	  PREFIX thes: <http://purl.org/iso25964/skos-thes#>
@@ -57,57 +61,59 @@ GRAPH config:Theatre {
 	  CONSTRUCT {
 		?subject ?p ?o.
 		?subject rdfs:label ?begriplabel.
-		?subject elmo:style ?type.
+		?subject elmo1:style ?type.
 		
 		?o rdfs:label ?olabel.
-		?o elmo:style ?oelmostyle.
+		?o elmo1:style ?oelmostyle.
 		
 		?s ?sp ?subject.
 		?s rdfs:label ?slabel.
-		?s elmo:style ?selmostyle.
+		?s elmo1:style ?selmostyle.
 		
-		skos:Concept elmo:name "begrip".
+		skos:Concept elmo1:name "begrip".
 		dct:subject rdfs:label "Categorie".
 		skos:broader rdfs:label "Bredere term".
 		skos:narrower rdfs:label "Nauwere term".
 		skos:related rdfs:label "Gerelateerd term".
-		thes:broaderPartitive "Onderdeel van".
-		thes:narrowerPartitive "Heeft onderdeel".
+		thes:broaderPartitive rdfs:label "Onderdeel van".
+		thes:narrowerPartitive rdfs:label "Heeft onderdeel".
 		dct:isReplacedBy rdfs:label "Gebruik".
 		dct:replaces rdfs:label "Gebruik in plaats van".
 		}
         WHERE {
 		  GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-				?subject rdf:type ?type.
-				OPTIONAL
-				{
-				  ?subject rdfs:label ?subjectlabel.
-				}
-				OPTIONAL
-				{
-				  ?subject ?p ?o.
-				  FILTER (
-				    ?p = dct:subject
-					||?p = skos:broader
-					||?p = skos:narrower
-					||?p = skos:related
-					||?p = thes:broaderPartitive
-					||?p = thes:narrowerPartitive
-					||?p = dct:isReplacedBy
-					||?p = dct:replaces
-				  )
-				}
+        {
+          ?subject a ?type.
+          OPTIONAL
+          {
+            ?subject rdfs:label ?subjectlabel.
+          }
+          OPTIONAL
+          {
+            ?subject ?p ?o.
+            FILTER (
+              ?p = dct:subject
+            ||?p = skos:broader
+            ||?p = skos:narrower
+            ||?p = skos:related
+            ||?p = thes:broaderPartitive
+            ||?p = thes:narrowerPartitive
+            ||?p = dct:isReplacedBy
+            ||?p = dct:replaces
+            )
+          }
+        }
 				UNION
 				{
 				  ?subject ?p ?o.
 				  ?o rdfs:label ?olabel.
-				  ?o rdf:type ?otype.
+				  ?o a ?otype.
 				}
 				UNION
 				{
 				  ?s ?sp ?subject.
 				  ?s rdfs:label ?slabel.
-				  ?s rdf:type ?stype.
+				  ?s a ?stype.
 				}
 			  }
 			}

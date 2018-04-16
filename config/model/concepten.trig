@@ -28,12 +28,20 @@ GRAPH config:Theatre {
 	elmo:contains config:ConceptenIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
+  config:ConceptenCategorieLijst a elmo:Representation;
+    elmo:pathPattern "/begrippen-per-categorie";
+    elmo:appearance config:ConceptenLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ConceptenCategorieLijstData;
+  .
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "begrip";
       xhtml:link "begrip";
-      elmo:name "begrip";
+#      elmo:name "begrip";
       rdfs:label "Begrip"@nl;
     ];
     elmo:fragment [ 
@@ -61,9 +69,30 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?begrip a skos:Concept.
-          ?begrip rdfs:label ?begrip_label.
+          ?begrip skos:prefLabel ?begrip_label.
           OPTIONAL {?begrip skos:definition ?definitie}
           FILTER regex(?begrip_label,concat("^",?term),"i")
+        }
+      }
+      order by ?begrip_label
+      limit 100
+    """
+  .
+  config:ConceptenCategorieLijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:requiredParameter config:CategorieParameter;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      SELECT ?begrip ?begrip_label ?definitie
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          ?begrip a skos:Concept.
+          ?begrip dct:subject ?categorie.
+          ?begrip skos:prefLabel ?begrip_label.
+          OPTIONAL {?begrip skos:definition ?definitie}
         }
       }
       order by ?begrip_label
