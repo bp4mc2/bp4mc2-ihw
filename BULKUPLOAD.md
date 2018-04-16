@@ -3,7 +3,7 @@ Bulkupload van data kan via Linked Data endpoints. Er zijn twee endpoints beschi
 - `http://localhost:8080/beheer/bulkupload/begrippen`
 - `http://localhost:8080/beheer/bulkupload/domeintabellen`
 
-(vervang `localhost:8080` door de juiste naam van de server)
+(vervang `localhost:8080` door de juiste naam van de LDT 2.0 server. Als je lokaal werkt, hoef je deze niet te wijzigen)
 
 Data kan op de volgende manier geupload worden (in geval van turtle):
 

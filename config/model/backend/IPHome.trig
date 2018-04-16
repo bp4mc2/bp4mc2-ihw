@@ -1,0 +1,52 @@
+GRAPH config:Theatre {
+
+  config:MenuData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      CONSTRUCT {
+        [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
+          xhtml:search "search";
+          elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "/begrippen"];
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "/domeintabellen"];
+          elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "/categorieen"]
+        .
+      }
+      WHERE {}
+    """;
+  .
+  
+  config:FooterData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        [] elmo1:html '''<div class="row">
+          <div class="col-sm-4">
+            <h4>Links</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+              </li>
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h4>configuration</h4>
+            <p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
+          </div>
+          <div class="col-sm-4">
+            <h4>License</h4>
+            <p>GPL 3.0 / CC-BY-SA</p>
+          </div>
+        </div>'''
+      }
+      WHERE {}
+    """;
+  .
+  
+}

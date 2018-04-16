@@ -1,0 +1,32 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Menu
+#
+# ==========================
+  
+  config:Menu a elmo:Representation;
+	elmo:stage config:Stage;
+	elmo:appearance config:MenuAppearance;
+    elmo:informationProduct config:MenuData;
+  .
+  
+  config:MenuAppearance a elmo:NavbarSearchAppearance;
+  .
+
+# ==========================
+#
+# Footer
+#
+# ==========================
+
+  config:Footer a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:FooterData;
+    elmo:appearance config:FooterAppearance;
+  .
+  config:FooterAppearance a elmo:FooterAppearance;
+  .
+
+}
