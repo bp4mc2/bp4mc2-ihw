@@ -106,12 +106,13 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://data.aquo.nl/def/aquo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
-        ?id ?p ?o
+        ?id ?p ?o.
+        ?id aquo:endDate ""
       }
       WHERE {
         GRAPH ?domeintabel {
           ?id ?p ?o
-          FILTER (?p!=rdf:type)
+          FILTER (?p!=rdf:type && ?p!=aquo:endDate)
         }
       }
     """
