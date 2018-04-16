@@ -75,7 +75,6 @@ GRAPH config:Theatre {
         }
       }
       order by ?begrip_label
-      limit 100
     """
   .
   config:ConceptenCategorieLijstData a elmo:InformationProduct;

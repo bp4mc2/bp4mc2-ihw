@@ -39,7 +39,7 @@ GRAPH config:Theatre {
           xhtml:search "search";
           elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "/begrippen"];
           elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "/domeintabellen"];
-          elmo1:data [elmo1:index "3"; rdfs:label "Categorieën"; xhtml:link "/categorieen"]
+          elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "/categorieen"]
         .
       }
       WHERE {}
