@@ -1,0 +1,27 @@
+GRAPH config:Theatre { 
+
+  config:ImageDisplayEndpoint a elmo:Representation;
+    elmo:pathPattern "/resource"; # Hack
+    elmo:stage config:Stage;
+    elmo:informationProduct config:ConceptenDetailImage;
+  .
+
+  config:ImageDisplay a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:ConceptenImageAppearance;
+    elmo:informationProduct config:ConceptenDetailImage;
+  .
+  
+  config:ConceptenImageAppearance a elmo:ImageAppearance;
+    elmo:fragment [
+      elmo:appliesTo "dct:image";
+      xhtml:stylesheet """
+      fill: blue;
+      fill-opacity: .3;
+      stroke #666;
+      """;
+      elmo:index 1;
+    ];
+  .
+ 
+}
