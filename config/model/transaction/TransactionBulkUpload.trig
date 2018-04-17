@@ -2,7 +2,7 @@ GRAPH config:Theatre {
 
 # ==========================
 #
-# TRANSACTION ENDPOINTS
+# BegrippenUpload
 #
 # ==========================
 
@@ -27,6 +27,12 @@ GRAPH config:Theatre {
       ]
     )
   .
+
+# ==========================
+#
+# DomeintabelUpload
+#
+# ==========================
 
   config:DomeintabelUploadEndpoint a elmo:Representation;
     elmo:pathPattern "/beheer/bulkupload/domeintabel";
@@ -116,6 +122,34 @@ GRAPH config:Theatre {
             }
           }
         """
+      ]
+    )
+  .
+
+# ==========================
+#
+# CategorieenUpload
+#
+# ==========================
+
+  config:CategorieenUploadEndpoint a elmo:Representation;
+    elmo:pathPattern "/beheer/bulkupload/categorieen";
+    elmo:stage config:Stage;
+    elmo:transaction config:CategorieenUploadTransaction
+  .
+
+  config:CategorieenUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://data.aquo.nl/id/dataset/categorieen>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://data.aquo.nl/id/dataset/categorieen>
       ]
     )
   .

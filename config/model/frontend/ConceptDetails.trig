@@ -101,6 +101,12 @@ GRAPH config:Theatre {
 	  xhtml:link "begrip";
 	];
 	elmo:fragment [
+	  elmo:index 25;
+	  elmo:appliesTo skos:relatedMatch;
+	  rdfs:label "Gerelateerd term in ander schema"@nl;
+	  xhtml:link "begrip";
+	];
+	elmo:fragment [
 		elmo:index 25;
 		elmo:appliesTo dct:isReplacedBy;
 		rdfs:label "Gebruik"@nl;
