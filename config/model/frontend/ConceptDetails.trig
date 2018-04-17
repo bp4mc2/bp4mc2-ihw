@@ -130,19 +130,10 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
     elmo:index 27;
-		elmo:appliesTo dct:image;
-    #elmo:appliesTo skos:example;
+    elmo:appliesTo skos:example;
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
-		#xhtml:link "begrip";
-	];
-  # elmo:fragment [
-    # elmo:index 28;
-		# elmo:appliesTo skos:example;
-    # rdfs:label "Voorbeeld afbeelding"@nl;
-    # elmo:appearance elmo:ImageAppearance;
-		##xhtml:link "begrip";
-	# ];
+  ];
   . 
 	 
 
