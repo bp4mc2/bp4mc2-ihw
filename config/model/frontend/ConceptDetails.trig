@@ -5,12 +5,12 @@ GRAPH config:Theatre {
 	elmo:stage config:Stage;
 	elmo:contains config:Menu; 
 	elmo:contains config:GraphDisplay;
-  elmo:contains config:ImageDisplay;
+  #elmo:contains config:ImageDisplay;
 	elmo:appearance config:ConceptDetailAppearance;
 	elmo:informationProduct config:ConceptDetailData;
   . 
    
-  config:ConceptDetailAppearance a elmo:ContentAppearance;
+  config:ConceptDetailAppearance a elmo:Appearance;
 	elmo:index 2;
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
@@ -114,18 +114,20 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
     elmo:index 27;
-		elmo:appliesTo dct:image;
+		#elmo:appliesTo dct:image;
+    elmo:appliesTo skos:example;
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
-		#xhtml:link "begrip";
+		xhtml:link "begrip";
 	];
-  elmo:fragment [
-    elmo:index 28;
-		elmo:appliesTo skos:example;
-    rdfs:label "Voorbeeld afbeelding"@nl;
-    elmo:appearance elmo:ImageAppearance;
-		#xhtml:link "begrip";
-	];
+  # elmo:fragment [
+    # elmo:index 28;
+		# elmo:appliesTo skos:example;
+    # rdfs:label "Voorbeeld afbeelding"@nl;
+    # elmo:appearance elmo:ImageAppearance;
+		##xhtml:link "begrip";
+	# ];
+  
   . 
 	 
   config:ConceptTabelParameter a elmo:TermParameter; 
