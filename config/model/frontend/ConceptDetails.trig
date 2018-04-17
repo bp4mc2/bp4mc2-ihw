@@ -119,6 +119,13 @@ GRAPH config:Theatre {
     elmo:appearance elmo:ImageAppearance;
 		#xhtml:link "begrip";
 	];
+  elmo:fragment [
+    elmo:index 28;
+		elmo:appliesTo skos:example;
+    rdfs:label "Voorbeeld afbeelding"@nl;
+    elmo:appearance elmo:ImageAppearance;
+		#xhtml:link "begrip";
+	];
   . 
 	 
   config:ConceptTabelParameter a elmo:TermParameter; 

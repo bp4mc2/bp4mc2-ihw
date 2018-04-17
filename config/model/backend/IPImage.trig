@@ -8,7 +8,7 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
       PREFIX dct: <http://purl.org/dc/terms/>
       
-      SELECT  ?o
+      CONSTRUCT {?subject skos:example ?o}
       WHERE { 
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> { 
           ?subject skos:example ?o 
