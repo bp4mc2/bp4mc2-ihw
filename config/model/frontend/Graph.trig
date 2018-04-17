@@ -14,7 +14,7 @@ GRAPH config:Theatre {
   
   config:ConceptenGraphAppearance a elmo:GraphAppearance;
     elmo:fragment [
-      elmo:appliesTo "begrip";
+      elmo:appliesTo "term";
       xhtml:stylesheet """
       fill: blue;
       fill-opacity: .3;

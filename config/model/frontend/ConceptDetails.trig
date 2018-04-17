@@ -5,7 +5,7 @@ GRAPH config:Theatre {
 	elmo:stage config:Stage;
 	elmo:contains config:Menu; 
 	elmo:contains config:GraphDisplay;
-  elmo:contains config:ImageDisplay;
+    elmo:contains config:ImageDisplay;
 	elmo:appearance config:ConceptDetailAppearance;
 	elmo:informationProduct config:ConceptDetailData;
   . 
@@ -15,7 +15,7 @@ GRAPH config:Theatre {
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
     elmo:appearance elmo:HiddenAppearance; 
-	  rdfs:label "Begrip"@nl; 
+	  rdfs:label "Term"@nl; 
 	]; 
 	elmo:fragment [ 
 	  elmo:appliesTo rdfs:label; 
@@ -61,7 +61,7 @@ GRAPH config:Theatre {
 	  elmo:index 10;
 	  elmo:appliesTo dct:subject;
 	  rdfs:label "Categorie"@nl;
-    xhtml:link "begrippen-per-categorie"
+      xhtml:link "begrippen-per-categorie"
 	];
 	elmo:fragment [
 	  elmo:index 11;
@@ -73,14 +73,14 @@ GRAPH config:Theatre {
 	  elmo:appliesTo skos:broader; 
 	  rdfs:label "Bredere term"@nl; 
     xhtml:link "begrip"; 
-    elmo:name "begrip"; 
+    elmo:name "term"; 
 	]; 
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
 	  rdfs:label "Nauwere term"@nl; 
     xhtml:link "begrip"; 
-    elmo:name "begrip"; 
+    elmo:name "term"; 
   ]; 
 	elmo:fragment [ 
 	  elmo:index 22; 
@@ -107,10 +107,10 @@ GRAPH config:Theatre {
 	  xhtml:link "begrip";
 	];
 	elmo:fragment [
-		elmo:index 25;
-		elmo:appliesTo dct:isReplacedBy;
-		rdfs:label "Gebruik"@nl;
-		xhtml:link "begrip";
+	  elmo:index 25;
+	  elmo:appliesTo dct:isReplacedBy;
+	  rdfs:label "Gebruik"@nl;
+	  xhtml:link "begrip";
 	];
 	elmo:fragment [
 		elmo:index 26;
@@ -118,19 +118,19 @@ GRAPH config:Theatre {
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
-  elmo:fragment [
-    elmo:index 27;
-		elmo:appliesTo dct:image;
-    rdfs:label "Voorbeeld afbeelding"@nl;
-    elmo:appearance elmo:ImageAppearance;
-		#xhtml:link "begrip";
+    elmo:fragment [
+      elmo:index 27;
+	  elmo:appliesTo dct:image;
+	  rdfs:label "Voorbeeld afbeelding"@nl;
+      elmo:appearance elmo:ImageAppearance;
+	  #xhtml:link "begrip";
 	];
-  elmo:fragment [
-    elmo:index 28;
-		elmo:appliesTo skos:example;
-    rdfs:label "Voorbeeld afbeelding"@nl;
-    elmo:appearance elmo:ImageAppearance;
-		#xhtml:link "begrip";
+    elmo:fragment [
+      elmo:index 28;
+	  elmo:appliesTo skos:example;
+      rdfs:label "Voorbeeld afbeelding"@nl;
+      elmo:appearance elmo:ImageAppearance;
+	  #xhtml:link "begrip";
 	];
   . 
 	 
