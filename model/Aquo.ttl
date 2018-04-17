@@ -11,6 +11,12 @@
 
 @prefix aquo:		<http://linkeddata.ordina.nl/aquo/def/model/>.
 
+aquo:ImageShape rdf:type sh:NodeShape;
+  rdf:label "Image Shape";
+  sh:name "image shape";
+  sh:targetClass dct:image;
+  sh:property aquo:PlaatjeShape;
+.
 
 aquo:ConceptShape rdf:type sh:NodeShape;
 	rdfs:label "Concept Shape";
@@ -20,13 +26,14 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NameShape;
 	sh:property aquo:DefinitieShape;
 	sh:property aquo:ToelichtingShape;
-	sh:property aquo:BronShape;
+	sh:property aquo:BronShape; 
 	sh:property aquo:AfkortingShape;
 	sh:property aquo:CategorieShape;
 	sh:property aquo:BredereTermShape;
 	sh:property aquo:NauwereTermShape;
 	sh:property aquo:GerelateerdTermShape;
 	sh:property aquo:StatusShape;
+  sh:property aquo:PlaatjeShape;
 .
 aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	rdfs:label "Domein Tabel Shape"@nl;
@@ -47,6 +54,12 @@ aquo:OmschrijvingShape sh:PropertyShape;
 	sh:path dct:description;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
+.
+aquo:PlaatjeShape sh:PropertyShape;
+	rdfs:label "Plaatje"@nl;
+	sh:name "dct:image";
+	sh:path dct:image;
+	sh:datatype sh:IRI;
 .
 aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Begin Geldigheid"@nl;
@@ -92,7 +105,7 @@ aquo:LabelShape rdf:type sh:PropertyShape;
 	sh:datatype xsd:string;
 	sh:minCount 1;
 	sh:maxCount 1;
-	sh:severity sh:warning;
+	sh:severity sh:Warning;
 .
 aquo:NameShape rdf:type sh:PropertyShape;
 	rdfs:label "Naam"@nl;
@@ -133,7 +146,7 @@ aquo:AfkortingShape rdf:type skos:PropertyShape;
 	sh:path skos:notation;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
-	sh:severity sh:info;
+	sh:severity sh:Info;
 .
 aquo:CategorieShape rdf:type sh:PropertyShape;
 	rdfs:label "Categorie"@nl;
@@ -151,7 +164,7 @@ aquo:BredereTermShape rdf:type sh:PropertyShape;
 aquo:NauwereTermShape rdf:type sh:PropertyShape;
 	rdfs:label "Nauwer Term"@nl;
 	sh:name "skos:narrower";
-	sh:path skos:Narrower;
+	sh:path skos:narrower;
 	sh:datatype sh:IRI;
 .
 aquo:GerelateerdTermShape rdf:type sh:PropertyShape;

@@ -111,6 +111,13 @@ GRAPH config:Theatre {
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
+  elmo:fragment [
+		elmo:index 27;
+		elmo:appliesTo dct:image;
+    elmo:appearance elmo:ImageAppearance;
+		rdfs:label "Voorbeeld afbeelding"@nl;
+		#xhtml:link "begrip";
+	];
   . 
 	 
   config:ConceptTabelParameter a elmo:TermParameter; 
@@ -119,5 +126,7 @@ GRAPH config:Theatre {
 	    sh:nodeKind sh:IRI 
 		] 
 	. 
+  
+  
 	 
 } 
