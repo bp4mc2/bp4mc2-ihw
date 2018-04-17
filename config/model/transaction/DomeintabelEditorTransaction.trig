@@ -1,0 +1,60 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# DomeintabelEditor
+#
+# ==========================
+
+  # Herdefinitie van de config:DomeintabelUploadEndpoint (uit TransactionBulkUpload)
+  config:DomeintabelUploadEndpoint a elmo:Endpoint;
+    elmo:getRepresentation config:DomeintabelEditor;
+  .
+  
+  config:DomeintabelEditor a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:appearance config:DomeintabelEditorAppearance;
+    elmo:informationProduct config:DomeintabelData;
+  .
+
+  config:DomeintabelEditorAppearance a elmo:EditorAppearance;
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "@id";
+      rdfs:label "URI"@nl;
+      elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo rdf:type;
+      rdfs:label "Type"@nl;
+      elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
+    ];
+    elmo:fragment [
+      elmo:index 3;
+      elmo:appliesTo aquo:ID;
+      rdfs:label "ID"@nl;
+      elmo:name "id";
+    ];
+    elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 5;
+      elmo:appliesTo aquo:Omschrijving;
+      rdfs:label "Omschrijving"@nl;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
+      elmo:appearance elmo:SubmitAppearance;
+      xhtml:link "/beheer/bulkupload/domeintabel";
+      rdfs:label "Opslaan"@nl;
+      rdfs:label "Save"@en;
+    ];
+  .
+
+}

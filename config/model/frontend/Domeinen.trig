@@ -23,8 +23,12 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo "domeintabel";
       xhtml:link "domeintabel";
-      elmo:name "domeintabel"
-    ]
+    ];
+    elmo:fragment [
+      elmo:appliesTo "edit";
+      xhtml:link "beheer/bulkupload/domeintabel";
+      rdf:value "edit"
+    ];
   .
 
 # ==========================
@@ -47,6 +51,10 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeintabelData;
   .
   config:DomeintabelAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
     elmo:fragment [
       elmo:appliesTo aquo:ID;
       elmo:index 1;

@@ -6,7 +6,7 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT ?domeintabel ?domeintabel_label
+      SELECT ?domeintabel ?domeintabel_label (?domeintabel as ?edit)
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
           <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
@@ -17,7 +17,7 @@ GRAPH config:Theatre {
   .
   
   config:DomeintabelData a elmo:InformationProduct;
-    elmo:requiredParameter config:DomeintabelParameter;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
@@ -29,9 +29,9 @@ GRAPH config:Theatre {
         ?id aquo:endDate ""
       }
       WHERE {
-        GRAPH ?domeintabel {
+        GRAPH ?subject {
           ?id ?p ?o
-          FILTER (?p!=rdf:type && ?p!=aquo:endDate)
+          FILTER (?p!=aquo:endDate)
         }
       }
     """
