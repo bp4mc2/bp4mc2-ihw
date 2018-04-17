@@ -1,20 +1,22 @@
-@prefix adms: 		<http://www.w3.org/ns/adms#>.
-@prefix dc:			<http://purl.org/dc/elements/1.1/>.	
-@prefix dcat:		<http://www.w3.org/ns/dcat#>.
-@prefix dct:		<http://purl.org/dc/terms/>. 
-@prefix prov:		<http://www.w3.org/ns/prov#>. 
 @prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
 @prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#>. 
-@prefix sh:			<http://www.w3.org/ns/shacl#>. 
-@prefix skos:		<http://www.w3.org/2004/02/skos/core#>. 
-@prefix thes: 		<http://purl.org/iso25964/skos-thes#>.
 @prefix xsd:		<http://www.w3.org/2001/XMLSchema#>. 
+@prefix sh:			<http://www.w3.org/ns/shacl#>. 
+@prefix dcat:		<http://www.w3.org/ns/dcat#>. 
+@prefix dct:		<http://purl.org/dc/terms/>. 
+@prefix dc:			<http://purl.org/dc/elements/1.1/>.	
+@prefix skos:		<http://www.w3.org/2004/02/skos/core#>. 
+@prefix prov:		<http://www.w3.org/ns/prov#>. 
+@prefix adms: 		<http://www.w3.org/ns/adms#>. 
 
 @prefix aquo:		<http://linkeddata.ordina.nl/aquo/def/model/>.
 
-#------
-# NodeShapes
-#------
+aquo:ImageShape rdf:type sh:NodeShape;
+  rdf:label "Image Shape";
+  sh:name "image shape";
+  sh:targetClass dct:image;
+  sh:property aquo:PlaatjeShape;
+.
 
 aquo:ConceptShape rdf:type sh:NodeShape;
 	rdfs:label "Concept Shape";
@@ -24,21 +26,15 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NameShape;
 	sh:property aquo:DefinitieShape;
 	sh:property aquo:ToelichtingShape;
-	sh:property aquo:AfbeeldingShape;
-	sh:property aquo:BronShape;
+	sh:property aquo:BronShape; 
 	sh:property aquo:AfkortingShape;
 	sh:property aquo:CategorieShape;
-	sh:property aquo:CodeShape;
 	sh:property aquo:BredereTermShape;
 	sh:property aquo:NauwereTermShape;
 	sh:property aquo:GerelateerdTermShape;
-	sh:property aquo:HeeftOnderdeelShape;
-	sh:property aquo:IsOnderdeelVanShape;
-	sh:property aquo:GebruikShape;
-	sh:property aquo:GebruikInPlaatsVanShape;
 	sh:property aquo:StatusShape;
+  sh:property aquo:PlaatjeShape;
 .
-
 aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	rdfs:label "Domein Tabel Shape"@nl;
 	sh:name "domein tabel shape";
@@ -52,13 +48,6 @@ aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	sh:property aquo:DomeinShape;
 	sh:property aquo:TaalShape;
 .
-
-aquo:Image rdf:type sh:Nodeshape;
-	rdfs:label "Afbeelding shape"@nl;
-	sh:name "dct:Image";
-	sh:targetClass dct:Image;
-.
-
 aquo:OmschrijvingShape sh:PropertyShape;
 	rdfs:label "Omschrijving"@nl;
 	sh:name "dct:description";
@@ -66,7 +55,12 @@ aquo:OmschrijvingShape sh:PropertyShape;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
 .
-
+aquo:PlaatjeShape sh:PropertyShape;
+	rdfs:label "Plaatje"@nl;
+	sh:name "dct:image";
+	sh:path dct:image;
+	sh:datatype sh:IRI;
+.
 aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Begin Geldigheid"@nl;
 	sh:name "dct:issued";
@@ -75,7 +69,6 @@ aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	sh:minCount 1;
 	sh:maxCount 1;
 .
-
 aquo:EindDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Eind datum geldigheid"@nl;
 	sh:name "prov:invalidatedAtTime";
@@ -83,7 +76,6 @@ aquo:EindDatumGeldigheidShape sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:maxCount 1;
 .
-
 aquo:DatumLaatstePublicatieShape rdf:type sh:PropertyShape;
 	rdfs:label "Datum laatste publicatie"@nl;
 	sh:name "prov:generatedAtTime";
@@ -91,7 +83,6 @@ aquo:DatumLaatstePublicatieShape rdf:type sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:maxCount 1;
 .
-
 aquo:DomeinShape rdf:type sh:PropertyShape;
 	rdfs:label "Domein"@nl;
 	sh:name "skos:conceptScheme";
@@ -101,7 +92,6 @@ aquo:DomeinShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
-
 ### aquo:Taalshape rdf:type sh:PropertyShape;
 #	rdfs:label "Taal"@nl;
 #	sh:name "iso-NL";
@@ -109,7 +99,6 @@ aquo:DomeinShape rdf:type sh:PropertyShape;
 #	PATH op deze shape is niet correct, moet ik controleren.
 #	sh:minCount 1;
 #.
-
 aquo:LabelShape rdf:type sh:PropertyShape;
 	rdfs:label "Label"@nl;
 	sh:path rdfs:label;
@@ -118,7 +107,6 @@ aquo:LabelShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Warning;
 .
-
 aquo:NameShape rdf:type sh:PropertyShape;
 	rdfs:label "Naam"@nl;
 	sh:name "skos:prefLabel";
@@ -128,7 +116,6 @@ aquo:NameShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
-
 aquo:DefinitieShape rdf:type sh:PropertyShape;
 	rdfs:label "Definitie"@nl;
 	sh:name "skos:definition";
@@ -137,7 +124,6 @@ aquo:DefinitieShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
-
 aquo:ToelichtingShape rdf:type sh:PropertyShape;
 	rdfs:label "Toelichting"@nl;
 	sh:name "skos:scopeNote";
@@ -146,7 +132,6 @@ aquo:ToelichtingShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Info;
 .
-
 aquo:BronShape rdf:type sh:PropertyShape;
 	rdfs:label "Bron"@nl;
 	sh:name "dc:source";
@@ -155,23 +140,13 @@ aquo:BronShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Info;
 .
-
 aquo:AfkortingShape rdf:type skos:PropertyShape;
 	rdfs:label "Afkorting"@nl;
-	sh:name "skos:note";
-	sh:path skos:note;
-	sh:datatype xsd:string;
-	sh:maxCount 1;
-	sh:severity sh:info;
-.
-aquo:CodeShape rdf:type sh:PropertyShape;
-	rdfs:label "Code"@nl;
 	sh:name "skos:notation";
 	sh:path skos:notation;
 	sh:datatype xsd:string;
-	sh:minCount 1;
 	sh:maxCount 1;
-	sh:severity sh:Violation;
+	sh:severity sh:Info;
 .
 aquo:CategorieShape rdf:type sh:PropertyShape;
 	rdfs:label "Categorie"@nl;
@@ -185,51 +160,18 @@ aquo:BredereTermShape rdf:type sh:PropertyShape;
 	sh:name "skos:broader";
 	sh:path skos:broader;
 	sh:datatype sh:IRI;
-	sh:class skos:Concept;
 .
 aquo:NauwereTermShape rdf:type sh:PropertyShape;
 	rdfs:label "Nauwer Term"@nl;
 	sh:name "skos:narrower";
-	sh:path skos:Narrower;
+	sh:path skos:narrower;
 	sh:datatype sh:IRI;
-	sh:class skos:Concept;
 .
 aquo:GerelateerdTermShape rdf:type sh:PropertyShape;
 	rdfs:label "Gerelateerde Term"@nl;
 	sh:name "skos:related";
 	sh:path skos:related;
 	sh:datatype sh:IRI;
-	sh:class skos:Concept;
-.
-aquo:HeeftOnderdeelShape rdf:type sh:PropertyShape;
-	rdfs:label "Heeft onderdeel"@nl;
-	sh:name "thes:broaderPartitive";
-	sh:path thes:broaderPartitive;
-	sh:datatype sh:IRI;
-	sh:class skos:Concept;
-.
-aquo:IsOnderdeelVanShape rdf:type sh:PropertyShape;
-	rdfs:label "Is onderdeel van"@nl;
-	sh:name "thes:narrowerPartitive";
-	sh:path thes:narrowerPartitive;
-	sh:datatype sh:IRI;
-	sh:class skos:Concept;
-.
-
-aquo:GerelateerdeTermAnderSchemaShape rdf:type sh:PropertyShape;
-	rdfs:label "Gerelateerd Term (ander schema)"@nl;
-	sh:name "skos:relatedMatch";
-	sh:path skos:relatedMatch;
-	sh:datatype sh:IRI;
-	sh:class skos:Concept;
-.
-
-aquo:AfbeeldingShape rdf:type sh:PropertyShape;
-	rdfs:label "Afbeelding"@nl;
-	sh:name "skos:example";
-	sh:path skos:example;
-	sh:datatype xhtml:link;
-	sh:class dct:Image;
 .
 aquo:StatusShape rdf:type sh:PropertyShape;
 	rdfs:label "Status"@nl;

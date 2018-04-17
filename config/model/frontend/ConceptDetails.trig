@@ -5,15 +5,16 @@ GRAPH config:Theatre {
 	elmo:stage config:Stage;
 	elmo:contains config:Menu; 
 	elmo:contains config:GraphDisplay;
+  elmo:contains config:ImageDisplay;
 	elmo:appearance config:ConceptDetailAppearance;
 	elmo:informationProduct config:ConceptDetailData;
   . 
    
-  config:ConceptDetailAppearance a elmo:Appearance;
+  config:ConceptDetailAppearance a elmo:ContentAppearance;
 	elmo:index 2;
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
-      elmo:appearance elmo:HiddenAppearance; 
+    elmo:appearance elmo:HiddenAppearance; 
 	  rdfs:label "Begrip"@nl; 
 	]; 
 	elmo:fragment [ 
@@ -71,15 +72,15 @@ GRAPH config:Theatre {
 	  elmo:index 20; 
 	  elmo:appliesTo skos:broader; 
 	  rdfs:label "Bredere term"@nl; 
-      xhtml:link "begrip"; 
-      elmo:name "begrip"; 
+    xhtml:link "begrip"; 
+    elmo:name "begrip"; 
 	]; 
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
 	  rdfs:label "Nauwere term"@nl; 
-      xhtml:link "begrip"; 
-      elmo:name "begrip"; 
+    xhtml:link "begrip"; 
+    elmo:name "begrip"; 
   ]; 
 	elmo:fragment [ 
 	  elmo:index 22; 
@@ -88,7 +89,7 @@ GRAPH config:Theatre {
       xhtml:link "begrip"; 
 	];
     elmo:fragment [
-      elmo:index 23;
+     elmo:index 23;
 	  elmo:appliesTo thes:broaderPartitive;
 	  rdfs:label "Onderdeel van"@nl;
 	  xhtml:link "begrip";
@@ -117,6 +118,20 @@ GRAPH config:Theatre {
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
+  elmo:fragment [
+    elmo:index 27;
+		elmo:appliesTo dct:image;
+    rdfs:label "Voorbeeld afbeelding"@nl;
+    elmo:appearance elmo:ImageAppearance;
+		#xhtml:link "begrip";
+	];
+  elmo:fragment [
+    elmo:index 28;
+		elmo:appliesTo skos:example;
+    rdfs:label "Voorbeeld afbeelding"@nl;
+    elmo:appearance elmo:ImageAppearance;
+		#xhtml:link "begrip";
+	];
   . 
 	 
   config:ConceptTabelParameter a elmo:TermParameter; 
@@ -125,5 +140,7 @@ GRAPH config:Theatre {
 	    sh:nodeKind sh:IRI 
 		] 
 	. 
+  
+  
 	 
 } 
