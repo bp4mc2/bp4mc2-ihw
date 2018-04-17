@@ -6,8 +6,13 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:DomeinenLijst a elmo:Representation;
+  config:DomeinenLijstEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabellen";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinenLijst
+  .
+  config:DomeinenLijst a elmo:Representation;
+    #elmo:pathPattern "/domeintabellen";
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -27,9 +32,14 @@ GRAPH config:Theatre {
 # DOMEINTABEL en waarden
 #
 # ==========================
-
-  config:Domeintabel a elmo:Representation;
+  
+  config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:Domeintabel
+  .
+  config:Domeintabel a elmo:Representation;
+    #elmo:pathPattern "/domeintabel";
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;

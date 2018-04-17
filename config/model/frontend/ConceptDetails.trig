@@ -1,8 +1,14 @@
 GRAPH config:Theatre { 
 
+  config:ConceptenDetailsEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/begrip";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ConceptenDetails
+  .
+
   config:ConceptenDetails a elmo:Representation; 
-	elmo:pathPattern "/begrip";
-	elmo:stage config:Stage;
+	#elmo:pathPattern "/begrip";
+  elmo:stage config:Stage;
 	elmo:contains config:Menu; 
 	elmo:contains config:GraphDisplay;
   #elmo:contains config:ImageDisplay;
@@ -120,8 +126,8 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
     elmo:index 27;
-		#elmo:appliesTo dct:image;
-    elmo:appliesTo skos:example;
+		elmo:appliesTo dct:image;
+    #elmo:appliesTo skos:example;
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
 		xhtml:link "begrip";

@@ -6,8 +6,13 @@ GRAPH config:Theatre {
 #
 # ==========================    
 
+  config:ConceptenLijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/begrippen";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:ConceptenLijst
+  .
   config:ConceptenLijst a elmo:Representation;
-    elmo:pathPattern "/begrippen";
+    #elmo:pathPattern "/begrippen";
     elmo:appearance config:ConceptenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -16,8 +21,13 @@ GRAPH config:Theatre {
     elmo:informationProduct config:ConceptenLijstData;
   .
   
+  config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/begrippen-per-categorie";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:ConceptenCategorieLijst
+  .
   config:ConceptenCategorieLijst a elmo:Representation;
-    elmo:pathPattern "/begrippen-per-categorie";
+    #elmo:pathPattern "/begrippen-per-categorie";
     elmo:appearance config:ConceptenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -55,6 +65,10 @@ GRAPH config:Theatre {
 		]
   .
  
+  # config:ConceptenIndexEndpoint a elmo:Endpoint;
+ ## elmo:pathPattern "/begrippen-per-categorie";
+  # elmo:getRepresentation config:ConceptenIndex
+  # .
   config:ConceptenIndex a elmo:Representation; 
     elmo:stage config:Stage; 
     elmo:informationProduct config:ConceptenIndexData; 

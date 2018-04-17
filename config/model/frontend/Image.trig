@@ -1,10 +1,10 @@
 GRAPH config:Theatre { 
 
-  config:ImageDisplayEndpoint a elmo:Representation;
-    elmo:pathPattern "/resource"; # Hack
-    elmo:stage config:Stage;
-    elmo:informationProduct config:ConceptenDetailImage;
-  .
+  # config:ImageDisplayEndpoint a elmo:Representation;
+    # elmo:pathPattern "/resource"; # Hack
+    # elmo:stage config:Stage;
+    # elmo:informationProduct config:ConceptenDetailImage;
+  # .
 
   config:ImageDisplay a elmo:Representation;
     elmo:stage config:Stage;
@@ -14,7 +14,7 @@ GRAPH config:Theatre {
   
   config:ConceptenImageAppearance a elmo:ImageAppearance;
     elmo:fragment [
-      elmo:appliesTo "dct:image";
+      elmo:appliesTo "skos:example";
       xhtml:stylesheet """
       fill: blue;
       fill-opacity: .3;
