@@ -12,6 +12,9 @@
 
 @prefix aquo:		<http://linkeddata.ordina.nl/aquo/def/model/>.
 
+#------
+# NodeShapes
+#------
 
 aquo:ConceptShape rdf:type sh:NodeShape;
 	rdfs:label "Concept Shape";
@@ -21,7 +24,7 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NameShape;
 	sh:property aquo:DefinitieShape;
 	sh:property aquo:ToelichtingShape;
-	sh:property aquo:AfbeeldingShape
+	sh:property aquo:AfbeeldingShape;
 	sh:property aquo:BronShape;
 	sh:property aquo:AfkortingShape;
 	sh:property aquo:CategorieShape;
@@ -35,6 +38,7 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:GebruikInPlaatsVanShape;
 	sh:property aquo:StatusShape;
 .
+
 aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	rdfs:label "Domein Tabel Shape"@nl;
 	sh:name "domein tabel shape";
@@ -48,6 +52,13 @@ aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	sh:property aquo:DomeinShape;
 	sh:property aquo:TaalShape;
 .
+
+aquo:Image rdf:type sh:Nodeshape;
+	rdfs:label "Afbeelding shape"@nl;
+	sh:name "dct:Image";
+	sh:targetClass dct:Image;
+.
+
 aquo:OmschrijvingShape sh:PropertyShape;
 	rdfs:label "Omschrijving"@nl;
 	sh:name "dct:description";
@@ -55,6 +66,7 @@ aquo:OmschrijvingShape sh:PropertyShape;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
 .
+
 aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Begin Geldigheid"@nl;
 	sh:name "dct:issued";
@@ -63,6 +75,7 @@ aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	sh:minCount 1;
 	sh:maxCount 1;
 .
+
 aquo:EindDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Eind datum geldigheid"@nl;
 	sh:name "prov:invalidatedAtTime";
@@ -70,6 +83,7 @@ aquo:EindDatumGeldigheidShape sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:maxCount 1;
 .
+
 aquo:DatumLaatstePublicatieShape rdf:type sh:PropertyShape;
 	rdfs:label "Datum laatste publicatie"@nl;
 	sh:name "prov:generatedAtTime";
@@ -77,6 +91,7 @@ aquo:DatumLaatstePublicatieShape rdf:type sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:maxCount 1;
 .
+
 aquo:DomeinShape rdf:type sh:PropertyShape;
 	rdfs:label "Domein"@nl;
 	sh:name "skos:conceptScheme";
@@ -86,6 +101,7 @@ aquo:DomeinShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
+
 ### aquo:Taalshape rdf:type sh:PropertyShape;
 #	rdfs:label "Taal"@nl;
 #	sh:name "iso-NL";
@@ -93,14 +109,16 @@ aquo:DomeinShape rdf:type sh:PropertyShape;
 #	PATH op deze shape is niet correct, moet ik controleren.
 #	sh:minCount 1;
 #.
+
 aquo:LabelShape rdf:type sh:PropertyShape;
 	rdfs:label "Label"@nl;
 	sh:path rdfs:label;
 	sh:datatype xsd:string;
 	sh:minCount 1;
 	sh:maxCount 1;
-	sh:severity sh:warning;
+	sh:severity sh:Warning;
 .
+
 aquo:NameShape rdf:type sh:PropertyShape;
 	rdfs:label "Naam"@nl;
 	sh:name "skos:prefLabel";
@@ -110,6 +128,7 @@ aquo:NameShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
+
 aquo:DefinitieShape rdf:type sh:PropertyShape;
 	rdfs:label "Definitie"@nl;
 	sh:name "skos:definition";
@@ -118,6 +137,7 @@ aquo:DefinitieShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
+
 aquo:ToelichtingShape rdf:type sh:PropertyShape;
 	rdfs:label "Toelichting"@nl;
 	sh:name "skos:scopeNote";
@@ -126,6 +146,7 @@ aquo:ToelichtingShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Info;
 .
+
 aquo:BronShape rdf:type sh:PropertyShape;
 	rdfs:label "Bron"@nl;
 	sh:name "dc:source";
@@ -134,10 +155,11 @@ aquo:BronShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Info;
 .
+
 aquo:AfkortingShape rdf:type skos:PropertyShape;
 	rdfs:label "Afkorting"@nl;
-#	sh:name "skos:notation"; Is nog onduidelijk welk predicate we moeten hanteren voor het vastleggen van een afkorting.
-#	sh:path skos:notation;
+	sh:name "skos:note";
+	sh:path skos:note;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
 	sh:severity sh:info;
@@ -193,26 +215,21 @@ aquo:IsOnderdeelVanShape rdf:type sh:PropertyShape;
 	sh:datatype sh:IRI;
 	sh:class skos:Concept;
 .
-aquo:GebruikShape rdf:type sh:PropertyShape;
-	rdfs:label "Gebruik"@nl;
-	sh:name "dct:isReplacedBy";
-	sh:path dct:isReplacedBy;
+
+aquo:GerelateerdeTermAnderSchemaShape rdf:type sh:PropertyShape;
+	rdfs:label "Gerelateerd Term (ander schema)"@nl;
+	sh:name "skos:relatedMatch";
+	sh:path skos:relatedMatch;
 	sh:datatype sh:IRI;
 	sh:class skos:Concept;
 .
-aquo:GebruikInPlaatsVanShape rdf:type sh:PropertyShape;
-	rdfs:label "Gebruik in plaats van"@nl;
-	sh:name "dct:replaces";
-	sh:path dct:replaces;
-	sh:datatype sh:IRI;
-	sh:class skos:Concept;
-.
+
 aquo:AfbeeldingShape rdf:type sh:PropertyShape;
 	rdfs:label "Afbeelding"@nl;
 	sh:name "skos:example";
 	sh:path skos:example;
-#	Welke datatype moeten we vastleggen voor een skos:example??????
-#   Maken we afbeelding een aparte klasse? zo ja wat voor type klasse gaat dat dan worden.
+	sh:datatype xhtml:link;
+	sh:class dct:Image;
 .
 aquo:StatusShape rdf:type sh:PropertyShape;
 	rdfs:label "Status"@nl;
