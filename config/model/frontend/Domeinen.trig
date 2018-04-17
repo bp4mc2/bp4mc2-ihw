@@ -72,12 +72,5 @@ GRAPH config:Theatre {
       elmo:index 99;
     ]
   .
-
-  config:DomeintabelParameter a elmo:TermParameter;
-    elmo:name "domeintabel";
-		elmo:shape [
-			sh:nodeKind sh:IRI
-		]
-  .
   
 }

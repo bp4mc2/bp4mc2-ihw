@@ -20,12 +20,13 @@ GRAPH config:Theatre {
 	  elmo:contains config:ConceptenIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
-  
+ 
   config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
   elmo:pathPattern "/begrippen-per-categorie";
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenCategorieLijst
   .
+  
   config:ConceptenCategorieLijst a elmo:Representation;
     #elmo:pathPattern "/begrippen-per-categorie";
     elmo:appearance config:ConceptenLijstAppearance;
@@ -45,6 +46,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:index 2;
+      #elmo:appliesTo "dct:subject";
       elmo:appliesTo "categorie";
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
@@ -57,18 +59,6 @@ GRAPH config:Theatre {
     ];
   .
   
-  config:TermParameter a elmo:TermParameter;
-    elmo:name "term"; 
-	  elmo:shape [
-	    sh:datatype xsd:string;
-      sh:defaultValue "[0-9]";
-		]
-  .
- 
-  # config:ConceptenIndexEndpoint a elmo:Endpoint;
- ## elmo:pathPattern "/begrippen-per-categorie";
-  # elmo:getRepresentation config:ConceptenIndex
-  # .
   config:ConceptenIndex a elmo:Representation; 
     elmo:stage config:Stage; 
     elmo:informationProduct config:ConceptenIndexData; 

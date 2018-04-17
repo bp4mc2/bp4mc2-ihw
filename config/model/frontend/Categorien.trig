@@ -27,11 +27,5 @@ GRAPH config:Theatre {
     ];
   .
 
-  config:CategorieParameter a elmo:TermParameter;
-    elmo:name "categorie"; 
-	  elmo:shape [
-	    sh:nodeKind sh:IRI;
-		]
-  .
 
 }
