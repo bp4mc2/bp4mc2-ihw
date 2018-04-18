@@ -22,13 +22,19 @@ GRAPH config:Theatre {
   .
 
   config:CategorieTitelAppearance a elmo:ContentAppearance;
+    elmo:index 1;
     elmo:fragment [
-      elmo:appliesTo "clabel";
-      rdfs:label "Categorie"@nl;
+      elmo:appliesTo rdfs:label;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
     ];
    .
    
-    config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
+  config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
+    elmo:index 2;
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "begrip";
