@@ -37,15 +37,12 @@ GRAPH config:Theatre {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?begrip a skos:Concept.
           ?begrip dct:subject ?categorie.
-          #?begrip skos:prefLabel ?begrip_label.
-          #OPTIONAL {?begrip skos:definition ?definitie}
         }
         GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
             ?categorie rdfs:label ?clabel
           }
       }
       GROUP BY ?clabel
-      order by ?begrip_label
       limit 100
     """
   .

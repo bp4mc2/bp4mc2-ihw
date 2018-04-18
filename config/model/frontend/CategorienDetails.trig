@@ -24,8 +24,6 @@ GRAPH config:Theatre {
   config:CategorieTitelAppearance a elmo:ContentAppearance;
     elmo:fragment [
       elmo:appliesTo "clabel";
-      #elmo:name "categorie";
-      #xhtml:link "/begrippen-per-categorie";
       rdfs:label "Categorie"@nl;
     ];
    .

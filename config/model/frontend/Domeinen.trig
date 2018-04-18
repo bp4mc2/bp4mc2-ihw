@@ -12,7 +12,6 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:DomeinenLijst
   .
   config:DomeinenLijst a elmo:Representation;
-    #elmo:pathPattern "/domeintabellen";
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;

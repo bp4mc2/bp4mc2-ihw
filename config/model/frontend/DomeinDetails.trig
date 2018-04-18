@@ -28,11 +28,9 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeinTitelData;
   .
 
-  config:DomeinTitelAppearance a elmo:TableAppearance;
+  config:DomeinTitelAppearance a elmo:ContentAppearance;
     elmo:fragment [
       elmo:appliesTo "domeintabel_label";
-      ##elmo:name "domein";
-      ##xhtml:link "/begrippen-per-categorie";
       rdfs:label "Domein"@nl;
     ];
   .

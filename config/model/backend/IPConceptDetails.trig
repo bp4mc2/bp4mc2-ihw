@@ -12,8 +12,8 @@ GRAPH config:Theatre {
       CONSTRUCT { 
         ?subject ?p ?o.
         ?o rdfs:label ?olabel.
-        #?subject dct:subject ?categorie
-        ?categorie rdfs:label ?clabel.
+        ?subject dct:subject ?categorie.
+        ?categorie rdfs:label ?categorie_label.
       } 
       WHERE { 
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> { 
@@ -25,7 +25,7 @@ GRAPH config:Theatre {
             ?subject dct:subject ?categorie
           }
           GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?clabel
+            ?categorie rdfs:label ?categorie_label
           }
         }
       } 

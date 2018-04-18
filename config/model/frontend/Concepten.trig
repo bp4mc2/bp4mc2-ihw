@@ -30,7 +30,7 @@ GRAPH config:Theatre {
       rdfs:label "Begrip"@nl;
     ];
     elmo:fragment [
-      elmo:index 2;
+      elmo:index 4;
       #elmo:appliesTo "dct:subject";
       elmo:appliesTo "categorie";
       #elmo:appliesTo "clabel";
@@ -43,6 +43,13 @@ GRAPH config:Theatre {
       elmo:appliesTo "definitie";
       rdfs:label "Definitie"@nl;
     ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "categorie_label";
+      xhtml:link "/begrippen-per-categorie";
+      rdfs:label "CategorieNaam"@nl;
+    ];
+    
   .
   
   config:ConceptenIndex a elmo:Representation; 
