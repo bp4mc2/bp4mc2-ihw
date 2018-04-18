@@ -21,21 +21,6 @@ GRAPH config:Theatre {
     elmo:informationProduct config:ConceptenLijstData;
   .
  
-  config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/begrippen-per-categorie";
-  elmo:stage config:Stage;
-  elmo:getRepresentation config:ConceptenCategorieLijst
-  .
-  
-  config:ConceptenCategorieLijst a elmo:Representation;
-    #elmo:pathPattern "/begrippen-per-categorie";
-    elmo:appearance config:ConceptenLijstAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:ConceptenCategorieLijstData;
-  .
-  
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:index 1;
@@ -48,6 +33,7 @@ GRAPH config:Theatre {
       elmo:index 2;
       #elmo:appliesTo "dct:subject";
       elmo:appliesTo "categorie";
+      #elmo:appliesTo "clabel";
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;

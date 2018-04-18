@@ -16,25 +16,5 @@ GRAPH config:Theatre {
     """
   .
   
-  config:DomeintabelData a elmo:InformationProduct;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      PREFIX dct: <http://purl.org/dc/terms/>
-      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      
-      CONSTRUCT {
-        ?id ?p ?o.
-        ?id aquo:endDate ""
-      }
-      WHERE {
-        GRAPH ?subject {
-          ?id ?p ?o
-          FILTER (?p!=aquo:endDate)
-        }
-      }
-    """
-  .
 
 }

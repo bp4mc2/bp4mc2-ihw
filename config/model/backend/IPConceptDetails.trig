@@ -12,6 +12,7 @@ GRAPH config:Theatre {
       CONSTRUCT { 
         ?subject ?p ?o.
         ?o rdfs:label ?olabel.
+        #?subject dct:subject ?categorie
         ?categorie rdfs:label ?clabel.
       } 
       WHERE { 

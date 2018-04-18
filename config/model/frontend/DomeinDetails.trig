@@ -1,0 +1,71 @@
+GRAPH config:Theatre {
+
+
+# ==========================
+#
+# DOMEINTABEL en waarden
+#
+# ==========================
+  
+  config:DomeintabelEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabel";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:Domeintabel
+  .
+  
+  config:Domeintabel a elmo:Representation;
+    elmo:contains config:DomeinTitel;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelData;
+  .
+  
+  config:DomeinTitel a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:DomeinTitelAppearance;
+    elmo:informationProduct config:DomeinTitelData;
+  .
+
+  config:DomeinTitelAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo "domeintabel_label";
+      ##elmo:name "domein";
+      ##xhtml:link "/begrippen-per-categorie";
+      rdfs:label "Domein"@nl;
+    ];
+  .
+  
+  config:DomeintabelAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:ID;
+      elmo:index 1;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Omschrijving;
+      elmo:index 2;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Cijfercode;
+      elmo:index 3;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Groep;
+      elmo:index 4;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:beginDate;
+      elmo:index 98;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:endDate;
+      elmo:index 99;
+    ]
+  .
+  
+}
