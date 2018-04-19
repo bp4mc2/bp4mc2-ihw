@@ -30,8 +30,14 @@ GRAPH config:Theatre {
 
   config:DomeinTitelAppearance a elmo:ContentAppearance;
     elmo:fragment [
-      elmo:appliesTo "domeintabel_label";
-      rdfs:label "Domein"@nl;
+      elmo:index 1;
+      elmo:appliesTo rdfs:label;
+      #elmo:appearance elmo:HiddenAppearance;
+      #rdfs:label "Domein"@nl;
+    ];
+    elmo:fragment [
+      elmo:appliesTo dct:hasPart;
+      elmo:appearance elmo:HiddenAppearance;
     ];
   .
   
