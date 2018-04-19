@@ -6,8 +6,13 @@ GRAPH config:Theatre {
 #
 # ==========================    
 
+  config:ConceptenLijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/begrippen";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:ConceptenLijst
+  .
   config:ConceptenLijst a elmo:Representation;
-    elmo:pathPattern "/termen";
+    #elmo:pathPattern "/begrippen";
     elmo:appearance config:ConceptenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -15,27 +20,21 @@ GRAPH config:Theatre {
 	  elmo:contains config:ConceptenIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
-  
-  config:ConceptenCategorieLijst a elmo:Representation;
-    elmo:pathPattern "/termen-per-categorie";
-    elmo:appearance config:ConceptenLijstAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:ConceptenCategorieLijstData;
-  .
-  
+ 
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
+      elmo:index 1;
       elmo:appliesTo "begrip";
       xhtml:link "begrip";
 #      elmo:name "begrip";
-      rdfs:label "Term"@nl;
+      rdfs:label "Begrip"@nl;
     ];
     elmo:fragment [
-      elmo:index 2;
+      elmo:index 4;
+      #elmo:appliesTo "dct:subject";
       elmo:appliesTo "categorie";
-      xhtml:link "/termen-per-categorie";
+      #elmo:appliesTo "clabel";
+      xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
@@ -44,16 +43,15 @@ GRAPH config:Theatre {
       elmo:appliesTo "definitie";
       rdfs:label "Definitie"@nl;
     ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "categorie_label";
+      xhtml:link "/begrippen-per-categorie";
+      rdfs:label "CategorieNaam"@nl;
+    ];
+    
   .
   
-  config:TermParameter a elmo:TermParameter;
-    elmo:name "term"; 
-	  elmo:shape [
-	    sh:datatype xsd:string;
-      sh:defaultValue "[0-9]";
-		]
-  .
- 
   config:ConceptenIndex a elmo:Representation; 
     elmo:stage config:Stage; 
     elmo:informationProduct config:ConceptenIndexData; 

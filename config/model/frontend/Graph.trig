@@ -1,9 +1,15 @@
 GRAPH config:Theatre { 
 
-  config:GraphDisplayEndpoint a elmo:Representation;
-    elmo:pathPattern "/resource"; # Hack
+  # config:GraphDisplayEndpoint a elmo:Representation;
+    # elmo:pathPattern "/resource"; # Hack
+    # elmo:stage config:Stage;
+    # elmo:informationProduct config:ConceptenDetailGraph;
+  # .
+  
+  config:GraphDisplayEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/resource";
     elmo:stage config:Stage;
-    elmo:informationProduct config:ConceptenDetailGraph;
+    elmo:getRepresentation config:GraphDisplay
   .
 
   config:GraphDisplay a elmo:Representation;

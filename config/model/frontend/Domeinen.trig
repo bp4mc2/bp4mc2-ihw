@@ -6,8 +6,12 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:DomeinenLijst a elmo:Representation;
+  config:DomeinenLijstEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabellen";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinenLijst
+  .
+  config:DomeinenLijst a elmo:Representation;
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -18,56 +22,13 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo "domeintabel";
       xhtml:link "domeintabel";
-      elmo:name "domeintabel"
-    ]
+    ];
+    elmo:fragment [
+      elmo:appliesTo "edit";
+      xhtml:link "beheer/bulkupload/domeintabel";
+      rdf:value "edit"
+    ];
   .
 
-# ==========================
-#
-# DOMEINTABEL en waarden
-#
-# ==========================
-
-  config:Domeintabel a elmo:Representation;
-    elmo:pathPattern "/domeintabel";
-    elmo:appearance config:DomeintabelAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:DomeintabelData;
-  .
-  config:DomeintabelAppearance a elmo:TableAppearance;
-    elmo:fragment [
-      elmo:appliesTo aquo:ID;
-      elmo:index 1;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:Omschrijving;
-      elmo:index 2;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:Cijfercode;
-      elmo:index 3;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:Groep;
-      elmo:index 4;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:beginDate;
-      elmo:index 98;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:endDate;
-      elmo:index 99;
-    ]
-  .
-
-  config:DomeintabelParameter a elmo:TermParameter;
-    elmo:name "domeintabel";
-		elmo:shape [
-			sh:nodeKind sh:IRI
-		]
-  .
   
 }

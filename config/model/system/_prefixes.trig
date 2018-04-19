@@ -13,3 +13,4 @@
 @prefix thes: <http://purl.org/iso25964/skos-thes#>.
 @prefix dct: <http://purl.org/dc/terms/>.
 @prefix aquo: <http://data.aquo.nl/def/aquo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.

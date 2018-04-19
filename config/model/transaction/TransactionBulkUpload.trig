@@ -6,10 +6,15 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:BegrippenUploadEndpoint a elmo:Representation;
+  config:BegrippenUploadEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/bulkupload/begrippen";
     elmo:stage config:Stage;
-    elmo:transaction config:BegrippenUploadTransaction
+    elmo:putService config:BegrippenUploadService
+  .
+  
+  config:BegrippenUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:BegrippenUploadTransaction;
   .
 
   config:BegrippenUploadTransaction a elmo:Transaction;
@@ -34,8 +39,13 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:DomeintabelUploadEndpoint a elmo:Representation;
+  config:DomeintabelUploadEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/bulkupload/domeintabel";
+    elmo:stage config:Stage;
+    elmo:putService config:DomeintabelUploadService;
+  .
+  
+  config:DomeintabelUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:DomeintabelUploadTransaction;
   .
@@ -132,8 +142,13 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:CategorieenUploadEndpoint a elmo:Representation;
+  config:CategorieenUploadEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/bulkupload/categorieen";
+    elmo:stage config:Stage;
+    elmo:putService config:CategorieenUploadService
+  .
+
+  config:CategorieenUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:CategorieenUploadTransaction
   .

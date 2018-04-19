@@ -1,0 +1,43 @@
+GRAPH config:Theatre {
+
+  config:DomeintabelData a elmo:InformationProduct;
+      elmo:requiredParameter elmo:SubjectParameter;
+      elmo:backend config:LocalBackend;
+      elmo:query """
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        
+        CONSTRUCT {
+          ?id ?p ?o.
+          ?id aquo:endDate ""
+        }
+        WHERE {
+          GRAPH ?subject {
+            ?id ?p ?o
+            FILTER (?p!=aquo:endDate)
+          }
+        }
+      """
+    .
+    
+  config:DomeinTitelData a elmo:InformationProduct;
+      elmo:backend config:LocalBackend;
+      elmo:resultType elmo-rt:Tuple;
+      #elmo:requiredParameter elmo:SubjectParameter;
+      elmo:query """
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        
+        SELECT ?domeintabel_label
+        WHERE {
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+            <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+            ?domeintabel rdfs:label ?domeintabel_label
+          }
+        }
+        GROUP BY ?domeintabel_label
+      """
+    .
+  
+}
