@@ -14,6 +14,10 @@ GRAPH config:Theatre {
             elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "/categorieen"]
           ];
           elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "/domeintabellen"];
+          elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; 
+            elmo1:data [elmo1:index "1"; rdfs:label "Info Loc"; xhtml:link "/info-loc"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Info Ds"; xhtml:link "/info-ds"]
+          ];
         .
       }
       WHERE {}
