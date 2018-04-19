@@ -14,9 +14,9 @@ GRAPH config:Theatre {
   .
   
   config:Domeintabel a elmo:Representation;
-    elmo:contains config:DomeinTitel;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
+    elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
@@ -29,16 +29,20 @@ GRAPH config:Theatre {
   .
 
   config:DomeinTitelAppearance a elmo:ContentAppearance;
+    elmo:index 1;
     elmo:fragment [
-      elmo:index 1;
+      #elmo:index 2;
+      elmo:appliesTo dct:hasPart;
+      #elmo:appliesTo skos:Concept;
+    #  elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      #elmo:index 1;
       elmo:appliesTo rdfs:label;
-      #elmo:appearance elmo:HiddenAppearance;
+     # elmo:appearance elmo:HiddenAppearance;
       #rdfs:label "Domein"@nl;
     ];
-    elmo:fragment [
-      elmo:appliesTo dct:hasPart;
-      elmo:appearance elmo:HiddenAppearance;
-    ];
+
   .
   
   config:DomeintabelAppearance a elmo:TableAppearance;

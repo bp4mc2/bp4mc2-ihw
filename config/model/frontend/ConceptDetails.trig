@@ -7,7 +7,6 @@ GRAPH config:Theatre {
   .
 
   config:ConceptenDetails a elmo:Representation; 
-	#elmo:pathPattern "/begrip";
   elmo:stage config:Stage;
 	elmo:contains config:Menu; 
 	elmo:contains config:GraphDisplay;
