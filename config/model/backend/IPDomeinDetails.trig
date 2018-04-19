@@ -23,21 +23,25 @@ GRAPH config:Theatre {
     
   config:DomeinTitelData a elmo:InformationProduct;
       elmo:backend config:LocalBackend;
-      elmo:resultType elmo-rt:Tuple;
-      #elmo:requiredParameter elmo:SubjectParameter;
+      #elmo:resultType elmo-rt:Tuple;
+      elmo:requiredParameter elmo:SubjectParameter;
       elmo:query """
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        
-        SELECT ?domeintabel_label
+       
+        CONSTRUCT {
+         <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+            #?subject rdf:type rdf:resource.
+            ?subject rdfs:label ?dlabel.}        
         WHERE {
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-            <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
-            ?domeintabel rdfs:label ?domeintabel_label
+           <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+            ?subject rdfs:label ?dlabel
           }
-        }
-        GROUP BY ?domeintabel_label
+         }
+      
+        
       """
     .
-  
+ 
 }
