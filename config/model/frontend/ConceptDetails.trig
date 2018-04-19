@@ -63,19 +63,21 @@ GRAPH config:Theatre {
 #	  rdfs:label "Afkorting"@nl;
 #	];
 	elmo:fragment [
-	  elmo:index 10;
-	  #elmo:appliesTo "categorie";
-    elmo:appliesTo dct:subject;
-    #elmo:appliesTo "subject";
-	  rdfs:label "Categorie"@nl;
-    xhtml:link "termen-per-categorie";
-    elmo:name "categorie";
-	];
+	  # elmo:index 10;
+	  ##elmo:appliesTo "categorie";
+     elmo:appliesTo dct:subject;
+    ##elmo:appliesTo "subject";
+	  # rdfs:label "Categorie"@nl;
+     xhtml:link "termen-per-categorie";
+     elmo:name "categorie";
+	 ];
   elmo:fragment [ 
-   # elmo:index 2;
-    elmo:appliesTo "categorie_label";
-    xhtml:link "/termen-per-categorie";
-    rdfs:label "CategorieNaam"@nl;
+   elmo:index 2;
+    #elmo:appliesTo "categorie";
+    elmo:appliesTo dct:subject;
+    #xhtml:link "termen-per-categorie";
+    elmo:name "categorie";
+    #rdfs:label "CategorieNaam"@nl;
   ];
   
 	elmo:fragment [
@@ -87,51 +89,51 @@ GRAPH config:Theatre {
 	  elmo:index 20; 
 	  elmo:appliesTo skos:broader; 
 	  rdfs:label "Bredere term"@nl; 
-    xhtml:link "begrip"; 
+    xhtml:link "term"; 
     elmo:name "begrip"; 
 	]; 
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
 	  rdfs:label "Nauwere term"@nl; 
-    xhtml:link "begrip"; 
+    xhtml:link "term"; 
     elmo:name "begrip"; 
   ]; 
 	elmo:fragment [ 
 	  elmo:index 22; 
 	  elmo:appliesTo skos:related; 
 	  rdfs:label "Gerelateerde term"@nl; 
-      xhtml:link "begrip"; 
+    xhtml:link "term";
 	];
     elmo:fragment [
      elmo:index 23;
 	  elmo:appliesTo thes:broaderPartitive;
 	  rdfs:label "Onderdeel van"@nl;
-	  xhtml:link "begrip";
+	  xhtml:link "term";
 	];
 	elmo:fragment [
 	  elmo:index 24;
 	  elmo:appliesTo thes:narrowerPartitive;
 	  rdfs:label "Heeft onderdeel"@nl;
-	  xhtml:link "begrip";
+	  xhtml:link "term";
 	];
 	elmo:fragment [
 	  elmo:index 25;
 	  elmo:appliesTo skos:relatedMatch;
 	  rdfs:label "Gerelateerd term in ander schema"@nl;
-	  xhtml:link "begrip";
+	  xhtml:link "term";
 	];
 	elmo:fragment [
 		elmo:index 25;
 		elmo:appliesTo dct:isReplacedBy;
 		rdfs:label "Gebruik"@nl;
-		xhtml:link "begrip";
+		xhtml:link "term";
 	];
 	elmo:fragment [
 		elmo:index 26;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
-		xhtml:link "begrip";
+		xhtml:link "term";
 	];
   elmo:fragment [
     elmo:index 27;
