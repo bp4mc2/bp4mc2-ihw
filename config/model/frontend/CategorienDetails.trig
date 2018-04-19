@@ -1,7 +1,7 @@
 GRAPH config:Theatre {
  
  config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/begrippen-per-categorie";
+  elmo:pathPattern "/termen-per-categorie";
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenCategorieLijst
   .
@@ -40,13 +40,13 @@ GRAPH config:Theatre {
       elmo:appliesTo "begrip";
       xhtml:link "begrip";
 #      elmo:name "begrip";
-      rdfs:label "Begrip"@nl;
+      rdfs:label "Term"@nl;
     ];
     # elmo:fragment [
       # elmo:index 2;
       ##elmo:appliesTo "dct:subject";
       # elmo:appliesTo "categorie";
-      # xhtml:link "/begrippen-per-categorie";
+      # xhtml:link "/termen-per-categorie";
       # elmo:name "categorie";
       # rdfs:label "Categorie"@nl;
     # ];
