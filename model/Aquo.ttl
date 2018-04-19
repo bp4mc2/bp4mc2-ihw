@@ -33,7 +33,7 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NauwereTermShape;
 	sh:property aquo:GerelateerdTermShape;
 	sh:property aquo:StatusShape;
-  sh:property aquo:PlaatjeShape;
+	sh:property aquo:PlaatjeShape;
 .
 aquo:DomeinTabelShape rdf:type sh:NodeShape;
 	rdfs:label "Domein Tabel Shape"@nl;

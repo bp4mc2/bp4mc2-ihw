@@ -27,11 +27,10 @@ GRAPH config:Theatre {
   
   config:ConceptenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
-      elmo:index 1;
-      elmo:appliesTo "term";
+      elmo:appliesTo "begrip";
       xhtml:link "begrip";
 #      elmo:name "begrip";
-      rdfs:label "term"@nl;
+      rdfs:label "Term"@nl;
     ];
     elmo:fragment [
       elmo:index 2;

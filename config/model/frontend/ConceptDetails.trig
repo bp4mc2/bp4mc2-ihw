@@ -15,7 +15,7 @@ GRAPH config:Theatre {
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
     elmo:appearance elmo:HiddenAppearance; 
-	  rdfs:label "Term"@nl; 
+	  rdfs:label "Begrip"@nl; 
 	]; 
 	elmo:fragment [ 
 	  elmo:appliesTo rdfs:label; 
@@ -61,7 +61,7 @@ GRAPH config:Theatre {
 	  elmo:index 10;
 	  elmo:appliesTo dct:subject;
 	  rdfs:label "Categorie"@nl;
-      xhtml:link "begrippen-per-categorie"
+      xhtml:link "termen-per-categorie"
 	];
 	elmo:fragment [
 	  elmo:index 11;
@@ -72,15 +72,13 @@ GRAPH config:Theatre {
 	  elmo:index 20; 
 	  elmo:appliesTo skos:broader; 
 	  rdfs:label "Bredere term"@nl; 
-    xhtml:link "begrip"; 
-    elmo:name "term"; 
+	  xhtml:link "begrip"; 
 	]; 
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
 	  rdfs:label "Nauwere term"@nl; 
-    xhtml:link "begrip"; 
-    elmo:name "term"; 
+      xhtml:link "begrip"; 
   ]; 
 	elmo:fragment [ 
 	  elmo:index 22; 
@@ -123,14 +121,12 @@ GRAPH config:Theatre {
 	  elmo:appliesTo dct:image;
 	  rdfs:label "Voorbeeld afbeelding"@nl;
       elmo:appearance elmo:ImageAppearance;
-	  #xhtml:link "begrip";
 	];
     elmo:fragment [
       elmo:index 28;
 	  elmo:appliesTo skos:example;
       rdfs:label "Voorbeeld afbeelding"@nl;
       elmo:appearance elmo:ImageAppearance;
-	  #xhtml:link "begrip";
 	];
   . 
 	 
