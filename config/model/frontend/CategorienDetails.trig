@@ -42,14 +42,6 @@ GRAPH config:Theatre {
 #      elmo:name "begrip";
       rdfs:label "Term"@nl;
     ];
-    # elmo:fragment [
-      # elmo:index 2;
-      ##elmo:appliesTo "dct:subject";
-      # elmo:appliesTo "categorie";
-      # xhtml:link "/termen-per-categorie";
-      # elmo:name "categorie";
-      # rdfs:label "Categorie"@nl;
-    # ];
     elmo:fragment [ 
       elmo:index 3;
       elmo:appliesTo "definitie";

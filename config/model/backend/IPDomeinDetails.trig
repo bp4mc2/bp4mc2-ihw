@@ -30,7 +30,7 @@ GRAPH config:Theatre {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
        
         CONSTRUCT {
-         <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+          ?subject dct:hasPart <http://data.aquo.nl/id/dataset/domeintabel> .
             #?subject rdf:type rdf:resource.
             ?subject rdfs:label ?dlabel.}        
         WHERE {
@@ -43,5 +43,7 @@ GRAPH config:Theatre {
         
       """
     .
+    
+
  
 }
