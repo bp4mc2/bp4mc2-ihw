@@ -131,18 +131,35 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
           delete {
             graph ?subject {
               ?s ?p ?o
             }
           }
+          insert {
+            graph ?versionedsubject {
+              ?versionedsubject dct:replacedBy ?subject.
+              ?sv ?p ?o.
+              ?sv prov:invalidatedAtTime ?enddate
+            }
+          }
           where {
-            graph ?subject {
-              ?s ?p ?o
+            {
+              select ?s ?sv ?p ?o
+              where {
+                graph ?subject {
+                  ?s ?p ?o
+                  BIND (substr(str(now()),1,10) as ?date)
+                  BIND (iri(concat(str(?s),"#",?date)) as ?sv)
+                }
+              }
             }
             graph <http://data.aquo.nl/beheer/editor.tmp> {
               ?s a ?t
             }
+            BIND (substr(str(now()),1,10) as ?enddate)
+            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
           }
         """
       ]
@@ -198,8 +215,17 @@ GRAPH config:Theatre {
           where {
             select (max(?id) as ?count)
             where {
-              graph ?subject {
-                ?s dct:identifier ?id
+              {
+                graph ?subject {
+                  ?s dct:identifier ?id
+                }
+              }
+              UNION
+              {
+                graph ?versioned {
+                  ?versioned dct:replacedBy ?subject.
+                  ?s dct:identifier ?id
+                }
               }
             }
           }
@@ -262,9 +288,17 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
           delete {
             graph ?subject {
               ?s ?p ?o
+            }
+          }
+          insert {
+            graph ?versionedsubject {
+              ?versionedsubject dct:replacedBy ?subject.
+              ?s ?p ?o.
+              ?s prov:invalidatedAtTime ?enddate
             }
           }
           where {
@@ -274,6 +308,8 @@ GRAPH config:Theatre {
             graph <http://data.aquo.nl/beheer/editor.tmp> {
               ?s prov:invalidatedAtTime ?t
             }
+            BIND (substr(str(now()),1,10) as ?enddate)
+            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
           }
         """
       ]

@@ -12,8 +12,18 @@ GRAPH config:Theatre {
         ?id ?p ?o.
       }
       WHERE {
-        GRAPH ?subject {
-          ?id ?p ?o
+        {
+          GRAPH ?subject {
+            ?id ?p ?o
+          }
+        }
+        UNION
+        {
+          GRAPH ?historic {
+            ?historic dct:replacedBy ?subject.
+            ?id ?p ?o
+            FILTER (?id!=?historic)
+          }
         }
       }
     """

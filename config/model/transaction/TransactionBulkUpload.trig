@@ -84,6 +84,25 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
+          PREFIX dct: <http://purl.org/dc/terms/>
+          delete {
+            graph ?domeingraphversion {
+              ?s ?p ?o
+            }
+          }
+          where {
+            BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            graph ?domeingraphversion {
+              ?domeingraphversion dct:replacedBy ?domeingraph.
+              ?s ?p ?o
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
           delete {
             graph ?domeingraph {
               ?s ?p ?o
