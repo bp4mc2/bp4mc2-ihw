@@ -63,11 +63,13 @@ GRAPH config:Theatre {
       elmo:index 4;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:beginDate;
+      elmo:appliesTo prov:generatedAtTime;
+      rdfs:label "Begin geldigheid"@nl;
       elmo:index 98;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:endDate;
+      elmo:appliesTo prov:invalidatedAtTime;
+      rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
     ]
   .

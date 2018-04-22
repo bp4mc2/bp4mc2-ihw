@@ -25,7 +25,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo "edit";
-      xhtml:link "beheer/bulkupload/domeintabel";
+      xhtml:link "beheer/domeintabel";
       rdf:value "edit"
     ];
   .
