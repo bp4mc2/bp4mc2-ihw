@@ -10,7 +10,7 @@ GRAPH config:Theatre {
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:Domeintabel
+    elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
   .
   
   config:Domeintabel a elmo:Representation;
@@ -20,6 +20,16 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
+  .
+  
+  #Tijdelijk
+  config:DomeintabelTemp a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearanceTemp;
+    elmo:stage config:Stage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelDataTemp;
   .
   
   config:DomeinTitel a elmo:Representation;
@@ -69,6 +79,35 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo prov:invalidatedAtTime;
+      rdfs:label "Einde geldigheid"@nl;
+      elmo:index 99;
+    ]
+  .
+  
+  config:DomeintabelAppearanceTemp a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo "ID";
+      elmo:index 1;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "Omschrijving";
+      elmo:index 2;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "Cijfercode";
+      elmo:index 3;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "Groep";
+      elmo:index 4;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "begindate";
+      rdfs:label "Begin geldigheid"@nl;
+      elmo:index 98;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "enddate";
       rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
     ]
