@@ -30,11 +30,11 @@ GRAPH config:Theatre {
 	elmo:fragment [ 
 	  elmo:index 03; 
 	  elmo:appliesTo skos:prefLabel; 
-	  rdfs:label "Naam"@nl; 
+	  rdfs:label "Naam"@nl;
 	]; 
 	elmo:fragment [
 	  elmo:index 04;
-	  elmo:appliesTo skos:altlabel;
+	  elmo:appliesTo skos:altLabel;
 	  rdfs:label "Synoniem"@nl;
 	];
 	elmo:fragment [  
@@ -120,7 +120,7 @@ GRAPH config:Theatre {
 	elmo:fragment [
 	  elmo:index 25;
 	  elmo:appliesTo skos:relatedMatch;
-	  rdfs:label "Gerelateerd term in ander schema"@nl;
+	  rdfs:label "Gerelateerde term in ander schema"@nl;
 	  xhtml:link "term";
 	];
 	elmo:fragment [
