@@ -10,12 +10,7 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
        
-      SELECT ?begrip ?categorie ?categorie_label ?begrip_label ?definitie
-      #(GROUP_CONCAT(DISTINCT ?categorie; separator=";") AS ?gcategorie) 
-      #(GROUP_CONCAT(DISTINCT ?begrip_label; separator=";") AS ?gbegrip_label)
-      #(GROUP_CONCAT(DISTINCT ?definitie; separator=";") AS ?gdefinitie) 
-      #(GROUP_CONCAT(DISTINCT ?categorie_label; separator=";") AS ?gcategorie_label)
-    
+      SELECT ?begrip ?categorie ?begrip_label ?definitie ?categorie_label
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?begrip a  skos:Concept;
@@ -31,10 +26,7 @@ GRAPH config:Theatre {
             ?categorie rdfs:label ?categorie_label
           }
         }
-      }  
-        #GROUP BY ?begrip 
-        
-      
+      }
       order by ?begrip_label
     """
   .
