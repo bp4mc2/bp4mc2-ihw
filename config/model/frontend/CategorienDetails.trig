@@ -1,7 +1,7 @@
 GRAPH config:Theatre {
  
  config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/termen-per-categorie";
+  elmo:pathPattern "/begrippen-per-categorie";
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenCategorieLijst
   .
