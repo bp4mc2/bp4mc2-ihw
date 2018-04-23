@@ -9,8 +9,8 @@ GRAPH config:Theatre {
       CONSTRUCT {
         [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
           xhtml:search "search";
-          elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
-            elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "/begrippen"];
+          elmo1:data [elmo1:index "1"; rdfs:label "Termen"; 
+            elmo1:data [elmo1:index "1"; rdfs:label "Termen"; xhtml:link "/termen"];
             elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "/categorieen"]
           ];
           elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "/domeintabellen"];

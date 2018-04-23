@@ -7,12 +7,12 @@ GRAPH config:Theatre {
 # ==========================    
 
   config:ConceptenLijstEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/begrippen";
+  elmo:pathPattern "/termen";
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenLijst
   .
   config:ConceptenLijst a elmo:Representation;
-    #elmo:pathPattern "/begrippen";
+    #elmo:pathPattern "/termen";
     elmo:appearance config:ConceptenLijstAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
@@ -34,7 +34,7 @@ GRAPH config:Theatre {
       #elmo:appliesTo "dct:subject";
       elmo:appliesTo "gcategorie";
       #elmo:appliesTo "clabel";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "/termen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
@@ -45,13 +45,8 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [ 
       elmo:index 2;
-<<<<<<< HEAD
       elmo:appliesTo "gcategorie_label";
       xhtml:link "/termen-per-categorie";
-=======
-      elmo:appliesTo "categorie_label";
-      xhtml:link "/begrippen-per-categorie";
->>>>>>> 4697fb0f928cee4c40e28767149942992a24119c
       rdfs:label "CategorieNaam"@nl;
     ];
     
