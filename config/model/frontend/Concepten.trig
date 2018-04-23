@@ -32,7 +32,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 4;
       #elmo:appliesTo "dct:subject";
-      elmo:appliesTo "categorie";
+      elmo:appliesTo "gcategorie";
       #elmo:appliesTo "clabel";
       xhtml:link "/termen-per-categorie";
       elmo:name "categorie";
@@ -40,12 +40,12 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [ 
       elmo:index 3;
-      elmo:appliesTo "definitie";
+      elmo:appliesTo "gdefinitie";
       rdfs:label "Definitie"@nl;
     ];
     elmo:fragment [ 
       elmo:index 2;
-      elmo:appliesTo "categorie_label";
+      elmo:appliesTo "gcategorie_label";
       xhtml:link "/termen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];
