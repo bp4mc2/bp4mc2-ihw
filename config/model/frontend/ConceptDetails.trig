@@ -1,7 +1,7 @@
 GRAPH config:Theatre { 
 
   config:ConceptenDetailsEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/term";
+    elmo:pathPattern "/begrip";
     elmo:stage config:Stage;
     elmo:getRepresentation config:ConceptenDetails
   .
@@ -34,7 +34,7 @@ GRAPH config:Theatre {
 	]; 
 	elmo:fragment [
 	  elmo:index 04;
-	  elmo:appliesTo skos:altlabel;
+	  elmo:appliesTo skos:altLabel;
 	  rdfs:label "Synoniem"@nl;
 	];
 	elmo:fragment [  

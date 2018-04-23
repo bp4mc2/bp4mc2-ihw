@@ -12,15 +12,16 @@ GRAPH config:Theatre {
       
       CONSTRUCT {
         ?subject ?p ?o.
-        ?subject rdfs:label ?subjectlabel.
+        ?subject rdfs:label ?begriplabel.
         ?subject elmo1:style ?type.
         
         ?o rdfs:label ?olabel.
+        ?o elmo1:style ?oelmostyle.
         ?o elmo1:style ?otype.
         
-        ?s ?sp ?subject.
-        ?s rdfs:label ?slabel.
-        ?s elmo1:style ?selmostyle.
+        # ?s ?sp ?subject.
+        # ?s rdfs:label ?slabel.
+        # ?s elmo1:style ?selmostyle.
         
         skos:Concept elmo1:name "begrip".
         dct:subject rdfs:label "Categorie".
@@ -61,6 +62,12 @@ GRAPH config:Theatre {
             ?o rdfs:label ?olabel.
             ?o a ?otype.
           }
+          # UNION
+          # {
+            # ?s ?sp ?subject.
+            # ?s rdfs:label ?slabel.
+            # ?s a ?stype.
+          # }
         }
       }
     """
