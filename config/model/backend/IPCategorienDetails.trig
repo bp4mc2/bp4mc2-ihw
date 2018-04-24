@@ -37,8 +37,9 @@ GRAPH config:Theatre {
       }
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?clabel
+            ?categorie rdfs:label ?label
           }
+          BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }
     """
   .
