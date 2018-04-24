@@ -20,7 +20,7 @@ GRAPH config:Theatre {
 
   config:Stage a elmo:Stage;
     elmo:site config:Site;
-    elmo:basePath "";
+    elmo:basePath "%{dotwebstack.config.aquoroot}";
     elmo:layout config:StageLayout;
     dc:title "IHW Catalogus";
   .

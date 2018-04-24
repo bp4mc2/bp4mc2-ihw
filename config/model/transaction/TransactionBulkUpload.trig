@@ -188,4 +188,37 @@ GRAPH config:Theatre {
     )
   .
 
+# ==========================
+#
+# VocabulaireUpload
+#
+# ==========================
+
+  config:VocabulaireUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/vocabulaire";
+    elmo:stage config:Stage;
+    elmo:putService config:VocabulaireUploadService
+  .
+
+  config:VocabulaireUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:VocabulaireUploadTransaction
+  .
+
+  config:VocabulaireUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/def/aquo>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/def/aquo>
+      ]
+    )
+  .
+
 }

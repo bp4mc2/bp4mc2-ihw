@@ -57,7 +57,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
       elmo:appearance elmo:ChangeSubmitAppearance;
-      xhtml:link "/beheer/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
       rdfs:label "Opslaan"@nl;
       rdfs:label "Save"@en;
     ];
