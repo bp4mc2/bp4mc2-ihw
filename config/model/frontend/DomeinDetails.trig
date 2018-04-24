@@ -82,6 +82,11 @@ GRAPH config:Theatre {
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
+    ];
+    elmo:fragment [
+      elmo:appliesTo skos:comment;
+      rdfs:label "Status"@nl;
+      elmo:index 100;
     ]
   .
   
@@ -111,6 +116,11 @@ GRAPH config:Theatre {
       elmo:appliesTo "enddate";
       rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
+    ];
+        elmo:fragment [
+      elmo:appliesTo skos:comment;
+      rdfs:label "Status"@nl;
+      elmo:index 100;
     ]
   .
   

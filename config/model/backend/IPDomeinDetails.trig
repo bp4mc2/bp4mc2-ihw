@@ -56,8 +56,10 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+     
       CONSTRUCT {
-        ?id ?p ?o.
+        ?id ?p ?o;
+            skos:comment ?status.
         ?o rdfs:label ?olabel
       }
       WHERE {
@@ -68,16 +70,19 @@ GRAPH config:Theatre {
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
+
           }
         }
         UNION
         {
           GRAPH ?historic {
             ?historic dct:replacedBy ?subject.
-            ?id ?p ?o
+            ?id ?p ?o.
+            OPTIONAL {?id prov:invalidatedAtTime ?einddatum}
             FILTER (?id!=?historic)
           }
         }
+        BIND(IF(BOUND(?einddatum), "historisch","gepubliceerd") as ?status)
       }
     """
   .
