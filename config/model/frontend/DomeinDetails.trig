@@ -10,7 +10,8 @@ GRAPH config:Theatre {
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    elmo:getRepresentation config:Domeintabel
   .
   
   config:Domeintabel a elmo:Representation;
