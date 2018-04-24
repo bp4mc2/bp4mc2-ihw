@@ -33,11 +33,13 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
         ?categorie rdf:type skos:Concept.
-        ?categorie rdfs:label ?clabel
+        ?categorie rdfs:label ?clabel.
+        ?categorie rdfs:comment ?comment.
       }
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?label
+            ?categorie rdfs:label ?label.
+            OPTIONAL{?categorie rdfs:comment ?comment}
           }
           BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }

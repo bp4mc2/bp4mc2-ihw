@@ -88,14 +88,14 @@ GRAPH config:Theatre {
 	  elmo:index 20; 
 	  elmo:appliesTo skos:broader; 
 	  rdfs:label "Bredere term"@nl; 
-    xhtml:link "term"; 
+    xhtml:link "begrip"; 
     elmo:name "begrip"; 
 	]; 
 	elmo:fragment [ 
 	  elmo:index 21; 
 	  elmo:appliesTo skos:narrower; 
 	  rdfs:label "Nauwere term"@nl; 
-    xhtml:link "term"; 
+    xhtml:link "begrip"; 
     elmo:name "begrip"; 
   ]; 
 	elmo:fragment [ 

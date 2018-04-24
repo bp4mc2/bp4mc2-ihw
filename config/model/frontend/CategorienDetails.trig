@@ -31,6 +31,10 @@ GRAPH config:Theatre {
       elmo:appliesTo rdf:type;
       elmo:appearance elmo:HiddenAppearance;
     ];
+    elmo:fragment [
+      elmo:appliesTo rdfs:comment;
+      rdfs:label "Omschrijving"@nl;
+    ];
    .
    
   config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
