@@ -36,17 +36,17 @@ GRAPH config:Theatre {
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
           insert { 
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?broader skos:narrower ?begrip 
+              ?narrower skos:broader ?begrip 
             }
           }
              where { 
               graph <http://data.aquo.nl/id/dataset/begrippen> 
               {
                ?begrip a  skos:Concept;
-                  skos:broader ?broader.
+                  skos:narrower ?narrower.
                     FILTER NOT EXISTS { 
-                      ?broader a skos:Concept;
-                        skos:narrower ?begrip
+                      ?narrower a skos:Concept;
+                        skos:broader ?begrip
                     }
               }       
             }
@@ -59,16 +59,38 @@ GRAPH config:Theatre {
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
           insert  { 
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?broader skosthes:narrowerPartitive ?begrip 
+              ?narrower skosthes:broaderPartitive ?begrip 
             }
           }
             where { 
               graph <http://data.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
-                  skosthes:broaderPartitive ?broader.
+                  skosthes:narrowerPartitive ?narrower.
                     FILTER NOT EXISTS { 
-                      ?broader a skos:Concept;
-                        skos:narrowerPartitive ?begrip
+                      ?narrower a skos:Concept;
+                        skos:broaderPartitive ?begrip
+                    }
+              }
+            }
+       """
+      ]
+      [ a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          prefix skos: <http://www.w3.org/2004/02/skos/core#>
+          prefix skosthes: <http://purl.org/iso25964/skos-thes#>
+          insert  { 
+            graph <http://data.aquo.nl/id/dataset/begrippen> {
+              ?related skosthes:narrowerPartitive ?begrip 
+            }
+          }
+            where { 
+              graph <http://data.aquo.nl/id/dataset/begrippen> {
+                ?begrip a  skos:Concept;
+                  skos:related ?related.
+                    FILTER NOT EXISTS { 
+                      ?related a skos:Concept;
+                        skos:related ?begrip
                     }
               }
             }
