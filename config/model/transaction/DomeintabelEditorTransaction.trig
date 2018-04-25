@@ -57,7 +57,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
       elmo:appearance elmo:ChangeSubmitAppearance;
-      xhtml:link "/beheer/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
       rdfs:label "Opslaan"@nl;
       rdfs:label "Save"@en;
     ];
@@ -168,6 +168,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
+          prefix xs: <http://www.w3.org/2001/XMLSchema#>
           insert {
             graph ?subject {
               ?s ?p ?o.
@@ -179,7 +180,7 @@ GRAPH config:Theatre {
               ?s ?p ?o
               FILTER (?p != prov:generatedAtTime)
             }
-            BIND (substr(str(now()),1,10) as ?begindate)
+            BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
           }
         """
       ]
@@ -239,6 +240,7 @@ GRAPH config:Theatre {
           prefix prov: <http://www.w3.org/ns/prov#>
           prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           PREFIX dct: <http://purl.org/dc/terms/>
+          prefix xs: <http://www.w3.org/2001/XMLSchema#>
           insert {
             graph ?subject {
               ?suri ?p ?o.
@@ -255,7 +257,7 @@ GRAPH config:Theatre {
                 BIND (strafter(str(?subject),"/domeintabel/") as ?domeintabelnaam)
                 BIND (iri(concat("http://model.aquo.nl/def/aquods#",?domeintabelnaam)) as ?type)
                 BIND (iri(concat("http://model.aquo.nl/id/",?domeintabelnaam,"/",str(1+?count))) as ?suri)
-                BIND (substr(str(now()),1,10) as ?begindate)
+                BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
                 BIND (1+?count as ?id)
               }
               graph <http://data.aquo.nl/beheer/editor.tmp> {
