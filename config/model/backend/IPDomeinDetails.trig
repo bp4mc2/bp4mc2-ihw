@@ -110,6 +110,77 @@ GRAPH config:Theatre {
       """
     .
     
-
+  config:DomeintabelStagingData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:query """
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      CONSTRUCT {
+        ?s ?p ?o.
+        ?s aquo:status ?status.
+      }
+      WHERE {
+        {
+          {
+            select ?s ?p ?o ("Verwijderen" as ?status)
+            where {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              graph ?subject {
+                ?s ?p ?o.
+              }
+              graph ?staging {
+                ?s prov:invalidatedAtTime ?t
+              }
+            }
+          }
+          UNION
+          {
+            select (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
+            where {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              graph ?subject {
+                ?sold ?p ?o.
+              }
+              graph ?staging {
+                ?sold a ?t
+              }
+            }
+          }
+          UNION
+          {
+            select ?s ?p ?o ("Wijzigen in" as ?status)
+            where {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              graph ?staging {
+                ?s a ?t.
+                ?s ?p ?o
+              }
+              FILTER EXISTS {
+                graph ?subject {
+                  ?s a ?t.
+                }
+              }
+            }
+          }
+          UNION
+          {
+            select ?s ?p ?o ("Toevoegen" as ?status)
+            where {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              graph ?staging {
+                ?s ?p ?o
+              }
+              FILTER NOT EXISTS {
+                graph ?subject {
+                  ?s a ?t.
+                }
+              }
+            }
+          }
+        }
+      }
+    """;
+  .
  
 }
