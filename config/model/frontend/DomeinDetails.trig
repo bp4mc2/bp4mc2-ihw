@@ -29,16 +29,6 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeintabelData;
   .
   
-  #Tijdelijk
-  config:DomeintabelTemp a elmo:Representation;
-    elmo:appearance config:DomeintabelAppearanceTemp;
-    elmo:stage config:Stage;
-    elmo:contains config:DomeinTitel;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:DomeintabelDataTemp;
-  .
-  
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
@@ -73,7 +63,8 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:ID;
+      elmo:appliesTo dct:identifier;
+      rdfs:label "ID"@nl;
       elmo:index 1;
     ];
     elmo:fragment [
@@ -81,62 +72,33 @@ GRAPH config:Theatre {
       elmo:index 2;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Cijfercode;
+      elmo:appliesTo dct:subject;
+      rdfs:label "Groep"@nl;
       elmo:index 3;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Groep;
+      elmo:appliesTo aquo:Cijfercode;
       elmo:index 4;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Groep;
+      elmo:index 5;
     ];
     elmo:fragment [
       elmo:appliesTo prov:generatedAtTime;
       rdfs:label "Begin geldigheid"@nl;
-      elmo:index 98;
+      elmo:index 97;
     ];
     elmo:fragment [
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
-      elmo:index 99;
-    ];
-    elmo:fragment [
-      elmo:appliesTo skos:comment;
-      rdfs:label "Status"@nl;
-      elmo:index 100;
-    ]
-  .
-  
-  config:DomeintabelAppearanceTemp a elmo:TableAppearance;
-    elmo:fragment [
-      elmo:appliesTo "ID";
-      elmo:index 1;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "Omschrijving";
-      elmo:index 2;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "Cijfercode";
-      elmo:index 3;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "Groep";
-      elmo:index 4;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "begindate";
-      rdfs:label "Begin geldigheid"@nl;
       elmo:index 98;
     ];
     elmo:fragment [
-      elmo:appliesTo "enddate";
-      rdfs:label "Einde geldigheid"@nl;
-      elmo:index 99;
-    ];
-        elmo:fragment [
       elmo:appliesTo skos:comment;
       rdfs:label "Status"@nl;
-      elmo:index 100;
+      elmo:index 99;
     ]
   .
-  
+ 
 }
