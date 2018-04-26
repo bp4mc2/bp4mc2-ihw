@@ -17,9 +17,9 @@ GRAPH config:Theatre {
         
         ?o rdfs:label ?olabel.
         ?o elmo1:style ?oelmostyle.
-		?o elmo1:style ?otype.
+        ?o elmo1:style ?otype.
         
-		skos:Concept elmo1:name "begrip".
+        skos:Concept elmo1:name "begrip".
         dct:subject rdfs:label "Categorie".
         skos:broader rdfs:label "Bredere term".
         skos:narrower rdfs:label "Nauwere term".

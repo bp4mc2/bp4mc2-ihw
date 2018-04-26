@@ -22,7 +22,7 @@ GRAPH config:Theatre {
   config:CategorieLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:appliesTo "categorie";
-      xhtml:link "/termen-per-categorie";
+      xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
     ];
   .

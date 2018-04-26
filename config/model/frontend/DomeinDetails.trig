@@ -10,7 +10,14 @@ GRAPH config:Theatre {
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    elmo:getRepresentation config:Domeintabel
+  .
+  
+  config:DomeintabelStagingEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/domeintabel/staging";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeintabelStaging
   .
   
   config:Domeintabel a elmo:Representation;
@@ -30,6 +37,15 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelDataTemp;
+  .
+  
+  config:DomeintabelStaging a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelStagingData;
   .
   
   config:DomeinTitel a elmo:Representation;
@@ -81,6 +97,11 @@ GRAPH config:Theatre {
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
+    ];
+    elmo:fragment [
+      elmo:appliesTo skos:comment;
+      rdfs:label "Status"@nl;
+      elmo:index 100;
     ]
   .
   
@@ -110,6 +131,11 @@ GRAPH config:Theatre {
       elmo:appliesTo "enddate";
       rdfs:label "Einde geldigheid"@nl;
       elmo:index 99;
+    ];
+        elmo:fragment [
+      elmo:appliesTo skos:comment;
+      rdfs:label "Status"@nl;
+      elmo:index 100;
     ]
   .
   
