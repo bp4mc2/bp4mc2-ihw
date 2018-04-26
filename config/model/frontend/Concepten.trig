@@ -34,7 +34,7 @@ GRAPH config:Theatre {
       #elmo:appliesTo "dct:subject";
       elmo:appliesTo "categorie";
       #elmo:appliesTo "clabel";
-      xhtml:link "/termen-per-categorie";
+      xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
@@ -46,7 +46,7 @@ GRAPH config:Theatre {
     elmo:fragment [ 
       elmo:index 2;
       elmo:appliesTo "categorie_label";
-      xhtml:link "/termen-per-categorie";
+      xhtml:link "/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];
     
