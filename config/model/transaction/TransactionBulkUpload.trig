@@ -31,6 +31,7 @@ GRAPH config:Theatre {
         elmo:targetGraph <http://data.aquo.nl/id/dataset/begrippen>
       ]
       [ a elmo:UpdateStep;
+      # We zoeken naar begrippen die een skos:narrower relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
         elmo:backend config:UpdateBackend;
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>

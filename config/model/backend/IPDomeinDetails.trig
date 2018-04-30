@@ -56,7 +56,7 @@ GRAPH config:Theatre {
            <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
             ?subject rdfs:label ?label
           }
-           BIND(CONCAT("Domein: ", ?label) AS ?dlabel)
+           BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
          }
       
         

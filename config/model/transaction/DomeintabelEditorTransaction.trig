@@ -15,6 +15,7 @@ GRAPH config:Theatre {
   config:DomeintabelEditor a elmo:Representation;
     elmo:stage config:Stage;
     elmo:contains config:Menu;
+    elmo:contains config:DomeinTitel;
     elmo:contains config:Footer;
     elmo:appearance config:DomeintabelEditorAppearance;
     elmo:informationProduct config:DomeintabelEditableData;
