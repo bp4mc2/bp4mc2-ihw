@@ -9,25 +9,26 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
       PREFIX dct: <http://purl.org/dc/terms/>
-	  PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
       
       CONSTRUCT { 
         ?subject ?p ?o.
+        #?subject rdfs:label ?titellabel.
         ?o rdfs:label ?olabel.
         ?subject dct:subject ?categorie.
         ?categorie rdfs:label ?categorie_label.
-		?subject aquo:englishLabel ?englishlabel.
-		?subject aquo:germanLabel ?germanLabel.
-		?subject aquo:flemmishLabel ?flemmishLabel.
+        ?subject aquo:englishLabel ?englishlabel.
+        ?subject aquo:germanLabel ?germanLabel.
+        ?subject aquo:flemmishLabel ?flemmishLabel.
       } 
-      WHERE 
-		{
-          GRAPH <http://data.aquo.nl/id/dataset/begrippen> { 
-            ?subject ?p ?o. 
-            OPTIONAL {?o rdfs:label ?olabel}
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> { 
+          ?subject ?p ?o. 
+          ?subject rdfs:label ?slabel.
+          OPTIONAL {?o rdfs:label ?olabel}
   		    OPTIONAL {?subject skos:altLabel ?englishLabel FILTER (lang(?englishLabel)="en")}
-		    OPTIONAL {?subject skos:altLabel ?germanLabel FILTER (lang(?germanLabel)="de")}
-		    OPTIONAL {?subject skos:altLabel ?flemmishLabel FILTER (lang(?flemmishLabel)='fl')}
+          OPTIONAL {?subject skos:altLabel ?germanLabel FILTER (lang(?germanLabel)="de")}
+          OPTIONAL {?subject skos:altLabel ?flemmishLabel FILTER (lang(?flemmishLabel)='fl')}
         }
         OPTIONAL {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
@@ -37,6 +38,7 @@ GRAPH config:Theatre {
             ?categorie rdfs:label ?categorie_label
           }
         }
+        #BIND(CONCAT("Begrip: ", ?slabel) AS ?titellabel)
       } 
     """ 
   . 
