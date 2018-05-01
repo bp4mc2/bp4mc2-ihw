@@ -1,5 +1,13 @@
 GRAPH config:Theatre {
 
+  config:Image a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:HeaderAppearance;
+    elmo:informationProduct config:ImageHeader;
+  .
+  config:HeaderAppearance a elmo:HeaderAppearance;
+  .
+
 # ==========================
 #
 # Menu
@@ -7,8 +15,8 @@ GRAPH config:Theatre {
 # ==========================
   
   config:Menu a elmo:Representation;
-	elmo:stage config:Stage;
-	elmo:appearance config:MenuAppearance;
+    elmo:stage config:Stage;
+    elmo:appearance config:MenuAppearance;
     elmo:informationProduct config:MenuData;
   .
   
