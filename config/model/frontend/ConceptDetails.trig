@@ -24,7 +24,7 @@ GRAPH config:Theatre {
 	  rdfs:label "Term"@nl; 
 	]; 
 	elmo:fragment [ 
-	  elmo:appliesTo rdfs:label; 
+	  elmo:appliesTo rdfs:label;
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
 	]; 
