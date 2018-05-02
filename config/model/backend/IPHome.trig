@@ -63,9 +63,10 @@ GRAPH config:Theatre {
       
       [] elmo1:html '''
             <div class="text-left">
-            <h5>
+            <h5> <a href="https://www.aquo.nl">
             <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
-               </img>
+               </img> 
+               </a>
             </h5>
             </div>
               '''
