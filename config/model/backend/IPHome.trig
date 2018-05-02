@@ -64,7 +64,7 @@ GRAPH config:Theatre {
       [] elmo1:html '''
             <div class="text-left">
             <h5>
-            <img src="http://www.informatiehuiswater.nl/binaries/content/gallery/hwh---informatiehuiswater/logo/aquo_logo_2012_high_2.jpg" alt="HTML5 Icon" style="width:136px;height:90px;">
+            <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
                </img>
             </h5>
             </div>
