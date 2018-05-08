@@ -14,6 +14,7 @@ GRAPH config:Theatre {
         ?id ?p ?o;
             skos:comment ?status;
             skos:semanticRelation ?semantic.
+        #?semantic rdfs:label ?semanticLabel.
         ?o rdfs:label ?olabel
       }
       WHERE {
@@ -26,6 +27,12 @@ GRAPH config:Theatre {
               ?id a skos:Concept.
             }
 
+          } 
+          OPTIONAL { 
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              ?semantic skos:semanticRelation ?subject;
+                rdfs:label ?semanticLabel. 
+            }     
           }
         }
         UNION
@@ -36,7 +43,7 @@ GRAPH config:Theatre {
             OPTIONAL {?id prov:invalidatedAtTime ?einddatum}
             FILTER (?id!=?historic)
           }
-        }
+        }        
         BIND(IF(BOUND(?einddatum), "historisch","gepubliceerd") as ?status)
       }
     """

@@ -1,0 +1,61 @@
+GRAPH config:Theatre { 
+
+  config:DomeinMetaEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeinmeta";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinMeta
+  .
+
+  config:DomeinMeta a elmo:Representation; 
+  elmo:stage config:Stage;
+	elmo:contains config:Menu;
+  elmo:contains config:Footer;
+	#elmo:contains config:GraphDisplay;
+  #elmo:contains config:ImageDisplay;
+	elmo:appearance config:DomeinMetaAppearance;
+	elmo:informationProduct config:DomeinMetaData;
+  . 
+   
+  config:DomeinMetaAppearance a elmo:Appearance;
+	elmo:index 2;
+	elmo:fragment [ 
+	  elmo:appliesTo rdf:type; 
+    elmo:appearance elmo:HiddenAppearance; 
+	  rdfs:label "Term"@nl; 
+	]; 
+	elmo:fragment [ 
+	  elmo:appliesTo rdfs:label;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Label"@nl;
+	]; 
+	elmo:fragment [ 
+	  elmo:index 03; 
+	  elmo:appliesTo skos:prefLabel; 
+	  rdfs:label "Naam"@nl; 
+	];
+	elmo:fragment [  
+	  elmo:index 05; 
+	  elmo:appliesTo skos:definition; 
+	  rdfs:label "Definitie"@nl; 
+	]; 
+	elmo:fragment [
+	  elmo:index 06;
+	  elmo:appliesTo skos:note;
+	  rdfs:label "Toelichting"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 07;
+	  elmo:appliesTo rdfs:comment;
+	  rdfs:label "Uitleg"@nl;
+	];
+
+#	elmo:fragment [
+#	  elmo:index 9;
+#	  elmo:appliesTo 
+#	  rdfs:label "Afkorting"@nl;
+#	];
+	
+ .
+  
+	 
+} 

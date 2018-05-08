@@ -301,5 +301,40 @@ GRAPH config:Theatre {
       ]
     )
   .
+  
+  
+# ==========================
+#
+# DomeinMetadata Upload
+#
+# ==========================
+
+  config:DomeinMetaUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/domeinmeta";
+    elmo:stage config:Stage;
+    elmo:putService config:DomeinMetaUploadService
+  .
+
+  config:DomeinMetaUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:DomeinMetaUploadTransaction
+  .
+
+  config:DomeinMetaUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://data.aquo.nl/id/dataset/domeinmeta>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://data.aquo.nl/id/dataset/domeinmeta>
+      ]
+    )
+  .
+  
 
 }

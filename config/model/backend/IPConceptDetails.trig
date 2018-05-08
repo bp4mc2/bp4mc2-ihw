@@ -13,22 +13,24 @@ GRAPH config:Theatre {
       
       CONSTRUCT { 
         ?subject ?p ?o;
-                 rdfs:label ?titellabel.
+          rdfs:label ?titellabel.
         ?o rdfs:label ?olabel.
+        ?subject skos:semanticRelation ?domeintabel.
+        ?domeintabel rdfs:label ?domeinlabel.
         ?subject dct:subject ?categorie.
         ?categorie rdfs:label ?categorie_label.
-        ?subject aquo:englishLabel ?englishlabel.
+        ?subject aquo:englishLabel ?englishLabel.
         ?subject aquo:germanLabel ?germanLabel.
         ?subject aquo:flemmishLabel ?flemmishLabel.
       } 
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> { 
           ?subject ?p ?o; 
-                   rdfs:label ?slabel.
+            rdfs:label ?slabel.
           OPTIONAL {?o rdfs:label ?olabel}
   		    OPTIONAL {?subject skos:altLabel ?englishLabel FILTER (lang(?englishLabel)="en")}
           OPTIONAL {?subject skos:altLabel ?germanLabel FILTER (lang(?germanLabel)="de")}
-          OPTIONAL {?subject skos:altLabel ?flemmishLabel FILTER (lang(?flemmishLabel)='fl')}
+          OPTIONAL {?subject skos:altLabel ?flemmishLabel FILTER (lang(?flemmishLabel)="fl")}
           MINUS {?subject rdfs:label ?o}
         }
         OPTIONAL {
@@ -39,6 +41,15 @@ GRAPH config:Theatre {
             ?categorie rdfs:label ?categorie_label
           }
         }
+        OPTIONAL {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?subject skos:semanticRelation ?domeintabel
+          }
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+            ?domeintabel rdfs:label ?domeinlabel
+          }
+        }
+        
         BIND(CONCAT("Begrip: ", ?slabel) AS ?titellabel)
       } 
     """ 
