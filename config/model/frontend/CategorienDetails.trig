@@ -10,6 +10,7 @@ GRAPH config:Theatre {
     elmo:contains config:CategorieTitel;
     elmo:appearance config:CategorieConceptenLijstAppearance;
     elmo:stage config:Stage;
+    elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:ConceptenCategorieLijstData;

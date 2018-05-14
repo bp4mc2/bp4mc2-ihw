@@ -1,5 +1,7 @@
 GRAPH config:Theatre { 
 
+# Dit stuk wordt momenteel niet gebruikt en kan er wellicht uit
+
   # config:ImageDisplayEndpoint a elmo:Representation;
     # elmo:pathPattern "/resource"; # Hack
     # elmo:stage config:Stage;

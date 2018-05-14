@@ -14,6 +14,7 @@ GRAPH config:Theatre {
   config:DomeinenLijst a elmo:Representation;
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
+    elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeinenLijstData;

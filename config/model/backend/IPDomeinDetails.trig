@@ -55,20 +55,21 @@ GRAPH config:Theatre {
       elmo:query """
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-       
+        PREFIX dcat: <http://www.w3.org/ns/dcat#>
+        
         CONSTRUCT {
-          ?subject dct:hasPart <http://data.aquo.nl/id/dataset/domeintabel> .
-            #?subject rdf:type rdf:resource.
-            ?subject rdfs:label ?dlabel.}        
+          ?subject dct:hasPart <http://data.aquo.nl/id/dataset/domeintabel>.
+          ?subject dcat:theme ?theme.
+          ?subject rdfs:label ?dlabel.
+        }        
         WHERE {
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-           <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
-            ?subject rdfs:label ?label
+            <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+            ?subject rdfs:label ?label.  
+            OPTIONAL{ ?subject dcat:theme ?theme}
           }
-           BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
-         }
-      
-        
+          BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
+        }
       """
     .
     

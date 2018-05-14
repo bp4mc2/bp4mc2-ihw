@@ -8,6 +8,7 @@ GRAPH config:Theatre {
 
   config:ConceptenDetails a elmo:Representation; 
   elmo:stage config:Stage;
+  elmo:contains config:Image;
 	elmo:contains config:Menu;
   elmo:contains config:Footer;
 	elmo:contains config:GraphDisplay;

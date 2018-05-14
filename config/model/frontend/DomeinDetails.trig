@@ -23,6 +23,7 @@ GRAPH config:Theatre {
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
+    elmo:contains config:Image;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
@@ -32,6 +33,7 @@ GRAPH config:Theatre {
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
+    elmo:contains config:Image;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
@@ -54,7 +56,11 @@ GRAPH config:Theatre {
       elmo:appliesTo rdfs:label;
       elmo:appearance elmo:HiddenAppearance;
     ];
-
+    elmo:fragment [
+      elmo:appliesTo dcat:theme;
+      xhtml:link "domeinmeta";
+      rdfs:label "Metadata"@nl;
+    ];
   .
   
   config:DomeintabelAppearance a elmo:TableAppearance;
