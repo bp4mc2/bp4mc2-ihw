@@ -28,4 +28,10 @@ GRAPH config:Theatre {
 	    sh:nodeKind sh:IRI;
 		]
   .
+  config:ConceptTabelExternParameter a elmo:TermParameter; 
+    elmo:name "name"; 
+	  elmo:shape [ 
+	    sh:nodeKind sh:IRI 
+		] 
+	. 
 }
