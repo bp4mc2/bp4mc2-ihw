@@ -30,6 +30,6 @@ GRAPH config:Theatre {
     elmo:endpoint "http://localhost:3030/ihw/update"^^xsd:anyURI
   .
   config:GwswBackend a elmo:SparqlBackend;
-    elmo:endpoint "http://sparql.gwsw.nl/sparql"^^xsd:anyURI
+    elmo:endpoint "http://sparql.gwsw.nl/repositories/GWSW_Totaal"^^xsd:anyURI
   .
 }
