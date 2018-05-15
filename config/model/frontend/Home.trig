@@ -37,4 +37,13 @@ GRAPH config:Theatre {
   config:FooterAppearance a elmo:FooterAppearance;
   .
 
+  config:ExportConteptenIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:ExportConceptenIndexData; 
+    elmo:appearance config:ExportConceptenIndexAppearance;
+  . 
+   
+  config:ExportConceptenIndexAppearance a elmo:IndexAppearance;
+    elmo:index 2;
+  . 
 }

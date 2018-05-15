@@ -18,6 +18,7 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
 	  elmo:contains config:ConceptenIndex;
+    elmo:contains config:ExportConteptenIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
  

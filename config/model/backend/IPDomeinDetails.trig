@@ -12,8 +12,8 @@ GRAPH config:Theatre {
      
       CONSTRUCT {
         ?id ?p ?o;
-            skos:comment ?status;
-            skos:semanticRelation ?semantic.
+            skos:comment ?status.
+            #skos:semanticRelation ?semantic.
         #?semantic rdfs:label ?semanticLabel.
         ?o rdfs:label ?olabel
       }

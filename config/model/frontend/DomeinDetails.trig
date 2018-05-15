@@ -92,17 +92,17 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo skos:semanticRelation;
-      #xhtml:link "begrip";
+      xhtml:link "begrip";
       rdfs:label "relatie"@nl;
-      elmo:appearance elmo:HiddenAppearance;
+      #elmo:appearance elmo:Appearance;
       elmo:index 6;
     ];
-    elmo:fragment [
-      elmo:appliesTo rdfs:label;
-      #xhtml:link "begrip";
-      rdfs:label "relatie"@nl;
-      elmo:index 6;
-    ];
+    # elmo:fragment [
+      # elmo:appliesTo rdfs:label;
+     ## xhtml:link "begrip";
+      # rdfs:label "relatie"@nl;
+      # elmo:index 6;
+    # ];
     elmo:fragment [
       elmo:appliesTo prov:generatedAtTime;
       rdfs:label "Begin geldigheid"@nl;
