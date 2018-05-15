@@ -15,6 +15,14 @@ GRAPH config:Theatre {
 		]
   .
   
+  config:FormatParameter a elmo:TermParameter;
+    elmo:name "format"; 
+	  elmo:shape [
+	    sh:datatype xsd:string;
+      sh:defaultValue "xml";
+		]
+  .
+  
   config:ConceptTabelParameter a elmo:TermParameter; 
     elmo:name "subject"; 
 	  elmo:shape [ 
@@ -27,11 +35,6 @@ GRAPH config:Theatre {
 	  elmo:shape [
 	    sh:nodeKind sh:IRI;
 		]
-  .
-  config:ConceptTabelExternParameter a elmo:TermParameter; 
-    elmo:name "name"; 
-	  elmo:shape [ 
-	    sh:nodeKind sh:IRI 
-		] 
+  
 	. 
 }
