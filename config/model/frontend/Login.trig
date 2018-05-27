@@ -1,0 +1,29 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Login
+#
+# ==========================    
+  config:LoginEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/login";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:Login;
+  .
+
+  config:Login a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance [ a elmo:LoginAppearance];
+    elmo:informationProduct config:LoginData;
+  .
+  
+  config:LoginData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:query """
+      SELECT *
+      WHERE {}
+    """
+  .
+
+}
