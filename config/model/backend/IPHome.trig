@@ -11,13 +11,13 @@ GRAPH config:Theatre {
           xhtml:search "begrippen";
           elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
             elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
-            elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"]
+            elmo1:data [elmo1:index "2"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/"]
           ];
-          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
-          elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; 
-            elmo1:data [elmo1:index "1"; rdfs:label "DS"; xhtml:link "%{dotwebstack.config.aquoroot}/info-ds"];
-            elmo1:data [elmo1:index "2"; rdfs:label "LOC"; xhtml:link "%{dotwebstack.config.aquoroot}/info-loc"]
-          ];
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen";
+            elmo1:data [elmo1:index "1"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/"];
+          ];         
         .
       }
       WHERE {}

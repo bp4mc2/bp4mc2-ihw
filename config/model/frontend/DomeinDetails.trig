@@ -90,13 +90,13 @@ GRAPH config:Theatre {
       elmo:appliesTo aquo:Groep;
       elmo:index 5;
     ];
-    elmo:fragment [
-      elmo:appliesTo skos:semanticRelation;
-      xhtml:link "begrip";
-      rdfs:label "relatie"@nl;
-      #elmo:appearance elmo:Appearance;
-      elmo:index 6;
-    ];
+    # elmo:fragment [
+      # elmo:appliesTo skos:semanticRelation;
+      # xhtml:link "begrip";
+      # rdfs:label "relatie"@nl;
+      ##elmo:appearance elmo:Appearance;
+      # elmo:index 6;
+    # ];
     # elmo:fragment [
       # elmo:appliesTo rdfs:label;
      ## xhtml:link "begrip";
