@@ -17,3 +17,13 @@ dotwebstack:
     host: localhost
     linkstrategy: global
     systemGraph: http://dotwebstack.org/configuration/Theatre
+
+security:
+  authentication: form
+  users:
+    - user: beheerder
+      password: $2a$11$Z0uBLK6ocuMoqVYFUimZre./Y4iBq5v8IrhOVpR.oVJzJK6V7.lVu
+      role: admin
+  protect:
+    - path: /beheer/domeintabel
+      role: admin
