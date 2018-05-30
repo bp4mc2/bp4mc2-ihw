@@ -20,6 +20,7 @@ dotwebstack:
 
 security:
   authentication: form
+  loginPage: /login
   users:
     - user: beheerder
       password: $2a$11$Z0uBLK6ocuMoqVYFUimZre./Y4iBq5v8IrhOVpR.oVJzJK6V7.lVu
