@@ -18,7 +18,7 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
 	  elmo:contains config:ConceptenIndex;
-    elmo:contains config:ExportConteptenIndex;
+    elmo:contains config:ExportIndex;
     elmo:informationProduct config:ConceptenLijstData;
   .
  
@@ -60,14 +60,5 @@ GRAPH config:Theatre {
     elmo:index 2;
   . 
 
-  # Index appearance tbv ecporteren van data naar XML, dit is nog uit te breiden naar CSV. Tevens werkt de inclusie van parameters nog niet.
-  config:ExportConteptenIndex a elmo:Representation; 
-    elmo:stage config:Stage; 
-    elmo:informationProduct config:ExportConceptenIndexData; 
-    elmo:appearance config:ExportConceptenIndexAppearance;
-  . 
-   
-  config:ExportConceptenIndexAppearance a elmo:IndexAppearance;
-    elmo:index 2;
-  . 
+ 
 }

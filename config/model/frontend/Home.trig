@@ -37,5 +37,15 @@ GRAPH config:Theatre {
   config:FooterAppearance a elmo:FooterAppearance;
   .
 
+ # Index appearance tbv ecporteren van data naar XML, dit is nog uit te breiden naar CSV. Tevens werkt de inclusie van parameters nog niet.
+  config:ExportIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:ExportIndexData; 
+    elmo:appearance config:ExportIndexAppearance;
+  . 
+   
+  config:ExportIndexAppearance a elmo:IndexAppearance;
+    elmo:index 2;
+  . 
  
 }
