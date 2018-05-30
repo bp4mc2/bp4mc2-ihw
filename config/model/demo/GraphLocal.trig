@@ -1,0 +1,154 @@
+GRAPH config:Theatre {
+
+config:GraphLocalEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/query/local/graph";
+  elmo:getRepresentation config:GraphLocal;
+  elmo:stage config:DemoStage
+.
+
+config:ResourceEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/resource";
+  elmo:getRepresentation config:GraphLocal;
+  elmo:stage config:DemoStage
+.
+
+config:GraphLocal a elmo:Representation;
+	elmo:contains config:DemoMenu;
+	elmo:appearance config:GraphLocalAppearance;
+  elmo:informationProduct config:GraphLocalData;
+  elmo:stage config:DemoStage
+.
+
+config:GraphLocalAppearance a elmo:GraphAppearance;
+	elmo:fragment [
+		elmo:appliesTo "BAG-data";
+		elmo:index "4";
+		xhtml:stylesheet '''
+			fill: yellow;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "WOZ-data";
+		elmo:index "5";
+		xhtml:stylesheet '''
+			fill: green;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "BGT-data";
+		elmo:index "6";
+		xhtml:stylesheet '''
+			fill: brown;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "Wikipedia-data";
+		elmo:index "7";
+		xhtml:stylesheet '''
+			fill: magenta;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "klasse";
+		elmo:index "1";
+		xhtml:stylesheet '''
+			fill: blue;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "begrip";
+		elmo:index "2";
+		xhtml:stylesheet '''
+			fill: red;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+	elmo:fragment [
+		elmo:appliesTo "regelgeving";
+		elmo:index "3";
+		xhtml:stylesheet '''
+			fill: gray;
+			fill-opacity: .3;
+			stroke: #666;
+		''';
+	];
+.
+
+config:GraphLocalData a elmo:InformationProduct;
+  elmo:backend config:LocalBackend;
+  elmo:requiredParameter elmo:SubjectParameter;
+	elmo:query """
+    prefix owl:<http://www.w3.org/2002/07/owl#>
+    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    prefix elmo: <http://dotwebstack.org/def/elmo#>
+    prefix skos: <http://www.w3.org/2004/02/skos/core#>
+    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+		construct {
+			?subject rdfs:label ?slabel.
+			?subject elmo1:style ?stype.
+			?subject ?p ?o.
+			?o ?opp ?oppo.
+			?o elmo1:style ?otype.
+			?os ?op ?subject.
+			?os rdfs:label ?oslabel.
+			?os elmo1:style ?ostype.
+			?os ?osp ?ospo.
+			owl:Class elmo1:name "klasse".
+			skos:Concept elmo1:name "begrip".
+			<http://www.kenniskluis.nl/som/def#Begrip> elmo1:name "begrip".
+			<http://purl.org/dc/dcmitype/Text> elmo1:name "regelgeving".
+			<http://bgtld-test.geostandaarden.nl/woz/def#Object> elmo1:name "WOZ-data".
+			<http://bag.kadaster.nl/def#OpenbareRuimte> elmo1:name "BAG-data".
+			<http://bag.kadaster.nl/def#Verblijfsobject> elmo1:name "BAG-data".
+			<http://bag.kadaster.nl/def#Pand> elmo1:name "BAG-data".
+			<http://bag.kadaster.nl/def#Woonplaats> elmo1:name "BAG-data".
+			<http://bag.kadaster.nl/def#Nummeraanduiding> elmo1:name "BAG-data".
+			<http://bgtld-test.geostandaarden.nl/bor/def#Boom> elmo1:name "BGT-data".
+			<http://dbpedia.org/ontology/Species> elmo1:name "Wikipedia-data".
+		}
+		where {
+		graph <http://kadaster.localhost/doc/demo> {
+			{
+				?subject rdf:type ?stype.
+			}
+			UNION
+			{
+				?subject rdfs:label ?slabel.
+			}
+			UNION
+			{
+				?subject ?p ?o
+				FILTER (?p!=<http://www.opengis.net/ont/geosparql#hasGeometry> && ?o!=owl:Class && ?o!=<http://www.kenniskluis.nl/som/def#Begrip>)
+				OPTIONAL {?o rdf:type ?otype}
+				OPTIONAL {
+					?o ?opp ?oppo
+					FILTER (isLiteral(?oppo))
+				}
+			}
+			UNION
+			{
+				?os ?op ?subject
+				OPTIONAL {?os rdf:type ?ostype}
+				OPTIONAL {
+					?os ?osp ?ospo
+					FILTER (isLiteral(?ospo))
+				}
+			}
+		}
+		}
+  """
+.
+
+}

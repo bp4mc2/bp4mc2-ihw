@@ -1,0 +1,31 @@
+GRAPH config:Theatre {
+
+config:HomeEndpoint a elmo:Endpoint;
+  elmo:pathPattern "";
+  elmo:getRepresentation config:Home;
+  elmo:stage config:DemoStage
+.
+
+config:Home a elmo:Representation;
+	elmo:contains config:DemoMenu;
+	elmo:appearance [a elmo:HtmlAppearance];
+  elmo:informationProduct config:HomeData;
+  elmo:stage config:DemoStage
+.
+config:HomeData a elmo:InformationProduct;
+  elmo:backend config:LocalBackend;
+	elmo:query """
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    CONSTRUCT {
+      [] rdfs:label "Kadaster demonstratie-omgeving (lokaal)";
+      elmo1:html '''
+			<p>Deze demonstratieomgeving is speciaal ingericht voor de Ordina innovatiedagen<a href="/query/dev">.</a></p>
+			<img src="/images/OrdinaInnovatiedagen.png"/>
+		'''
+    }
+    WHERE {}
+  """
+.
+
+}

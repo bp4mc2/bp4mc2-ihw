@@ -1,0 +1,35 @@
+GRAPH config:Theatre {
+
+config:DemoMenu a elmo:Representation;
+	elmo:appearance [a elmo:NavbarSearchAppearance];
+  elmo:informationProduct config:DemoMenuData;
+  elmo:stage config:DemoStage
+.
+
+config:DemoMenuData a elmo:InformationProduct;
+  elmo:backend config:LocalBackend;
+  elmo:query """
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+    prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+    prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+    CONSTRUCT {
+      [
+        rdfs:label "Kadaster Demo";
+        elmo1:data [ elmo1:index "1"; rdfs:label "Graph demo"; xhtml:link "query/local/graph?subject=http%3A%2F%2Fbgtld-test.geostandaarden.nl%2Fwoz%2Fid%2Fobject%2F054619157857"];
+        elmo1:data [ elmo1:index "2"; rdfs:label "Architectuur"; xhtml:link "query/architectuur"];
+        elmo1:data [
+          elmo1:index "3";
+          rdfs:label "Sites";
+          elmo1:data [elmo1:index "1"; rdfs:label "PDOK Geodata platform"; xhtml:link "https://data.pdok.nl"];
+          elmo1:data [elmo1:index "2"; rdfs:label "BRT"; xhtml:link "https://brt.basisregistraties.overheid.nl"];
+          elmo1:data [elmo1:index "3"; rdfs:label "BRK/DKK"; xhtml:link "https://brk.basisregistraties.overheid.nl"];
+          elmo1:data [elmo1:index "4"; rdfs:label "BAG"; xhtml:link "https://bag.basisregistraties.overheid.nl"];
+        ];
+        elmo1:data [ elmo1:index "4"; rdfs:label "Video"; xhtml:link "query/video"];
+      ]
+    }
+    WHERE {}
+  """;
+.
+
+}

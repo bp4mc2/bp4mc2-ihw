@@ -1,0 +1,41 @@
+GRAPH config:Theatre {
+
+  config:DataUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/upload";
+    elmo:stage config:DemoStage;
+    elmo:deleteService config:DataDeleteService;
+    elmo:postService config:DataPostService;
+  .
+
+  config:DataDeleteService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:DataDeleteTransaction;
+  .
+
+  config:DataPostService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:DataPostTransaction;
+  .
+
+  config:DataDeleteTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://kadaster.localhost/doc/demo>"
+      ]
+    )
+  .
+
+  config:DataPostTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://kadaster.localhost/doc/demo>
+      ]
+    )
+  .
+
+}
