@@ -17,6 +17,7 @@ GRAPH config:Theatre {
     elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
     elmo:informationProduct config:DomeinenLijstData;
   .
   config:DomeinenLijstAppearance a elmo:TableAppearance;

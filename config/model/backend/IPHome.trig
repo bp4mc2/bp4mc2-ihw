@@ -11,13 +11,13 @@ GRAPH config:Theatre {
           xhtml:search "begrippen";
           elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
             elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
-            elmo1:data [elmo1:index "3"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"]
+            elmo1:data [elmo1:index "2"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/"]
           ];
-          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
-          elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; 
-            elmo1:data [elmo1:index "1"; rdfs:label "DS"; xhtml:link "%{dotwebstack.config.aquoroot}/info-ds"];
-            elmo1:data [elmo1:index "2"; rdfs:label "LOC"; xhtml:link "%{dotwebstack.config.aquoroot}/info-loc"]
-          ];
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen";
+            elmo1:data [elmo1:index "1"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/"];
+          ];         
         .
       }
       WHERE {}
@@ -77,6 +77,22 @@ GRAPH config:Theatre {
   
   #[xhtml:link "%{dotwebstack.config.aquoroot}/begrippen?format=xml"] rdfs:label "XML export";
   
+  config:ExportIndexData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      CONSTRUCT {
+      [xhtml:link ""]
+       rdfs:label "xml|csv";
+       rdf:value "xml|csv";
+       elmo1:name "format"
+      }
+     WHERE {}
+    """
+  .
  
   
 }

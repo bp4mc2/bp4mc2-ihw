@@ -48,21 +48,6 @@ GRAPH config:Theatre {
     """; 
   . 
   
-  config:ExportConceptenIndexData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      prefix elmo1: <http://bp4mc2.org/elmo/def#>
-      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
-      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      CONSTRUCT {
-      [xhtml:link ""]
-       rdfs:label "xml|csv";
-       rdf:value "xml|csv";
-       elmo1:name "format"
-      }
-     WHERE {}
-    """
-  .
+
   
 }
