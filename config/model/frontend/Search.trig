@@ -1,0 +1,51 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Search Pagina
+#
+# ==========================    
+  config:SearchEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/search";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:SearchLijst
+  .
+  config:SearchLijst a elmo:Representation;
+    elmo:appearance config:SearchLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+   # elmo:contains config:ConceptenLijstAppearance;
+    elmo:informationProduct config:SearchLijstData;
+  .
+  
+  config:SearchLijstAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "begrip";
+      xhtml:link "/begrip";
+     # elmo:name "SUBJECT";
+      rdfs:label "Term"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "categorie";
+      xhtml:link "/begrippen-per-categorie";
+      elmo:name "categorie";
+      rdfs:label "Categorie"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "domeintabel";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domein"@nl;
+    ];
+     elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "search_label";
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+  .
+
+}
