@@ -11,41 +11,152 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:SearchLijst
   .
   config:SearchLijst a elmo:Representation;
-    elmo:appearance config:SearchLijstAppearance;
+    #elmo:appearance config:SearchLijstAppearance;
+    elmo:appearance config:SearchConceptenAppearance;
     elmo:stage config:Stage;
     elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
-   # elmo:contains config:ConceptenLijstAppearance;
-    elmo:informationProduct config:SearchLijstData;
+    elmo:contains config:SearchCategorieen;
+    elmo:contains config:SearchDomeinen;
+    elmo:contains config:SearchDomeinWaarden;
+  # elmo:contains config:ConceptenLijst;
+  # elmo:contains config:CategorieLijst;
+  # elmo:contains config:DomeinenLijst;
+    #elmo:informationProduct config:SearchLijstData;
+    elmo:informationProduct config:SearchConceptenData;
   .
   
-  config:SearchLijstAppearance a elmo:TableAppearance;
+  config:SearchCategorieen a elmo:Representation;
+    elmo:appearance config:SearchCategorieenAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:SearchCategorieenData;
+  .
+  
+   config:SearchDomeinen a elmo:Representation;
+    elmo:appearance config:SearchDomeinenAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:SearchDomeinenData;
+  .
+  
+  config:SearchDomeinWaarden a elmo:Representation;
+    elmo:appearance config:SearchDomeinWaardeAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:SearchDomeinWaardeData;
+  .
+ 
+  # config:SearchLijstAppearance a elmo:TableAppearance;
+    # elmo:fragment [
+      # elmo:index 1;
+      # elmo:appliesTo "begrip";
+      # xhtml:link "/begrip";
+      # rdfs:label "Term"@nl;
+    # ];
+    # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "categorie";
+      # xhtml:link "/begrippen-per-categorie";
+      # elmo:name "categorie";
+      # rdfs:label "Categorie"@nl;
+    # ];
+    # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "domeintabel";
+      # xhtml:link "/domeintabel";
+      # rdfs:label "Domein"@nl;
+    # ];
+     # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "search_label";
+      # elmo:appearance elmo:HiddenAppearance;
+    # ];
+  # .
+  
+  config:SearchConceptenAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "begrip";
-      xhtml:link "/begrip";
-     # elmo:name "SUBJECT";
+      xhtml:link "begrip";
+      elmo:name "SUBJECT";
       rdfs:label "Term"@nl;
     ];
     elmo:fragment [
       elmo:index 4;
+      elmo:appliesTo "categorie_begrip";
+      xhtml:link "/begrippen-per-categorie";
+      elmo:name "categorie";
+      rdfs:label "Categorie"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo "definitie";
+      rdfs:label "Definitie"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "categorie_begrip_label";
+      xhtml:link "/begrippen-per-categorie";
+      rdfs:label "CategorieNaam"@nl;
+    ];  
+    elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "search_label";
+      #rdfs:label "Zoekterm"@nl;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+  .
+  
+  config:SearchCategorieenAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:index 1;
       elmo:appliesTo "categorie";
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
+    elmo:fragment [ 
+      elmo:index 1;
+      elmo:appliesTo "categorie_label";
+      xhtml:link "/begrippen-per-categorie";
+      rdfs:label "CategorieNaam"@nl;
+    ];  
+    
+  .
+  
+  config:SearchDomeinenAppearance a elmo:TableAppearance;
     elmo:fragment [
-      elmo:index 4;
+      elmo:index 1;
       elmo:appliesTo "domeintabel";
       xhtml:link "/domeintabel";
-      rdfs:label "Domein"@nl;
+      elmo:name "domein";
+      rdfs:label "Domeintabel"@nl;
     ];
-     elmo:fragment [
-      elmo:index 4;
-      elmo:appliesTo "search_label";
-      elmo:appearance elmo:HiddenAppearance;
-    ];
+    elmo:fragment [ 
+      elmo:index 1;
+      elmo:appliesTo "domein_label";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domeintabel"@nl;
+    ];  
   .
-
+  
+  config:SearchDomeinWaardeAppearance a elmo:TableAppearance;
+   elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "label_waarde";
+      rdfs:label "Domeintabel waarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeintabel_waarde";
+      xhtml:link "/domeintabel";
+      elmo:name "domein";
+      rdfs:label "Domeintabel"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "domeintabel_waarde_label";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domeintabel"@nl;
+    ];  
+  .
 }
