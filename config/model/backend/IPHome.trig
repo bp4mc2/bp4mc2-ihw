@@ -8,7 +8,7 @@ GRAPH config:Theatre {
       prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
       CONSTRUCT {
         [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
-          xhtml:search "begrippen";
+          xhtml:search "search";
           elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
             elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
             elmo1:data [elmo1:index "2"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"];

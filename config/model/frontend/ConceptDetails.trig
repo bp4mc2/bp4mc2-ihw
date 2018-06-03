@@ -90,7 +90,7 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
 	  elmo:index 13;;
-	  elmo:appliesTo skos:semanticRelation;
+	  elmo:appliesTo owl:sameAs;
     xhtml:link "domeintabel";
 	  rdfs:label "Domeintabel"@nl;
 	];
@@ -148,15 +148,30 @@ GRAPH config:Theatre {
 		elmo:index 26;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
-		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
+  # elmo:fragment [
+    # elmo:index 27;
+    # elmo:appliesTo dct:created;
+    # rdfs:label "Created"@nl;
+  # ];
+  # elmo:fragment [
+    # elmo:index 28;
+    # elmo:appliesTo dct:modified;
+    # rdfs:label "Modified"@nl;
+  # ];
+  # elmo:fragment [
+    # elmo:index 29;
+    # elmo:appliesTo adms:status;
+    # rdfs:label "Status"@nl;
+  # ];
   elmo:fragment [
-    elmo:index 27;
+    elmo:index 99;
     elmo:appliesTo skos:example;
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
   ];
+
   . 
 	 
 } 
