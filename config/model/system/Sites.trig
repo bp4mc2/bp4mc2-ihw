@@ -7,7 +7,7 @@
 GRAPH config:Theatre {
 
   config:Site a elmo:Site;
-    elmo:domain "localhost";
+    elmo:domain "%{dotwebstack.config.host}";
   .
 
 }
