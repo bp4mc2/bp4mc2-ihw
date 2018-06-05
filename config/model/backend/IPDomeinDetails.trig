@@ -15,7 +15,7 @@ GRAPH config:Theatre {
         ?id ?p ?o;
             skos:comment ?status;
             rdfs:label ?sameLabel.
-        ?o rdfs:label ?olabelf
+        ?o rdfs:label ?olabel
       }
       WHERE {
         {
