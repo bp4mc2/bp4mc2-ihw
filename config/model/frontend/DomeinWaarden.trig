@@ -1,10 +1,5 @@
 GRAPH config:Theatre {
 
-# ==========================
-#
-# Search Pagina
-#
-# ==========================    
   config:DomeinWaardenEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeinwaarden";
     elmo:stage config:Stage;

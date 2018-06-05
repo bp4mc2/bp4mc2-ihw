@@ -1,0 +1,91 @@
+GRAPH config:Theatre {
+
+  config:DomeinBegrippenEditEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeinwaarde-begrip";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinWaardeBegripLijst;
+  .
+  config:DomeinWaardeBegripLijst a elmo:Representation;
+    elmo:appearance config:DomeinWaardeBegripAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:BegripAnalyseRepresentation;
+    elmo:contains config:DomeinwaardeAnalyseRepresentation;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeinWaardeBegripData;
+  .
+ 
+  config:DomeinWaardeBegripAppearance a elmo:TableAppearance;
+   elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "domeinwaarde";
+      xhtml:link "/domeinwaarden";
+      rdfs:label "Domeintabel waarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeintabel";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domeintabel"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo "begrip";
+      xhtml:link "/begrip";
+      rdfs:label "Begrip"@nl;
+    ];  
+    elmo:fragment [
+      elmo:index 3;
+      elmo:appliesTo "begriplabel";
+      #xhtml:link "/domeintabel";
+      rdfs:label "Begrip label"@nl;
+    ];
+  .
+  
+  config:BegripAnalyseRepresentation a elmo:Representation;
+    elmo:appearance config:BegripAnalyseAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:BegripAnalyseData;
+  .
+  
+  config:BegripAnalyseAppearance a elmo:TableAppearance;
+    
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "domeinwaarde_dw";
+      xhtml:link "/domeinwaarden";
+      rdfs:label "Domeintabel waarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeintabel_dw";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domeintabel"@nl;
+    ];
+  .
+  
+  
+    config:DomeinwaardeAnalyseRepresentation a elmo:Representation;
+    elmo:appearance config:DomeinwaardeAnalyseAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:DomeinwaardeAnalyseData;
+  .
+  
+  config:DomeinwaardeAnalyseAppearance a elmo:TableAppearance;
+    
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "begrip_analyse";
+      xhtml:link "/begrip";
+      rdfs:label "Begrip"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeinwaarde_analyse";
+      xhtml:link "/domeinwaarde";
+      rdfs:label "Domeinwaarde"@nl;
+    ];
+  .
+  
+}
