@@ -1,19 +1,56 @@
 GRAPH config:Theatre {
 
+ config:TitelRepresentation a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:TitelAppearance;
+    elmo:informationProduct config:TitelData;
+    #elmo:index 2;
+  .
+  config:TitelAppearance a elmo:HtmlAppearance;
+    elmo:index 1;
+   # rdfs:label "Titel";
+  .
+   
+  config:TitelData a elmo:InformationProduct;
+      elmo:backend config:LocalBackend;
+      elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX elmo1: <http://bp4mc2.org/elmo/def#> 
+       CONSTRUCT { 
+         [] rdfs:label "Analyse domeinwaarde-begrip koppeling"; 
+           elmo1:html ''' 
+            <h1>Inverse koppeling</h1>
+              <p>Deze tabel geeft een overzicht van alle 'owl:sameAs' relaties die 2 kanten uit gaan. Zo heeft de domeinwaarde een gekoppeld begrip en het begrip een gekoppelde domeinwaarde. Begrip --> Domeinwaarde & Domeinwaarde --> Begrip </p>          
+           ''' 
+         . 
+       } 
+       WHERE {} 
+      """
+    .
+ #----------------------------------------------------------------------------
+
+
+
   config:DomeinBegrippenEditEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeinwaarde-begrip";
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeinWaardeBegripLijst;
   .
   config:DomeinWaardeBegripLijst a elmo:Representation;
-    elmo:appearance config:DomeinWaardeBegripAppearance;
+   # elmo:index 2;
     elmo:stage config:Stage;
-    elmo:contains config:BegripAnalyseRepresentation;
-    elmo:contains config:DomeinwaardeAnalyseRepresentation;
     elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:contains config:TitelRepresentation;
+    elmo:contains config:Titel2Representation;
+    elmo:appearance config:DomeinWaardeBegripAppearance;
     elmo:informationProduct config:DomeinWaardeBegripData;
+    
+    elmo:contains config:BegripAnalyseRepresentation;
+    elmo:contains config:Titel3Representation;
+    elmo:contains config:DomeinwaardeAnalyseRepresentation; 
   .
  
   config:DomeinWaardeBegripAppearance a elmo:TableAppearance;
@@ -21,7 +58,7 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo "domeinwaarde";
       xhtml:link "/domeinwaarden";
-      rdfs:label "Domeintabel waarde"@nl;
+      rdfs:label "Domeinwaarde"@nl;
     ];
     elmo:fragment [
       elmo:index 2;
@@ -42,38 +79,132 @@ GRAPH config:Theatre {
       rdfs:label "Begrip label"@nl;
     ];
   .
+    #Titel
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
   
+
+
+ 
+    config:Titel2Representation a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:Titel2Appearance;
+    elmo:informationProduct config:Titel2Data;
+    #elmo:index 2;
+  .
+  config:Titel2Appearance a elmo:HtmlAppearance;
+   # elmo:index 1;
+   # rdfs:label "Titel";
+  .
+   
+  config:Titel2Data a elmo:InformationProduct;
+      elmo:backend config:LocalBackend;
+      elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX elmo1: <http://bp4mc2.org/elmo/def#> 
+       CONSTRUCT { 
+         [] rdfs:label "Analyse domeinwaarde-begrip koppeling"; 
+           elmo1:html ''' 
+            <h1>Domeinwaarde met koppeling naar begrip ZONDER koppeling van begrip naar domeinwaarde</h1>
+              <p>Deze tabel geeft een overzicht van alle 'owl:sameAs' relaties die 1 kant uit gaan. Domeinwaarde --> Begrip</p>          
+           ''' 
+         . 
+       } 
+       WHERE {} 
+      """
+    .
+    
+    
+    #----------------------------------------------------------------------------
+
+
+  #---------------------------------------------------------------------------------------------------------------------
+  # Vanuit het begrip kijken we naar de linkjes naar domeinwaarden waar deze geen link hebben naar het begrip
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
   config:BegripAnalyseRepresentation a elmo:Representation;
     elmo:appearance config:BegripAnalyseAppearance;
     elmo:stage config:Stage;
     elmo:informationProduct config:BegripAnalyseData;
+    #elmo:index 4;
   .
   
   config:BegripAnalyseAppearance a elmo:TableAppearance;
-    
-    elmo:fragment [
+     elmo:fragment [
       elmo:index 1;
+      elmo:appliesTo "begrip_dw";
+      xhtml:link "/begrip";
+      rdfs:label "Begrip"@nl;
+    ];
+     elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "begriplabel_dw";
+      rdfs:label "Begrip label"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
       elmo:appliesTo "domeinwaarde_dw";
       xhtml:link "/domeinwaarden";
       rdfs:label "Domeintabel waarde"@nl;
     ];
     elmo:fragment [
-      elmo:index 2;
+      elmo:index 3;
       elmo:appliesTo "domeintabel_dw";
       xhtml:link "/domeintabel";
       rdfs:label "Domeintabel"@nl;
     ];
   .
   
+  #---------------------------------------------------------------------------- Titel
+   config:Titel3Representation a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:Titel3Appearance;
+    elmo:informationProduct config:Titel3Data;
+    #elmo:index 4;
+  .
+  config:Titel3Appearance a elmo:HtmlAppearance;
+   # elmo:index 1;
+   # rdfs:label "Titel";
+  .
+   
+  config:Titel3Data a elmo:InformationProduct;
+      elmo:backend config:LocalBackend;
+      elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX elmo1: <http://bp4mc2.org/elmo/def#> 
+       CONSTRUCT { 
+         [] rdfs:label "Analyse domeinwaarde-begrip koppeling"; 
+           elmo1:html ''' 
+            <h1>begrip met koppeling naar domeinwaarde ZONDER koppeling van domeinwaarde naar begrip</h1>
+              <p>Deze tabel geeft een overzicht van alle 'owl:sameAs' relaties die 1 kant uit gaan. Begrip --> Domeinwaarde </p>          
+           ''' 
+         . 
+       } 
+       WHERE {} 
+      """
+    .
+    
+  #---------------------------------------------------------------------------------------------------------------------
+  #Vanuit de domeinwaarde kijken we naar de linkjes naar begrippen, waar het begrip geen link heeft naar de domeinwaarde
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
+  
+  
   
     config:DomeinwaardeAnalyseRepresentation a elmo:Representation;
     elmo:appearance config:DomeinwaardeAnalyseAppearance;
     elmo:stage config:Stage;
     elmo:informationProduct config:DomeinwaardeAnalyseData;
+    #elmo:index 6;
   .
   
+  
   config:DomeinwaardeAnalyseAppearance a elmo:TableAppearance;
-    
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "begrip_analyse";
@@ -83,9 +214,17 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "domeinwaarde_analyse";
-      xhtml:link "/domeinwaarde";
+      xhtml:link "/domeinwaarden";
       rdfs:label "Domeinwaarde"@nl;
     ];
   .
+  
+    
+  #---------------------------------------------------------------------------------------------------------------------
+
+
+ 
+ 
+  
   
 }
