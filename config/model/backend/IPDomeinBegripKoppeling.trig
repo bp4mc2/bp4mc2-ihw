@@ -12,11 +12,12 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
 
-      SELECT ?domeinwaarde 
-      
+      SELECT 
+      ?domeinwaarde 
       (?same_begrip as ?begrip) 
-      ?begriplabel 
+      ?begrip_label 
       ?domeintabel
+      (?same_begrip as ?edit) 
       
  
       WHERE {
@@ -29,7 +30,7 @@ GRAPH config:Theatre {
         } 
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?same_begrip owl:sameAs ?same_domeinwaarde.
-          OPTIONAL {?same_begrip  rdfs:label ?begriplabel}
+          OPTIONAL {?same_begrip  rdfs:label ?begrip_label}
         }   
       }
       """
@@ -47,20 +48,20 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
 
-      SELECT DISTINCT ?begrip_dw ?begriplabel_dw ?domeinwaarde_dw
+      SELECT DISTINCT ?begripdw ?domeinwaarde_dw ?begripdw_label
       
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-          ?begrip_dw ?p ?o ;
+          ?begripdw ?p ?o ;
              owl:sameAs ?domeinwaarde_dw.
-          OPTIONAL {?begrip_dw rdfs:label ?begriplabel_dw}
+          OPTIONAL {?begripdw rdfs:label ?begripdw_label}
         }
         FILTER NOT EXISTS { 
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
               <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
           GRAPH ?domeintabel {
-              ?domeinwaarde_dw  owl:sameAs ?begrip_dw
+              ?domeinwaarde_dw  owl:sameAs ?begripdw
           }  
         }
       }
@@ -78,7 +79,7 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
 
-      SELECT DISTINCT   ?domeinwaarde_analyse ?begrip_analyse
+      SELECT DISTINCT   ?domeinwaardeanalyse ?begrip_analyse ?domeinwaardeanalyse_label
       
       WHERE {
        
@@ -87,12 +88,13 @@ GRAPH config:Theatre {
               <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
           GRAPH ?domeintabel {
-              ?domeinwaarde_analyse  owl:sameAs ?begrip_analyse
+              ?domeinwaardeanalyse owl:sameAs ?begrip_analyse.
+              OPTIONAL {?domeinwaardeanalyse aquo:Omschrijving ?domeinwaardeanalyse_label}
           }  
           FILTER NOT EXISTS{
             GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
                ?begrip_analyse ?p ?o ;
-              owl:sameAs ?domeinwaarde_analyse.
+              owl:sameAs ?domeinwaardeanalyse.
               
             }
           }
