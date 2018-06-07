@@ -68,9 +68,9 @@ GRAPH config:Theatre {
      CONSTRUCT {
       ?domeinwaarde  owl:sameAs ?subject;
                      rdf:type ?subject.
-      # ?subject owl:sameAs ?domeinwaarde;
-    											 # rdfs:label ?begrip_label;
-    											 # rdf:type skos:Concept.
+       ?subject owl:sameAs ?domeinwaarde;
+    											  rdfs:label ?begrip_label;
+    											  rdf:type skos:Concept.
       }
  
       WHERE {

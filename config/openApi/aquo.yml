@@ -1,0 +1,56 @@
+swagger: 2.0
+info:
+  title: Aquo API
+  version: 1.0
+host: localhost
+basePath: /api/aquo
+produces:
+  - application/json
+paths:
+  /search/begrippen:
+    get:
+      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/ConceptenLijstData"  
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            required:
+              - begrip
+            items:
+              type: object
+              properties:
+                begrip:
+                  type: string
+                  format: string
+                categorie:
+                  type: string
+                  format: string
+                begrip_label:
+                  type: string
+                  format: string
+                definitie:
+                  type: string
+                  format: string
+                categorie_label:
+                  type: string
+                  format: string
+  /search/{api}:
+    get:
+      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchAPIData"
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            required:
+              - search_label
+            items:
+              type: object
+              properties:
+                search_label:
+                  type: string
+                  format: string
+                type:
+                  type: string
+                  format: string
