@@ -51,6 +51,24 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?domeintabel_label),"Domeintabel","") as ?type)
           FILTER regex(?search_label,concat("^", ?api),"i")
         }
+        
+        UNION {
+          
+          
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+              ?domeintabel rdfs:label ?domeintabel_label
+          }
+          GRAPH ?domeintabel {
+               ?id aquo:Omschrijving ?domeintabelwaarde_label.
+          }
+          
+          BIND(IF(BOUND(?domeintabelwaarde_label),?domeintabelwaarde_label,"") as ?search_label)
+          BIND(IF(BOUND(?domeintabelwaarde_label),"Domeintabel waarde","") as ?type)
+          FILTER regex(?search_label,concat("^", ?api),"i")
+            
+        }
+        
+        
        
       }
     """
