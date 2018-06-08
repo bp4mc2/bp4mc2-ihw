@@ -92,7 +92,7 @@ GRAPH config:Theatre {
 	  elmo:index 13;;
 	  elmo:appliesTo owl:sameAs;
     xhtml:link "domeinwaarden";
-	  rdfs:label "Domeintabel"@nl;
+	  rdfs:label "Domeinwaarde"@nl;
 	];
   elmo:fragment [
 	  elmo:index 14;

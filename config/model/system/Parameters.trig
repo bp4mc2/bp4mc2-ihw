@@ -41,7 +41,7 @@ GRAPH config:Theatre {
     elmo:name "api"; 
 	  elmo:shape [
 	    sh:datatype xsd:string;
-      sh:defaultValue "iba";
+      sh:defaultValue "test";
 		]
   .
 }
