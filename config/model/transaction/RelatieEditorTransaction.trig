@@ -1,0 +1,261 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Editor endpoint, representation en appearance
+#
+# ==========================
+
+  config:RelatieEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/relatie";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:RelatieEditor;
+  .
+  
+  config:RelatieEditor a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:appearance config:RelatieEditorAppearance;
+    elmo:informationProduct config:RelatieEditableData;
+  .
+
+  config:RelatieEditorAppearance a elmo:EditorAppearance;
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo rdf:type;
+      rdfs:label "Type"@nl;
+      #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo rdfs:label;
+      rdfs:label "Label"@nl;
+      #elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
+    ];
+    elmo:fragment [
+      elmo:index 3;
+      elmo:appliesTo owl:sameAs;
+      rdfs:label "Same as"@nl;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
+      elmo:appearance elmo:ChangeSubmitAppearance;
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/relatie";
+      rdfs:label "Opslaan"@nl;
+      rdfs:label "Save"@en;
+    ];
+  .
+
+# ==========================
+#
+# Informatieproduct in de editor
+#
+# ==========================
+
+  config:RelatieEditableData a elmo:InformationProduct;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      
+     CONSTRUCT {
+      ?domeinwaarde  owl:sameAs ?subject;
+                     rdfs:label ?domeinwaarde_label;
+                     rdf:type ?type.
+      ?subject owl:sameAs ?domeinwaarde;
+                rdfs:label ?begrip_label;
+                rdf:type ?type.
+      }
+ 
+      WHERE {
+        {
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+          }
+          GRAPH ?domeintabel {
+              ?domeinwaarde  ?p ?o; 
+                              owl:sameAs ?subject;
+               aquo:Omschrijving ?domeinwaarde_label.
+              FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
+          } 
+          BIND(IF(Bound(?domeinwaarde_label),"Domeinwaarde","") as ?type)
+        }
+        UNION {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+           ?subject owl:sameAs ?same_domeinwaarde;
+                    rdf:type skos:Concept.
+           
+            OPTIONAL {?subject  rdfs:label ?begrip_label}
+          } 
+          BIND(IF(Bound(?begrip_label),"Begrip","") as ?type)
+        }  
+      }
+      
+    """
+  .
+
+# ==========================
+#
+# Transaction
+#
+# ==========================
+
+  config:RelatieEditEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/relatie";
+    elmo:stage config:Stage;
+    elmo:putService config:RelatieUpdateService;
+    elmo:postService config:RelatieInsertService;
+    elmo:deleteService config:RelatieDeleteService;
+    
+  .
+  
+  
+  config:RelatieUpdateService a elmo:Service;
+    elmo:transaction config:RelatieUpdateTransaction;
+  .
+  config:RelatieInsertService a elmo:Service;
+    elmo:transaction config:RelatieInsertTransaction;
+  .
+  config:RelatieDeleteService a elmo:Service;
+    elmo:transaction config:RelatieDeleteTransaction;
+  .
+
+  
+  config:RelatieUpdateTransaction a elmo:Transaction;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          delete {
+            graph ?subject {
+              ?s ?p ?o
+            }
+          }
+          insert {
+            graph ?versionedsubject {
+              ?versionedsubject dct:replacedBy ?subject.
+              ?sv ?p ?o.
+              ?sv prov:invalidatedAtTime ?enddate
+            }
+          }
+          where {
+            {
+              select ?s ?sv ?p ?o
+              where {
+                graph ?subject {
+                  ?s ?p ?o
+                  BIND (substr(str(now()),1,10) as ?date)
+                  BIND (iri(concat(str(?s),"#",?date)) as ?sv)
+                }
+              }
+            }
+            graph <http://data.aquo.nl/beheer/editor.tmp> {
+              ?s a ?t
+            }
+            BIND (substr(str(now()),1,10) as ?enddate)
+            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          prefix prov: <http://www.w3.org/ns/prov#>
+          prefix xs: <http://www.w3.org/2001/XMLSchema#>
+          insert {
+            graph <http://data.aquo.nl/id/dataset/begrippen> {
+              ?s ?p ?o.
+              ?s prov:generatedAtTime ?begindate
+            }
+          }
+          where {
+            graph <http://data.aquo.nl/beheer/editor.tmp> {
+              ?s ?p ?o
+              FILTER (?p != prov:generatedAtTime)
+            }
+            BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
+          }
+        """
+      ]
+    )
+  .
+  
+  config:RelatieInsertTransaction a elmo:Transaction;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+         
+        """
+      ]
+    )
+  .
+  
+  config:RelatieDeleteTransaction a elmo:Transaction;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+         
+        """
+      ]
+    )
+  .
+  
+}

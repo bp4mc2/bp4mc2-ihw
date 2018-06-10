@@ -1,0 +1,44 @@
+GRAPH config:Theatre {
+
+  config:DomeinWaardenEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeinwaarden";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinWaardenLijst;
+  .
+  config:DomeinWaardenLijst a elmo:Representation;
+    elmo:appearance config:DomeinWaardenAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeinWaardenData;
+  .
+ 
+  config:DomeinWaardenAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "subject";
+      elmo:appearance elmo:HiddenAppearance;
+      rdfs:label "Domeintabel waarde"@nl;
+    ];
+   elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "subjectlabel";
+      rdfs:label "Domeintabel waarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeintabel";
+      xhtml:link "/domeintabel";
+      elmo:name "domein";
+      rdfs:label "Domeintabel"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "domeinlabel";
+      xhtml:link "/domeintabel";
+      elmo:name "domein";
+      rdfs:label "Domeintabel"@nl;
+    ];  
+  .
+}

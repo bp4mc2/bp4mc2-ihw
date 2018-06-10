@@ -1,0 +1,104 @@
+GRAPH config:Theatre {
+
+  config:DomeinWaardeBegripData a elmo:InformationProduct;
+      elmo:backend config:LocalBackend;
+      elmo:resultType elmo-rt:Tuple;
+      elmo:query """
+      
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+      SELECT 
+      ?domeinwaarde 
+      (?same_begrip as ?begrip) 
+      ?begrip_label 
+      ?domeintabel
+      (?same_begrip as ?edit) 
+      
+ 
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+              <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+        }
+        GRAPH ?domeintabel {
+            ?domeinwaarde  owl:sameAs ?same_begrip
+            FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
+        } 
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          ?same_begrip owl:sameAs ?same_domeinwaarde.
+          OPTIONAL {?same_begrip  rdfs:label ?begrip_label}
+        }   
+      }
+      """
+  .
+  
+  config:BegripAnalyseData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:query """
+      
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+      SELECT DISTINCT ?begripdw ?domeinwaarde_dw ?begripdw_label
+      
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          ?begripdw ?p ?o ;
+             owl:sameAs ?domeinwaarde_dw.
+          OPTIONAL {?begripdw rdfs:label ?begripdw_label}
+        }
+        FILTER NOT EXISTS { 
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+              <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+          }
+          GRAPH ?domeintabel {
+              ?domeinwaarde_dw  owl:sameAs ?begripdw
+          }  
+        }
+      }
+    """
+  .
+  config:DomeinwaardeAnalyseData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:query """
+      
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+      SELECT DISTINCT   ?domeinwaardeanalyse ?begrip_analyse ?domeinwaardeanalyse_label
+      
+      WHERE {
+       
+        
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+              <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+          }
+          GRAPH ?domeintabel {
+              ?domeinwaardeanalyse owl:sameAs ?begrip_analyse.
+              OPTIONAL {?domeinwaardeanalyse aquo:Omschrijving ?domeinwaardeanalyse_label}
+          }  
+          FILTER NOT EXISTS{
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+               ?begrip_analyse ?p ?o ;
+              owl:sameAs ?domeinwaardeanalyse.
+              
+            }
+          }
+      }
+    """
+  .
+}
