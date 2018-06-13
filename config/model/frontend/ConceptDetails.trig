@@ -49,53 +49,67 @@ GRAPH config:Theatre {
 	  elmo:appliesTo aquo:dutchLabel;
 	  rdfs:label "Synoniem"@nl;
 	];
-
+	elmo:fragment [
+	  elmo:index 05;
+	  elmo:appliesTo aquo:englishLabel;
+	  rdfs:label "English Label"@nl;
+	];
 	elmo:fragment [
 	  elmo:index 06;
+	  elmo:appliesTo aquo:germanLabel;
+	  rdfs:label "Deutsches Label"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 07;
+	  elmo:appliesTo aquo:flemmishLabel;
+	  rdfs:label "Vlaams Label"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 08;
 	  elmo:appliesTo skos:note;
 	  rdfs:label "Toelichting"@nl;
 	];
 	elmo:fragment [
-	  elmo:index 07;
+	  elmo:index 09;
 	  elmo:appliesTo rdfs:comment;
 	  rdfs:label "Uitleg"@nl;
 	];
 	elmo:fragment [ 
-	  elmo:index 08;
+	  elmo:index 10;
 	  elmo:appliesTo dc:source;
 	  rdfs:label "Bron"@nl;
 	];
 	elmo:fragment [
-	  elmo:index 9;
+	  elmo:index 11;
 	  elmo:appliesTo aquo:abbreviation;
 	  rdfs:label "Afkorting"@nl;
 	];
 	elmo:fragment [
-	   elmo:index 10;
+	   elmo:index 12;
      elmo:appliesTo dct:subject;
      xhtml:link "begrippen-per-categorie";
      elmo:name "categorie";
 	  ];
   # elmo:fragment [ 
-    # elmo:index 11;
+    # elmo:index 13;
     # elmo:appliesTo "categorie";
     # xhtml:link "begrippen-per-categorie";
     # elmo:name "categorie";
   # ];
   
 	elmo:fragment [
-	  elmo:index 12;
+	  elmo:index 13;
 	  elmo:appliesTo skos:notation;
 	  rdfs:label "Code"@nl;
 	];
   elmo:fragment [
-	  elmo:index 13;;
+	  elmo:index 14;
 	  elmo:appliesTo owl:sameAs;
     xhtml:link "domeinwaarden";
 	  rdfs:label "Domeinwaarde"@nl;
 	];
   elmo:fragment [
-	  elmo:index 14;
+	  elmo:index 15;
     elmo:appliesTo rdfs:label;
     xhtml:link "domeintabel";
 	  rdfs:label "Domeintabel"@nl;
@@ -139,32 +153,32 @@ GRAPH config:Theatre {
 	  xhtml:link "";
 	];
 	elmo:fragment [
-		elmo:index 25;
+		elmo:index 26;
 		elmo:appliesTo dct:isReplacedBy;
 		rdfs:label "Gebruik"@nl;
 		xhtml:link "begrip";
 	];
 	elmo:fragment [
-		elmo:index 26;
+		elmo:index 27;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
-  # elmo:fragment [
-    # elmo:index 27;
-    # elmo:appliesTo dct:created;
-    # rdfs:label "Created"@nl;
-  # ];
-  # elmo:fragment [
-    # elmo:index 28;
-    # elmo:appliesTo dct:modified;
-    # rdfs:label "Modified"@nl;
-  # ];
-  # elmo:fragment [
-    # elmo:index 29;
-    # elmo:appliesTo adms:status;
-    # rdfs:label "Status"@nl;
-  # ];
+   elmo:fragment [
+     elmo:index 28;
+     elmo:appliesTo dct:created;
+     rdfs:label "Created"@nl;
+   ];
+   elmo:fragment [
+     elmo:index 29;
+     elmo:appliesTo dct:modified;
+     rdfs:label "Modified"@nl;
+   ];
+   elmo:fragment [
+     elmo:index 30;
+     elmo:appliesTo adms:status;
+     rdfs:label "Status"@nl;
+   ];
   elmo:fragment [
     elmo:index 99;
     elmo:appliesTo skos:example;

@@ -129,12 +129,35 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
       ]
+
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
       ]
+	  [
+	    a elmo:AssertionStep;
+	    rdfs:label "Deze code is al eerder gebruikt";
+		elmo:assertNot """
+	      PREFIX dct:  <http://purl.org/dc/terms/>
+	      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+	      PREFIX config: <http://dotwebstack.org/configuration/>
+		  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	      ASK
+		  WHERE {
+		    graph <http://data.aquo.nl/beheer/editor.tmp> {
+			  ?s aquo:Code ?code.
+			  ?s dct:identifier ?id.
+			  }
+		    graph ?subject {
+				  ?s aquo:Code ?code.
+				  ?s dct:identifier ?id.
+				}  	
+			  }
+		""";
+
+	  ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -165,24 +188,6 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
       ]
-	  [
-	  a elmo:AssertionStep;
-	  rdfs:label "Deze code is al eerder gebruikt";
-	  elmo:assertNot '''
-	  PREFIX dct:  <http://purl.org/dc/terms/>
-	  PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-	  PREFIX config: <http://dotwebstack.org/configuration/>
-	  SELECT ?s ?id ?code 
-	  WHERE {
-	  ?id rdf:type dct:identifier.
-	  ?code rdf:type aquo:Code.
-	    SERVICE config:LocalBackend {
-		  ?s dct:identifier ?id.
-		  ?s aquo:Code ?code.
-		}
-	  }
-	  '''
-	  ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
