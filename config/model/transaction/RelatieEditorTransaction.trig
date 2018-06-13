@@ -26,11 +26,13 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo rdf:type;
       rdfs:label "Type"@nl;
+      rdfs:label "domeinwaarde"@nl;
       #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
     ];
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo rdfs:label;
+      elmo:appliesTo aquo:Omschrijving;
       rdfs:label "Label"@nl;
       #elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
     ];
@@ -72,10 +74,13 @@ GRAPH config:Theatre {
       ?subject owl:sameAs ?domeinwaarde;
                 rdfs:label ?begrip_label;
                 rdf:type ?type.
+      CONSTRUCT {?s ?p ?o;
+      owl:sameAs ?subject.
       }
  
       WHERE {
         {
+        
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
                 <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
@@ -83,6 +88,8 @@ GRAPH config:Theatre {
               ?domeinwaarde  ?p ?o; 
                               owl:sameAs ?subject;
                aquo:Omschrijving ?domeinwaarde_label.
+              ?s  ?p ?o; 
+                  owl:sameAs ?subject.
               FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
           } 
           BIND(IF(Bound(?domeinwaarde_label),"Domeinwaarde","") as ?type)
@@ -96,6 +103,7 @@ GRAPH config:Theatre {
           } 
           BIND(IF(Bound(?begrip_label),"Begrip","") as ?type)
         }  
+          
       }
       
     """

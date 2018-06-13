@@ -1,2 +1,5 @@
 target
 resources/application.yml
+config/openApi/aquo.yml
+config/model/transaction/RelatieEditorTransaction.trig
+config/model/transaction/RelatieEditorTransaction.trig
