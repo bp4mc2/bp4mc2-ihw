@@ -25,12 +25,12 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo rdf:type;
-      rdfs:label "Type"@nl;
+      rdfs:label "domeinwaarde"@nl;
       #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
     ];
     elmo:fragment [
       elmo:index 2;
-      elmo:appliesTo rdfs:label;
+      elmo:appliesTo aquo:Omschrijving;
       rdfs:label "Label"@nl;
       #elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
     ];
@@ -65,37 +65,20 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       
-     CONSTRUCT {
-      ?domeinwaarde  owl:sameAs ?subject;
-                     rdfs:label ?domeinwaarde_label;
-                     rdf:type ?type.
-      ?subject owl:sameAs ?domeinwaarde;
-                rdfs:label ?begrip_label;
-                rdf:type ?type.
+      CONSTRUCT {?s ?p ?o;
+      owl:sameAs ?subject.
       }
- 
       WHERE {
-        {
+        
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
                 <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
           GRAPH ?domeintabel {
-              ?domeinwaarde  ?p ?o; 
-                              owl:sameAs ?subject;
-               aquo:Omschrijving ?domeinwaarde_label.
+              ?s  ?p ?o; 
+                  owl:sameAs ?subject.
               FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
           } 
-          BIND(IF(Bound(?domeinwaarde_label),"Domeinwaarde","") as ?type)
-        }
-        UNION {
-          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-           ?subject owl:sameAs ?same_domeinwaarde;
-                    rdf:type skos:Concept.
-           
-            OPTIONAL {?subject  rdfs:label ?begrip_label}
-          } 
-          BIND(IF(Bound(?begrip_label),"Begrip","") as ?type)
-        }  
+          
       }
       
     """

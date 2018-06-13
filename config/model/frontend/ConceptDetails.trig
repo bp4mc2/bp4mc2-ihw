@@ -74,7 +74,8 @@ GRAPH config:Theatre {
 	   elmo:index 10;
      elmo:appliesTo dct:subject;
      xhtml:link "begrippen-per-categorie";
-     elmo:name "categorie";
+    # elmo:name "categorie";
+     elmo:name "SUBJECT";
 	  ];
   # elmo:fragment [ 
     # elmo:index 11;
@@ -150,21 +151,21 @@ GRAPH config:Theatre {
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "begrip";
 	];
-  # elmo:fragment [
-    # elmo:index 27;
-    # elmo:appliesTo dct:created;
-    # rdfs:label "Created"@nl;
-  # ];
-  # elmo:fragment [
-    # elmo:index 28;
-    # elmo:appliesTo dct:modified;
-    # rdfs:label "Modified"@nl;
-  # ];
-  # elmo:fragment [
-    # elmo:index 29;
-    # elmo:appliesTo adms:status;
-    # rdfs:label "Status"@nl;
-  # ];
+  elmo:fragment [
+    elmo:index 27;
+    elmo:appliesTo dct:created;
+    rdfs:label "Created"@nl;
+  ];
+  elmo:fragment [
+    elmo:index 28;
+    elmo:appliesTo dct:modified;
+    rdfs:label "Modified"@nl;
+  ];
+  elmo:fragment [
+    elmo:index 29;
+    elmo:appliesTo adms:status;
+    rdfs:label "Status"@nl;
+  ];
   elmo:fragment [
     elmo:index 99;
     elmo:appliesTo skos:example;

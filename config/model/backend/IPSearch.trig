@@ -10,7 +10,7 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://data.aquo.nl/def/aquo#>
        
-      SELECT ?search_label ?begrip ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label
+      SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
       WHERE {
         {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
@@ -28,7 +28,8 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
-           FILTER regex(?search_label,concat("^",?term),"i")
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
         }
         UNION {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
@@ -46,7 +47,8 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
-           FILTER regex(?search_label,concat("^",?term),"i")
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
         }
        
         UNION {
@@ -65,9 +67,10 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
-           FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
+          FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
+          BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
         }
-       
+      
       }
       order by ?begrip_label
     """
@@ -83,17 +86,17 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
        
       SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
-       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-          ?begrip dct:subject ?categorie.
-        }
-        OPTIONAL {
-          GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?categorie_label
+        WHERE {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?begrip dct:subject ?categorie.
           }
-        }
-       FILTER regex(?categorie_label,concat("^",?term),"i")
-      }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+              ?categorie rdfs:label ?categorie_label
+            }
+          }
+         FILTER regex(?categorie_label,concat("^",?term),"i")
+        } 
       group by ?categorie ?categorie_label
       order by ?categorie_label
     """
@@ -115,6 +118,7 @@ GRAPH config:Theatre {
         }
         FILTER regex(?domeintabel_label,concat("^",?term),"i")
       }
+      order by ?domeintabel_label
     """
   .
   
@@ -128,7 +132,7 @@ GRAPH config:Theatre {
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX aquo: <http://data.aquo.nl/def/aquo#>
 
-    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?CASnummer ?Code ?ID
+    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?CASnummer ?Code ?ID ?gevonden_in
 
     WHERE {
     {
@@ -150,6 +154,7 @@ GRAPH config:Theatre {
        
       }
       FILTER regex (?label_waarde,concat("^",?term),"i")   
+      BIND( IF(regex(?label_waarde,concat("^",?term),"i"), "label","") as ?gevonden_in)
      }
      UNION
       {
@@ -171,9 +176,11 @@ GRAPH config:Theatre {
        
       }
       FILTER regex (?CASnummer,concat("^",?term),"i")   
+      BIND( IF(regex(?CASnummer,concat("^",?term),"i"), "CASnummer","") as ?gevonden_in)
      }
    
     }
+    order by ?label_waarde
     """
   .
   
