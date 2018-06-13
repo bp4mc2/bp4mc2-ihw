@@ -3,7 +3,6 @@ GRAPH config:Theatre {
  config:ConceptenCategorieLijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
-    elmo:requiredParameter config:CategorieParameter;
     #elmo:requiredParameter config:SubjectParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
