@@ -24,7 +24,7 @@ GRAPH config:Theatre {
   config:RelatieEditorAppearance a elmo:EditorAppearance;
     elmo:fragment [
       elmo:index 1;
-      elmo:appliesTo rdf:type;
+      elmo:appliesTo "@id";
       rdfs:label "domeinwaarde"@nl;
       #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
     ];
@@ -65,8 +65,8 @@ GRAPH config:Theatre {
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       
-      CONSTRUCT {?s ?p ?o;
-      owl:sameAs ?subject.
+      CONSTRUCT {?subject ?p ?o;
+      owl:sameAs ?begrip.
       }
       WHERE {
         
@@ -74,8 +74,8 @@ GRAPH config:Theatre {
                 <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
           GRAPH ?domeintabel {
-              ?s  ?p ?o; 
-                  owl:sameAs ?subject.
+              ?subject  ?p ?o; 
+                  owl:sameAs ?begrip.
               FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
           } 
           
@@ -131,35 +131,32 @@ GRAPH config:Theatre {
         elmo:query """
           PREFIX prov: <http://www.w3.org/ns/prov#>
           PREFIX dct: <http://purl.org/dc/terms/>
-          delete {
-            graph ?subject {
-              ?s ?p ?o
-            }
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          
+          delete { 
+          GRAPH ?domeintabel {
+              ?subject  ?p ?o.
           }
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+          }}
           insert {
-            graph ?versionedsubject {
-              ?versionedsubject dct:replacedBy ?subject.
-              ?sv ?p ?o.
-              ?sv prov:invalidatedAtTime ?enddate
+            graph ?domeintabel {
+              ?subject  ?p ?o.
             }
+            graph <http://data.aquo.nl/id/dataset/domeintabel> { 
+                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
-          where {
-            {
-              select ?s ?sv ?p ?o
-              where {
-                graph ?subject {
-                  ?s ?p ?o
-                  BIND (substr(str(now()),1,10) as ?date)
-                  BIND (iri(concat(str(?s),"#",?date)) as ?sv)
-                }
-              }
-            }
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
-              ?s a ?t
-            }
-            BIND (substr(str(now()),1,10) as ?enddate)
-            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
           }
+          WHERE {
+          
+          
+            GRAPH <http://data.aquo.nl/beheer/editor.tmp> {
+                ?subject  ?p ?o;
+                	        rdf:type ?domeintabel.
+            } 
+            
+          } 
         """
       ]
       [
@@ -185,6 +182,8 @@ GRAPH config:Theatre {
       ]
     )
   .
+  
+  ## Insert transaction
   
   config:RelatieInsertTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -216,6 +215,9 @@ GRAPH config:Theatre {
       ]
     )
   .
+  
+  
+  ##Delete transaction
   
   config:RelatieDeleteTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
