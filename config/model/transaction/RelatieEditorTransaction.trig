@@ -6,6 +6,8 @@ GRAPH config:Theatre {
 #
 # ==========================
 
+## Via deze link komen we bij het overzicht van alle sameAs relaties tussen begrippen en domeinwaarden
+
   config:RelatieEditorEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/relatie";
     elmo:stage config:Stage;
@@ -48,11 +50,16 @@ GRAPH config:Theatre {
     ];
   .
 
+  ## We kunnen nu doorklikken naar de edit modus waar we deze enkele relatie te zien krijgen
+  
+  
 # ==========================
 #
 # Informatieproduct in de editor
 #
 # ==========================
+
+## Deze query gaat goed, we zien netjes een tabel met de aan te passen link
 
   config:RelatieEditableData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -110,6 +117,12 @@ GRAPH config:Theatre {
     elmo:transaction config:RelatieDeleteTransaction;
   .
 
+  
+  # om de relatie te kunnen updaten was mijn idee om de oude data die betrekking hebben op de Domeinwaarde allemaal uit de graaf te verwijderen. 
+  # Daarna zou ik alle De data vanuit de editor daar willen toevoegen. Dit is immers alleen data die betrekking heeft op die specifieke domeinwaarde
+  # Het verwijderen gaat nog niet goed, Het toevoegen gaat deels goed, daar worden wel relaties toegevoegd maar niet als uri maar als literal
+  # ik zie niet veel reden om hier historie in bij te houden maar wellicht IHW wel. 
+  
   
   config:RelatieUpdateTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -185,6 +198,8 @@ GRAPH config:Theatre {
   
   ## Insert transaction
   
+  ## Hier ben ik nog niet aan toe gekomen
+  
   config:RelatieInsertTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -216,6 +231,7 @@ GRAPH config:Theatre {
     )
   .
   
+  # Hier ben ik ook nog niet aan toe gekomen
   
   ##Delete transaction
   
