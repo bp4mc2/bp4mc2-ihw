@@ -20,6 +20,10 @@ GRAPH config:Theatre {
     elmo:contains config:SearchCategorieen;
     elmo:contains config:SearchDomeinen;
     elmo:contains config:SearchDomeinWaarden;
+  # elmo:contains config:ConceptenLijst;
+  # elmo:contains config:CategorieLijst;
+  # elmo:contains config:DomeinenLijst;
+    #elmo:informationProduct config:SearchLijstData;
     elmo:informationProduct config:SearchConceptenData;
   .
   
@@ -40,6 +44,33 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:informationProduct config:SearchDomeinWaardeData;
   .
+ 
+  # config:SearchLijstAppearance a elmo:TableAppearance;
+    # elmo:fragment [
+      # elmo:index 1;
+      # elmo:appliesTo "begrip";
+      # xhtml:link "/begrip";
+      # rdfs:label "Term"@nl;
+    # ];
+    # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "categorie";
+      # xhtml:link "/begrippen-per-categorie";
+      # elmo:name "categorie";
+      # rdfs:label "Categorie"@nl;
+    # ];
+    # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "domeintabel";
+      # xhtml:link "/domeintabel";
+      # rdfs:label "Domein"@nl;
+    # ];
+     # elmo:fragment [
+      # elmo:index 4;
+      # elmo:appliesTo "search_label";
+      # elmo:appearance elmo:HiddenAppearance;
+    # ];
+  # .
   
   config:SearchConceptenAppearance a elmo:TableAppearance;
     elmo:fragment [
@@ -49,13 +80,8 @@ GRAPH config:Theatre {
       elmo:name "SUBJECT";
       rdfs:label "Term"@nl;
     ];
-   elmo:fragment [
-      elmo:index 2;
-      elmo:appliesTo "synoniem";
-      rdfs:label "Synoniem"@nl;
-    ];
     elmo:fragment [
-      elmo:index 3;
+      elmo:index 4;
       elmo:appliesTo "categorie_begrip";
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
@@ -63,25 +89,20 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [ 
       elmo:index 3;
+      elmo:appliesTo "definitie";
+      rdfs:label "Definitie"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
       elmo:appliesTo "categorie_begrip_label";
       xhtml:link "/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];  
-    elmo:fragment [ 
-      elmo:index 4;
-      elmo:appliesTo "definitie";
-      rdfs:label "Definitie"@nl;
-    ];
     elmo:fragment [
-      elmo:index 5;
+      elmo:index 4;
       elmo:appliesTo "search_label";
       #rdfs:label "Zoekterm"@nl;
       elmo:appearance elmo:HiddenAppearance;
-    ];
-      elmo:fragment [
-      elmo:index 6;
-      elmo:appliesTo "found";
-      rdfs:label "Gevonden in"@nl;
     ];
   .
   
@@ -137,10 +158,5 @@ GRAPH config:Theatre {
       xhtml:link "/domeintabel";
       rdfs:label "Domeintabel"@nl;
     ];  
-    elmo:fragment [ 
-      elmo:index 3;
-      elmo:appliesTo "gevonden_in";
-      rdfs:label "Gevonden in"@nl;
-    ]; 
   .
 }

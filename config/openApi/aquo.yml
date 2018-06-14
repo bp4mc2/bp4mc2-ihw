@@ -8,17 +8,8 @@ produces:
   - application/json
 paths:
   /search/begrippen:
-  /search/begrippen/{term}:
     get:
       x-dotwebstack-information-product: "http://dotwebstack.org/configuration/ConceptenLijstData"  
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchConceptenData"
-      parameters:
-        - name: term
-          in: path
-          description: search term 
-          required: true
-          type: string  
-          x-dotwebstack-parameter: "http://dotwebstack.org/configuration/TermParameter"          
       responses:
         200:
           description: OK
@@ -26,12 +17,6 @@ paths:
             type: array
             required:
               - begrip
-              - begrip_label
-              - synoniem
-              - definitie 
-              - categorie_begrip 
-              - categorie_begrip_label 
-              - found
             items:
               type: object
               properties:
@@ -39,63 +24,20 @@ paths:
                   type: string
                   format: string
                 categorie:
-                begrip_label:
                   type: string
                   format: string
                 begrip_label:
-                synoniem:
                   type: string
                   format: string
                 definitie:
                   type: string
                   format: string
-                categorie_begrip:
-                  type: string
-                  format: string
-                categorie_begrip_label:
-                  type: string
-                  format: string
-                found:
-                  type: string
-                  format: string       
-  /search/categorieen/{term}:
-    get:
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchCategorieenData"
-      parameters:
-        - name: term
-          in: path
-          description: search term 
-          required: true
-          type: string  
-          x-dotwebstack-parameter: "http://dotwebstack.org/configuration/TermParameter"          
-      responses:
-        200:
-          description: OK
-          schema:
-            type: array
-            required:
-              - ?categorie 
-              - ?categorie_label 
-            items:
-              type: object
-              properties:
-                categorie:
-                  type: string
-                  format: string
                 categorie_label:
                   type: string
                   format: string
-                  /search/categorieen/{term}:
-  /search/domeintabellen/{term}:
+  /search/{api}:
     get:
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchDomeinenData"
-      parameters:
-        - name: term
-          in: path
-          description: search term 
-          required: true
-          type: string  
-          x-dotwebstack-parameter: "http://dotwebstack.org/configuration/TermParameter"          
+      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchAPIData"
       responses:
         200:
           description: OK
@@ -103,66 +45,12 @@ paths:
             type: array
             required:
               - search_label
-              - ?domeintabel 
-              - ?domeintabel_label 
             items:
               type: object
               properties:
                 search_label:
-                domeintabel:
-                  type: string
-                  format: string
-                domeintabel_label:
-                  type: string
-                  format: string
-  /search/domeinwaarden/{term}:
-    get:
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchDomeinWaardeData"
-      parameters:
-        - name: term
-          in: path
-          description: search term 
-          required: true
-          type: string  
-          x-dotwebstack-parameter: "http://dotwebstack.org/configuration/TermParameter"          
-      responses:
-        200:
-          description: OK
-          schema:
-            type: array
-            required:
-              - label_waarde
-              - domeintabel_waarde
-              - domeintabel_waarde_label
-              - CASnummer 
-              - Code 
-              - ID 
-              - gevonden_in
-            items:
-              type: object
-              properties:
-                label_waarde:
-                  type: string
-                  format: string
-                domeintabel_waarde:
-                  type: string
-                  format: string
-                domeintabel_waarde_label:
-                  type: string
-                  format: string
-                CASnummer:
-                  type: string
-                  format: string
-                Code:
-                  type: string
-                  format: string
-                ID:
                   type: string
                   format: string
                 type:
-                gevonden_in:
                   type: string
                   format: string
-                
-
-                
