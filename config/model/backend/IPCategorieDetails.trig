@@ -3,6 +3,7 @@ GRAPH config:Theatre {
  config:ConceptenCategorieLijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
+    elmo:requiredParameter elmo:SubjectParameter;
     #elmo:requiredParameter config:SubjectParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -13,33 +14,32 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
           ?begrip a skos:Concept.
-          ?begrip dct:subject ?categorie.
+          ?begrip dct:subject ?subject.
           ?begrip skos:prefLabel ?begrip_label.
           OPTIONAL {?begrip skos:definition ?definitie}
         }
       }
       order by ?begrip_label
-      limit 100
     """
   .
   
   config:CategorieTitelData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
-    elmo:requiredParameter config:CategorieParameter;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
-        ?categorie rdf:type skos:Concept.
-        ?categorie rdfs:label ?clabel.
-        ?categorie rdfs:comment ?comment.
+        ?subject rdf:type skos:Concept.
+        ?subject rdfs:label ?clabel.
+        ?subject rdfs:comment ?comment.
       }
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?label.
-            OPTIONAL{?categorie rdfs:comment ?comment}
+            ?subject rdfs:label ?label.
+            OPTIONAL{?subject rdfs:comment ?comment}
           }
           BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }

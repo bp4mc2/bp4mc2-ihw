@@ -37,11 +37,4 @@ GRAPH config:Theatre {
 		]
 	. 
   
-  config:ApiParameter a elmo:TermParameter;
-    elmo:name "api"; 
-	  elmo:shape [
-	    sh:datatype xsd:string;
-      sh:defaultValue "test";
-		]
-  .
 }
