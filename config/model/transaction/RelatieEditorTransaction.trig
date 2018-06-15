@@ -9,11 +9,11 @@ GRAPH config:Theatre {
 ## Via deze link komen we bij het overzicht van alle sameAs relaties tussen begrippen en domeinwaarden
 
   config:RelatieEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/relatie";
+    elmo:pathPattern "/beheer/domeintabellink";
     elmo:stage config:Stage;
     elmo:getRepresentation config:RelatieEditor;
   .
-  
+
   config:RelatieEditor a elmo:Representation;
     elmo:stage config:Stage;
     elmo:contains config:Image;
@@ -28,31 +28,29 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo "@id";
       rdfs:label "domeinwaarde"@nl;
-      #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
     ];
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo aquo:Omschrijving;
-      rdfs:label "Label"@nl;
-      #elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
+      rdfs:label "Domeinwaarde"@nl;
     ];
     elmo:fragment [
       elmo:index 3;
-      elmo:appliesTo owl:sameAs;
-      rdfs:label "Same as"@nl;
+      elmo:appliesTo skos:prefLabel;
+      rdfs:label "Link naar begrip"@nl;
     ];
     elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
       elmo:appearance elmo:ChangeSubmitAppearance;
-      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/relatie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
       rdfs:label "Opslaan"@nl;
       rdfs:label "Save"@en;
     ];
   .
 
   ## We kunnen nu doorklikken naar de edit modus waar we deze enkele relatie te zien krijgen
-  
-  
+
+
 # ==========================
 #
 # Informatieproduct in de editor
@@ -71,23 +69,29 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://data.aquo.nl/def/aquo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
-      
-      CONSTRUCT {?subject ?p ?o;
-      owl:sameAs ?begrip.
+
+      CONSTRUCT {
+        ?waarde aquo:Omschrijving ?omschrijving.
+        ?waarde skos:prefLabel ?term.
       }
       WHERE {
-        
-          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
-                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject
           }
-          GRAPH ?domeintabel {
-              ?subject  ?p ?o; 
-                  owl:sameAs ?begrip.
-              FILTER NOT EXISTS {?domeinwaarde a skos:Concept.}
-          } 
-          
+          GRAPH ?subject {
+              ?waarde  aquo:Omschrijving ?omschrijving
+          }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/links> {
+              ?waarde owl:sameAs ?begrip
+            }
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              ?begrip skos:prefLabel ?term
+            }
+          }
+
       }
-      
+
     """
   .
 
@@ -98,15 +102,15 @@ GRAPH config:Theatre {
 # ==========================
 
   config:RelatieEditEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/relatie";
+    elmo:pathPattern "/beheer/domeintabellink";
     elmo:stage config:Stage;
     elmo:putService config:RelatieUpdateService;
     elmo:postService config:RelatieInsertService;
     elmo:deleteService config:RelatieDeleteService;
-    
+
   .
-  
-  
+
+
   config:RelatieUpdateService a elmo:Service;
     elmo:transaction config:RelatieUpdateTransaction;
   .
@@ -117,13 +121,13 @@ GRAPH config:Theatre {
     elmo:transaction config:RelatieDeleteTransaction;
   .
 
-  
-  # om de relatie te kunnen updaten was mijn idee om de oude data die betrekking hebben op de Domeinwaarde allemaal uit de graaf te verwijderen. 
+
+  # om de relatie te kunnen updaten was mijn idee om de oude data die betrekking hebben op de Domeinwaarde allemaal uit de graaf te verwijderen.
   # Daarna zou ik alle De data vanuit de editor daar willen toevoegen. Dit is immers alleen data die betrekking heeft op die specifieke domeinwaarde
   # Het verwijderen gaat nog niet goed, Het toevoegen gaat deels goed, daar worden wel relaties toegevoegd maar niet als uri maar als literal
-  # ik zie niet veel reden om hier historie in bij te houden maar wellicht IHW wel. 
-  
-  
+  # ik zie niet veel reden om hier historie in bij te houden maar wellicht IHW wel.
+
+
   config:RelatieUpdateTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -145,31 +149,31 @@ GRAPH config:Theatre {
           PREFIX prov: <http://www.w3.org/ns/prov#>
           PREFIX dct: <http://purl.org/dc/terms/>
           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          
-          delete { 
+
+          delete {
           GRAPH ?domeintabel {
               ?subject  ?p ?o.
           }
-          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> { 
+          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
                 <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }}
           insert {
             graph ?domeintabel {
               ?subject  ?p ?o.
             }
-            graph <http://data.aquo.nl/id/dataset/domeintabel> { 
+            graph <http://data.aquo.nl/id/dataset/domeintabel> {
                 <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
           }
           }
           WHERE {
-          
-          
+
+
             GRAPH <http://data.aquo.nl/beheer/editor.tmp> {
                 ?subject  ?p ?o;
                 	        rdf:type ?domeintabel.
-            } 
-            
-          } 
+            }
+
+          }
         """
       ]
       [
@@ -195,11 +199,11 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
+
   ## Insert transaction
-  
+
   ## Hier ben ik nog niet aan toe gekomen
-  
+
   config:RelatieInsertTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -218,23 +222,23 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-          
+
         """
       ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-         
+
         """
       ]
     )
   .
-  
+
   # Hier ben ik ook nog niet aan toe gekomen
-  
+
   ##Delete transaction
-  
+
   config:RelatieDeleteTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -253,10 +257,10 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-         
+
         """
       ]
     )
   .
-  
+
 }
