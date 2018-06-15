@@ -28,6 +28,7 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo "@id";
       rdfs:label "domeinwaarde"@nl;
+      elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
       elmo:index 2;
@@ -48,16 +49,11 @@ GRAPH config:Theatre {
     ];
   .
 
-  ## We kunnen nu doorklikken naar de edit modus waar we deze enkele relatie te zien krijgen
-
-
 # ==========================
 #
 # Informatieproduct in de editor
 #
 # ==========================
-
-## Deze query gaat goed, we zien netjes een tabel met de aan te passen link
 
   config:RelatieEditableData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -105,159 +101,89 @@ GRAPH config:Theatre {
     elmo:pathPattern "/beheer/domeintabellink";
     elmo:stage config:Stage;
     elmo:putService config:RelatieUpdateService;
-    elmo:postService config:RelatieInsertService;
-    elmo:deleteService config:RelatieDeleteService;
-
   .
-
 
   config:RelatieUpdateService a elmo:Service;
     elmo:transaction config:RelatieUpdateTransaction;
   .
-  config:RelatieInsertService a elmo:Service;
-    elmo:transaction config:RelatieInsertTransaction;
-  .
-  config:RelatieDeleteService a elmo:Service;
-    elmo:transaction config:RelatieDeleteTransaction;
-  .
-
-
-  # om de relatie te kunnen updaten was mijn idee om de oude data die betrekking hebben op de Domeinwaarde allemaal uit de graaf te verwijderen.
-  # Daarna zou ik alle De data vanuit de editor daar willen toevoegen. Dit is immers alleen data die betrekking heeft op die specifieke domeinwaarde
-  # Het verwijderen gaat nog niet goed, Het toevoegen gaat deels goed, daar worden wel relaties toegevoegd maar niet als uri maar als literal
-  # ik zie niet veel reden om hier historie in bij te houden maar wellicht IHW wel.
-
 
   config:RelatieUpdateTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
+    [
+      a elmo:AssertionStep;
+      rdfs:label "Het begrip waarna u wil linken bestaat niet.";
+      elmo:assert """
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX config: <http://dotwebstack.org/configuration/>
+        ASK {
+          {
+            ?waarde skos:prefLabel ?termbegrip.
+            FILTER (strlen(?termbegrip) = 0)
+          }
+          UNION
+          {
+            ?waarde skos:prefLabel ?termbegrip
+            SERVICE config:LocalBackend {
+              GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+                ?begrip skos:prefLabel ?termbegrip
+              }
+            }
+          }
+        }
+      """
+    ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://data.aquo.nl/beheer/linkeditor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://data.aquo.nl/beheer/linkeditor.tmp>
       ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-          PREFIX prov: <http://www.w3.org/ns/prov#>
-          PREFIX dct: <http://purl.org/dc/terms/>
-          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
+          PREFIX owl:<http://www.w3.org/2002/07/owl#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
           delete {
-          GRAPH ?domeintabel {
-              ?subject  ?p ?o.
-          }
-          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
-          }}
-          insert {
-            graph ?domeintabel {
-              ?subject  ?p ?o.
-            }
-            graph <http://data.aquo.nl/id/dataset/domeintabel> {
-                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel
-          }
-          }
-          WHERE {
-
-
-            GRAPH <http://data.aquo.nl/beheer/editor.tmp> {
-                ?subject  ?p ?o;
-                	        rdf:type ?domeintabel.
-            }
-
-          }
-        """
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          prefix prov: <http://www.w3.org/ns/prov#>
-          prefix xs: <http://www.w3.org/2001/XMLSchema#>
-          insert {
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?s ?p ?o.
-              ?s prov:generatedAtTime ?begindate
+            GRAPH <http://data.aquo.nl/id/dataset/links> {
+              ?waarde owl:sameAs ?oudbegrip
             }
           }
           where {
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
-              ?s ?p ?o
-              FILTER (?p != prov:generatedAtTime)
+            GRAPH <http://data.aquo.nl/id/dataset/links> {
+              ?waarde owl:sameAs ?oudbegrip.
             }
-            BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
+            GRAPH <http://data.aquo.nl/beheer/linkeditor.tmp> {
+              ?waarde skos:prefLabel ?termnieuwbegrip.
+            }
           }
         """
       ]
-    )
-  .
-
-  ## Insert transaction
-
-  ## Hier ben ik nog niet aan toe gekomen
-
-  config:RelatieInsertTransaction a elmo:Transaction;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
-      ]
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
-      ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-
-        """
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-
-        """
-      ]
-    )
-  .
-
-  # Hier ben ik ook nog niet aan toe gekomen
-
-  ##Delete transaction
-
-  config:RelatieDeleteTransaction a elmo:Transaction;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
-      ]
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-
+        PREFIX owl:<http://www.w3.org/2002/07/owl#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        insert {
+          GRAPH <http://data.aquo.nl/id/dataset/links> {
+            ?waarde owl:sameAs ?nieuwbegrip
+          }
+        }
+        where {
+          GRAPH <http://data.aquo.nl/beheer/linkeditor.tmp> {
+            ?waarde skos:prefLabel ?termnieuwbegrip.
+          }
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?nieuwbegrip skos:prefLabel ?termnieuwbegrip
+          }
+        }
         """
       ]
     )
