@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableNames>
+         <ns:request>
+            <ns1:CheckDate>2018-06-04</ns1:CheckDate>
+         </ns:request>
+      </ns:GetDomainTableNames>
+   </soapenv:Body>
+</soapenv:Envelope>

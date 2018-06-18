@@ -29,7 +29,7 @@ Voer de volgende stappen uit:
 4. Wijzig het bestand `/target/config/application.yml`, zodat deze er uit komt te zien zoals hieronder is afgebeeld. De wijziging betreft regel 15: (verander: `./config` in `../config`).
 5. Start de applicatie met `start`.
 
-Application.yml:
+Application.yml (ook [hier](resources/application.yml) te vinden):
 
 	01 spring:
 	02   main:
@@ -45,7 +45,8 @@ Application.yml:
 	12 
 	13 dotwebstack:
 	14   config:
-	15     resourcePath: file:../config
-	16     host: localhost
-	17     linkstrategy: global
-	18     systemGraph: http://dotwebstack.org/configuration/Theatre
+    15     aquoroot:
+	16     resourcePath: file:../config
+	17     host: localhost
+	18     linkstrategy: global
+	19     systemGraph: http://dotwebstack.org/configuration/Theatre

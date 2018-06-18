@@ -1,0 +1,179 @@
+GRAPH config:Theatre { 
+
+  config:ConceptenDetailsEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/begrip";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ConceptenDetails
+  .
+
+  config:ConceptenDetails a elmo:Representation; 
+  elmo:stage config:Stage;
+  elmo:contains config:Image;
+	elmo:contains config:Menu;
+  elmo:contains config:Footer;
+	elmo:contains config:GraphDisplay;
+  #elmo:contains config:ImageDisplay;
+	elmo:appearance config:ConceptDetailAppearance;
+	elmo:informationProduct config:ConceptDetailData;
+  . 
+   
+  config:ConceptDetailAppearance a elmo:Appearance;
+	elmo:index 2;
+	elmo:fragment [ 
+	  elmo:appliesTo rdf:type; 
+    elmo:appearance elmo:HiddenAppearance; 
+	  rdfs:label "Term"@nl; 
+	]; 
+  elmo:fragment [ 
+	  elmo:appliesTo rdfs:label;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Label"@nl;
+	]; 
+  	elmo:fragment [  
+	  elmo:index 01; 
+	  elmo:appliesTo skos:definition; 
+	  rdfs:label "Definitie"@nl; 
+	]; 
+	elmo:fragment [ 
+	  elmo:index 02; 
+	  elmo:appliesTo skos:prefLabel; 
+	  rdfs:label "Naam"@nl; 
+	]; 
+  elmo:fragment [ 
+	  elmo:index 03; 
+	  elmo:appliesTo skos:altLabel; 
+	  elmo:appearance elmo:HiddenAppearance;
+	]; 
+	elmo:fragment [
+	  elmo:index 04;
+	  elmo:appliesTo aquo:dutchLabel;
+	  rdfs:label "Synoniem"@nl;
+	];
+
+	elmo:fragment [
+	  elmo:index 06;
+	  elmo:appliesTo skos:note;
+	  rdfs:label "Toelichting"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 07;
+	  elmo:appliesTo rdfs:comment;
+	  rdfs:label "Uitleg"@nl;
+	];
+	elmo:fragment [ 
+	  elmo:index 08;
+	  elmo:appliesTo dc:source;
+	  rdfs:label "Bron"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 9;
+	  elmo:appliesTo aquo:abbreviation;
+	  rdfs:label "Afkorting"@nl;
+	];
+	elmo:fragment [
+	   elmo:index 10;
+     elmo:appliesTo dct:subject;
+     xhtml:link "begrippen-per-categorie";
+    # elmo:name "categorie";
+     elmo:name "SUBJECT";
+	  ];
+  # elmo:fragment [ 
+    # elmo:index 11;
+    # elmo:appliesTo "categorie";
+    # xhtml:link "begrippen-per-categorie";
+    # elmo:name "categorie";
+  # ];
+  
+	elmo:fragment [
+	  elmo:index 12;
+	  elmo:appliesTo skos:notation;
+	  rdfs:label "Code"@nl;
+	];
+  elmo:fragment [
+	  elmo:index 13;;
+	  elmo:appliesTo owl:sameAs;
+    xhtml:link "domeinwaarden";
+	  rdfs:label "Domeinwaarde"@nl;
+	];
+  elmo:fragment [
+	  elmo:index 14;
+    elmo:appliesTo rdfs:label;
+    xhtml:link "domeintabel";
+	  rdfs:label "Domeintabel"@nl;
+	];
+    elmo:fragment [ 
+	  elmo:index 20; 
+	  elmo:appliesTo skos:broader; 
+	  rdfs:label "Bredere term"@nl; 
+    xhtml:link "begrip"; 
+    elmo:name "begrip"; 
+	]; 
+	elmo:fragment [ 
+	  elmo:index 21; 
+	  elmo:appliesTo skos:narrower; 
+	  rdfs:label "Nauwere term"@nl; 
+    xhtml:link "begrip"; 
+    elmo:name "begrip"; 
+  ]; 
+	elmo:fragment [ 
+	  elmo:index 22; 
+	  elmo:appliesTo skos:related; 
+	  rdfs:label "Gerelateerde term"@nl; 
+    xhtml:link "begrip";
+	];
+    elmo:fragment [
+     elmo:index 23;
+	  elmo:appliesTo thes:broaderPartitive;
+	  rdfs:label "Onderdeel van"@nl;
+	  xhtml:link "begrip";
+	];
+	elmo:fragment [
+	  elmo:index 24;
+	  elmo:appliesTo thes:narrowerPartitive;
+	  rdfs:label "Heeft onderdeel"@nl;
+	  xhtml:link "begrip";
+	];
+	elmo:fragment [
+	  elmo:index 25;
+	  elmo:appliesTo skos:relatedMatch;
+	  rdfs:label "Gerelateerde term in ander schema"@nl;
+	  xhtml:link "";
+	];
+	elmo:fragment [
+		elmo:index 25;
+		elmo:appliesTo dct:isReplacedBy;
+		rdfs:label "Gebruik"@nl;
+		xhtml:link "begrip";
+	];
+	elmo:fragment [
+		elmo:index 26;
+		elmo:appliesTo dct:replaces;
+		rdfs:label "Gebruik in plaats van"@nl;
+		xhtml:link "begrip";
+	];
+  elmo:fragment [
+    elmo:index 27;
+    elmo:appliesTo dct:created;
+    rdfs:label "Created"@nl;
+  ];
+  elmo:fragment [
+    elmo:index 28;
+    elmo:appliesTo dct:modified;
+    rdfs:label "Modified"@nl;
+  ];
+  elmo:fragment [
+    elmo:index 29;
+    elmo:appliesTo adms:status;
+    rdfs:label "Status"@nl;
+  ];
+  elmo:fragment [
+    elmo:index 99;
+    elmo:appliesTo skos:example;
+    rdfs:label "Voorbeeld afbeelding"@nl;
+    elmo:appearance elmo:ImageAppearance;
+  ];
+
+  . 
+	 
+} 
+

@@ -1,0 +1,112 @@
+GRAPH config:Theatre {
+
+  config:MenuData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      CONSTRUCT {
+        [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
+          xhtml:search "search";
+          elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
+            elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/"]
+          ];
+          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen";
+            elmo1:data [elmo1:index "1"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/"];
+          ];
+		  elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodellen";
+		    elmo1:data [elmo1:index "1"; rdfs:label "Standaardisatie"; xhtml:link "%{dotwebstack.config.aquoroot}/standaardisatie"];
+			elmo1:data [elmo1:index "2"; rdfs:label "Informatiemodel Water"; xhtml:link "%{dotwebstack.config.aquoroot}/InformatiemodelWater"];
+			elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodel Metingen"; xhtml:link "%{dotwebstack.config.aquoroot}/InformatiemodelMetingen"];
+		  ];
+		  elmo1:data [elmo1:index "4"; rdfs:label "Uitwisseling";
+		    elmo1:data [elmo1:index "1"; rdfs:label "IM Metingen CSV"; xhtml:link "%{dotwebstack.config.aquoroot}/IMMetingenCSV"];
+			elmo1:data [elmo1:index "2"; rdfs:label "IM Metingen XML"; xhtml:link "%{dotwebstack.config.aquoroot}/IMMetingenXML"];
+			elmo1:data [elmo1:index "3"; rdfs:label "IMWA Watersysteem XML"; xhtml:link "%{dotwebstack.config.aquoroot}/IMWAWatersysteemXML"];
+			elmo1:data [elmo1:index "4"; rdfs:label "IMWA Waterveiligheid"; xhtml:link "%{dotwebstack.config.aquoroot}/IMWAWaterveiligheid"];
+		  ];
+		  elmo1:data [elmo1:index "5"; rdfs:label "Wijzigingproces";
+			elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "%{dotwebstack.config.aquoroot}/Wijziginsproces"];
+		  ];	  
+        .
+      }
+      WHERE {}
+    """;
+  .
+  
+  config:FooterData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        [] elmo1:html '''<div class="row">
+          <div class="col-sm-4">
+            <h4>Links</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+              </li>
+              <li>
+                <a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h4>configuration</h4>
+            <p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
+          </div>
+          <div class="col-sm-4">
+            <h4>License</h4>
+            <p>GPL 3.0 / CC-BY-SA</p>
+          </div>
+        </div>'''
+      }
+      WHERE {}
+    """;
+  .
+  
+  config:ImageHeader a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+      
+      [] elmo1:html '''
+            <div class="text-left">
+            <h5> <a href="https://www.aquo.nl">
+            <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
+               </img> 
+               </a>
+            </h5>
+            </div>
+              '''
+      }
+      WHERE {}
+    """
+  .
+  
+  #[xhtml:link "%{dotwebstack.config.aquoroot}/begrippen?format=xml"] rdfs:label "XML export";
+  
+  config:ExportIndexData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      CONSTRUCT {
+      [xhtml:link ""]
+       rdfs:label "xml|csv";
+       rdf:value "xml|csv";
+       elmo1:name "format"
+      }
+     WHERE {}
+    """
+  .
+ 
+  
+}

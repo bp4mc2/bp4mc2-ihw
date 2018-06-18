@@ -1,0 +1,188 @@
+GRAPH config:Theatre {
+  
+  config:SearchConceptenData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+       
+      SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
+      WHERE {
+        {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniem}                 
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
+        }
+        UNION {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniem}           
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
+        }
+       
+        UNION {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniem}           
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
+          FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
+          BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
+        }
+      
+      }
+      order by ?begrip_label
+    """
+  .
+    
+  config:SearchCategorieenData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+       
+      SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
+        WHERE {
+          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            ?begrip dct:subject ?categorie.
+          }
+          OPTIONAL {
+            GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+              ?categorie rdfs:label ?categorie_label
+            }
+          }
+         FILTER regex(?categorie_label,concat("^",?term),"i")
+        } 
+      group by ?categorie ?categorie_label
+      order by ?categorie_label
+    """
+  .
+  
+  config:SearchDomeinenData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      
+      SELECT ?domeintabel ?domeintabel_label
+      WHERE {
+        GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+          <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+          ?domeintabel rdfs:label ?domeintabel_label
+        }
+        FILTER regex(?domeintabel_label,concat("^",?term),"i")
+      }
+      order by ?domeintabel_label
+    """
+  .
+  
+  config:SearchDomeinWaardeData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:requiredParameter config:TermParameter;
+    elmo:query """
+    PREFIX dct: <http://purl.org/dc/terms/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+
+    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?CASnummer ?Code ?ID ?gevonden_in
+
+    WHERE {
+    {
+      GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+          ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
+      }
+      OPTIONAL{
+        GRAPH ?domeintabel_waarde {
+           ?id aquo:Omschrijving ?label_waarde.
+        }
+        
+      }
+      OPTIONAL{
+        GRAPH ?domeintabel_waarde {
+           ?id aquo:CASnummer ?CASnummer;
+               aquo:Code ?Code;
+               dct:identifier ?ID.
+        }
+       
+      }
+      FILTER regex (?label_waarde,concat("^",?term),"i")   
+      BIND( IF(regex(?label_waarde,concat("^",?term),"i"), "label","") as ?gevonden_in)
+     }
+     UNION
+      {
+      GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
+          ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
+      }
+      OPTIONAL{
+        GRAPH ?domeintabel_waarde {
+           ?id aquo:Omschrijving ?label_waarde.
+        }
+        
+      }
+      OPTIONAL{
+        GRAPH ?domeintabel_waarde {
+           ?id aquo:CASnummer ?CASnummer;
+               aquo:Code ?Code;
+               dct:identifier ?ID.
+        }
+       
+      }
+      FILTER regex (?CASnummer,concat("^",?term),"i")   
+      BIND( IF(regex(?CASnummer,concat("^",?term),"i"), "CASnummer","") as ?gevonden_in)
+     }
+   
+    }
+    order by ?label_waarde
+    """
+  .
+  
+  
+}

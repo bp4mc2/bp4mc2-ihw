@@ -1,0 +1,40 @@
+GRAPH config:Theatre {
+  
+  config:DomeintabelParameter a elmo:TermParameter;
+    elmo:name "domeintabel";
+		elmo:shape [
+			sh:nodeKind sh:IRI
+		]
+  .
+  
+  config:TermParameter a elmo:TermParameter;
+    elmo:name "term"; 
+	  elmo:shape [
+	    sh:datatype xsd:string;
+      sh:defaultValue "[0-9]";
+		]
+  .
+  
+  config:FormatParameter a elmo:TermParameter;
+    elmo:name "format"; 
+	  elmo:shape [
+	    sh:datatype xsd:string;
+      sh:defaultValue "xml";
+		]
+  .
+  
+  config:ConceptTabelParameter a elmo:TermParameter; 
+    elmo:name "subject"; 
+	  elmo:shape [ 
+	    sh:nodeKind sh:IRI 
+		] 
+	. 
+  
+  config:CategorieParameter a elmo:TermParameter;
+    elmo:name "categorie"; 
+	  elmo:shape [
+	    sh:nodeKind sh:IRI;
+		]
+	. 
+  
+}

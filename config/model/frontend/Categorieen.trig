@@ -1,0 +1,31 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Categorieen Pagina
+#
+# ==========================    
+  config:CategorieLijstEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/categorieen";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:CategorieLijst
+  .
+  config:CategorieLijst a elmo:Representation;
+    #elmo:pathPattern "/categorieen";
+    elmo:appearance config:CategorieLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:CategorieLijstData;
+  .
+  
+  config:CategorieLijstAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo "categorie";
+      xhtml:link "/begrippen-per-categorie";
+      elmo:name "categorie";
+    ];
+  .
+
+}

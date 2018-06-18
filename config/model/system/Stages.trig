@@ -14,20 +14,19 @@ GRAPH config:Theatre {
 
 # ==========================
 #
-# BACKENDS
+# STAGES
 #
 # ==========================
 
-  # Virtuoso backend, not used at this moment
-  config:VirtuosoBackend a elmo:SparqlBackend;
-    elmo:endpoint "http://localhost:8890/sparql"^^xsd:anyURI
+  config:Stage a elmo:Stage;
+    elmo:site config:Site;
+    elmo:basePath "%{dotwebstack.config.aquoroot}";
+    elmo:layout config:StageLayout;
+    dc:title "IHW Catalogus";
   .
-  # Fuseki backend, defaults as LocalBackend
-  config:LocalBackend a elmo:SparqlBackend;
-    elmo:endpoint "http://localhost:3030/ihw/query"^^xsd:anyURI
+  
+  config:StageLayout a elmo:Layout;
+    xhtml:stylesheet "aquo-theme.min.css";
   .
-  config:UpdateBackend a elmo:SparqlBackend;
-    elmo:endpoint "http://localhost:3030/ihw/update"^^xsd:anyURI
-  .
-
+  
 }

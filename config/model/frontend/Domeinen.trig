@@ -1,0 +1,45 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# DOMEINEN
+#
+# ==========================
+
+  config:DomeinenLijstEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabellen";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinenLijst
+  .
+  config:DomeinenLijst a elmo:Representation;
+    elmo:appearance config:DomeinenLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:informationProduct config:DomeinenLijstData;
+  .
+  config:DomeinenLijstAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo "domeintabel";
+      xhtml:link "domeintabel";
+    ];
+    elmo:fragment [
+      elmo:appliesTo "edit";
+      xhtml:link "beheer/domeintabel";
+      rdf:value "edit"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "link";
+      xhtml:link "beheer/domeintabellink";
+      rdf:value "link"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "staging";
+      xhtml:link "beheer/domeintabel/staging";
+      rdf:value "op stapel"
+    ];
+  .
+
+}

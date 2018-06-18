@@ -1,0 +1,39 @@
+GRAPH config:Theatre {
+
+  config:InfoLocEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/info-loc";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:InfoPaginaLoc
+  .
+
+  config:InfoPaginaLoc a elmo:Representation; 
+    elmo:appearance config:InfoLocAppearance;
+    elmo:stage config:Stage; 
+    elmo:contains config:Image;
+    elmo:contains config:Menu; 
+    elmo:contains config:Footer; 
+    elmo:informationProduct config:InfoPaginaLocData;
+   . 
+   
+   config:InfoLocAppearance a elmo:HtmlAppearance;
+   .
+   
+    config:InfoDsEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/info-ds";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:InfoPaginaDs;
+  .
+   
+   config:InfoPaginaDs a elmo:Representation; 
+    elmo:appearance config:InfoDsAppearance; 
+    elmo:stage config:Stage; 
+    elmo:contains config:Image;
+    elmo:contains config:Menu; 
+    elmo:contains config:Footer; 
+    elmo:informationProduct config:InfoPaginaDsData; 
+   . 
+      
+   config:InfoDsAppearance a elmo:HtmlAppearance;
+   .
+
+}

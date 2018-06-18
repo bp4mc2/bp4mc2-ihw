@@ -1,0 +1,42 @@
+GRAPH config:Theatre { 
+
+  # config:GraphDisplayEndpoint a elmo:Representation;
+    # elmo:pathPattern "/resource"; # Hack
+    # elmo:stage config:Stage;
+    # elmo:informationProduct config:ConceptenDetailGraph;
+  # .
+  
+  config:GraphDisplayEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/resource";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:GraphDisplay
+  .
+
+  config:GraphDisplay a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:ConceptenGraphAppearance;
+    elmo:informationProduct config:ConceptenDetailGraph;
+  .
+  
+  config:ConceptenGraphAppearance a elmo:GraphAppearance;
+    elmo:fragment [
+      elmo:appliesTo "begrip";
+      xhtml:stylesheet """
+      fill: blue;
+      fill-opacity: .3;
+      stroke #666;
+      """;
+      elmo:index 1;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "domeintabel";
+      xhtml:stylesheet """
+      fill: yellow;
+      fill-opacity: .3;
+      stroke #666;
+      """;
+      elmo:index 2;
+    ];
+  .
+ 
+}

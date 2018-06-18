@@ -1,0 +1,30 @@
+spring:
+  main:
+    banner-mode: "off"
+  jersey:
+    type: filter
+  resources:
+    static-locations: file:./config/static/,classpath:/static/
+
+logging.level:
+  org.dotwebstack.framework: INFO
+  org.dotwebstack.ldtlegacy: DEBUG
+
+dotwebstack:
+  config:
+    aquoroot:
+    resourcePath: file:../config
+    host: localhost
+    linkstrategy: global
+    systemGraph: http://dotwebstack.org/configuration/Theatre
+
+security:
+  authentication: form
+  loginPage: /login
+  users:
+    - user: beheerder
+      password: $2a$11$Z0uBLK6ocuMoqVYFUimZre./Y4iBq5v8IrhOVpR.oVJzJK6V7.lVu
+      role: admin
+  protect:
+    - path: /beheer/domeintabel
+      role: admin

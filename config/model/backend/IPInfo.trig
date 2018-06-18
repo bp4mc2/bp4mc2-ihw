@@ -1,0 +1,57 @@
+GRAPH config:Theatre {
+   config:InfoPaginaLocData a elmo:InformationProduct; 
+     elmo:backend config:LocalBackend; 
+     elmo:query """ 
+       PREFIX elmo1: <http://bp4mc2.org/elmo/def#> 
+       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+       CONSTRUCT { 
+         [] rdfs:label "Aquo LOC"; 
+           elmo1:html ''' 
+             <h1>Aquo LOC</h1>
+              <p>Aquo LOC is een tool waarmee u toegang hebt tot ruim 7000 termen en definities uit het Aquo-lex en de Aquo-objecten. Aquo-lex is het woordenboek voor de watersector dat eenduidige    definities geeft, toelichtingen en bronnen. De Aquo-objecten zijn bouwstenen van een uitwissel- of datamodel. Omdat Aquo LOC ook relaties tussen termen en objecten weergeeft, kunt u de termen in hun context plaatsen.</p>
+            <h2>Gemakkelijk zoeken </h2>
+              <p>U kunt gemakkelijk zoeken op verschillende termen. Zo wordt er niet alleen
+              naar de exacte term gezocht, maar ook gekeken of de zoekterm deel van het
+              resultaat is. Zoek je bijvoorbeeld op ‘brug’, dan krijg je ook resultaten terug
+              als ‘hefbrug’ en ‘draaibrug’. Bovendien worden eventuele synoniemen voorgesteld.
+              Bezoek voor meer informatie over de Aquo LOC onze <a title="Aquo-website" target="_blank" href="http://www.aquo.nl/tools/aquo-oc/">Aquo-website.</a>
+              </p>
+           ''' 
+         . 
+       } 
+       WHERE {} 
+     """ 
+   . 
+
+  config:InfoPaginaDsData a elmo:InformationProduct; 
+     elmo:backend config:LocalBackend; 
+     elmo:query """ 
+       PREFIX elmo1: <http://bp4mc2.org/elmo/def#> 
+       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+       CONSTRUCT { 
+         [] rdfs:label "Aquo DS"; 
+           elmo1:html ''' 
+            <h1>Aquo DS</h1>
+              <p>Met Aquo-domeintabellenservice (Aquo DS) ontsluiten we de ruim 500 domeintabellen die het IHW beheert.</p>          
+           <h2>Domeintabellen </h2>
+               <p>Domeintabellen zijn vooraf gedefinieerde lijsten met mogelijke waarden die
+                gebruikt kunnen worden in informatiesystemen en uitwisselbestanden. Door gebruik
+                te maken van de waarden uit deze domeintabellen hanteert u de afgesproken
+                schrijfwijze voor het gegevenselement en kunnen gegevens uit verschillende
+                databases eenvoudig gecombineerd worden.</p>
+           <h2>Met achtergrondinformatie </h2>
+                <p>In Aquo DS is achtergrondinformatie over de domeintabellen vastgelegd, zoals
+                bijvoorbeeld wat de definitie van een domeintabel is en hoe deze is opgebouwd.
+                Daarnaast ziet u welke domeinwaarden in de betreffende domeintabel zijn
+                opgenomen.</p>
+           <h2>En een webservice </h2>
+                <p>Met de Aquo DS-webservice kunt u uw eigen domeintabellen en de bijbehorende
+                domeinwaarden automatisch laten synchroniseren met de Aquo-domeintabellen. Zo
+                weet u zeker dat u de juiste waarden gebruikt.</p>
+           ''' 
+         . 
+       } 
+       WHERE {} 
+     """ 
+   . 
+}

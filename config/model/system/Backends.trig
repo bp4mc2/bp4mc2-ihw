@@ -14,19 +14,22 @@ GRAPH config:Theatre {
 
 # ==========================
 #
-# STAGES
+# BACKENDS
 #
 # ==========================
 
-  config:Stage a elmo:Stage;
-    elmo:site config:Site;
-    elmo:basePath "";
-    elmo:layout config:StageLayout;
-    dc:title "IHW Catalogus";
+  # Virtuoso backend, not used at this moment
+  config:VirtuosoBackend a elmo:SparqlBackend;
+    elmo:endpoint "http://localhost:8890/sparql"^^xsd:anyURI
   .
-  
-  config:StageLayout a elmo:Layout;
-    xhtml:stylesheet "stage-layout.css";
+  # Fuseki backend, defaults as LocalBackend
+  config:LocalBackend a elmo:SparqlBackend;
+    elmo:endpoint "http://localhost:3030/ihw/query"^^xsd:anyURI
   .
-  
+  config:UpdateBackend a elmo:SparqlBackend;
+    elmo:endpoint "http://localhost:3030/ihw/update"^^xsd:anyURI
+  .
+  config:GwswBackend a elmo:SparqlBackend;
+    elmo:endpoint "http://sparql.gwsw.nl/repositories/GWSW_Totaal"^^xsd:anyURI
+  .
 }

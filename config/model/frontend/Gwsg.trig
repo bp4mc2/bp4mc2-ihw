@@ -1,0 +1,45 @@
+GRAPH config:Theatre { 
+
+  config:ConceptenDetailsexternalEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/begrip-extern";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ConceptenDetailsExternal
+  .
+
+  config:ConceptenDetailsExternal a elmo:Representation; 
+  elmo:stage config:Stage;
+  elmo:contains config:Image;
+	elmo:contains config:Menu;
+  elmo:contains config:Footer;
+	elmo:appearance config:ConceptDetailExternalAppearance;
+	elmo:informationProduct config:ConceptDetailDataExternal;
+  . 
+   
+  config:ConceptDetailExternalAppearance a elmo:Appearance;
+ 
+	elmo:fragment [ 
+    elmo:index 1;
+	  elmo:appliesTo rdfs:label; 
+    elmo:appearance elmo:HiddenAppearance; 
+	  rdfs:label "Begrip"@nl; 
+	]; 
+	
+	elmo:fragment [ 
+    elmo:index 2;
+	  elmo:appliesTo rdf:type; 
+    elmo:appearance elmo:HiddenAppearance; 
+	  rdfs:label "Begrip"@nl; 
+	]; 	
+	# elmo:fragment [ 
+    # elmo:index 3;
+	  # elmo:appliesTo skos:definition; 
+	  # rdfs:label "Definitie"@nl; 
+	# ]; 
+  # elmo:fragment [ 
+    # elmo:index 3;
+	  # elmo:appliesTo rdfs:subClassOf;
+	  # rdfs:label "Subklasse"@nl; 
+	# ]; 
+  . 
+  
+} 

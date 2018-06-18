@@ -1,0 +1,51 @@
+GRAPH config:Theatre {
+
+  config:Image a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:HeaderAppearance;
+    elmo:informationProduct config:ImageHeader;
+  .
+  config:HeaderAppearance a elmo:HeaderAppearance;
+  .
+
+# ==========================
+#
+# Menu
+#
+# ==========================
+  
+  config:Menu a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:MenuAppearance;
+    elmo:informationProduct config:MenuData;
+  .
+  
+  config:MenuAppearance a elmo:NavbarSearchAppearance;
+  .
+
+# ==========================
+#
+# Footer
+#
+# ==========================
+
+  config:Footer a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:FooterData;
+    elmo:appearance config:FooterAppearance;
+  .
+  config:FooterAppearance a elmo:FooterAppearance;
+  .
+
+ # Index appearance tbv ecporteren van data naar XML, dit is nog uit te breiden naar CSV. Tevens werkt de inclusie van parameters nog niet.
+  config:ExportIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:ExportIndexData; 
+    elmo:appearance config:ExportIndexAppearance;
+  . 
+   
+  config:ExportIndexAppearance a elmo:IndexAppearance;
+    elmo:index 2;
+  . 
+ 
+}

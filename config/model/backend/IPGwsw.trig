@@ -1,0 +1,16 @@
+GRAPH config:Theatre { 
+  
+  config:ConceptDetailDataExternal a elmo:InformationProduct; 
+    elmo:optionalParameter elmo:SubjectParameter;
+   # elmo:resultType elmo-rt:Tuple;
+    #elmo:requiredParameter elmo:ConceptTabelExternParameter;
+    elmo:backend config:GwswBackend; 
+    elmo:query """ 
+      CONSTRUCT {?subject ?p ?o }
+      WHERE {
+      ?subject ?p ?o
+        }
+    """ 
+  . 
+  
+}

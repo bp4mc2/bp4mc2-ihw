@@ -1,0 +1,64 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Concepten Pagina
+#
+# ==========================    
+
+  config:ConceptenLijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/begrippen";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:ConceptenLijst
+  .
+  config:ConceptenLijst a elmo:Representation;
+    elmo:appearance config:ConceptenLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+	  elmo:contains config:ConceptenIndex;
+    elmo:contains config:ExportIndex;
+    elmo:informationProduct config:ConceptenLijstData;
+  .
+ 
+  config:ConceptenLijstAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo "begrip";
+      xhtml:link "begrip";
+      elmo:name "SUBJECT";
+      rdfs:label "Term"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "categorie";
+      xhtml:link "/begrippen-per-categorie";
+      elmo:name "categorie";
+      rdfs:label "Categorie"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo "definitie";
+      rdfs:label "Definitie"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo "categorie_label";
+      xhtml:link "/begrippen-per-categorie";
+      rdfs:label "CategorieNaam"@nl;
+    ];  
+  .
+  
+  config:ConceptenIndex a elmo:Representation; 
+    elmo:stage config:Stage; 
+    elmo:informationProduct config:ConceptenIndexData; 
+    elmo:appearance config:ConceptenIndexAppearance;
+   . 
+   
+  config:ConceptenIndexAppearance a elmo:IndexAppearance;
+    elmo:index 2;
+  . 
+
+ 
+}

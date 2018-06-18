@@ -1,0 +1,57 @@
+GRAPH config:Theatre {
+ 
+ config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/begrippen-per-categorie";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:ConceptenCategorieLijst
+  .
+  
+  config:ConceptenCategorieLijst a elmo:Representation;
+    elmo:contains config:CategorieTitel;
+    elmo:appearance config:CategorieConceptenLijstAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ConceptenCategorieLijstData;
+  .
+  
+  config:CategorieTitel a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:CategorieTitelAppearance;
+    elmo:informationProduct config:CategorieTitelData;
+  .
+
+  config:CategorieTitelAppearance a elmo:ContentAppearance;
+    elmo:index 1;
+    elmo:fragment [
+      elmo:appliesTo rdfs:label;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo rdfs:comment;
+      rdfs:label "Omschrijving"@nl;
+    ];
+   .
+   
+  config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
+    elmo:index 2;
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "begrip";
+      xhtml:link "begrip";
+#      elmo:name "begrip";
+      rdfs:label "Term"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo "definitie";
+      rdfs:label "Definitie"@nl;
+    ];
+  .
+ 
+}

@@ -1,0 +1,45 @@
+GRAPH config:Theatre {
+
+  config:DomeinBegrippenEditEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/relatie";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinWaardeBegripLijst;
+  .
+  config:DomeinWaardeBegripLijst a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:appearance config:DomeinWaardeBegripAppearance;
+    elmo:informationProduct config:DomeinWaardeBegripData;
+  .
+ 
+  config:DomeinWaardeBegripAppearance a elmo:TableAppearance;
+   elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo "domeinwaarde";
+      xhtml:link "/domeinwaarden";
+      rdfs:label "Domeinwaarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 2;
+      elmo:appliesTo "domeintabel";
+      xhtml:link "/domeintabel";
+      rdfs:label "Domeintabel"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo "begrip";
+      elmo:name "begrip_label";
+      xhtml:link "/begrip";
+      rdfs:label "Begrip"@nl;
+    ];  
+      elmo:fragment [ 
+      elmo:index 5;
+      elmo:appliesTo "edit";
+      xhtml:link "/beheer/relatie";
+      rdf:value "edit"@nl;
+    ];  
+  .
+    
+ }
