@@ -125,6 +125,25 @@ GRAPH config:Theatre {
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
       [
+	  a elmo:AssertionStep;
+	  rdfs:label "Deze code is al in gebruik";
+	  elmo:assertNot """
+	    PREFIX dct:  <http://purl.org/dc/terms/>
+	    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+	    PREFIX config: <http://dotwebstack.org/configuration/>
+		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+		  ASK {
+		    { ?id aquo:Code ?code.
+			}
+		    FILTER EXISTS {SERVICE config:LocalBackend {
+			  GRAPH ?subject { ?s aquo:Code ?code.
+			      }
+		        }
+			  }
+			}
+		 """;
+	  ]
+	  [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
@@ -137,28 +156,6 @@ GRAPH config:Theatre {
         elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
       ]
 	  [
-	    a elmo:AssertionStep;
-	    rdfs:label "Deze code is al eerder gebruikt";
-		elmo:assertNot """
-	      PREFIX dct:  <http://purl.org/dc/terms/>
-	      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-	      PREFIX config: <http://dotwebstack.org/configuration/>
-		  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-	      ASK
-		  WHERE {
-		    graph <http://data.aquo.nl/beheer/editor.tmp> {
-			  ?s aquo:Code ?code.
-			  ?s dct:identifier ?id.
-			  }
-		    graph ?subject {
-				  ?s aquo:Code ?code.
-				  ?s dct:identifier ?id.
-				}  	
-			  }
-		""";
-
-	  ]
-      [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
