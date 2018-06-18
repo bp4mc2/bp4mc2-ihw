@@ -127,18 +127,23 @@ GRAPH config:Theatre {
       [
 	  a elmo:AssertionStep;
 	  rdfs:label "Deze code is al in gebruik";
-	  elmo:assertNot """
+	  elmo:assert """
 	    PREFIX dct:  <http://purl.org/dc/terms/>
 	    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
 	    PREFIX config: <http://dotwebstack.org/configuration/>
 		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 		  ASK {
-		    { ?id aquo:Code ?code.
+		    { ?id aquo:Code ?code;
+              ?p ?o.
 			}
 		    FILTER EXISTS {SERVICE config:LocalBackend {
-			  GRAPH ?subject { ?s aquo:Code ?code.
-			      }
+			  GRAPH ?subject { ?id ?p ?o. }
 		        }
+			  }
+        FILTER EXISTS {SERVICE config:LocalBackend {
+			  GRAPH ?subject { 
+        ?id aquo:Code ?code. }
+		       }
 			  }
 			}
 		 """;

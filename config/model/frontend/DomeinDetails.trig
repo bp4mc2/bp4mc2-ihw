@@ -13,6 +13,13 @@ GRAPH config:Theatre {
     #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:Domeintabel
   .
+    
+  config:DomeintabelHistorieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabel/historie";
+    elmo:stage config:Stage;
+    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    elmo:getRepresentation config:DomeintabelHistorie
+  .
   
   config:DomeintabelStagingEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel/staging";
@@ -30,6 +37,19 @@ GRAPH config:Theatre {
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
   .
+  
+  config:DomeintabelHistorie a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Image;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelHistorieData;
+  .
+  
+  
   
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
