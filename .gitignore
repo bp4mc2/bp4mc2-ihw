@@ -1,2 +1,3 @@
 target
 resources/application.yml
+config/model/transaction/DomeintabelEditorTransaction.trig

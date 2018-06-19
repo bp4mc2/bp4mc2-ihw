@@ -13,27 +13,37 @@ GRAPH config:Theatre {
       
       CONSTRUCT {
         ?id ?p ?o;
-            skos:comment ?status;
-            rdfs:label ?sameLabel.
-        ?o rdfs:label ?olabel
-      }
+             owl:sameAs ?same_begrip; 
+             skos:comment ?status.
+        #?same_begrip skos:prefLabel ?begrip_label.
+        ?o rdfs:label ?olabel.
+        }
+       
+       
       WHERE {
-        {
+        { {
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
-            OPTIONAL {?id  owl:sameAs ?same}
+            #OPTIONAL {?id  owl:sameAs ?same}
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
 
           } 
-          OPTIONAL { 
-            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-              ?same owl:sameAs ?subject;
-                    rdfs:label ?sameLabel. 
-            } 
           }
+          UNION
+          {
+         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+          }
+          
+          # OPTIONAL { 
+            # GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              # ?same owl:sameAs ?subject;
+                    # rdfs:label ?sameLabel. 
+            # } 
+          # }
         }
       }
     """

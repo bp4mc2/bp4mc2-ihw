@@ -122,6 +122,13 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
       xhtml:link "begrip";
+      elmo:name "begrip_label";
+      rdfs:label "relatie"@nl;
+      elmo:index 6;
+    ];
+   elmo:fragment [
+      elmo:appliesTo skos:prefLabel;
+      xhtml:link "begrip";
       rdfs:label "relatie"@nl;
       elmo:index 6;
     ];

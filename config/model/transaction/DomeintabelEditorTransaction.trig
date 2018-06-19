@@ -99,10 +99,10 @@ GRAPH config:Theatre {
   config:DomeintabelEditEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel";
     elmo:stage config:Stage;
-#    elmo:putService config:DomeintabelUpdateService;
+    elmo:putService config:DomeintabelUpdateService;
 #    elmo:postService config:DomeintabelInsertService;
 #    elmo:deleteService config:DomeintabelDeleteService;
-    elmo:putService config:DomeintabelStagingService;
+  #  elmo:putService config:DomeintabelStagingService;
     elmo:postService config:DomeintabelStagingService;
     elmo:deleteService config:DomeintabelStagingService;
   .
