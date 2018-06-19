@@ -63,6 +63,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
             skos:comment ?status;
+            owl:sameAs ?same_begrip; 
             rdfs:label ?sameLabel.
         ?o rdfs:label ?olabel
       }
@@ -77,12 +78,11 @@ GRAPH config:Theatre {
             }
 
           } 
-          OPTIONAL { 
-            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-              ?same owl:sameAs ?subject;
-                    rdfs:label ?sameLabel. 
-            } 
-          }
+        }
+        UNION
+        {
+         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
         }
         UNION
         {
