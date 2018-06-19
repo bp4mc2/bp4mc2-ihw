@@ -30,7 +30,8 @@ GRAPH config:Theatre {
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
     elmo:contains config:Menu;
@@ -41,7 +42,8 @@ GRAPH config:Theatre {
   config:DomeintabelHistorie a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
     elmo:contains config:Menu;
@@ -54,7 +56,8 @@ GRAPH config:Theatre {
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;

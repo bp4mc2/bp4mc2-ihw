@@ -14,7 +14,8 @@ GRAPH config:Theatre {
   config:Vocabulaire a elmo:Representation;
     elmo:appearance [ a elmo:VocabularyAppearance ];
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    #elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:VocabulaireData;
