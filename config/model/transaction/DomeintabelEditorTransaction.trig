@@ -11,7 +11,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeintabelEditor;
   .
-  
+
   config:DomeintabelEditor a elmo:Representation;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
@@ -79,7 +79,7 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX prov: <http://www.w3.org/ns/prov#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      
+
       CONSTRUCT {
         ?id ?p ?o.
       }
@@ -100,18 +100,18 @@ GRAPH config:Theatre {
   config:DomeintabelEditEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel";
     elmo:stage config:Stage;
-    elmo:putService config:DomeintabelUpdateService;
+#    elmo:putService config:DomeintabelUpdateService;
 #    elmo:postService config:DomeintabelInsertService;
 #    elmo:deleteService config:DomeintabelDeleteService;
-  #  elmo:putService config:DomeintabelStagingService;
+    elmo:putService config:DomeintabelStagingService;
     elmo:postService config:DomeintabelStagingService;
     elmo:deleteService config:DomeintabelStagingService;
   .
-  
+
   config:DomeintabelStagingService a elmo:Service;
     elmo:transaction config:DomeintabelStagingTransaction;
   .
-  
+
   config:DomeintabelUpdateService a elmo:Service;
     elmo:transaction config:DomeintabelUpdateTransaction;
   .
@@ -126,30 +126,33 @@ GRAPH config:Theatre {
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
       [
-	  a elmo:AssertionStep;
-	  rdfs:label "Deze code is al in gebruik";
-	  elmo:assert """
-	    PREFIX dct:  <http://purl.org/dc/terms/>
-	    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-	    PREFIX config: <http://dotwebstack.org/configuration/>
-		PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-		  ASK {
-		    { ?id aquo:Code ?code;
-              ?p ?o.
-			}
-		    FILTER EXISTS {SERVICE config:LocalBackend {
-			  GRAPH ?subject { ?id ?p ?o. }
-		        }
-			  }
-        FILTER EXISTS {SERVICE config:LocalBackend {
-			  GRAPH ?subject { 
-        ?id aquo:Code ?code. }
-		       }
-			  }
-			}
-		 """;
-	  ]
-	  [
+        a elmo:AssertionStep;
+        rdfs:label "Deze code is al in gebruik";
+        elmo:assert """
+          PREFIX dct:  <http://purl.org/dc/terms/>
+          PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          ASK {
+            { ?id aquo:Code ?code;
+                  ?p ?o.
+            }
+            FILTER EXISTS {
+              SERVICE config:LocalBackend {
+                GRAPH ?subject { ?id ?p ?o. }
+              }
+            }
+            FILTER EXISTS {
+              SERVICE config:LocalBackend {
+                GRAPH ?subject {
+                  ?id aquo:Code ?code.
+                }
+              }
+            }
+          }
+        """;
+      ]
+      [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
@@ -161,7 +164,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
       ]
-	  [
+      [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -182,7 +185,7 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
+
   config:DomeintabelUpdateTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -257,7 +260,7 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
+
   config:DomeintabelInsertTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
@@ -341,7 +344,7 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
+
   config:DomeintabelDeleteTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
