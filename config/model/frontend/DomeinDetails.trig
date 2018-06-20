@@ -13,6 +13,13 @@ GRAPH config:Theatre {
     #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:Domeintabel
   .
+    
+  config:DomeintabelHistorieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabel/historie";
+    elmo:stage config:Stage;
+    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    elmo:getRepresentation config:DomeintabelHistorie
+  .
   
   config:DomeintabelStagingEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel/staging";
@@ -23,7 +30,8 @@ GRAPH config:Theatre {
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
     elmo:contains config:Menu;
@@ -31,10 +39,25 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeintabelData;
   .
   
+  config:DomeintabelHistorie a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelHistorieData;
+  .
+  
+  
+  
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
@@ -101,6 +124,13 @@ GRAPH config:Theatre {
     # ];
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
+      xhtml:link "begrip";
+      elmo:name "begrip_label";
+      rdfs:label "relatie"@nl;
+      elmo:index 6;
+    ];
+   elmo:fragment [
+      elmo:appliesTo skos:prefLabel;
       xhtml:link "begrip";
       rdfs:label "relatie"@nl;
       elmo:index 6;

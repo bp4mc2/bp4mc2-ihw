@@ -16,7 +16,8 @@ GRAPH config:Theatre {
 
   config:RelatieEditor a elmo:Representation;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:appearance config:RelatieEditorAppearance;

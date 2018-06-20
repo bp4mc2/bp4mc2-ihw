@@ -57,7 +57,7 @@ GRAPH config:Theatre {
           </div>
           <div class="col-sm-4">
             <h4>configuration</h4>
-            <p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
+            <p>Dit is de nieuwe concept omgeving voor de Aquo domeintabellen en woordenboek. We hebben de meest recente Aquo informatie geïmporteerd maar de inhoud is niet gegarandeerd actueel. Kijk op <a href="http://domeintabellen-idsw.rws.nl/">domeintabellen-idsw.rws.nl</a> en op <a href="http://www.aquolex.nl/">www.aquolex.nl</a> voor de actuele Aquo. </p>
           </div>
           <div class="col-sm-4">
             <h4>License</h4>
@@ -68,6 +68,10 @@ GRAPH config:Theatre {
       WHERE {}
     """;
   .
+  
+  #<p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p> 
+  #Oude tekst van footer
+  
   
   config:ImageHeader a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
@@ -81,6 +85,28 @@ GRAPH config:Theatre {
             <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
                </img> 
                </a>
+            </h5>
+            </div>
+              '''
+      }
+      WHERE {}
+    """
+  .
+  
+  config:ConceptHeader a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+      
+      [] elmo1:html '''
+            <div class="text-left">
+            <h5> <a href="https://www.aquo.nl">
+            <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/ldt-logo-aquo.png" alt="HTML5 Icon">
+               </img> 
+               </a>
+            <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
+               </img> 
             </h5>
             </div>
               '''

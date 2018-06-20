@@ -13,7 +13,57 @@ GRAPH config:Theatre {
       
       CONSTRUCT {
         ?id ?p ?o;
+             owl:sameAs ?same_begrip; 
+             skos:comment ?status.
+        #?same_begrip skos:prefLabel ?begrip_label.
+        ?o rdfs:label ?olabel.
+        }
+       
+       
+      WHERE {
+        { {
+          GRAPH ?subject {
+            ?id ?p ?o
+            OPTIONAL {?o skos:prefLabel ?olabel}
+            #OPTIONAL {?id  owl:sameAs ?same}
+            FILTER NOT EXISTS {
+              ?id a skos:Concept.
+            }
+
+          } 
+          }
+          UNION
+          {
+         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+          }
+          
+          # OPTIONAL { 
+            # GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              # ?same owl:sameAs ?subject;
+                    # rdfs:label ?sameLabel. 
+            # } 
+          # }
+        }
+      }
+    """
+  .
+  
+  config:DomeintabelHistorieData a elmo:InformationProduct;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      
+      CONSTRUCT {
+        ?id ?p ?o;
             skos:comment ?status;
+            owl:sameAs ?same_begrip; 
             rdfs:label ?sameLabel.
         ?o rdfs:label ?olabel
       }
@@ -28,12 +78,11 @@ GRAPH config:Theatre {
             }
 
           } 
-          OPTIONAL { 
-            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-              ?same owl:sameAs ?subject;
-                    rdfs:label ?sameLabel. 
-            } 
-          }
+        }
+        UNION
+        {
+         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
         }
         UNION
         {

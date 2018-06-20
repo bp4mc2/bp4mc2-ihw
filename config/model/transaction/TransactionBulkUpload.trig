@@ -54,6 +54,29 @@ GRAPH config:Theatre {
         """
       ]
       [ a elmo:UpdateStep;
+      # We zoeken naar begrippen die een skos:broader relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+         prefix skos: <http://www.w3.org/2004/02/skos/core#>
+          insert { 
+            graph <http://data.aquo.nl/id/dataset/begrippen> {
+              ?broader skos:narrower ?begrip 
+            }
+          }
+             where { 
+              graph <http://data.aquo.nl/id/dataset/begrippen> 
+              {
+               ?begrip a  skos:Concept;
+                  skos:broader ?broader.
+                    FILTER NOT EXISTS { 
+                      ?broader a skos:Concept;
+                        skos:narrower ?begrip
+                    }
+              }       
+            }
+        """
+      ]
+      [ a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
