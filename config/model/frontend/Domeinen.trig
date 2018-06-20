@@ -31,21 +31,6 @@ GRAPH config:Theatre {
       xhtml:link "domeintabel/historie";
       rdf:value "historie"
     ];
-    elmo:fragment [
-      elmo:appliesTo "edit";
-      xhtml:link "beheer/domeintabel";
-      rdf:value "edit"
-    ];
-    elmo:fragment [
-      elmo:appliesTo "link";
-      xhtml:link "beheer/domeintabellink";
-      rdf:value "link"
-    ];
-    elmo:fragment [
-      elmo:appliesTo "staging";
-      xhtml:link "beheer/domeintabel/staging";
-      rdf:value "op stapel"
-    ];
   .
 
 }
