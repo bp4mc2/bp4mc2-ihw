@@ -18,19 +18,21 @@ GRAPH config:Theatre {
             elmo1:data [elmo1:index "1"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
             elmo1:data [elmo1:index "2"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/"];
           ];
-		  elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodellen";
-		    elmo1:data [elmo1:index "1"; rdfs:label "Standaardisatie"; xhtml:link "%{dotwebstack.config.aquoroot}/standaardisatie"];
-			elmo1:data [elmo1:index "2"; rdfs:label "Informatiemodel Water"; xhtml:link "%{dotwebstack.config.aquoroot}/InformatiemodelWater"];
-			elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodel Metingen"; xhtml:link "%{dotwebstack.config.aquoroot}/InformatiemodelMetingen"];
+		  elmo1:data [elmo1:index "3"; rdfs:label "Modellen";
+		    elmo1:data [elmo1:index "1"; rdfs:label "Standaardisatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/"];
+			elmo1:data [elmo1:index "2"; rdfs:label "Informatiemodel Water"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/imwa/"];
+			elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodel Metingen"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/im-metingen/"];
+			elmo1:data [elmo1:index "4"; rdfs:label "Grafisch"; xhtml:link "http://www.aquo.nl/Aquo/uitwisselmodellen/"; xhtml:target "_blank"];
 		  ];
 		  elmo1:data [elmo1:index "4"; rdfs:label "Uitwisseling";
-		    elmo1:data [elmo1:index "1"; rdfs:label "IM Metingen CSV"; xhtml:link "%{dotwebstack.config.aquoroot}/IMMetingenCSV"];
-			elmo1:data [elmo1:index "2"; rdfs:label "IM Metingen XML"; xhtml:link "%{dotwebstack.config.aquoroot}/IMMetingenXML"];
-			elmo1:data [elmo1:index "3"; rdfs:label "IMWA Watersysteem XML"; xhtml:link "%{dotwebstack.config.aquoroot}/IMWAWatersysteemXML"];
-			elmo1:data [elmo1:index "4"; rdfs:label "IMWA Waterveiligheid"; xhtml:link "%{dotwebstack.config.aquoroot}/IMWAWaterveiligheid"];
+		    elmo1:data [elmo1:index "1"; rdfs:label "IMWA XML en GML"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/gmlxml-formaat/"];
+			elmo1:data [elmo1:index "2"; rdfs:label "IMWA XSD"; xhtml:link "http://www.aquo.nl/xsd/"; xhtml:target "_blank"];
+			elmo1:data [elmo1:index "3"; rdfs:label "IMWA Waterveiligheid: shape"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/shp-formaat/"];
+			elmo1:data [elmo1:index "4"; rdfs:label "CSV uitwisselingingsformaten"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/csv-formaat/"];
 		  ];
-		  elmo1:data [elmo1:index "5"; rdfs:label "Wijzigingproces";
-			elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "%{dotwebstack.config.aquoroot}/Wijziginsproces"];
+		  elmo1:data [elmo1:index "5"; rdfs:label "Proces";
+			elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "http://www.aquo.nl/update/"];
+			elmo1:data [elmo1:index "2"; rdfs:label "Wijziginsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
 		  ];	  
         .
       }
