@@ -94,27 +94,42 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
+      elmo:appliesTo aquo:Afkorting;
+      rdfs:label "Afkorting"@nl;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
       elmo:appliesTo dct:identifier;
       rdfs:label "ID"@nl;
       elmo:index 1;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Omschrijving;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
       elmo:index 2;
     ];
     elmo:fragment [
-      elmo:appliesTo dct:subject;
-      rdfs:label "Groep"@nl;
+      elmo:appliesTo aquo:Omschrijving;
       elmo:index 3;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Cijfercode;
+      elmo:appliesTo aquo:CASnummer;
       elmo:index 4;
     ];
     elmo:fragment [
       elmo:appliesTo aquo:Groep;
       elmo:index 5;
     ];
+    elmo:fragment [
+      elmo:appliesTo dct:subject;
+      rdfs:label "Groep"@nl;
+      elmo:index 6;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Cijfercode;
+      elmo:index 7;
+    ];
+   
     # elmo:fragment [
       # elmo:appliesTo owl:sameAs;
       ##xhtml:link "begrip";
@@ -127,22 +142,32 @@ GRAPH config:Theatre {
       xhtml:link "begrip";
       elmo:name "begrip_label";
       rdfs:label "relatie"@nl;
-      elmo:index 6;
+      elmo:index 8;
     ];
    elmo:fragment [
       elmo:appliesTo skos:prefLabel;
       xhtml:link "begrip";
       rdfs:label "relatie"@nl;
-      elmo:index 6;
+      elmo:index 9;
     ];
     elmo:fragment [
       elmo:appliesTo prov:generatedAtTime;
       rdfs:label "Begin geldigheid"@nl;
-      elmo:index 97;
+      elmo:index 94;
     ];
     elmo:fragment [
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
+      elmo:index 95;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:beginDate;
+      rdfs:label "begindatum"@nl;
+      elmo:index 97;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:endDate;
+      rdfs:label "eindatum"@nl;
       elmo:index 98;
     ];
     elmo:fragment [
@@ -150,6 +175,7 @@ GRAPH config:Theatre {
       rdfs:label "Status"@nl;
       elmo:index 99;
     ]
+    
   .
  
 }

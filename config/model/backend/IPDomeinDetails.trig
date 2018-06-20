@@ -21,7 +21,7 @@ GRAPH config:Theatre {
        
        
       WHERE {
-        { {
+
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
@@ -30,21 +30,10 @@ GRAPH config:Theatre {
               ?id a skos:Concept.
             }
 
-          } 
           }
-          UNION
-          {
-         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
-          }
-          
-          # OPTIONAL { 
-            # GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
-              # ?same owl:sameAs ?subject;
-                    # rdfs:label ?sameLabel. 
-            # } 
-          # }
-        }
+         OPTIONAL { GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}          
+        
       }
     """
   .
@@ -72,18 +61,16 @@ GRAPH config:Theatre {
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
-            OPTIONAL {?id  owl:sameAs ?same}
+            #OPTIONAL {?id  owl:sameAs ?same_begrip}
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
 
-          } 
+          }
+          OPTIONAL{  GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+          GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}   
         }
-        UNION
-        {
-         GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-         OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
-        }
+       
         UNION
         {
           GRAPH ?historic {
