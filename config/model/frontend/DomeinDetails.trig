@@ -81,7 +81,7 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
-      elmo:appliesTo dcat:theme;
+      elmo:appliesTo dcat:dataset;
       xhtml:link "domeinmeta";
       rdfs:label "Metadata"@nl;
     ];

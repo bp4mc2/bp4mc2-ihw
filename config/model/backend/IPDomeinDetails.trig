@@ -95,14 +95,14 @@ GRAPH config:Theatre {
         
         CONSTRUCT {
           ?subject dct:hasPart <http://data.aquo.nl/id/dataset/domeintabel>.
-          ?subject dcat:theme ?theme.
+          ?subject dcat:dataset ?dataset.
           ?subject rdfs:label ?dlabel.
         }        
         WHERE {
           GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
             <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
             ?subject rdfs:label ?label.  
-            OPTIONAL{ ?subject dcat:theme ?theme}
+            OPTIONAL{ ?subject dcat:dataset ?dataset}
           }
           BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
         }

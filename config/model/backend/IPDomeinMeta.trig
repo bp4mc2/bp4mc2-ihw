@@ -22,6 +22,7 @@ GRAPH config:Theatre {
             rdfs:label ?slabel.
         MINUS {?subject rdfs:label ?o}
         }
+       
         BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
       } 
     """ 

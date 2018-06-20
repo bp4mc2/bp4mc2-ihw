@@ -53,8 +53,8 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 08;
 	  elmo:appliesTo dcat:theme;
-    xhtml:link "domeintabel";
-	  rdfs:label "domeintabel"@nl;
+    #xhtml:link "domeintabel";
+	  rdfs:label "thema"@nl;
 	];
 
   .
