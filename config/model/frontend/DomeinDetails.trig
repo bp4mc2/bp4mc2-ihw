@@ -94,6 +94,11 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
+      elmo:appliesTo aquo:Afkorting;
+      rdfs:label "Afkorting"@nl;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
       elmo:appliesTo dct:identifier;
       rdfs:label "ID"@nl;
       elmo:index 1;
@@ -148,11 +153,21 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo prov:generatedAtTime;
       rdfs:label "Begin geldigheid"@nl;
-      elmo:index 97;
+      elmo:index 94;
     ];
     elmo:fragment [
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
+      elmo:index 95;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:beginDate;
+      rdfs:label "begindatum"@nl;
+      elmo:index 97;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:endDate;
+      rdfs:label "eindatum"@nl;
       elmo:index 98;
     ];
     elmo:fragment [
@@ -160,6 +175,7 @@ GRAPH config:Theatre {
       rdfs:label "Status"@nl;
       elmo:index 99;
     ]
+    
   .
  
 }
