@@ -11,7 +11,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:putService config:BegrippenUploadService
   .
-  
+
   config:BegrippenUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:BegrippenUploadTransaction;
@@ -35,21 +35,21 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          insert { 
+          insert {
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?narrower skos:broader ?begrip 
+              ?narrower skos:broader ?begrip
             }
           }
-             where { 
-              graph <http://data.aquo.nl/id/dataset/begrippen> 
+             where {
+              graph <http://data.aquo.nl/id/dataset/begrippen>
               {
                ?begrip a  skos:Concept;
                   skos:narrower ?narrower.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?narrower a skos:Concept;
                         skos:broader ?begrip
                     }
-              }       
+              }
             }
         """
       ]
@@ -58,21 +58,21 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          insert { 
+          insert {
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?broader skos:narrower ?begrip 
+              ?broader skos:narrower ?begrip
             }
           }
-             where { 
-              graph <http://data.aquo.nl/id/dataset/begrippen> 
+             where {
+              graph <http://data.aquo.nl/id/dataset/begrippen>
               {
                ?begrip a  skos:Concept;
                   skos:broader ?broader.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?broader a skos:Concept;
                         skos:narrower ?begrip
                     }
-              }       
+              }
             }
         """
       ]
@@ -81,16 +81,16 @@ GRAPH config:Theatre {
         elmo:query """
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  { 
+          insert  {
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?narrower skosthes:broaderPartitive ?begrip 
+              ?narrower skosthes:broaderPartitive ?begrip
             }
           }
-            where { 
+            where {
               graph <http://data.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skosthes:narrowerPartitive ?narrower.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?narrower a skos:Concept;
                         skos:broaderPartitive ?begrip
                     }
@@ -103,16 +103,16 @@ GRAPH config:Theatre {
         elmo:query """
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  { 
+          insert  {
             graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?related skosthes:narrowerPartitive ?begrip 
+              ?related skosthes:narrowerPartitive ?begrip
             }
           }
-            where { 
+            where {
               graph <http://data.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skos:related ?related.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?related a skos:Concept;
                         skos:related ?begrip
                     }
@@ -122,20 +122,20 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
   # updatestep is het infoproduct
-  
-  
-  
-  
-  
+
+
+
+
+
 
 # ==========================
 #
@@ -148,12 +148,12 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:putService config:DomeintabelUploadService;
   .
-  
+
   config:DomeintabelUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:DomeintabelUploadTransaction;
   .
-  
+
   # Helaas werkt de mapper nog niet voor services, dus vandaar via een parameter
   config:DomeinParameter a elmo:TermParameter;
     elmo:name "domein";
@@ -161,7 +161,7 @@ GRAPH config:Theatre {
 			sh:datatype xsd:string;
 		]
   .
-  
+
   #
   # UploadTransaction is nu nog wat ingewikkeld, omdat je niet goed met de parameter kunt werken
   # De volgende stappen worden uitgevoerd:
@@ -224,6 +224,7 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
           insert {
             graph ?domeingraph {
               ?s ?p ?o
@@ -232,7 +233,29 @@ GRAPH config:Theatre {
           where {
             graph <http://data.aquo.nl/id/dataset/domeintabel.tmp> {
               ?s ?p ?o
+              FILTER NOT EXISTS {
+                ?s prov:invalidatedAtTime ?time
+              }
               BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
+          insert {
+            graph ?domeingraphversion {
+              ?s ?p ?o
+            }
+          }
+          where {
+            graph <http://data.aquo.nl/id/dataset/domeintabel.tmp> {
+              ?s ?p ?o.
+              ?s prov:invalidatedAtTime ?time
+              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
             }
           }
         """
@@ -327,8 +350,8 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
-  
+
+
 # ==========================
 #
 # DomeinMetadata Upload
@@ -345,7 +368,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:transaction config:DomeinMetaUploadTransaction
   .
-  
+
    config:DomeinMetaParameter a elmo:TermParameter;
     elmo:name "domeinmeta";
 		elmo:shape [
@@ -443,8 +466,8 @@ GRAPH config:Theatre {
       # ]
     )
   .
-    
-    
+
+
   # ==========================
 #
 # Domein-begrip relatie Upload
@@ -461,7 +484,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:transaction config:RelatieUploadTransaction
   .
-  
+
   config:RelatieUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
       [
@@ -477,9 +500,9 @@ GRAPH config:Theatre {
       ]
 
     )
-  
+
 
   .
-  
+
 
 }
