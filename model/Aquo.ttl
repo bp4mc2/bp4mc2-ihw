@@ -1,15 +1,15 @@
-@prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
-@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#>. 
-@prefix xsd:		<http://www.w3.org/2001/XMLSchema#>. 
-@prefix sh:			<http://www.w3.org/ns/shacl#>. 
-@prefix dcat:		<http://www.w3.org/ns/dcat#>. 
-@prefix dct:		<http://purl.org/dc/terms/>. 
-@prefix dc:			<http://purl.org/dc/elements/1.1/>.	
-@prefix skos:		<http://www.w3.org/2004/02/skos/core#>. 
-@prefix prov:		<http://www.w3.org/ns/prov#>. 
-@prefix adms: 		<http://www.w3.org/ns/adms#>. 
+@prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:		<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd:		<http://www.w3.org/2001/XMLSchema#>.
+@prefix sh:			<http://www.w3.org/ns/shacl#>.
+@prefix dcat:		<http://www.w3.org/ns/dcat#>.
+@prefix dct:		<http://purl.org/dc/terms/>.
+@prefix dc:			<http://purl.org/dc/elements/1.1/>.
+@prefix skos:		<http://www.w3.org/2004/02/skos/core#>.
+@prefix prov:		<http://www.w3.org/ns/prov#>.
+@prefix adms: 		<http://www.w3.org/ns/adms#>.
 
-@prefix aquo:		<http://linkeddata.ordina.nl/aquo/def/model/>.
+@prefix aquo:		<http://standaard.aquo.nl/def/aquo#>.
 
 aquo:ImageShape rdf:type sh:NodeShape;
   rdf:label "Image Shape";
@@ -26,7 +26,7 @@ aquo:ConceptShape rdf:type sh:NodeShape;
 	sh:property aquo:NameShape;
 	sh:property aquo:DefinitieShape;
 	sh:property aquo:ToelichtingShape;
-	sh:property aquo:BronShape; 
+	sh:property aquo:BronShape;
 	sh:property aquo:AfkortingShape;
 	sh:property aquo:CategorieShape;
 	sh:property aquo:BredereTermShape;
@@ -95,7 +95,7 @@ aquo:DomeinShape rdf:type sh:PropertyShape;
 ### aquo:Taalshape rdf:type sh:PropertyShape;
 #	rdfs:label "Taal"@nl;
 #	sh:name "iso-NL";
-#	sh:path iso:language????;   
+#	sh:path iso:language????;
 #	PATH op deze shape is niet correct, moet ik controleren.
 #	sh:minCount 1;
 #.
@@ -182,6 +182,3 @@ aquo:StatusShape rdf:type sh:PropertyShape;
 	sh:maxCount 1;
 	sh:severity sh:Violation;
 .
-
-	
-	

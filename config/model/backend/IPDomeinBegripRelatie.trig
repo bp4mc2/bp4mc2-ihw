@@ -4,30 +4,30 @@ GRAPH config:Theatre {
       elmo:backend config:LocalBackend;
       elmo:resultType elmo-rt:Tuple;
       elmo:query """
-      
+
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       PREFIX xhtml: <http://www.w3.org/1999/xhtml/vocab#>
-      
+
       # CONSTRUCT {?domeintabel dct:hasPart ?domeinwaarde.
       # ?domeinwaarde owl:sameAs ?same_begrip;
                     # xhtml:link ?edit.
       # ?same_begrip rdfs:label ?begrip_label.}
-      
-      SELECT 
-      
-      ?domeinwaarde 
-      (?same_begrip as ?begrip) 
-      ?begrip_label 
+
+      SELECT
+
+      ?domeinwaarde
+      (?same_begrip as ?begrip)
+      ?begrip_label
       ?domeintabel
-      (?domeinwaarde as ?edit) 
-      
+      (?domeinwaarde as ?edit)
+
       WHERE{
- 
+
       GRAPH <http://data.aquo.nl/id/dataset/links> {?domeinwaarde owl:sameAs ?same_begrip}
       OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
       }

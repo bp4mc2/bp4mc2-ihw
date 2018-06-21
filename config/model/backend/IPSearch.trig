@@ -1,5 +1,5 @@
 GRAPH config:Theatre {
-  
+
   config:SearchConceptenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
@@ -8,15 +8,15 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
-      PREFIX aquo: <http://data.aquo.nl/def/aquo#>
-       
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+
       SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
       WHERE {
         {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
-            OPTIONAL {?begrip skos:altLabel ?synoniem}                 
+            OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
@@ -35,7 +35,7 @@ GRAPH config:Theatre {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
-            OPTIONAL {?begrip skos:altLabel ?synoniem}           
+            OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
@@ -50,12 +50,12 @@ GRAPH config:Theatre {
           FILTER regex(?search_label,concat("^",?term),"i")
           BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
         }
-       
+
         UNION {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
-            OPTIONAL {?begrip skos:altLabel ?synoniem}           
+            OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
@@ -70,12 +70,12 @@ GRAPH config:Theatre {
           FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
           BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
         }
-      
+
       }
       order by ?begrip_label
     """
   .
-    
+
   config:SearchCategorieenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
@@ -84,7 +84,7 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
-       
+
       SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
         WHERE {
           GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
@@ -96,12 +96,12 @@ GRAPH config:Theatre {
             }
           }
          FILTER regex(?categorie_label,concat("^",?term),"i")
-        } 
+        }
       group by ?categorie ?categorie_label
       order by ?categorie_label
     """
   .
-  
+
   config:SearchDomeinenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
@@ -109,7 +109,7 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      
+
       SELECT ?domeintabel ?domeintabel_label
       WHERE {
         GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
@@ -121,7 +121,7 @@ GRAPH config:Theatre {
       order by ?domeintabel_label
     """
   .
-  
+
   config:SearchDomeinWaardeData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
@@ -130,7 +130,7 @@ GRAPH config:Theatre {
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+    PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
 
     SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?CASnummer ?Code ?ID ?gevonden_in
 
@@ -143,7 +143,7 @@ GRAPH config:Theatre {
         GRAPH ?domeintabel_waarde {
            ?id aquo:Omschrijving ?label_waarde.
         }
-        
+
       }
       OPTIONAL{
         GRAPH ?domeintabel_waarde {
@@ -151,9 +151,9 @@ GRAPH config:Theatre {
                aquo:Code ?Code;
                dct:identifier ?ID.
         }
-       
+
       }
-      FILTER regex (?label_waarde,concat("^",?term),"i")   
+      FILTER regex (?label_waarde,concat("^",?term),"i")
       BIND( IF(regex(?label_waarde,concat("^",?term),"i"), "label","") as ?gevonden_in)
      }
      UNION
@@ -165,7 +165,7 @@ GRAPH config:Theatre {
         GRAPH ?domeintabel_waarde {
            ?id aquo:Omschrijving ?label_waarde.
         }
-        
+
       }
       OPTIONAL{
         GRAPH ?domeintabel_waarde {
@@ -173,16 +173,16 @@ GRAPH config:Theatre {
                aquo:Code ?Code;
                dct:identifier ?ID.
         }
-       
+
       }
-      FILTER regex (?CASnummer,concat("^",?term),"i")   
+      FILTER regex (?CASnummer,concat("^",?term),"i")
       BIND( IF(regex(?CASnummer,concat("^",?term),"i"), "CASnummer","") as ?gevonden_in)
      }
-   
+
     }
     order by ?label_waarde
     """
   .
-  
-  
+
+
 }

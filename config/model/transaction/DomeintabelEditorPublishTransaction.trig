@@ -87,7 +87,7 @@ GRAPH config:Theatre {
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
-    PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+    PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
     PREFIX prov: <http://www.w3.org/ns/prov#>
     CONSTRUCT {
       ?s ?p ?o.
@@ -230,7 +230,7 @@ GRAPH config:Theatre {
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
           prefix xs: <http://www.w3.org/2001/XMLSchema#>
-          PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
           insert {
             graph ?subject {
               ?s ?p ?o.
@@ -368,7 +368,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:query """
           PREFIX dct: <http://purl.org/dc/terms/>
-          PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
           prefix prov: <http://www.w3.org/ns/prov#>
           insert {
             graph <http://data.aquo.nl/beheer/editor.tmp> {
@@ -398,7 +398,7 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-          PREFIX aquo: <http://data.aquo.nl/def/aquo#>
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
           prefix prov: <http://www.w3.org/ns/prov#>
           prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           PREFIX dct: <http://purl.org/dc/terms/>
