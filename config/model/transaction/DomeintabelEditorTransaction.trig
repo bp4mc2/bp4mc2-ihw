@@ -86,6 +86,9 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH ?subject {
           ?id ?p ?o
+          FILTER NOT EXISTS {
+            ?id prov:invalidatedAtTime ?time
+          }
         }
       }
     """
@@ -165,6 +168,7 @@ GRAPH config:Theatre {
           where {
             graph <http://data.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
+              FILTER (?p!=prov:generatedAtTime)
             }
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
           }

@@ -6,27 +6,27 @@ GRAPH config:Theatre {
 # DOMEINTABEL en waarden
 #
 # ==========================
-  
+
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
     #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:Domeintabel
   .
-    
+
   config:DomeintabelHistorieEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel/historie";
     elmo:stage config:Stage;
     #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:DomeintabelHistorie
   .
-  
+
   config:DomeintabelStagingEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel/staging";
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeintabelStaging
   .
-  
+
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
@@ -38,7 +38,7 @@ GRAPH config:Theatre {
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
   .
-  
+
   config:DomeintabelHistorie a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
@@ -50,9 +50,9 @@ GRAPH config:Theatre {
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelHistorieData;
   .
-  
-  
-  
+
+
+
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
@@ -61,13 +61,20 @@ GRAPH config:Theatre {
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:contains config:PublicerenLink;
     elmo:informationProduct config:DomeintabelStagingData;
   .
-  
+
   config:DomeinTitel a elmo:Representation;
     elmo:stage config:Stage;
     elmo:appearance config:DomeinTitelAppearance;
     elmo:informationProduct config:DomeinTitelData;
+  .
+
+  config:PublicerenLink a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance [a elmo:IndexAppearance];
+    elmo:informationProduct config:PublishDomeintabelData
   .
 
   config:DomeinTitelAppearance a elmo:ContentAppearance;
@@ -86,7 +93,7 @@ GRAPH config:Theatre {
       rdfs:label "Metadata"@nl;
     ];
   .
-  
+
   #Werkt nu alleen met een contentAppearance maar moet een TableAppearance zijn. Dan valt owl:sameAs weg en word een lege kolom.
   config:DomeintabelAppearance a elmo:TableAppearance;
     elmo:fragment [
@@ -129,7 +136,7 @@ GRAPH config:Theatre {
       elmo:appliesTo aquo:Cijfercode;
       elmo:index 7;
     ];
-   
+
     # elmo:fragment [
       # elmo:appliesTo owl:sameAs;
       ##xhtml:link "begrip";
@@ -175,7 +182,7 @@ GRAPH config:Theatre {
       rdfs:label "Status"@nl;
       elmo:index 99;
     ]
-    
+
   .
- 
+
 }
