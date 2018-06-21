@@ -7,7 +7,8 @@ GRAPH config:Theatre {
       prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
       prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
       CONSTRUCT {
-        [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
+        [ xhtml:link "http://www.aquo.nl/";
+          rdfs:label "Aquo";
           xhtml:search "search";
           elmo1:data [
             elmo1:index "1"; rdfs:label "Begrippen";
@@ -39,9 +40,12 @@ GRAPH config:Theatre {
             elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "http://www.aquo.nl/update/"];
             elmo1:data [elmo1:index "2"; rdfs:label "Wijziginsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
           ];
-            .
-          }
-          WHERE {}
+          elmo1:data [
+            elmo1:index "6"; rdfs:label "Beheer"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer"
+          ]
+        ]
+      }
+      WHERE {}
     """;
   .
 
