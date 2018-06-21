@@ -9,37 +9,42 @@ GRAPH config:Theatre {
       CONSTRUCT {
         [xhtml:link "http://www.aquo.nl/"] rdfs:label "Aquo";
           xhtml:search "search";
-          elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; 
+          elmo1:data [
+            elmo1:index "1"; rdfs:label "Begrippen";
             elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
             elmo1:data [elmo1:index "2"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/categorieen"];
             elmo1:data [elmo1:index "3"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/"]
           ];
-          elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen";
+          elmo1:data [
+            elmo1:index "2"; rdfs:label "Domeintabellen";
             elmo1:data [elmo1:index "1"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
             elmo1:data [elmo1:index "2"; rdfs:label "Informatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/"];
           ];
-		  elmo1:data [elmo1:index "3"; rdfs:label "Modellen";
-		    elmo1:data [elmo1:index "1"; rdfs:label "Standaardisatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/"];
-			elmo1:data [elmo1:index "2"; rdfs:label "Informatiemodel Water"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/imwa/"];
-			elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodel Metingen"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/im-metingen/"];
-			elmo1:data [elmo1:index "4"; rdfs:label "Grafisch"; xhtml:link "http://www.aquo.nl/Aquo/uitwisselmodellen/"; xhtml:target "_blank"];
-		  ];
-		  elmo1:data [elmo1:index "4"; rdfs:label "Uitwisseling";
-		    elmo1:data [elmo1:index "1"; rdfs:label "IMWA XML en GML"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/gmlxml-formaat/"];
-			elmo1:data [elmo1:index "2"; rdfs:label "IMWA XSD"; xhtml:link "http://www.aquo.nl/xsd/"; xhtml:target "_blank"];
-			elmo1:data [elmo1:index "3"; rdfs:label "IMWA Waterveiligheid: shape"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/shp-formaat/"];
-			elmo1:data [elmo1:index "4"; rdfs:label "CSV uitwisselingingsformaten"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/csv-formaat/"];
-		  ];
-		  elmo1:data [elmo1:index "5"; rdfs:label "Proces";
-			elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "http://www.aquo.nl/update/"];
-			elmo1:data [elmo1:index "2"; rdfs:label "Wijziginsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
-		  ];	  
-        .
-      }
-      WHERE {}
+          elmo1:data [
+            elmo1:index "3"; rdfs:label "Modellen";
+            elmo1:data [elmo1:index "1"; rdfs:label "Standaardisatie"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Informatiemodel Water"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/imwa/"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Informatiemodel Metingen"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/im-metingen/"];
+            elmo1:data [elmo1:index "4"; rdfs:label "Grafisch"; xhtml:link "http://www.aquo.nl/Aquo/uitwisselmodellen/"; xhtml:target "_blank"];
+          ];
+          elmo1:data [
+            elmo1:index "4"; rdfs:label "Uitwisseling";
+            elmo1:data [elmo1:index "1"; rdfs:label "IMWA XML en GML"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/gmlxml-formaat/"];
+            elmo1:data [elmo1:index "2"; rdfs:label "IMWA XSD"; xhtml:link "http://www.aquo.nl/xsd/"; xhtml:target "_blank"];
+            elmo1:data [elmo1:index "3"; rdfs:label "IMWA Waterveiligheid: shape"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/shp-formaat/"];
+            elmo1:data [elmo1:index "4"; rdfs:label "CSV uitwisselingingsformaten"; xhtml:link "http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/csv-formaat/"];
+          ];
+          elmo1:data [
+            elmo1:index "5"; rdfs:label "Proces";
+            elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "http://www.aquo.nl/update/"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Wijziginsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
+          ];
+            .
+          }
+          WHERE {}
     """;
   .
-  
+
   config:FooterData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
@@ -70,22 +75,22 @@ GRAPH config:Theatre {
       WHERE {}
     """;
   .
-  
-  #<p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p> 
+
+  #<p>Deze configuratie is een eerste opzet voor de gegevens catalogus van het InformatieHuis Water (IHW) op basis van de dotwebstack applicatie.</p>
   #Oude tekst van footer
-  
-  
+
+
   config:ImageHeader a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
     prefix elmo1: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
-      
+
       [] elmo1:html '''
             <div class="text-left">
             <h5> <a href="https://www.aquo.nl">
             <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
-               </img> 
+               </img>
                </a>
             </h5>
             </div>
@@ -94,21 +99,21 @@ GRAPH config:Theatre {
       WHERE {}
     """
   .
-  
+
   config:ConceptHeader a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
     prefix elmo1: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
-      
+
       [] elmo1:html '''
             <div class="text-left">
             <h5> <a href="https://www.aquo.nl">
             <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/ldt-logo-aquo.png" alt="HTML5 Icon">
-               </img> 
+               </img>
                </a>
             <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
-               </img> 
+               </img>
             </h5>
             </div>
               '''
@@ -116,9 +121,9 @@ GRAPH config:Theatre {
       WHERE {}
     """
   .
-  
+
   #[xhtml:link "%{dotwebstack.config.aquoroot}/begrippen?format=xml"] rdfs:label "XML export";
-  
+
   config:ExportIndexData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
@@ -135,6 +140,6 @@ GRAPH config:Theatre {
      WHERE {}
     """
   .
- 
-  
+
+
 }
