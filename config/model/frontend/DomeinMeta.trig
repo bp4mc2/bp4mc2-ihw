@@ -18,7 +18,7 @@ GRAPH config:Theatre {
   . 
    
   config:DomeinMetaAppearance a elmo:Appearance;
-	elmo:index 2;
+	elmo:index 01;
 	elmo:fragment [ 
 	  elmo:appliesTo rdf:type; 
     elmo:appearance elmo:HiddenAppearance; 
@@ -35,28 +35,97 @@ GRAPH config:Theatre {
 	  elmo:appliesTo skos:prefLabel; 
 	  rdfs:label "Naam"@nl; 
 	];
-	elmo:fragment [  
-	  elmo:index 05; 
-	  elmo:appliesTo skos:definition; 
-	  rdfs:label "Definitie"@nl; 
+ 
+  elmo:fragment [  
+	  elmo:index 04; 
+	  elmo:appliesTo dcat:distribution; 
+    xhtml:link "/domeintabel";
+	  rdfs:label "Domeintabel"@nl; 
 	]; 
-	elmo:fragment [
-	  elmo:index 06;
-	  elmo:appliesTo skos:note;
-	  rdfs:label "Toelichting"@nl;
+  elmo:fragment [  
+	  elmo:index 05; 
+	  elmo:appliesTo dct:description; 
+	  rdfs:label "Tabelomschrijving"@nl; 
+	]; 
+   elmo:fragment [  
+	  elmo:index 15; 
+	  elmo:appliesTo dct:language; 
+	  rdfs:label "Taal"@nl; 
+	]; 
+    elmo:fragment [  
+	  elmo:index 16; 
+	  elmo:appliesTo  prov:generatedAtTime; 
+	  rdfs:label "Begindatum geldigheid"@nl; 
+	]; 
+    elmo:fragment [  
+	  elmo:index 17; 
+	  elmo:appliesTo  prov:invalidatedAtTime; 
+	  rdfs:label "Einddatum geldigheid"@nl; 
+	]; 
+  elmo:fragment [  
+	  elmo:index 18; 
+	  elmo:appliesTo  skos:editorialNote; 
+	  rdfs:label "Reden beëindiging"@nl; 
+	]; 
+  elmo:fragment [  
+	  elmo:index 19; 
+	  elmo:appliesTo  dct:issued; 
+	  rdfs:label "Datum laatste publicatie"@nl; 
+	]; 
+  elmo:fragment [  
+	  elmo:index 20; 
+	  elmo:appliesTo  dcat:contactpoint; 
+    xhtml:link "";
+	  rdfs:label "Url verantwoordelijke organisatie"@nl; 
+	]; 
+  elmo:fragment [  
+	  elmo:index 30; 
+	  elmo:appliesTo  dct:replacedBy; 
+	  rdfs:label "Vervangen door Domeintabel"@nl; 
 	];
-	elmo:fragment [
-	  elmo:index 07;
-	  elmo:appliesTo rdfs:comment;
-	  rdfs:label "Uitleg"@nl;
+  elmo:fragment [  
+	  elmo:index 31; 
+	  elmo:appliesTo  dcat:accesUrl; 
+    xhtml:link "";
+	  rdfs:label "Url Domeintabel"@nl; 
 	];
-  elmo:fragment [
-	  elmo:index 08;
-	  elmo:appliesTo dcat:theme;
-    #xhtml:link "domeintabel";
-	  rdfs:label "thema"@nl;
+  elmo:fragment [  
+	  elmo:index 32; 
+	  elmo:appliesTo  aquo:csvNaam; 
+	  rdfs:label "Csv naam"@nl; 
 	];
-
+  elmo:fragment [  
+	  elmo:index 33; 
+	  elmo:appliesTo  aquo:xsdNaam; 
+	  rdfs:label "Xsd naam"@nl; 
+	];
+  elmo:fragment [  
+	  elmo:index 34; 
+	  elmo:appliesTo  dct:source; 
+    xhtml:link "";
+	  rdfs:label "Url achtergronddocumentatie"@nl; 
+	];
+  elmo:fragment [  
+	  elmo:index 35; 
+	  elmo:appliesTo  dct:subject;
+    xhtml:link "/categorie";    
+	  rdfs:label "Categorie"@nl; 
+	];
+  elmo:fragment [  
+	  elmo:index 40; 
+	  elmo:appliesTo  dcat:keyword; 
+	  rdfs:label "Keyword(s)"@nl; 
+	];
+  elmo:fragment [  
+	  elmo:index 41; 
+	  elmo:appliesTo  dcat:theme; 
+	  rdfs:label "Thema"@nl; 
+	];
+  elmo:fragment [  
+	  elmo:index 42; 
+	  elmo:appliesTo  dct:publisher; 
+	  rdfs:label "Beheerder"@nl; 
+	];
   .
   	 
 } 
