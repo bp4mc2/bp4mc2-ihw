@@ -17,7 +17,7 @@ GRAPH config:Theatre {
           rdfs:label ?titellabel.
       }
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/domeinmeta> {
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
           ?subject ?p ?o;
             rdfs:label ?slabel.
         MINUS {?subject rdfs:label ?o}

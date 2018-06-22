@@ -145,14 +145,14 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
       ]
 
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -166,7 +166,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
               FILTER (?p!=prov:generatedAtTime)
             }

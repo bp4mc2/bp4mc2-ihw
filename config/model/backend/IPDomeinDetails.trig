@@ -31,8 +31,8 @@ GRAPH config:Theatre {
             }
 
           }
-         OPTIONAL { GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-         GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
 
       }
     """
@@ -67,8 +67,8 @@ GRAPH config:Theatre {
             }
 
           }
-          OPTIONAL{  GRAPH <http://data.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-          GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+          OPTIONAL{  GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
         }
 
         UNION
@@ -94,13 +94,13 @@ GRAPH config:Theatre {
         PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
         CONSTRUCT {
-          ?subject dct:hasPart <http://data.aquo.nl/id/dataset/domeintabel>.
+          ?subject dct:hasPart <http://standaard.aquo.nl/id/dataset/domeintabel>.
           ?subject dcat:dataset ?dataset.
           ?subject rdfs:label ?dlabel.
         }
         WHERE {
-          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-            <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
             ?subject rdfs:label ?label.
             OPTIONAL{ ?subject dcat:dataset ?dataset}
           }

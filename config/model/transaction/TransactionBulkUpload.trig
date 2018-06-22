@@ -22,13 +22,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/begrippen>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/begrippen>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/begrippen>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/begrippen>
       ]
       [ a elmo:UpdateStep;
       # We zoeken naar begrippen die een skos:narrower relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
@@ -36,12 +36,12 @@ GRAPH config:Theatre {
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
           insert {
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?narrower skos:broader ?begrip
             }
           }
              where {
-              graph <http://data.aquo.nl/id/dataset/begrippen>
+              graph <http://standaard.aquo.nl/id/dataset/begrippen>
               {
                ?begrip a  skos:Concept;
                   skos:narrower ?narrower.
@@ -59,12 +59,12 @@ GRAPH config:Theatre {
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
           insert {
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?broader skos:narrower ?begrip
             }
           }
              where {
-              graph <http://data.aquo.nl/id/dataset/begrippen>
+              graph <http://standaard.aquo.nl/id/dataset/begrippen>
               {
                ?begrip a  skos:Concept;
                   skos:broader ?broader.
@@ -82,12 +82,12 @@ GRAPH config:Theatre {
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
           insert  {
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?narrower skosthes:broaderPartitive ?begrip
             }
           }
             where {
-              graph <http://data.aquo.nl/id/dataset/begrippen> {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skosthes:narrowerPartitive ?narrower.
                     FILTER NOT EXISTS {
@@ -104,12 +104,12 @@ GRAPH config:Theatre {
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
           insert  {
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?related skosthes:narrowerPartitive ?begrip
             }
           }
             where {
-              graph <http://data.aquo.nl/id/dataset/begrippen> {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skos:related ?related.
                     FILTER NOT EXISTS {
@@ -176,13 +176,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/domeintabel.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/domeintabel.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -195,7 +195,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
             graph ?domeingraphversion {
               ?domeingraphversion dct:replacedBy ?domeingraph.
               ?s ?p ?o
@@ -213,7 +213,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
             graph ?domeingraph {
               ?s ?p ?o
             }
@@ -231,12 +231,12 @@ GRAPH config:Theatre {
             }
           }
           where {
-            graph <http://data.aquo.nl/id/dataset/domeintabel.tmp> {
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
               ?s ?p ?o
               FILTER NOT EXISTS {
                 ?s prov:invalidatedAtTime ?time
               }
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
             }
           }
         """
@@ -252,10 +252,10 @@ GRAPH config:Theatre {
             }
           }
           where {
-            graph <http://data.aquo.nl/id/dataset/domeintabel.tmp> {
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
               ?s ?p ?o.
               ?s prov:invalidatedAtTime ?time
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
             }
           }
         """
@@ -268,16 +268,16 @@ GRAPH config:Theatre {
           prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           prefix dcat: <http://www.w3.org/ns/dcat#>
           insert {
-            graph <http://data.aquo.nl/id/dataset/domeintabel> {
-              <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeingraph.
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
+              <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeingraph.
               ?domeingraph rdfs:label ?domein.
               ?domeingraph dcat:dataset ?dataset.
             }
           }
           where {
-            graph <http://data.aquo.nl/id/dataset/domeintabel> {
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domein)) as ?dataset)
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domein)) as ?dataset)
             }
           }
         """
@@ -307,13 +307,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/categorieen>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/categorieen>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/categorieen>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/categorieen>
       ]
     )
   .
@@ -381,13 +381,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/domeinmeta>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/domeinmeta>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/domeinmeta>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeinmeta>
       ]
       # [
         # a elmo:UpdateStep;
@@ -400,7 +400,7 @@ GRAPH config:Theatre {
             # }
           # }
           # where {
-            # BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+            # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
             # graph ?domeinmetagraphversion {
               # ?domeinmetagraphversion dct:replacedBy ?domeinmetagraph.
               # ?s ?p ?o
@@ -418,7 +418,7 @@ GRAPH config:Theatre {
             # }
           # }
           # where {
-            # BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+            # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
             # graph ?domeinmetagraph {
               # ?s ?p ?o
             # }
@@ -435,9 +435,9 @@ GRAPH config:Theatre {
             # }
           # }
           # where {
-            # graph <http://data.aquo.nl/id/dataset/domeinmeta.tmp> {
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta.tmp> {
               # ?s ?p ?o
-              # BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
             # }
           # }
         # """
@@ -450,16 +450,16 @@ GRAPH config:Theatre {
           # prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           # prefix dcat: <http://www.w3.org/ns/dcat#>
           # insert {
-            # graph <http://data.aquo.nl/id/dataset/domeinmeta> {
-              # <http://data.aquo.nl/id/dataset/domeinmeta> dct:hasPart ?domeinmetagraph.
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              # <http://standaard.aquo.nl/id/dataset/domeinmeta> dct:hasPart ?domeinmetagraph.
              ## ?domeinmetagraph rdfs:label ?domeinmeta.
               ##?domeinmetagraph dcat:distribution ?distribution.
             # }
           # }
           # where {
-            # graph <http://data.aquo.nl/id/dataset/domeinmeta> {
-              # BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
-              # BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domeinmeta)) as ?distribution)
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domeinmeta)) as ?distribution)
             # }
           # }
         # """
@@ -490,13 +490,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/links>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/links>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/links>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/links>
       ]
 
     )

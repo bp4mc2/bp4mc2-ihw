@@ -10,11 +10,11 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
           ?begrip dct:subject ?categorie.
         }
         OPTIONAL {
-          GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
             ?categorie rdfs:label ?categorie_label
           }
         }

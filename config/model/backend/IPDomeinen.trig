@@ -9,8 +9,8 @@ GRAPH config:Theatre {
 
       SELECT ?domeintabel ?domeintabel_label (?domeintabel as ?historie)
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-          <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeintabel_label
         }
       }

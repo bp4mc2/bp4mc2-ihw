@@ -179,13 +179,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -216,7 +216,7 @@ GRAPH config:Theatre {
                 }
               }
             }
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s a ?t
             }
             BIND (substr(str(now()),1,10) as ?enddate)
@@ -238,7 +238,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
               FILTER (?p != prov:generatedAtTime ||
                       ?p != aquo:status ||
@@ -262,7 +262,7 @@ GRAPH config:Theatre {
           }
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
             }
           }
@@ -280,13 +280,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -317,7 +317,7 @@ GRAPH config:Theatre {
                 }
               }
             }
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s a ?t
             }
             BIND (substr(str(now()),1,10) as ?enddate)
@@ -338,7 +338,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
               FILTER (?p != prov:generatedAtTime)
             }
@@ -355,13 +355,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -371,7 +371,7 @@ GRAPH config:Theatre {
           PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
           prefix prov: <http://www.w3.org/ns/prov#>
           insert {
-            graph <http://data.aquo.nl/beheer/editor.tmp> {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?subject aquo:count ?count
             }
           }
@@ -414,7 +414,7 @@ GRAPH config:Theatre {
           where {
             select ?type ?suri ?p ?o ?begindate ?id
             where {
-              graph <http://data.aquo.nl/beheer/editor.tmp> {
+              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?subject aquo:count ?count.
                 BIND (strafter(str(?subject),"/domeintabel/") as ?domeintabelnaam)
                 BIND (iri(concat("http://model.aquo.nl/def/aquods#",?domeintabelnaam)) as ?type)
@@ -422,7 +422,7 @@ GRAPH config:Theatre {
                 BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
                 BIND (1+?count as ?id)
               }
-              graph <http://data.aquo.nl/beheer/editor.tmp> {
+              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?s ?p ?o
                 FILTER (?p != aquo:beginDate && ?p != dct:identifier && ?p != rdf:type && ?s != ?subject)
               }
@@ -439,13 +439,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/editor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/editor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -464,7 +464,7 @@ GRAPH config:Theatre {
               graph ?staging {
                 ?s ?p ?o
               }
-              graph <http://data.aquo.nl/beheer/editor.tmp> {
+              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?s prov:invalidatedAtTime ?t
               }
             }

@@ -28,8 +28,8 @@ GRAPH config:Theatre {
 
       WHERE{
 
-      GRAPH <http://data.aquo.nl/id/dataset/links> {?domeinwaarde owl:sameAs ?same_begrip}
-      OPTIONAL{ GRAPH  <http://data.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+      GRAPH <http://standaard.aquo.nl/id/dataset/links> {?domeinwaarde owl:sameAs ?same_begrip}
+      OPTIONAL{ GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
       }
       """
   .

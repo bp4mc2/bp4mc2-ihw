@@ -72,17 +72,17 @@ GRAPH config:Theatre {
         ?waarde skos:prefLabel ?term.
       }
       WHERE {
-          GRAPH <http://data.aquo.nl/id/dataset/domeintabel> {
-                <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+                <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject
           }
           GRAPH ?subject {
               ?waarde  aquo:Omschrijving ?omschrijving
           }
           OPTIONAL {
-            GRAPH <http://data.aquo.nl/id/dataset/links> {
+            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
               ?waarde owl:sameAs ?begrip
             }
-            GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?begrip skos:prefLabel ?term
             }
           }
@@ -126,7 +126,7 @@ GRAPH config:Theatre {
           {
             ?waarde skos:prefLabel ?termbegrip
             SERVICE config:LocalBackend {
-              GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+              GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
                 ?begrip skos:prefLabel ?termbegrip
               }
             }
@@ -137,13 +137,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/beheer/linkeditor.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/linkeditor.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/beheer/linkeditor.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/linkeditor.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -152,15 +152,15 @@ GRAPH config:Theatre {
           PREFIX owl:<http://www.w3.org/2002/07/owl#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
           delete {
-            GRAPH <http://data.aquo.nl/id/dataset/links> {
+            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
               ?waarde owl:sameAs ?oudbegrip
             }
           }
           where {
-            GRAPH <http://data.aquo.nl/id/dataset/links> {
+            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
               ?waarde owl:sameAs ?oudbegrip.
             }
-            GRAPH <http://data.aquo.nl/beheer/linkeditor.tmp> {
+            GRAPH <http://standaard.aquo.nl/beheer/linkeditor.tmp> {
               ?waarde skos:prefLabel ?termnieuwbegrip.
             }
           }
@@ -173,15 +173,15 @@ GRAPH config:Theatre {
         PREFIX owl:<http://www.w3.org/2002/07/owl#>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
         insert {
-          GRAPH <http://data.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?waarde owl:sameAs ?nieuwbegrip
           }
         }
         where {
-          GRAPH <http://data.aquo.nl/beheer/linkeditor.tmp> {
+          GRAPH <http://standaard.aquo.nl/beheer/linkeditor.tmp> {
             ?waarde skos:prefLabel ?termnieuwbegrip.
           }
-          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
             ?nieuwbegrip skos:prefLabel ?termnieuwbegrip
           }
         }
