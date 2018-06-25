@@ -240,8 +240,8 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
-              FILTER (?p != prov:generatedAtTime ||
-                      ?p != aquo:status ||
+              FILTER (?p != prov:generatedAtTime &&
+                      ?p != aquo:status &&
                       ?p != aquo:publiceren
               )
             }
