@@ -12,7 +12,7 @@ GRAPH config:Theatre {
       
       SELECT ?begrip ?begrip_label ?definitie 
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
           ?begrip a skos:Concept.
           ?begrip dct:subject ?subject.
           ?begrip skos:prefLabel ?begrip_label.
@@ -37,7 +37,7 @@ GRAPH config:Theatre {
         ?subject rdfs:comment ?comment.
       }
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+        GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
             ?subject rdfs:label ?label.
             OPTIONAL{?subject rdfs:comment ?comment}
           }

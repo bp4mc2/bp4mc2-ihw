@@ -11,7 +11,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:putService config:BegrippenUploadService
   .
-  
+
   config:BegrippenUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:BegrippenUploadTransaction;
@@ -22,34 +22,57 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/begrippen>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/begrippen>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/begrippen>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/begrippen>
       ]
       [ a elmo:UpdateStep;
       # We zoeken naar begrippen die een skos:narrower relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
         elmo:backend config:UpdateBackend;
         elmo:query """
          prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          insert { 
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?narrower skos:broader ?begrip 
+          insert {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?narrower skos:broader ?begrip
             }
           }
-             where { 
-              graph <http://data.aquo.nl/id/dataset/begrippen> 
+             where {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen>
               {
                ?begrip a  skos:Concept;
                   skos:narrower ?narrower.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?narrower a skos:Concept;
                         skos:broader ?begrip
                     }
-              }       
+              }
+            }
+        """
+      ]
+      [ a elmo:UpdateStep;
+      # We zoeken naar begrippen die een skos:broader relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+         prefix skos: <http://www.w3.org/2004/02/skos/core#>
+          insert {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?broader skos:narrower ?begrip
+            }
+          }
+             where {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen>
+              {
+               ?begrip a  skos:Concept;
+                  skos:broader ?broader.
+                    FILTER NOT EXISTS {
+                      ?broader a skos:Concept;
+                        skos:narrower ?begrip
+                    }
+              }
             }
         """
       ]
@@ -58,16 +81,16 @@ GRAPH config:Theatre {
         elmo:query """
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  { 
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?narrower skosthes:broaderPartitive ?begrip 
+          insert  {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?narrower skosthes:broaderPartitive ?begrip
             }
           }
-            where { 
-              graph <http://data.aquo.nl/id/dataset/begrippen> {
+            where {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skosthes:narrowerPartitive ?narrower.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?narrower a skos:Concept;
                         skos:broaderPartitive ?begrip
                     }
@@ -80,16 +103,16 @@ GRAPH config:Theatre {
         elmo:query """
           prefix skos: <http://www.w3.org/2004/02/skos/core#>
           prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  { 
-            graph <http://data.aquo.nl/id/dataset/begrippen> {
-              ?related skosthes:narrowerPartitive ?begrip 
+          insert  {
+            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?related skosthes:narrowerPartitive ?begrip
             }
           }
-            where { 
-              graph <http://data.aquo.nl/id/dataset/begrippen> {
+            where {
+              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
                 ?begrip a  skos:Concept;
                   skos:related ?related.
-                    FILTER NOT EXISTS { 
+                    FILTER NOT EXISTS {
                       ?related a skos:Concept;
                         skos:related ?begrip
                     }
@@ -99,20 +122,20 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
   # updatestep is het infoproduct
-  
-  
-  
-  
-  
+
+
+
+
+
 
 # ==========================
 #
@@ -125,12 +148,12 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:putService config:DomeintabelUploadService;
   .
-  
+
   config:DomeintabelUploadService a elmo:Service;
     elmo:stage config:Stage;
     elmo:transaction config:DomeintabelUploadTransaction;
   .
-  
+
   # Helaas werkt de mapper nog niet voor services, dus vandaar via een parameter
   config:DomeinParameter a elmo:TermParameter;
     elmo:name "domein";
@@ -138,7 +161,7 @@ GRAPH config:Theatre {
 			sh:datatype xsd:string;
 		]
   .
-  
+
   #
   # UploadTransaction is nu nog wat ingewikkeld, omdat je niet goed met de parameter kunt werken
   # De volgende stappen worden uitgevoerd:
@@ -153,13 +176,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/domeintabel.tmp>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/domeintabel.tmp>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>
       ]
       [
         a elmo:UpdateStep;
@@ -172,7 +195,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
             graph ?domeingraphversion {
               ?domeingraphversion dct:replacedBy ?domeingraph.
               ?s ?p ?o
@@ -190,7 +213,7 @@ GRAPH config:Theatre {
             }
           }
           where {
-            BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
             graph ?domeingraph {
               ?s ?p ?o
             }
@@ -201,15 +224,38 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
           insert {
             graph ?domeingraph {
               ?s ?p ?o
             }
           }
           where {
-            graph <http://data.aquo.nl/id/dataset/domeintabel.tmp> {
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
               ?s ?p ?o
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+              FILTER NOT EXISTS {
+                ?s prov:invalidatedAtTime ?time
+              }
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
+          insert {
+            graph ?domeingraphversion {
+              ?s ?p ?o
+            }
+          }
+          where {
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
+              ?s ?p ?o.
+              ?s prov:invalidatedAtTime ?time
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
             }
           }
         """
@@ -222,16 +268,16 @@ GRAPH config:Theatre {
           prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           prefix dcat: <http://www.w3.org/ns/dcat#>
           insert {
-            graph <http://data.aquo.nl/id/dataset/domeintabel> {
-              <http://data.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeingraph.
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
+              <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeingraph.
               ?domeingraph rdfs:label ?domein.
-              ?domeingraph dcat:theme ?theme.
+              ?domeingraph dcat:dataset ?dataset.
             }
           }
           where {
-            graph <http://data.aquo.nl/id/dataset/domeintabel> {
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-              BIND (iri(concat("http://data.aquo.nl/id/dataset/domeinmeta/",?domein)) as ?theme)
+            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domein)) as ?dataset)
             }
           }
         """
@@ -261,13 +307,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/categorieen>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/categorieen>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/categorieen>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/categorieen>
       ]
     )
   .
@@ -304,8 +350,8 @@ GRAPH config:Theatre {
       ]
     )
   .
-  
-  
+
+
 # ==========================
 #
 # DomeinMetadata Upload
@@ -323,21 +369,140 @@ GRAPH config:Theatre {
     elmo:transaction config:DomeinMetaUploadTransaction
   .
 
+   config:DomeinMetaParameter a elmo:TermParameter;
+    elmo:name "domeinmeta";
+		elmo:shape [
+			sh:datatype xsd:string;
+		]
+  .
+
   config:DomeinMetaUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://data.aquo.nl/id/dataset/domeinmeta>"
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/domeinmeta>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://data.aquo.nl/id/dataset/domeinmeta>
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeinmeta>
       ]
+      # [
+        # a elmo:UpdateStep;
+        # elmo:backend config:UpdateBackend;
+        # elmo:query """
+          # PREFIX dct: <http://purl.org/dc/terms/>
+          # delete {
+            # graph ?domeinmetagraphversion {
+              # ?s ?p ?o
+            # }
+          # }
+          # where {
+            # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+            # graph ?domeinmetagraphversion {
+              # ?domeinmetagraphversion dct:replacedBy ?domeinmetagraph.
+              # ?s ?p ?o
+            # }
+          # }
+        # """
+      # ]
+      # [
+        # a elmo:UpdateStep;
+        # elmo:backend config:UpdateBackend;
+        # elmo:query """
+          # delete {
+            # graph ?domeinmetagraph {
+              # ?s ?p ?o
+            # }
+          # }
+          # where {
+            # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+            # graph ?domeinmetagraph {
+              # ?s ?p ?o
+            # }
+          # }
+        # """
+      # ]
+      # [
+        # a elmo:UpdateStep;
+        # elmo:backend config:UpdateBackend;
+        # elmo:query """
+          # insert {
+            # graph ?domeinmetagraph {
+              # ?s ?p ?o
+            # }
+          # }
+          # where {
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta.tmp> {
+              # ?s ?p ?o
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+            # }
+          # }
+        # """
+      # ]
+      # [
+        # a elmo:UpdateStep;
+        # elmo:backend config:UpdateBackend;
+        # elmo:query """
+          # prefix dct: <http://purl.org/dc/terms/>
+          # prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          # prefix dcat: <http://www.w3.org/ns/dcat#>
+          # insert {
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              # <http://standaard.aquo.nl/id/dataset/domeinmeta> dct:hasPart ?domeinmetagraph.
+             ## ?domeinmetagraph rdfs:label ?domeinmeta.
+              ##?domeinmetagraph dcat:distribution ?distribution.
+            # }
+          # }
+          # where {
+            # graph <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domeinmeta)) as ?domeinmetagraph)
+              # BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domeinmeta)) as ?distribution)
+            # }
+          # }
+        # """
+      # ]
     )
   .
-  
+
+
+  # ==========================
+#
+# Domein-begrip relatie Upload
+#
+# ==========================
+
+  config:RelatieUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/relatie";
+    elmo:stage config:Stage;
+    elmo:putService config:RelatieUploadService
+  .
+
+  config:RelatieUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:RelatieUploadTransaction
+  .
+
+  config:RelatieUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/links>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/links>
+      ]
+
+    )
+
+
+  .
+
 
 }

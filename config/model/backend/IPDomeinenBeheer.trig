@@ -1,0 +1,46 @@
+GRAPH config:Theatre {
+
+  config:DomeinenLijstBeheerData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+      SELECT ?domeintabel ?domeintabel_label (?domeintabel as ?historie) (?domeintabel as ?edit) (?domeintabel as ?link) (?domeintabel as ?staging) (count(?waarde) as ?staging_count)
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+          ?domeintabel rdfs:label ?domeintabel_label
+        }
+        BIND (iri(concat(str(?domeintabel),"#staging")) as ?staginggraph)
+        OPTIONAL {
+          GRAPH ?staginggraph {
+            ?waarde a ?type
+          }
+        }
+      }
+      GROUP BY ?domeintabel ?domeintabel_label ?historie ?edit ?link ?staging
+      ORDER BY ?domeintabel_label
+    """
+  .
+
+  config:PublishDomeintabelData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      CONSTRUCT {
+        [ xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelpublish";
+          rdfs:label "publiceren";
+          rdf:value "yes";
+          elmo1:name "update"
+        ]
+      }
+     WHERE {}
+    """
+  .
+
+}

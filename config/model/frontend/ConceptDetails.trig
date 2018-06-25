@@ -8,7 +8,8 @@ GRAPH config:Theatre {
 
   config:ConceptenDetails a elmo:Representation; 
   elmo:stage config:Stage;
-  elmo:contains config:Image;
+  #elmo:contains config:Image;
+  elmo:contains config:ConceptImage;
 	elmo:contains config:Menu;
   elmo:contains config:Footer;
 	elmo:contains config:GraphDisplay;
@@ -83,24 +84,38 @@ GRAPH config:Theatre {
     # xhtml:link "begrippen-per-categorie";
     # elmo:name "categorie";
   # ];
-  
-	elmo:fragment [
+  elmo:fragment [
+	  elmo:index 11;
+	  elmo:appliesTo aquo:englishLabel;
+	  rdfs:label "Engels label"@nl;
+	];
+  elmo:fragment [
 	  elmo:index 12;
+	  elmo:appliesTo aquo:flemishLabel;
+	  rdfs:label "Vlaams label"@nl;
+	];
+  elmo:fragment [
+	  elmo:index 13;
+	  elmo:appliesTo aquo:germanlabelLabel;
+	  rdfs:label "Duits label"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 14;
 	  elmo:appliesTo skos:notation;
 	  rdfs:label "Code"@nl;
 	];
   elmo:fragment [
-	  elmo:index 13;;
+	  elmo:index 15;;
 	  elmo:appliesTo owl:sameAs;
     xhtml:link "domeinwaarden";
 	  rdfs:label "Domeinwaarde"@nl;
 	];
-  elmo:fragment [
-	  elmo:index 14;
-    elmo:appliesTo rdfs:label;
-    xhtml:link "domeintabel";
-	  rdfs:label "Domeintabel"@nl;
-	];
+  # elmo:fragment [
+	  # elmo:index 14;
+    # elmo:appliesTo rdfs:label;
+    # xhtml:link "domeintabel";
+	  # rdfs:label "Domeintabel"@nl;
+	# ];
     elmo:fragment [ 
 	  elmo:index 20; 
 	  elmo:appliesTo skos:broader; 
@@ -172,6 +187,8 @@ GRAPH config:Theatre {
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
   ];
+  
+  
 
   . 
 	 

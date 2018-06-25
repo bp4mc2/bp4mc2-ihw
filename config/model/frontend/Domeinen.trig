@@ -14,7 +14,8 @@ GRAPH config:Theatre {
   config:DomeinenLijst a elmo:Representation;
     elmo:appearance config:DomeinenLijstAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:contains config:ExportIndex;
@@ -26,19 +27,9 @@ GRAPH config:Theatre {
       xhtml:link "domeintabel";
     ];
     elmo:fragment [
-      elmo:appliesTo "edit";
-      xhtml:link "beheer/domeintabel";
-      rdf:value "edit"
-    ];
-    elmo:fragment [
-      elmo:appliesTo "link";
-      xhtml:link "beheer/domeintabellink";
-      rdf:value "link"
-    ];
-    elmo:fragment [
-      elmo:appliesTo "staging";
-      xhtml:link "beheer/domeintabel/staging";
-      rdf:value "op stapel"
+      elmo:appliesTo "historie";
+      xhtml:link "domeintabel/historie";
+      rdf:value "historie"
     ];
   .
 

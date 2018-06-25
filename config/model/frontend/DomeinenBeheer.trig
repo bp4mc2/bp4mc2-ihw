@@ -1,0 +1,51 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# DOMEINEN-BEHEER
+#
+# ==========================
+
+  config:DomeinenLijstBeheerEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/domeintabellen";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinenLijstBeheer
+  .
+  config:DomeinenLijstBeheer a elmo:Representation;
+    elmo:appearance config:DomeinenLijstBeheerAppearance;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:informationProduct config:DomeinenLijstBeheerData;
+  .
+  config:DomeinenLijstBeheerAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo "domeintabel";
+      xhtml:link "domeintabel";
+    ];
+    elmo:fragment [
+      elmo:appliesTo "historie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel/historie";
+      rdf:value "historie"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "edit";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
+      rdf:value "edit"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "link";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
+      rdf:value "link"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "staging";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel/staging";
+      rdf:value "op stapel"
+    ];
+  .
+
+}

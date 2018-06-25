@@ -6,49 +6,82 @@ GRAPH config:Theatre {
 # DOMEINTABEL en waarden
 #
 # ==========================
-  
+
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
     #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:Domeintabel
   .
-  
+
+  config:DomeintabelHistorieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabel/historie";
+    elmo:stage config:Stage;
+    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
+    elmo:getRepresentation config:DomeintabelHistorie
+  .
+
   config:DomeintabelStagingEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel/staging";
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeintabelStaging
   .
-  
+
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
   .
-  
+
+  config:DomeintabelHistorie a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelHistorieData;
+  .
+
+
+
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:contains config:PublicerenLink;
     elmo:informationProduct config:DomeintabelStagingData;
   .
-  
+
   config:DomeinTitel a elmo:Representation;
     elmo:stage config:Stage;
     elmo:appearance config:DomeinTitelAppearance;
     elmo:informationProduct config:DomeinTitelData;
   .
 
+  config:PublicerenLink a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance [
+      elmo:index 1;
+      a elmo:IndexAppearance
+    ];
+    elmo:informationProduct config:PublishDomeintabelData
+  .
+
   config:DomeinTitelAppearance a elmo:ContentAppearance;
-    elmo:index 1;
+    elmo:index 2;
     elmo:fragment [
       elmo:appliesTo dct:hasPart;
       elmo:appearance elmo:HiddenAppearance;
@@ -58,16 +91,21 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
-      elmo:appliesTo dcat:theme;
+      elmo:appliesTo dcat:dataset;
       xhtml:link "domeinmeta";
       rdfs:label "Metadata"@nl;
     ];
   .
-  
+
   #Werkt nu alleen met een contentAppearance maar moet een TableAppearance zijn. Dan valt owl:sameAs weg en word een lege kolom.
   config:DomeintabelAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Afkorting;
+      rdfs:label "Afkorting"@nl;
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
@@ -76,22 +114,32 @@ GRAPH config:Theatre {
       elmo:index 1;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Omschrijving;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
       elmo:index 2;
     ];
     elmo:fragment [
-      elmo:appliesTo dct:subject;
-      rdfs:label "Groep"@nl;
+      elmo:appliesTo aquo:Omschrijving;
       elmo:index 3;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Cijfercode;
+      elmo:appliesTo aquo:CASnummer;
       elmo:index 4;
     ];
     elmo:fragment [
       elmo:appliesTo aquo:Groep;
       elmo:index 5;
     ];
+    elmo:fragment [
+      elmo:appliesTo dct:subject;
+      rdfs:label "Groep"@nl;
+      elmo:index 6;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Cijfercode;
+      elmo:index 7;
+    ];
+
     # elmo:fragment [
       # elmo:appliesTo owl:sameAs;
       ##xhtml:link "begrip";
@@ -102,17 +150,34 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
       xhtml:link "begrip";
+      elmo:name "begrip_label";
       rdfs:label "relatie"@nl;
-      elmo:index 6;
+      elmo:index 8;
+    ];
+   elmo:fragment [
+      elmo:appliesTo skos:prefLabel;
+      xhtml:link "begrip";
+      rdfs:label "relatie"@nl;
+      elmo:index 9;
     ];
     elmo:fragment [
       elmo:appliesTo prov:generatedAtTime;
       rdfs:label "Begin geldigheid"@nl;
-      elmo:index 97;
+      elmo:index 94;
     ];
     elmo:fragment [
       elmo:appliesTo prov:invalidatedAtTime;
       rdfs:label "Einde geldigheid"@nl;
+      elmo:index 95;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:beginDate;
+      rdfs:label "begindatum"@nl;
+      elmo:index 97;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:endDate;
+      rdfs:label "eindatum"@nl;
       elmo:index 98;
     ];
     elmo:fragment [
@@ -120,6 +185,7 @@ GRAPH config:Theatre {
       rdfs:label "Status"@nl;
       elmo:index 99;
     ]
+
   .
- 
+
 }

@@ -1,0 +1,26 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Beheer Pagina
+#
+# ==========================
+  config:BeheerEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:Beheer
+  .
+  config:Beheer a elmo:Representation;
+    elmo:appearance config:BeheerAppearance;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:BeheerData;
+  .
+
+  config:BeheerAppearance a elmo:HtmlAppearance;
+  .
+
+}

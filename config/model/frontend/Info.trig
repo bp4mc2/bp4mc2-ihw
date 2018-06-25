@@ -9,7 +9,7 @@ GRAPH config:Theatre {
   config:InfoPaginaLoc a elmo:Representation; 
     elmo:appearance config:InfoLocAppearance;
     elmo:stage config:Stage; 
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
     elmo:contains config:Menu; 
     elmo:contains config:Footer; 
     elmo:informationProduct config:InfoPaginaLocData;
@@ -27,7 +27,7 @@ GRAPH config:Theatre {
    config:InfoPaginaDs a elmo:Representation; 
     elmo:appearance config:InfoDsAppearance; 
     elmo:stage config:Stage; 
-    elmo:contains config:Image;
+    #elmo:contains config:Image;
     elmo:contains config:Menu; 
     elmo:contains config:Footer; 
     elmo:informationProduct config:InfoPaginaDsData; 

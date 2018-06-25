@@ -1,5 +1,14 @@
 GRAPH config:Theatre {
 
+
+config:ConceptImage a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:ConceptHeaderAppearance;
+    elmo:informationProduct config:ConceptHeader;
+  .
+  config:ConceptHeaderAppearance a elmo:HeaderAppearance;
+  .
+
   config:Image a elmo:Representation;
     elmo:stage config:Stage;
     elmo:appearance config:HeaderAppearance;

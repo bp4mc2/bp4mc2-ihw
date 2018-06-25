@@ -12,17 +12,17 @@ GRAPH config:Theatre {
        
       SELECT ?begrip ?categorie ?begrip_label ?definitie ?categorie_label
       WHERE {
-        GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
           ?begrip a  skos:Concept;
                      skos:prefLabel ?begrip_label;
           OPTIONAL {?begrip skos:definition ?definitie}
           FILTER regex(?begrip_label,concat("^",?term),"i")
         }
         OPTIONAL {
-          GRAPH <http://data.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
             ?begrip dct:subject ?categorie.
           }
-          GRAPH <http://data.aquo.nl/id/dataset/categorieen> {
+          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
             ?categorie rdfs:label ?categorie_label
           }
         }

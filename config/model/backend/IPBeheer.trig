@@ -1,0 +1,24 @@
+GRAPH config:Theatre {
+
+  config:BeheerData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+    prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+
+      [] elmo1:html '''
+        <table>
+        <tr>
+          <td><a href="%{dotwebstack.config.aquoroot}/beheer/begrippen"><button type="button" class="btn btn-default">Begrippen</button></a></td>
+        </tr>
+          <tr>
+            <td><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen</button></a></td>
+          </tr>
+        </table>
+      '''
+      }
+      WHERE {}
+    """
+  .
+
+}
