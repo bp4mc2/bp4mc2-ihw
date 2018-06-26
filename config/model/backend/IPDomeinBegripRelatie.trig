@@ -18,18 +18,29 @@ GRAPH config:Theatre {
                     # xhtml:link ?edit.
       # ?same_begrip rdfs:label ?begrip_label.}
 
-      SELECT
+      SELECT DISTINCT
 
-      ?domeinwaarde
+      ?waarde
       (?same_begrip as ?begrip)
       ?begrip_label
       ?domeintabel
-      (?domeinwaarde as ?edit)
+      ?domeintabel_label
+      (?domeintabel as ?edit)
 
-      WHERE{
+      WHERE {
 
-      GRAPH <http://standaard.aquo.nl/id/dataset/links> {?domeinwaarde owl:sameAs ?same_begrip}
-      OPTIONAL{ GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+        GRAPH <http://standaard.aquo.nl/id/dataset/links> {?waarde owl:sameAs ?same_begrip}
+        
+        OPTIONAL{ 
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> 
+            {<http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+              ?domeintabel rdfs:label ?domeintabel_label}
+        }
+        GRAPH  ?domeintabel {?waarde ?p ?o}
+                          
+        OPTIONAL{ 
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}
+        }
       }
       """
   .

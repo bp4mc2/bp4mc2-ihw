@@ -14,16 +14,33 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?subject ?p ?o;
-          rdfs:label ?titellabel.
+          rdfs:label ?titellabel;
+          dct:publisher ?agent;
+          dcat:theme ?thema.
+        ?agent rdfs:label ?agent_label.
+        ?thema rdfs:label ?thema_label.
+        ?subject dcat:distribution ?domeintabel.
+        ?domeintabel rdfs:label ?domeintabel_label.
       }
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
-          ?subject ?p ?o;
-            rdfs:label ?slabel.
-        MINUS {?subject rdfs:label ?o}
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+            ?subject ?p ?o;
+              rdfs:label ?slabel;
+              dct:publisher ?agent;
+              dcat:theme ?thema.
+            MINUS {?subject rdfs:label ?o}
+            OPTIONAL {?subject dcat:distribution ?domeintabel}
+            
+          
+          OPTIONAL{ ?agent rdfs:label ?agent_label}
+          OPTIONAL{ ?thema rdfs:label ?thema_label}
+          OPTIONAL{ 
+            GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> 
+              {<http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+                ?domeintabel rdfs:label ?domeintabel_label}
+          }
+          BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
         }
-
-        BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
       }
     """
   .

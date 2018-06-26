@@ -38,11 +38,8 @@ GRAPH config:Theatre {
           elmo1:data [
             elmo1:index "5"; rdfs:label "Proces";
             elmo1:data [elmo1:index "1"; rdfs:label "Wijzigingsproces"; xhtml:link "http://www.aquo.nl/update/"];
-            elmo1:data [elmo1:index "2"; rdfs:label "Wijziginsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Wijzigingsvoorstellen"; xhtml:link "https://hetwaterschapshuis.sharepoint.com/sites/aquo/"];
           ];
-          elmo1:data [
-            elmo1:index "6"; rdfs:label "Beheer"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer"
-          ]
         ]
       }
       WHERE {}

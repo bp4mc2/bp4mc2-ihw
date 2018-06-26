@@ -92,7 +92,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo dcat:dataset;
-      xhtml:link "domeinmeta";
+      xhtml:link "/domeinmeta";
       rdfs:label "Metadata"@nl;
     ];
   .
@@ -118,25 +118,26 @@ GRAPH config:Theatre {
       rdfs:label "Code"@nl;
       elmo:index 2;
     ];
-    elmo:fragment [
-      elmo:appliesTo aquo:Omschrijving;
+     elmo:fragment [
+      elmo:appliesTo aquo:Cijfercode;
       elmo:index 3;
     ];
+
     elmo:fragment [
-      elmo:appliesTo aquo:CASnummer;
+      elmo:appliesTo aquo:Omschrijving;
       elmo:index 4;
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:Groep;
+      elmo:appliesTo aquo:CASnummer;
       elmo:index 5;
+    ];
+    elmo:fragment [
+      elmo:appliesTo aquo:Groep;
+      elmo:index 6;
     ];
     elmo:fragment [
       elmo:appliesTo dct:subject;
       rdfs:label "Groep"@nl;
-      elmo:index 6;
-    ];
-    elmo:fragment [
-      elmo:appliesTo aquo:Cijfercode;
       elmo:index 7;
     ];
 

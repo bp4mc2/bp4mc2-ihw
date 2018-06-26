@@ -1,7 +1,7 @@
 GRAPH config:Theatre {
 
   config:DomeinBegrippenEditEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/relatie";
+    elmo:pathPattern "/beheer/relatie";
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeinWaardeBegripLijst;
   .
@@ -11,6 +11,7 @@ GRAPH config:Theatre {
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
     elmo:appearance config:DomeinWaardeBegripAppearance;
     elmo:informationProduct config:DomeinWaardeBegripData;
   .
@@ -25,8 +26,9 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "domeintabel";
-      xhtml:link "/domeintabel";
+      elmo:name "domein_label";
       rdfs:label "Domeintabel"@nl;
+      xhtml:link "/domeintabel";
     ];
     elmo:fragment [ 
       elmo:index 3;
@@ -38,8 +40,8 @@ GRAPH config:Theatre {
       elmo:fragment [ 
       elmo:index 5;
       elmo:appliesTo "edit";
-      xhtml:link "/beheer/relatie";
-      rdf:value "edit"@nl;
+      xhtml:link "/beheer/domeintabellink";
+      rdf:value "Edit relatie"@nl;
     ];  
   .
     

@@ -2,7 +2,6 @@ GRAPH config:Theatre {
 
   config:ConceptDetailData a elmo:InformationProduct;
     elmo:requiredParameter config:ConceptTabelParameter;
-    elmo:optionalParameter config:CategorieParameter;
     elmo:optionalParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
@@ -17,7 +16,6 @@ GRAPH config:Theatre {
           rdfs:label ?titellabel.
         ?o rdfs:label ?olabel.
         ?subject owl:sameAs ?domeinwaarde.
-        #?domeintabel rdfs:label ?domeinlabel.
         ?subject dct:subject ?categorie.
         ?categorie rdfs:label ?categorie_label.
         ?subject aquo:englishLabel ?englishLabel.
@@ -44,20 +42,11 @@ GRAPH config:Theatre {
             ?categorie rdfs:label ?categorie_label
           }
         }
-        # OPTIONAL {
-          # GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-            # ?subject owl:sameAs ?domeintabel
-          # }
-          # GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            # ?domeintabel rdfs:label ?domeinlabel
-          # }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?subject owl:sameAs ?domeinwaarde
           }
          }
-        #}
-
         BIND(CONCAT("Begrip: ", ?slabel) AS ?titellabel)
       }
     """
