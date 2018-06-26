@@ -73,12 +73,15 @@ GRAPH config:Theatre {
 
   config:PublicerenLink a elmo:Representation;
     elmo:stage config:Stage;
-    elmo:appearance [a elmo:IndexAppearance];
+    elmo:appearance [
+      elmo:index 1;
+      a elmo:IndexAppearance
+    ];
     elmo:informationProduct config:PublishDomeintabelData
   .
 
   config:DomeinTitelAppearance a elmo:ContentAppearance;
-    elmo:index 1;
+    elmo:index 2;
     elmo:fragment [
       elmo:appliesTo dct:hasPart;
       elmo:appearance elmo:HiddenAppearance;

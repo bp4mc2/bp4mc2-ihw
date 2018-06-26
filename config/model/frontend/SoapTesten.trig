@@ -1,0 +1,14 @@
+GRAPH config:Theatre {
+
+  config:GetDomainTableNamesEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDomainTableNames";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:GetDomainTableNamesRepresentation;
+  .
+
+  config:GetDomainTableNamesRepresentation a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:GetDomainTableNames;
+  .
+
+}
