@@ -14,6 +14,9 @@ GRAPH config:Theatre {
           <tr>
             <td><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen</button></a></td>
           </tr>
+          <tr>
+            <td><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Domein-begrip relatie</button></a></td>
+          </tr>
         </table>
       '''
       }

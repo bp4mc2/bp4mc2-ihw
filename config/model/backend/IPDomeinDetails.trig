@@ -97,6 +97,7 @@ GRAPH config:Theatre {
           ?subject dct:hasPart <http://standaard.aquo.nl/id/dataset/domeintabel>.
           ?subject dcat:dataset ?dataset.
           ?subject rdfs:label ?dlabel.
+          ?dataset rdfs:label ?label.
         }
         WHERE {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {

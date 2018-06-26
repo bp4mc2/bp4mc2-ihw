@@ -89,7 +89,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo dcat:dataset;
-      xhtml:link "domeinmeta";
+      xhtml:link "/domeinmeta";
       rdfs:label "Metadata"@nl;
     ];
   .

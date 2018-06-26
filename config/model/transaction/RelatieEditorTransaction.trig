@@ -58,6 +58,7 @@ GRAPH config:Theatre {
 
   config:RelatieEditableData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
+    elmo:optionalParameter config:DomeinwaardeParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>

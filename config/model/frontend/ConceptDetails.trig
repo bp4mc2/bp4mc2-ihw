@@ -96,7 +96,7 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
 	  elmo:index 13;
-	  elmo:appliesTo aquo:germanlabelLabel;
+	  elmo:appliesTo aquo:germanLabel;
 	  rdfs:label "Duits label"@nl;
 	];
 	elmo:fragment [
