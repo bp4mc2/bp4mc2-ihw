@@ -108,7 +108,7 @@ GRAPH config:Theatre {
   elmo:fragment [  
 	  elmo:index 35; 
 	  elmo:appliesTo  dct:subject;
-    xhtml:link "/categorie";    
+    xhtml:link "/begrippen-per-categorie";    
 	  rdfs:label "Categorie"@nl; 
 	];
   elmo:fragment [  

@@ -1,9 +1,7 @@
 GRAPH config:Theatre {
 
   config:DomeinMetaData a elmo:InformationProduct;
-    #elmo:requiredParameter config:ConceptTabelParameter;
-    #elmo:optionalParameter config:CategorieParameter;
-    elmo:optionalParameter elmo:SubjectParameter;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -13,35 +11,44 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
       CONSTRUCT {
-        ?subject ?p ?o;
-          rdfs:label ?titellabel;
-          dct:publisher ?agent;
-          dcat:theme ?thema.
+        ?subject ?p ?o.
+         ?subject  rdfs:label ?titellabel.
         ?agent rdfs:label ?agent_label.
         ?thema rdfs:label ?thema_label.
-        ?subject dcat:distribution ?domeintabel.
+        ?categorie rdfs:label ?categorie_label.
         ?domeintabel rdfs:label ?domeintabel_label.
       }
       WHERE {
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
-            ?subject ?p ?o;
-              rdfs:label ?slabel;
-              dct:publisher ?agent;
-              dcat:theme ?thema.
-            MINUS {?subject rdfs:label ?o}
-            OPTIONAL {?subject dcat:distribution ?domeintabel}
+       
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              ?subject ?p ?o.
+                
+             
+              OPTIONAL {?subject dcat:distribution ?domeintabel.}
+              OPTIONAL {?subject rdfs:label ?slabel.}
+              OPTIONAL {?subject dct:publisher ?agent.
+              ?agent rdfs:label ?agent_label.}
+              OPTIONAL {?subject dcat:theme ?thema.
+              ?thema rdfs:label ?thema_label.}
+              OPTIONAL { ?subject dct:subject ?categorie.}
+              
+               
+               MINUS {?subject rdfs:label ?o}
+              BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
+            }
+            OPTIOnAL{
+              GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> 
+                { <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+                   ?domeintabel rdfs:label ?domeintabel_label
+                   }}
+                
+          OPTIONAL{
+             GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> { ?categorie rdfs:label ?categorie_label.
+            }
+             }
             
-          
-          OPTIONAL{ ?agent rdfs:label ?agent_label}
-          OPTIONAL{ ?thema rdfs:label ?thema_label}
-          OPTIONAL{ 
-            GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> 
-              {<http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
-                ?domeintabel rdfs:label ?domeintabel_label}
-          }
-          BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
-        }
       }
+      
     """
   .
 
