@@ -124,8 +124,59 @@ GRAPH config:Theatre {
   elmo:fragment [  
 	  elmo:index 42; 
 	  elmo:appliesTo  dct:publisher; 
+    xhtml:link "/domeinmeta-agent";
 	  rdfs:label "Beheerder"@nl; 
 	];
   .
+  
+  
+  
+  
+  config:DomeinMetaAgentEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeinmeta-agent";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinMetaAgent
+  .
+
+  config:DomeinMetaAgent a elmo:Representation; 
+  elmo:appearance config:DomeinMetaAgentAppearance;
+  elmo:stage config:Stage;
+  #elmo:contains config:Image;
+  elmo:contains config:ConceptImage;
+	elmo:contains config:Menu;
+  elmo:contains config:Footer;
+  elmo:contains config:ExportIndex;
+	elmo:informationProduct config:DomeinMetaAgentData;
+  . 
+  
+  config:DomeinMetaAgentAppearance a elmo:Appearance;
+	elmo:index 01;
+	elmo:fragment [ 
+	  elmo:appliesTo rdf:type; 
+    elmo:appearance elmo:HiddenAppearance; 
+	  rdfs:label "Term"@nl; 
+	]; 
+	elmo:fragment [ 
+    elmo:index 02; 
+	  elmo:appliesTo rdfs:label;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Label"@nl;
+	]; 
+	elmo:fragment [ 
+	  elmo:index 03; 
+	  elmo:appliesTo foaf:name; 
+	  rdfs:label "Naam"@nl; 
+	];
+  elmo:fragment [ 
+	  elmo:index 04; 
+	  elmo:appliesTo foaf:mbox; 
+	  rdfs:label "Email"@nl; 
+	];
+  elmo:fragment [ 
+	  elmo:index 05; 
+	  elmo:appliesTo foaf:homepage; 
+    xhtml:link "";
+	  rdfs:label "Homepage"@nl; 
+	];
   	 
 } 
