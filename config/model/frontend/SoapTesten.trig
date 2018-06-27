@@ -5,10 +5,19 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:getRepresentation config:GetDomainTableNamesRepresentation;
   .
-
   config:GetDomainTableNamesRepresentation a elmo:Representation;
     elmo:stage config:Stage;
     elmo:informationProduct config:GetDomainTableNames;
+  .
+
+  config:GetDomainTableEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDomainTable";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:GetDomainTableRepresentation;
+  .
+  config:GetDomainTableRepresentation a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:GetDomainTable;
   .
 
 }
