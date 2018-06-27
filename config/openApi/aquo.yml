@@ -6,29 +6,10 @@ host: localhost
 basePath: /api/aquo
 produces:
   - application/json
-x-dotwebstack-ldpath-namespaces:
-  adms: http://www.w3.org/ns/adms#
-  dcat: http://www.w3.org/ns/dcat#
-  dcmiperiod: http://dublincore.org/documents/2006/04/10/dcmi-period/
-  dct: http://purl.org/dc/terms/
-  foaf: http://xmlns.com/foaf/0.1/
-  org: http://www.w3.org/TR/vocab-org#
-  prov: http://www.w3.org/ns/prov#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  skos: http://www.w3.org/2004/02/skos/core#
-  skoslex: http://bp4mc2.org/def/skos-lex/
-  thes: http://purl.org/iso25964/skos-thes#
-  vcard: http://www.w3.org/2006/vcard/ns#
-  wdrs: http://www.w3.org/2007/05/powder-s#
 paths:
   /search/begrippen/{term}:
     get:
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchConceptenData"
-      x-dotwebstack-subject-query: >
-        SELECT ?s
-        WHERE {
-          ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type
-        }
+      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/ApiSearchConceptenData"
       parameters:
         - name: term
           in: path
@@ -39,9 +20,31 @@ paths:
       responses:
         200:
           description: OK
-          x-dotwebstack-subject: true
           schema:
-            $ref: "#/definitions/Concept"  
+            type: array
+            required:
+              - ?begrip 
+            items:
+              type: object
+              properties:
+                begrip:
+                  type: string
+                  format: string
+                begrip_label:
+                  type: string
+                  format: string
+                synoniem:
+                  type: string
+                  format: string
+                categorie:
+                  type: string
+                  format: string
+                definitie:
+                  type: string
+                  format: string
+                gevonden_in:
+                  type: string
+                  format: string
   /search/categorieen/{term}:
     get:
       x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchCategorieenData"
@@ -69,7 +72,6 @@ paths:
                 categorie_label:
                   type: string
                   format: string
-                  /search/categorieen/{term}:
   /search/domeintabellen/{term}:
     get:
       x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchDomeinenData"

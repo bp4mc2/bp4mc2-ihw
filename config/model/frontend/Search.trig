@@ -45,17 +45,8 @@ GRAPH config:Theatre {
   config:SearchConceptenAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:index 1;
-      elmo:appliesTo rdf:type;
+      elmo:appliesTo "begrip";
       xhtml:link "begrip";
-      #elmo:appearance elmo:HiddenAppearance;
-      elmo:name "begrip_label";
-      rdfs:label "Term"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 1;
-      elmo:appliesTo skos:prefLabel;
-      xhtml:link "begrip";
-      #elmo:appearance elmo:HiddenAppearance;
       elmo:name "SUBJECT";
       rdfs:label "Term"@nl;
     ];

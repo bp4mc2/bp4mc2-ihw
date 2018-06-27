@@ -2,7 +2,7 @@ GRAPH config:Theatre {
 
   config:SearchConceptenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
-    #elmo:resultType elmo-rt:Tuple;
+    elmo:resultType elmo-rt:Tuple;
     elmo:optionalParameter config:TermParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -10,20 +10,8 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
 
-      #SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
-      CONSTRUCT{
-      ?begrip a  skos:Concept;
-        skos:prefLabel ?begrip_label;
-        aquo:searchLabel ?search_label.
-      ?begrip skos:altLabel ?synoniem.
-      ?begrip skos:definition ?definitie.
-      ?begrip dct:subject ?categorie_begrip.
-      ?categorie_begrip rdfs:label ?categorie_begrip_label.
-      ?begrip aquo:gevondenIn ?found.
-      }
-      
-      
-      
+      SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
+
       WHERE {
         {
           GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
@@ -199,5 +187,97 @@ GRAPH config:Theatre {
     """
   .
 
+  
+  
+  #-----------------------------------------------API SEARCH -----------------------------------------------------
+  # Alleen de search op begrippen hoeft te worden aangepast aangezien de overige maar 1 waarde kunnen teruggeven op uniek onderdeel. Bij begrippen ligt dit anders omdat alleen de #combinatie van een begrip en een definitie uniek is.
+  
+  config:ApiSearchConceptenData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+
+      SELECT 
+      ?begrip 
+      ?begrip_label 
+      ?definitie 
+      (group_concat(distinct ?synoniemTp;separator="; ")as ?synoniem) 
+      (group_concat(distinct ?categorie_begrip_label;separator="; ")as ?categorie)
+      (group_concat(distinct ?found;separator="; ")as ?gevonden_in)
+      
+      WHERE {
+        {
+          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniemTp}
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
+          #BIND(IF(BOUND(?categorie_begrip),?categorie_begrip,"") as ?categorieTmp)
+          BIND(concat(?categorie_begrip,":",?categorie_begrip_label) as ?categorieTmp)
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
+        }
+        UNION {
+          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniemTp}
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?synoniemTp),?synoniemTp,"") as ?search_label)
+          BIND(IF(BOUND(?categorie_begrip),concat(?categorie_begrip,":",?categorie_begrip_label),"") as ?categorieTmp)
+          FILTER regex(?search_label,concat("^",?term),"i")
+          BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
+        }
+
+        UNION {
+          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip a  skos:Concept;
+                       skos:prefLabel ?begrip_label.
+            OPTIONAL {?begrip skos:altLabel ?synoniemTp}
+            OPTIONAL {?begrip skos:definition ?definitie}
+          }
+          OPTIONAL {
+            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?begrip dct:subject ?categorie_begrip.
+            }
+            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            }
+          }
+          BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
+          BIND(IF(BOUND(?categorie_begrip),concat(?categorie_begrip,":",?categorie_begrip_label),"") as ?categorieTmp)
+          FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
+          BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
+        }
+       
+      }
+      GROUP BY ?begrip ?begrip_label ?definitie 
+      ORDER BY ?begrip_label
+
+    """
 
 }
