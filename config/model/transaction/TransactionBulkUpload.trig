@@ -184,6 +184,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>
       ]
+      
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -378,6 +379,9 @@ GRAPH config:Theatre {
 
   config:DomeinMetaUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
+      [ a elmo:ValidationStep;
+        elmo:conformsTo aquo:DomeinTabelShape;
+      ] 
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -389,6 +393,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeinmeta>
       ]
+      
       # [
         # a elmo:UpdateStep;
         # elmo:backend config:UpdateBackend;
@@ -487,16 +492,53 @@ GRAPH config:Theatre {
 
   config:RelatieUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/links>"
-      ]
+      # omdat de links ook via het editor scherm kunnen worden gewijzigd kan een upload verschillen van de bestaande data, daarom is het leegmaken van de Graph niet van toepassing.
+      # [
+        # a elmo:UpdateStep;
+        # elmo:backend config:UpdateBackend;
+        # elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/links>"
+      # ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/id/dataset/links>
+      ]
+
+    )
+
+
+  .
+  
+    # ==========================
+#
+# Shacl Upload tbv domeintabel metdata
+#
+# ==========================
+
+  config:DomeintabelShaclUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/shacl";
+    elmo:stage config:Stage;
+    elmo:putService config:DomeintabelShaclUploadService
+  .
+
+  config:DomeintabelShaclUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:DomeintabelShaclUploadTransaction
+  .
+
+  config:DomeintabelShaclUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/shacl>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/shacl>
       ]
 
     )

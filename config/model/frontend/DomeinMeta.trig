@@ -14,6 +14,7 @@ GRAPH config:Theatre {
 	elmo:contains config:Menu;
   elmo:contains config:Footer;
   elmo:contains config:ExportIndex;
+  elmo:contains config:ShaclRepresentation;
 	elmo:informationProduct config:DomeinMetaData;
   . 
    
@@ -178,5 +179,67 @@ GRAPH config:Theatre {
     xhtml:link "";
 	  rdfs:label "Homepage"@nl; 
 	];
+  
+  .
+  
+  
+  # Shacl validation
+  
+   
+  config:ShaclRepresentation a elmo:Representation;
+    elmo:appearance config:ShaclAppearance;
+    elmo:stage config:Stage;
+    elmo:informationProduct config:ShaclData;
+  .
+  
+  config:ShaclAppearance a elmo:TableAppearance;
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      rdfs:label "Type"@nl;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [ 
+      elmo:index 1;
+      elmo:appliesTo rdfs:label;
+      rdfs:label "Kolom"@nl;
+    ];  
+    elmo:fragment [ 
+      elmo:index 2;
+      elmo:appliesTo sh:datatype;
+      rdfs:label "Datatype"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 3;
+      elmo:appliesTo sh:name;
+      rdfs:label "Predicate"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 4;
+      elmo:appliesTo sh:path;
+      rdfs:label "Predicate path"@nl;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [ 
+      elmo:index 5;
+      elmo:appliesTo sh:minCount;
+      rdfs:label "Min aantal waarden"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 6;
+      elmo:appliesTo sh:maxCount;
+      rdfs:label "Max aantal waarden"@nl;
+    ];
+    elmo:fragment [ 
+      elmo:index 7;
+      elmo:appliesTo sh:severity;
+      rdfs:label "Voorwaarde"@nl;
+    ];
+       elmo:fragment [ 
+      elmo:index 8;
+      elmo:appliesTo sh:message;
+      rdfs:label "Melding"@nl;
+    ];
+    
+  .
   	 
 } 

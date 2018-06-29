@@ -75,5 +75,34 @@ GRAPH config:Theatre {
       
     """
   .
+  
+   config:ShaclData a elmo:InformationProduct;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX shacl: <http://www.w3.org/ns/shacl#>
+      PREFIX sh:			<http://www.w3.org/ns/shacl#>
+
+      CONSTRUCT { ?property ?pp ?op }
+      
+      WHERE {
+       
+        GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+              ?s ?p ?o;
+                  dcat:dataset ?subject;
+                  sh:property ?property.
+              }  
+        Graph  <http://standaard.aquo.nl/id/dataset/shacl> {
+        ?property ?pp ?op}
+      }
+      
+    """
+  .
+  
 
 }
