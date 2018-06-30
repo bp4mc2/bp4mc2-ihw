@@ -1,0 +1,10 @@
+GRAPH config:Theatre {
+
+  config:DomainTableParameter a elmo:TermParameter;
+    elmo:name "domaintablename";
+    elmo:shape [
+      sh:datatype xsd:string
+    ]
+  .
+
+}

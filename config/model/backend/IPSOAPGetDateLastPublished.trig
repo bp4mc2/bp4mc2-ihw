@@ -1,0 +1,25 @@
+GRAPH config:Theatre {
+
+  config:GetDateLastPublished a elmo:InformationProduct;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter config:DomainTableParameter;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      SELECT (max(?timestamp) as ?lastdatepublished)
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+          ?domeintabel rdfs:label ?name
+          FILTER(str(?name)=?domaintablename)
+        }
+        GRAPH ?domeintabel {
+          ?waarde prov:generatedAtTime ?timestamp
+        }
+      }
+    """
+  .
+
+}

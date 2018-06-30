@@ -1,12 +1,5 @@
 GRAPH config:Theatre {
 
-  config:DomainTableParameter a elmo:TermParameter;
-    elmo:name "domaintablename";
-    elmo:shape [
-      sh:datatype xsd:string
-    ]
-  .
-
   config:GetDomainTable a elmo:InformationProduct;
     elmo:resultType elmo-rt:Tuple;
     elmo:backend config:LocalBackend;
@@ -14,7 +7,13 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX prov: <http://www.w3.org/ns/prov#>
-      SELECT ?domaintablename ?id ?begindate ?property ?value
+      SELECT ?domaintablename
+             ?id
+             ?begindate
+             ("2999-12-31" as ?enddate)
+             (false as ?isnull)
+             ?property
+             ?value
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
           ?domaintable rdfs:label ?domaintablename
