@@ -10,14 +10,18 @@ GRAPH config:Theatre {
   config:DomeintabelEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel";
     elmo:stage config:Stage;
-    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:Domeintabel
+  .
+
+  config:DomeintabelGroepEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/domeintabelgroep";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeintabelGroep
   .
 
   config:DomeintabelHistorieEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabel/historie";
     elmo:stage config:Stage;
-    #elmo:getRepresentation config:DomeintabelTemp #Tijdelijk
     elmo:getRepresentation config:DomeintabelHistorie
   .
 
@@ -37,6 +41,18 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
+  .
+
+  config:DomeintabelGroep a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelGroepData;
   .
 
   config:DomeintabelHistorie a elmo:Representation;
@@ -132,13 +148,16 @@ GRAPH config:Theatre {
       elmo:index 5;
     ];
     elmo:fragment [
+      # Dit is de groep zonder een feitelijk URI. Deprecated?
       elmo:appliesTo aquo:Groep;
       elmo:index 6;
     ];
     elmo:fragment [
+      # Dit is de groep, maar dan met een echte URI
       elmo:appliesTo dct:subject;
       rdfs:label "Groep"@nl;
       elmo:index 7;
+      xhtml:link "domeintabelgroep";
     ];
 
     # elmo:fragment [

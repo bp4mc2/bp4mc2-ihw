@@ -184,8 +184,12 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>
       ]
-      
+
       [
+        # ----------
+        # Alle historische data ook weggooien
+        #
+        #
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -205,6 +209,10 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # ----------
+        # Oude data weggooien
+        #
+        #
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -222,6 +230,10 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # ----------
+        # Nieuwe data toevoegen, maar alleen actuele data (dwz: waarden hebben geen einddatum)
+        #
+        #
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -243,12 +255,18 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # ----------
+        # Data die al wel een einddatum hebben, toevoegen aan een versioned graph
+        #
+        #
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
           PREFIX prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
           insert {
             graph ?domeingraphversion {
+              ?domeingraphversion dct:replacedBy ?domeingraph.
               ?s ?p ?o
             }
           }
@@ -256,12 +274,17 @@ GRAPH config:Theatre {
             graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
               ?s ?p ?o.
               ?s prov:invalidatedAtTime ?time
+              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
               BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
             }
           }
         """
       ]
       [
+        # ----------
+        # Domeintabel toevoegen aan de lijst van domeintabellen
+        #
+        #
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -381,7 +404,7 @@ GRAPH config:Theatre {
     elmo:sequentialFlow (
       [ a elmo:ValidationStep;
         elmo:conformsTo aquo:DomeinTabelShape;
-      ] 
+      ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -393,7 +416,7 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeinmeta>
       ]
-      
+
       # [
         # a elmo:UpdateStep;
         # elmo:backend config:UpdateBackend;
@@ -509,7 +532,7 @@ GRAPH config:Theatre {
 
 
   .
-  
+
     # ==========================
 #
 # Shacl Upload tbv domeintabel metdata
