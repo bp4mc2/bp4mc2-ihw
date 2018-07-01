@@ -7,17 +7,12 @@ GRAPH config:Theatre {
       CONSTRUCT {
 
       [] elmo1:html '''
-        <table>
-        <tr>
-          <td><a href="%{dotwebstack.config.aquoroot}/beheer/begrippen"><button type="button" class="btn btn-default">Begrippen</button></a></td>
-        </tr>
-          <tr>
-            <td><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen</button></a></td>
-          </tr>
-          <tr>
-            <td><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Domein-begrip relatie</button></a></td>
-          </tr>
-        </table>
+        <ul>
+          <li><a href="%{dotwebstack.config.aquoroot}/beheer/begrippen"><button type="button" class="btn btn-default">Begrippen wijzigen</button></a></li>
+          <li><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Begrippen publiceren</button></a></li>
+          <li><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen beheren</button></a></li>
+          <li><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Overzicht van domein-begrip relatie</button></a></li>
+        </ul>
       '''
       }
       WHERE {}
