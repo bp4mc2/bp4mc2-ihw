@@ -42,6 +42,11 @@ GRAPH config:Theatre {
       rdfs:label "Link naar begrip"@nl;
     ];
     elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo skos:definition;
+      rdfs:label "Definitie"@nl;
+    ];
+    elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
       elmo:appearance elmo:ChangeSubmitAppearance;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
@@ -71,6 +76,8 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?waarde aquo:Omschrijving ?omschrijving.
         ?waarde skos:prefLabel ?term.
+        ?waarde skos:definition ?definitie.
+        ?waarde owl:sameAs ?begrip
       }
       WHERE {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
@@ -85,6 +92,7 @@ GRAPH config:Theatre {
             }
             GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
               ?begrip skos:prefLabel ?term
+              OPTIONAL {?begrip skos:definition ?definitie}
             }
           }
 
