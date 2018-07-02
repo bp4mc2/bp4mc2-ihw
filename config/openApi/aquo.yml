@@ -9,7 +9,7 @@ produces:
 paths:
   /search/begrippen/{term}:
     get:
-      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchConceptenData"
+      x-dotwebstack-information-product: "http://dotwebstack.org/configuration/ApiSearchConceptenData"
       parameters:
         - name: term
           in: path
@@ -23,13 +23,7 @@ paths:
           schema:
             type: array
             required:
-              - begrip
-              - begrip_label
-              - synoniem
-              - definitie 
-              - categorie_begrip 
-              - categorie_begrip_label 
-              - found
+              - ?begrip 
             items:
               type: object
               properties:
@@ -42,18 +36,15 @@ paths:
                 synoniem:
                   type: string
                   format: string
+                categorie:
+                  type: string
+                  format: string
                 definitie:
                   type: string
                   format: string
-                categorie_begrip:
+                gevonden_in:
                   type: string
                   format: string
-                categorie_begrip_label:
-                  type: string
-                  format: string
-                found:
-                  type: string
-                  format: string       
   /search/categorieen/{term}:
     get:
       x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchCategorieenData"
@@ -81,7 +72,6 @@ paths:
                 categorie_label:
                   type: string
                   format: string
-                  /search/categorieen/{term}:
   /search/domeintabellen/{term}:
     get:
       x-dotwebstack-information-product: "http://dotwebstack.org/configuration/SearchDomeinenData"
@@ -156,6 +146,225 @@ paths:
                 gevonden_in:
                   type: string
                   format: string
-                
-
-                
+definitions:
+  Concept:
+    type: object
+    required:
+      - type
+    properties:
+      afbeelding:
+        type: string
+        x-dotwebstack-ldpath: "foaf:depiction :: xsd:string"
+      beschrevenDoor:
+        type: string
+        x-dotwebstack-ldpath: "wdrs:describedby :: xsd:string"
+      beschrijving:
+        type: string
+        x-dotwebstack-ldpath: "dct:description :: xsd:string"
+      bestaatUit:
+        type: array
+        x-dotwebstack-ldpath: "thes:narrowerPartitive :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      breidtUit:
+        type: string
+        x-dotwebstack-ldpath: "skoslex:expands :: xsd:string"
+      bron:
+        type: string
+        x-dotwebstack-ldpath: "dct:source :: xsd:string"
+      contact:
+        type: string
+        x-dotwebstack-ldpath: "dcat:contactPoint :: xsd:string"
+      dataset:
+        type: array
+        x-dotwebstack-ldpath: "dcat:dataset :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      definitie:
+        type: string
+        x-dotwebstack-ldpath: "skos:definition :: xsd:string"
+      distributie:
+        type: array
+        x-dotwebstack-ldpath: "dcat:distribution :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      domein:
+        type: string
+        x-dotwebstack-ldpath: "skos:inScheme :: xsd:string"
+      download:
+        type: string
+        x-dotwebstack-ldpath: "dcat:downloadURL :: xsd:string"
+      emailadres:
+        type: string
+        x-dotwebstack-ldpath: "foaf:mbox :: xsd:string"
+      gedelegeerdAan:
+        type: array
+        x-dotwebstack-ldpath: "skoslex:delegatedTo :: xsd:string"        
+      heeftBetrekkingOp:
+        type: array
+        x-dotwebstack-ldpath: "skos:semanticRelation :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      gepubliceerd:
+        type: string
+        x-dotwebstack-ldpath: "dct:issued :: xsd:string"
+      gepubliceerdDoor:
+        type: string
+        x-dotwebstack-ldpath: "dct:publisher :: xsd:string"
+      homepage:
+        type: string
+        x-dotwebstack-ldpath: "foaf:homepage :: xsd:string"
+      isBrederDan:
+        type: array
+        x-dotwebstack-ldpath: "skos:broadMatch :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isEngerDan:
+        type: array
+        x-dotwebstack-ldpath: "skos:narrowMatch :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isGeneralisatieVan:
+        type: array
+        x-dotwebstack-ldpath: "thes:narrowerGeneric :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isHetzelfdeAls:
+        type: array
+        x-dotwebstack-ldpath: "skos:exactMatch :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isOnderdeelVan:
+        type: array
+        x-dotwebstack-ldpath: "thes:broaderPartitive :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isOngeveerHetzelfdeAls:
+        type: array
+        x-dotwebstack-ldpath: "skos:closeMatch :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      isSpecialisatieVan:
+        type: array
+        x-dotwebstack-ldpath: "thes:broaderGeneric :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      laatsteWijziging:
+        type: string
+        x-dotwebstack-ldpath: "dct:modified :: xsd:string"
+      licentie:
+        type: string
+        x-dotwebstack-ldpath: "dct:license :: xsd:string"
+      lid:
+        type: array
+        x-dotwebstack-ldpath: "skos:member :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      object:
+        type: string
+        x-dotwebstack-ldpath: "skoslex:object :: xsd:string"
+      oin:
+        type: string
+        x-dotwebstack-ldpath: "org:identifier :: xsd:string"
+      metadata:
+        type: string
+        x-dotwebstack-ldpath: "foaf:isPrimaryTopicOf :: xsd:string"
+      naam:
+        type: array
+        x-dotwebstack-ldpath: "rdfs:label :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      namensOrganisatie:
+        type: string
+        x-dotwebstack-ldpath: "prov:actedOnBehalfOf :: xsd:string"
+      note:
+        type: string
+        x-dotwebstack-ldpath: "vcard:note :: xsd:string"
+      notitie:
+        type: string
+        x-dotwebstack-ldpath: "skos:notation :: xsd:string"
+      rechten:
+        type: string
+        x-dotwebstack-ldpath: "dct:rights :: xsd:string"
+      relatie:
+        type: string
+        x-dotwebstack-ldpath: "dct:relation :: xsd:string"
+      sleutelwoord:
+        type: string
+        x-dotwebstack-ldpath: "dcat:keyword :: xsd:string"
+      synoniem:
+        type: "array"
+        x-dotwebstack-ldpath: "skos:altLabel :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      taal:
+        type: string
+        x-dotwebstack-ldpath: "dct:language :: xsd:string"
+      taxonomy:
+        type: string
+        x-dotwebstack-ldpath: "dcat:themeTaxonomy :: xsd:string"
+      tekstbron:
+        type: string
+        x-dotwebstack-ldpath: "dc:source :: xsd:string"
+      telefoon:
+        type: string
+        x-dotwebstack-ldpath: "vcard:hasTelephone :: xsd:string"
+      term:
+        type: string
+        x-dotwebstack-ldpath: "skos:prefLabel :: xsd:string"
+      titel:
+        type: string
+        x-dotwebstack-ldpath: "dct:title :: xsd:string"
+      toegangsUrl:
+        type: string
+        x-dotwebstack-ldpath: "dcat:accessURL :: xsd:string"
+      toelichting:
+        type: string
+        x-dotwebstack-ldpath: "skos:scopeNote :: xsd:string"
+      type:
+        type: array
+        x-dotwebstack-ldpath: "rdf:type"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"
+      uitleg:
+        type: string
+        x-dotwebstack-ldpath: "rdfs:comment :: xsd:string"
+      url:
+        type: string
+        x-dotwebstack-ldpath: "vcard:hasURL :: xsd:string"
+      versie:
+        type: string
+        x-dotwebstack-ldpath: "adms:version :: xsd:string"
+      versienotities:
+        type: string
+        x-dotwebstack-ldpath: "adms:versionNotes :: xsd:string"
+      volledigeNaam:
+        type: string
+        x-dotwebstack-ldpath: "foaf:givenName :: xsd:string"
+      website:
+        type: string
+        x-dotwebstack-ldpath: "dcat:landingPage :: xsd:string"
+      werkingsgebied:
+        type: string
+        x-dotwebstack-ldpath: "dct:spatial :: xsd:string"
+      zieOok:
+        type: array
+        x-dotwebstack-ldpath: "skos:relatedMatch :: xsd:string"
+        items:
+          type: string
+          x-dotwebstack-ldpath: ". :: xsd:string"

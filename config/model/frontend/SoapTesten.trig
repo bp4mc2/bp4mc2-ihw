@@ -1,0 +1,43 @@
+GRAPH config:Theatre {
+
+  config:GetDomainTableNamesEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDomainTableNames";
+    elmo:stage config:Stage;
+    elmo:getRepresentation [
+      a elmo:Representation;
+      elmo:stage config:Stage;
+      elmo:informationProduct config:GetDomainTableNames;
+    ]
+  .
+
+  config:GetDomainTableEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDomainTable";
+    elmo:stage config:Stage;
+    elmo:getRepresentation [
+      a elmo:Representation;
+      elmo:stage config:Stage;
+      elmo:informationProduct config:GetDomainTable;
+    ]
+  .
+
+  config:GetDomainTableInfoEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDomainTableInfo";
+    elmo:stage config:Stage;
+    elmo:getRepresentation [
+      a elmo:Representation;
+      elmo:stage config:Stage;
+      elmo:informationProduct config:GetDomainTableInfo;
+    ]
+  .
+
+  config:GetDateLastPublishedEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/soap/GetDateLastPublished";
+    elmo:stage config:Stage;
+    elmo:getRepresentation [
+      a elmo:Representation;
+      elmo:stage config:Stage;
+      elmo:informationProduct config:GetDateLastPublished;
+    ]
+  .
+
+}

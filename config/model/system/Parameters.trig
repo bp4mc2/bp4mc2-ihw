@@ -6,6 +6,12 @@ GRAPH config:Theatre {
 			sh:nodeKind sh:IRI
 		]
   .
+  config:DomeinwaardeParameter a elmo:TermParameter;
+    elmo:name "waarde";
+		elmo:shape [
+			sh:nodeKind sh:IRI
+		]
+  .
   
   config:TermParameter a elmo:TermParameter;
     elmo:name "term"; 

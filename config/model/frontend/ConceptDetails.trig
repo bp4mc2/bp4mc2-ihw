@@ -1,4 +1,4 @@
-GRAPH config:Theatre { 
+GRAPH config:Theatre {
 
   config:ConceptenDetailsEndpoint a elmo:Endpoint;
     elmo:pathPattern "/begrip";
@@ -6,45 +6,73 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:ConceptenDetails
   .
 
-  config:ConceptenDetails a elmo:Representation; 
-  elmo:stage config:Stage;
-  #elmo:contains config:Image;
-  elmo:contains config:ConceptImage;
-	elmo:contains config:Menu;
-  elmo:contains config:Footer;
-	elmo:contains config:GraphDisplay;
-  #elmo:contains config:ImageDisplay;
-	elmo:appearance config:ConceptDetailAppearance;
-	elmo:informationProduct config:ConceptDetailData;
-  . 
-   
+  config:ConceptenDetailsURIRedirection a elmo:Redirection;
+    elmo:pathPattern "/id/begrip/{id}";
+    elmo:redirectTemplate "/doc/begrip/{id}";
+    elmo:stage config:Stage;
+  .
+  config:SubjectFromUrl a elmo:UriParameterMapper;
+    elmo:source http:requestURI;
+    elmo:pattern "http://{domain}/doc/begrip/{reference}";
+    elmo:template "http://standaard.aquo.nl/id/begrip/{reference}";
+    elmo:target elmo:SubjectParameter;
+  .
+  config:ConceptenDetailsURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/doc/begrip/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ConceptenDetailsURI;
+  .
+
+  config:ConceptenDetailsURI a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:parameterMapper config:SubjectFromUrl;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:GraphDisplay;
+    #elmo:contains config:ImageDisplay;
+    elmo:appearance config:ConceptDetailAppearance;
+    elmo:informationProduct config:ConceptDetailData;
+  .
+  config:ConceptenDetails a elmo:Representation;
+    elmo:stage config:Stage;
+    #elmo:contains config:Image;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:GraphDisplay;
+    #elmo:contains config:ImageDisplay;
+    elmo:appearance config:ConceptDetailAppearance;
+    elmo:informationProduct config:ConceptDetailData;
+  .
+
   config:ConceptDetailAppearance a elmo:Appearance;
 	elmo:index 2;
-	elmo:fragment [ 
-	  elmo:appliesTo rdf:type; 
-    elmo:appearance elmo:HiddenAppearance; 
-	  rdfs:label "Term"@nl; 
-	]; 
-  elmo:fragment [ 
+	elmo:fragment [
+	  elmo:appliesTo rdf:type;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Term"@nl;
+	];
+  elmo:fragment [
 	  elmo:appliesTo rdfs:label;
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
-	]; 
-  	elmo:fragment [  
-	  elmo:index 01; 
-	  elmo:appliesTo skos:definition; 
-	  rdfs:label "Definitie"@nl; 
-	]; 
-	elmo:fragment [ 
-	  elmo:index 02; 
-	  elmo:appliesTo skos:prefLabel; 
-	  rdfs:label "Naam"@nl; 
-	]; 
-  elmo:fragment [ 
-	  elmo:index 03; 
-	  elmo:appliesTo skos:altLabel; 
+	];
+  	elmo:fragment [
+	  elmo:index 01;
+	  elmo:appliesTo skos:definition;
+	  rdfs:label "Definitie"@nl;
+	];
+	elmo:fragment [
+	  elmo:index 02;
+	  elmo:appliesTo skos:prefLabel;
+	  rdfs:label "Naam"@nl;
+	];
+  elmo:fragment [
+	  elmo:index 03;
+	  elmo:appliesTo skos:altLabel;
 	  elmo:appearance elmo:HiddenAppearance;
-	]; 
+	];
 	elmo:fragment [
 	  elmo:index 04;
 	  elmo:appliesTo aquo:dutchLabel;
@@ -61,7 +89,7 @@ GRAPH config:Theatre {
 	  elmo:appliesTo rdfs:comment;
 	  rdfs:label "Uitleg"@nl;
 	];
-	elmo:fragment [ 
+	elmo:fragment [
 	  elmo:index 08;
 	  elmo:appliesTo dc:source;
 	  rdfs:label "Bron"@nl;
@@ -78,7 +106,7 @@ GRAPH config:Theatre {
     # elmo:name "categorie";
      elmo:name "SUBJECT";
 	  ];
-  # elmo:fragment [ 
+  # elmo:fragment [
     # elmo:index 11;
     # elmo:appliesTo "categorie";
     # xhtml:link "begrippen-per-categorie";
@@ -96,7 +124,7 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
 	  elmo:index 13;
-	  elmo:appliesTo aquo:germanlabelLabel;
+	  elmo:appliesTo aquo:germanLabel;
 	  rdfs:label "Duits label"@nl;
 	];
 	elmo:fragment [
@@ -116,24 +144,24 @@ GRAPH config:Theatre {
     # xhtml:link "domeintabel";
 	  # rdfs:label "Domeintabel"@nl;
 	# ];
-    elmo:fragment [ 
-	  elmo:index 20; 
-	  elmo:appliesTo skos:broader; 
-	  rdfs:label "Bredere term"@nl; 
-    xhtml:link "begrip"; 
-    elmo:name "begrip"; 
-	]; 
-	elmo:fragment [ 
-	  elmo:index 21; 
-	  elmo:appliesTo skos:narrower; 
-	  rdfs:label "Nauwere term"@nl; 
-    xhtml:link "begrip"; 
-    elmo:name "begrip"; 
-  ]; 
-	elmo:fragment [ 
-	  elmo:index 22; 
-	  elmo:appliesTo skos:related; 
-	  rdfs:label "Gerelateerde term"@nl; 
+    elmo:fragment [
+	  elmo:index 20;
+	  elmo:appliesTo skos:broader;
+	  rdfs:label "Bredere term"@nl;
+    xhtml:link "begrip";
+    elmo:name "begrip";
+	];
+	elmo:fragment [
+	  elmo:index 21;
+	  elmo:appliesTo skos:narrower;
+	  rdfs:label "Nauwere term"@nl;
+    xhtml:link "begrip";
+    elmo:name "begrip";
+  ];
+	elmo:fragment [
+	  elmo:index 22;
+	  elmo:appliesTo skos:related;
+	  rdfs:label "Gerelateerde term"@nl;
     xhtml:link "begrip";
 	];
     elmo:fragment [
@@ -187,10 +215,9 @@ GRAPH config:Theatre {
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
   ];
-  
-  
 
-  . 
-	 
-} 
 
+
+  .
+
+}

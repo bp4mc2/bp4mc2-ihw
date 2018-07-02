@@ -52,36 +52,36 @@ GRAPH config:Theatre {
     ];
    elmo:fragment [
       elmo:index 2;
-      elmo:appliesTo "synoniem";
+      elmo:appliesTo skos:altLabel;
       rdfs:label "Synoniem"@nl;
     ];
     elmo:fragment [
       elmo:index 3;
-      elmo:appliesTo "categorie_begrip";
+      elmo:appliesTo dct:subject;
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
     elmo:fragment [ 
       elmo:index 3;
-      elmo:appliesTo "categorie_begrip_label";
+      elmo:appliesTo rdfs:label;
       xhtml:link "/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];  
     elmo:fragment [ 
       elmo:index 4;
-      elmo:appliesTo "definitie";
+      elmo:appliesTo skos:definition;
       rdfs:label "Definitie"@nl;
     ];
     elmo:fragment [
       elmo:index 5;
-      elmo:appliesTo "search_label";
+      elmo:appliesTo aquo:searchLabel;
       #rdfs:label "Zoekterm"@nl;
       elmo:appearance elmo:HiddenAppearance;
     ];
       elmo:fragment [
       elmo:index 6;
-      elmo:appliesTo "found";
+      elmo:appliesTo aquo:gevondenIn;
       rdfs:label "Gevonden in"@nl;
     ];
   .

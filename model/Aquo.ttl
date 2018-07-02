@@ -8,15 +8,8 @@
 @prefix skos:		<http://www.w3.org/2004/02/skos/core#>.
 @prefix prov:		<http://www.w3.org/ns/prov#>.
 @prefix adms: 		<http://www.w3.org/ns/adms#>.
+@prefix aquo: <http://standaard.aquo.nl/aquo#>.
 
-@prefix aquo:		<http://standaard.aquo.nl/def/aquo#>.
-
-aquo:ImageShape rdf:type sh:NodeShape;
-  rdf:label "Image Shape";
-  sh:name "image shape";
-  sh:targetClass dct:image;
-  sh:property aquo:PlaatjeShape;
-.
 
 aquo:ConceptShape rdf:type sh:NodeShape;
 	rdfs:label "Concept Shape";
@@ -55,12 +48,7 @@ aquo:OmschrijvingShape sh:PropertyShape;
 	sh:datatype xsd:string;
 	sh:maxCount 1;
 .
-aquo:PlaatjeShape sh:PropertyShape;
-	rdfs:label "Plaatje"@nl;
-	sh:name "dct:image";
-	sh:path dct:image;
-	sh:datatype sh:IRI;
-.
+
 aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Begin Geldigheid"@nl;
 	sh:name "dct:issued";
@@ -68,6 +56,8 @@ aquo:BeginDatumGeldigheidShape sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:minCount 1;
 	sh:maxCount 1;
+  sh:severity sh:Violation;
+  sh:message "De waarde voldoen niet aan het datatype of het maximum aantal van 1";
 .
 aquo:EindDatumGeldigheidShape sh:PropertyShape;
 	rdfs:label "Eind datum geldigheid"@nl;
@@ -83,22 +73,23 @@ aquo:DatumLaatstePublicatieShape rdf:type sh:PropertyShape;
 	sh:datatype xsd:dateTime;
 	sh:maxCount 1;
 .
-aquo:DomeinShape rdf:type sh:PropertyShape;
-	rdfs:label "Domein"@nl;
-	sh:name "skos:conceptScheme";
-	sh:path skos:conceptScheme;
-	sh:datatype sh:IRI;
+# aquo:DomeinShape rdf:type sh:PropertyShape;
+	# rdfs:label "Domein"@nl;
+	# sh:name "skos:conceptScheme";
+	# sh:path skos:conceptScheme;
+	# sh:datatype sh:IRI;
+	# sh:minCount 1;
+	# sh:maxCount 1;
+	# sh:severity sh:Violation;
+# .
+
+
+ aquo:Taalshape rdf:type sh:PropertyShape;
+	rdfs:label "Taal"@nl;
+	sh:name "iso-NL";
+	sh:path dct:language;
 	sh:minCount 1;
-	sh:maxCount 1;
-	sh:severity sh:Violation;
 .
-### aquo:Taalshape rdf:type sh:PropertyShape;
-#	rdfs:label "Taal"@nl;
-#	sh:name "iso-NL";
-#	sh:path iso:language????;
-#	PATH op deze shape is niet correct, moet ik controleren.
-#	sh:minCount 1;
-#.
 aquo:LabelShape rdf:type sh:PropertyShape;
 	rdfs:label "Label"@nl;
 	sh:path rdfs:label;
