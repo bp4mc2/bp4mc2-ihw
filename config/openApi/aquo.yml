@@ -2,7 +2,7 @@ swagger: 2.0
 info:
   title: Aquo API
   version: 1.0
-host: localhost
+host: %{dotwebstack.config.host}
 basePath: /api/aquo
 produces:
   - application/json
