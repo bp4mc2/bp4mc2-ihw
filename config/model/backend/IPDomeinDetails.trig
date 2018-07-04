@@ -13,9 +13,9 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?id ?p ?o;
-             owl:sameAs ?same_begrip;
+             owl:sameAs ?begrip;
              skos:comment ?status.
-        #?same_begrip skos:prefLabel ?begrip_label.
+        ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
         }
 
@@ -31,8 +31,8 @@ GRAPH config:Theatre {
             }
 
           }
-         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
+         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
 
       }
     """
@@ -54,9 +54,9 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?id ?p ?o;
-             owl:sameAs ?same_begrip;
+             owl:sameAs ?begrip;
              skos:comment ?status.
-        #?same_begrip skos:prefLabel ?begrip_label.
+        ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
         }
 
@@ -75,8 +75,8 @@ GRAPH config:Theatre {
               ?domaintabel dct:replacedBy ?newversion
             }
           }
-         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
+         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
 
       }
     """
@@ -96,8 +96,8 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
             skos:comment ?status;
-            owl:sameAs ?same_begrip;
-            rdfs:label ?sameLabel.
+            owl:sameAs ?begrip.
+        ?begrip  rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel
       }
       WHERE {
@@ -105,14 +105,14 @@ GRAPH config:Theatre {
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
-            #OPTIONAL {?id  owl:sameAs ?same_begrip}
+            #OPTIONAL {?id  owl:sameAs ?begrip}
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
 
           }
-          OPTIONAL{  GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?same_begrip}
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}}
+          OPTIONAL{  GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
         }
 
         UNION
