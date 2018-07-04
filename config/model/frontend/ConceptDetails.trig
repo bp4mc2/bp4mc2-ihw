@@ -103,15 +103,7 @@ GRAPH config:Theatre {
 	   elmo:index 10;
      elmo:appliesTo dct:subject;
      xhtml:link "begrippen-per-categorie";
-    # elmo:name "categorie";
-     elmo:name "SUBJECT";
 	  ];
-  # elmo:fragment [
-    # elmo:index 11;
-    # elmo:appliesTo "categorie";
-    # xhtml:link "begrippen-per-categorie";
-    # elmo:name "categorie";
-  # ];
   elmo:fragment [
 	  elmo:index 11;
 	  elmo:appliesTo aquo:englishLabel;
