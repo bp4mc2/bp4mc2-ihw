@@ -19,7 +19,7 @@ GRAPH config:Theatre {
   config:DomeinWaardeBegripAppearance a elmo:TableAppearance;
    elmo:fragment [
       elmo:index 4;
-      elmo:appliesTo "domeinwaarde";
+      elmo:appliesTo "waarde";
       xhtml:link "/domeinwaarden";
       rdfs:label "Domeinwaarde"@nl;
     ];

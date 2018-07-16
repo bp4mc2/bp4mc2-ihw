@@ -27,6 +27,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "begrip";
+      elmo:name "SUBJECT";
       xhtml:link "begrip";
       rdfs:label "Term"@nl;
     ];

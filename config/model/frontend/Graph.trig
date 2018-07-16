@@ -28,15 +28,15 @@ GRAPH config:Theatre {
       """;
       elmo:index 1;
     ];
-    elmo:fragment [
-      elmo:appliesTo "domeintabel";
-      xhtml:stylesheet """
-      fill: yellow;
-      fill-opacity: .3;
-      stroke #666;
-      """;
-      elmo:index 2;
-    ];
+    # elmo:fragment [
+      # elmo:appliesTo "domeintabel";
+      # xhtml:stylesheet """
+      # fill: yellow;
+      # fill-opacity: .3;
+      # stroke #666;
+      # """;
+      # elmo:index 2;
+    # ];
   .
  
 }
