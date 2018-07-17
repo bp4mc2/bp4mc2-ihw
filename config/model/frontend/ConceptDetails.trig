@@ -8,7 +8,7 @@ GRAPH config:Theatre {
 
   config:ConceptenDetailsURIRedirection a elmo:Redirection;
     elmo:pathPattern "/id/begrip/{id}";
-    elmo:redirectTemplate "/doc/begrip/{id}";
+   elmo:redirectTemplate "/doc/begrip/{id}";
     elmo:stage config:Stage;
   .
   config:SubjectFromUrl a elmo:UriParameterMapper;
@@ -103,15 +103,7 @@ GRAPH config:Theatre {
 	   elmo:index 10;
      elmo:appliesTo dct:subject;
      xhtml:link "begrippen-per-categorie";
-    # elmo:name "categorie";
-     elmo:name "SUBJECT";
 	  ];
-  # elmo:fragment [
-    # elmo:index 11;
-    # elmo:appliesTo "categorie";
-    # xhtml:link "begrippen-per-categorie";
-    # elmo:name "categorie";
-  # ];
   elmo:fragment [
 	  elmo:index 11;
 	  elmo:appliesTo aquo:englishLabel;
@@ -119,7 +111,7 @@ GRAPH config:Theatre {
 	];
   elmo:fragment [
 	  elmo:index 12;
-	  elmo:appliesTo aquo:flemishLabel;
+	  elmo:appliesTo aquo:flemmishLabel;
 	  rdfs:label "Vlaams label"@nl;
 	];
   elmo:fragment [
