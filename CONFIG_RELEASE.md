@@ -8,8 +8,8 @@
 
 ### Downloads:
 - Download Apache http://apache.cs.uu.nl/jena/binaries/apache-jena-fuseki-3.8.0.zip
-- Download van de meest recente Release het bestand [Source.zip] https://github.com/bp4mc2/bp4mc2-ihw/releases
-- Download van de meest recente release het bestand [dotwebstack-theatre-legacy.jar] https://github.com/bp4mc2/bp4mc2-ihw/releases
+- Download van de meest recente Release het bestand `[Source.zip]` https://github.com/bp4mc2/bp4mc2-ihw/releases
+- Download van de meest recente release het bestand `[dotwebstack-theatre-legacy.jar]` https://github.com/bp4mc2/bp4mc2-ihw/releases
 
 
 ### Installatie
