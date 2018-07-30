@@ -13,7 +13,7 @@ Downloads:
 
 
 ### Installatie
-- Maak een nieuwe folder aan
+- Maak een nieuwe folder aan en geef deze een overzichtelijke naam
 - Pak de bestanden van het bestand Source.zip hierin uit
 - Maak tevens een map 'target' aan in deze folder
 
@@ -28,20 +28,21 @@ en zet hier het bestand 'dotwebstack-theatre-legacy.jar' neer
 
 
 
-"@echo off
-java -jar jar/dotwebstack-theatre-legacy.jar
-pause"
+    "@echo off
+    java -jar jar/dotwebstack-theatre-legacy.jar
+    pause"
 
 
 
-noem deze 'start.bat'
+- Noem deze 'start.bat'
 
 
 ### Aanmaken Dataset:
 - Start apache op door dubbel te klikken op het bestand 'fuseki-server.bat' te klikken.
 - Laat apache draaien door de terminal niet af te sluiten
-- Open http://localhost:3030 en kijk of apache werkt;
-  maak hier tevens een dataset aan met de naam 'ihw'.
+- Ga naar [http://localhost:3030](http://localhost:3030) en kies voor "Add dataset";
+- Geef als naam voor de dataset `ihw` op.
+
 
 ### Start het Linked Data Theatre
 - Als je Fuseki hebt afgesloten, start deze dan weer op
