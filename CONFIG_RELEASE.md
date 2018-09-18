@@ -7,9 +7,9 @@
 - Een recente versie van de Java Runtime Environment;
 
 ### Downloads:
-- Download Apache http://apache.cs.uu.nl/jena/binaries/apache-jena-fuseki-3.8.0.zip
-- Download van de meest recente Release het bestand `Source code (zip)` https://github.com/bp4mc2/bp4mc2-ihw/releases
-- Download van de meest recente release het bestand `dotwebstack-theatre-legacy.jar` https://github.com/bp4mc2/bp4mc2-ihw/releases
+- Download Apache Jena Fuseki http://apache.cs.uu.nl/jena/binaries/apache-jena-fuseki-3.8.0.zip. Mocht deze niet meer beschikbaar zijn, ga dan naar de [algemene downloadpagina](https://jena.apache.org/download/index.cgi), en kies de meest recente download van Apache Jena Fuseki;
+- Download van de meest recente Release het bestand `Source code (zip)` https://github.com/bp4mc2/bp4mc2-ihw/releases;
+- Download van de meest recente release het bestand `dotwebstack-theatre-legacy.jar` https://github.com/bp4mc2/bp4mc2-ihw/releases.
 
 
 ### Installatie
@@ -50,7 +50,3 @@ en zet hier het bestand 'dotwebstack-theatre-legacy.jar' neer
 - Sluit de terminal niet af.
 
 - Open http://localhost:8080/begrippen om te zien of de installatie is gelukt.
-
-
-
-
