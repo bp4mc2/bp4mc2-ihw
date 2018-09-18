@@ -12,7 +12,7 @@ De huidige omgeving is gebaseerd op:
 
 Voer de volgende stappen uit:
 
-1. Download [Apache Fuseki, versie 3.6.0](http://www-eu.apache.org/dist/jena/binaries/apache-jena-fuseki-3.6.0.zip);
+1. Download [Apache Jena Fuseki, versie 3.8.0](http://www-eu.apache.org/dist/jena/binaries/apache-jena-fuseki-3.8.0.zip). Mocht deze niet meer beschikbaar zijn, ga dan naar de [algemene downloadpagina](https://jena.apache.org/download/index.cgi), en kies de meest recente download van Jena Fuseki;
 2. Pak de bestanden uit naar `bp4mc2-ihw/target/fuseki` (waarbij `bp4mc2-ihw` de map is met de lokale repo, en zodat `fuseki-server.bat` aanwezig is in de `fuseki` map.
 3. Download het bestand [jetty-web.xml](resources/jetty-web.xml) en zet deze in de map `/target/fuseki/webapp/WEB-INF` (hierin staat de maximale omvang van een post upload, verhoog deze als het uploade van grote bestanden niet goed gaat)
 4. Start Apache Fuseki via `fuseki-server`.
@@ -38,11 +38,11 @@ Application.yml (ook [hier](resources/application.yml) te vinden):
 	05     type: filter
 	06   resources:
 	07     static-locations: file:./config/static/,classpath:/static/
-	08 
+	08
 	09 logging.level:
 	10   org.dotwebstack.framework: INFO
 	11   org.dotwebstack.ldtlegacy: DEBUG
-	12 
+	12
 	13 dotwebstack:
 	14   config:
     15     aquoroot:
