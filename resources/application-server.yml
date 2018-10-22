@@ -15,7 +15,7 @@ dotwebstack:
     aquoroot: /aquo
     resourcePath: file:../config
     host: localhost
-    linkstrategy: global
+    linkstrategy: local
     systemGraph: http://dotwebstack.org/configuration/Theatre
 
 security:
