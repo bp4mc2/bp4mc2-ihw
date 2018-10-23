@@ -135,7 +135,7 @@ GRAPH config:Theatre {
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
 
-    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?CASnummer ?Code ?ID ?gevonden_in
+    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?Code ?ID ?gevonden_in
 
     WHERE {
     {
@@ -150,8 +150,7 @@ GRAPH config:Theatre {
       }
       OPTIONAL{
         GRAPH ?domeintabel_waarde {
-           ?id aquo:CASnummer ?CASnummer;
-               aquo:Code ?Code;
+           ?id aquo:Code ?Code;
                dct:identifier ?ID.
         }
 
@@ -172,8 +171,7 @@ GRAPH config:Theatre {
       }
       OPTIONAL{
         GRAPH ?domeintabel_waarde {
-           ?id aquo:CASnummer ?CASnummer;
-               aquo:Code ?Code;
+           ?id aquo:Code ?Code;
                dct:identifier ?ID.
         }
 
