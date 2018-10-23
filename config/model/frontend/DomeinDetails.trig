@@ -154,7 +154,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
-      xhtml:link "/begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       rdfs:label "relatie"@nl;
       elmo:index "08";
     ];
