@@ -20,30 +20,33 @@ GRAPH config:Theatre {
              aquo:opgericht ?opgerichtdate.
         ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
-        }
-
-
+      }
       WHERE {
-
-          GRAPH ?subject {
-            ?id ?p ?o;
-            OPTIONAL { ?id aquo:Opgeheven_per ?dt;
+        GRAPH ?subject {
+          ?id ?p ?o;
+          OPTIONAL { 
+            ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
-              BIND(strbefore(?dt,"T") as ?opgehevendate)
-              BIND(strbefore(?odt,"T") as ?opgerichtdate)
-            }
-            OPTIONAL {?o skos:prefLabel ?olabel}
-            FILTER NOT EXISTS {
+            BIND(strbefore(?dt,"T") as ?opgehevendate)
+            BIND(strbefore(?odt,"T") as ?opgerichtdate)
+          }
+          OPTIONAL {?o skos:prefLabel ?olabel}
+          FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
-
           }
-          OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
-
-          FILTER (?p != aquo:Opgeheven_per
+        OPTIONAL { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+            ?id owl:sameAs ?begrip
+          }
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip skos:prefLabel ?begrip_label
+          }
+        }
+        FILTER (
+          ?p != aquo:Opgeheven_per
           && ?p != aquo:Opgericht_in
-           )
+        )
       }
     """
   .
@@ -68,16 +71,12 @@ GRAPH config:Theatre {
              skos:comment ?status.
         ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
-        }
-
-
+      }
       WHERE {
-
-          GRAPH ?domeintabel {
-            ?id dct:subject ?subject.
-            ?id ?p ?o
+        GRAPH ?domeintabel {
+            ?id dct:subject ?subject;
+              ?p ?o.
             OPTIONAL {?o skos:prefLabel ?olabel}
-            #OPTIONAL {?id  owl:sameAs ?same}
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
@@ -85,9 +84,14 @@ GRAPH config:Theatre {
               ?domaintabel dct:replacedBy ?newversion
             }
           }
-         OPTIONAL { GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
-         GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
-
+         OPTIONAL { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+            ?id owl:sameAs ?begrip
+          }
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip skos:prefLabel ?begrip_label
+          }
+        }
       }
     """
   .
@@ -118,18 +122,24 @@ GRAPH config:Theatre {
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
-            OPTIONAL { ?id aquo:Opgeheven_per ?dt;
-              aquo:Opgericht_in ?odt.
+            OPTIONAL { 
+              ?id aquo:Opgeheven_per ?dt;
+                aquo:Opgericht_in ?odt.
               BIND(strbefore(?dt,"T") as ?opgehevendate)
               BIND(strbefore(?odt,"T") as ?opgerichtdate)
             }
             FILTER NOT EXISTS {
               ?id a skos:Concept.
             }
-
           }
-          OPTIONAL{  GRAPH <http://standaard.aquo.nl/id/dataset/links> {?id owl:sameAs ?begrip}
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?begrip skos:prefLabel ?begrip_label}}
+          OPTIONAL {  
+            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+              ?id owl:sameAs ?begrip
+            }
+            GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+              ?begrip skos:prefLabel ?begrip_label
+            }
+          }
         }
 
         UNION
@@ -158,18 +168,27 @@ GRAPH config:Theatre {
         PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
         CONSTRUCT {
-          ?subject dct:hasPart <http://standaard.aquo.nl/id/dataset/domeintabel>.
-          ?subject dcat:dataset ?dataset.
-          ?subject rdfs:label ?dlabel.
+          ?subject dct:hasPart <http://standaard.aquo.nl/id/dataset/domeintabel>;
+            dcat:dataset ?dataset;
+            rdfs:label ?dlabel;
+            dct:publisher ?agent.
           ?dataset rdfs:label ?label.
+          ?agent rdfs:label ?agent_label.
+            
         }
         WHERE {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
             <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
             ?subject rdfs:label ?label.
-            OPTIONAL{ ?subject dcat:dataset ?dataset}
+            OPTIONAL { ?subject dcat:dataset ?dataset}
           }
-          BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
+          OPTIONAL {
+            GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+              ?dataset dct:publisher ?agent.
+              ?agent rdfs:label ?agent_label.
+            }
+          }
+        BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
         }
       """
     .
@@ -181,47 +200,47 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX prov: <http://www.w3.org/ns/prov#>
       CONSTRUCT {
-        ?s ?p ?o.
-        ?s aquo:status ?status.
+        ?s ?p ?o;
+         aquo:status ?status.
       }
       WHERE {
         {
           {
-            select ?s ?p ?o ("Verwijderen" as ?status)
-            where {
+            SELECT ?s ?p ?o ("Verwijderen" as ?status)
+            WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              graph ?subject {
+              GRAPH ?subject {
                 ?s ?p ?o.
               }
-              graph ?staging {
+              GRAPH ?staging {
                 ?s prov:invalidatedAtTime ?t
               }
             }
           }
           UNION
           {
-            select (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
-            where {
+            SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
+            WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              graph ?subject {
+              GRAPH ?subject {
                 ?sold ?p ?o.
               }
-              graph ?staging {
+              GRAPH ?staging {
                 ?sold a ?t
               }
             }
           }
           UNION
           {
-            select ?s ?p ?o ("Wijzigen in" as ?status)
-            where {
+            SELECT ?s ?p ?o ("Wijzigen in" as ?status)
+            WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              graph ?staging {
+              GRAPH ?staging {
                 ?s a ?t.
                 ?s ?p ?o
               }
               FILTER EXISTS {
-                graph ?subject {
+                GRAPH ?subject {
                   ?s a ?t.
                 }
               }
@@ -229,14 +248,14 @@ GRAPH config:Theatre {
           }
           UNION
           {
-            select ?s ?p ?o ("Toevoegen" as ?status)
-            where {
+            SELECT ?s ?p ?o ("Toevoegen" as ?status)
+            WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              graph ?staging {
+              GRAPH ?staging {
                 ?s ?p ?o
               }
               FILTER NOT EXISTS {
-                graph ?subject {
+                GRAPH ?subject {
                   ?s a ?t.
                 }
               }

@@ -13,11 +13,6 @@ GRAPH config:Theatre {
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       PREFIX xhtml: <http://www.w3.org/1999/xhtml/vocab#>
 
-      # CONSTRUCT {?domeintabel dct:hasPart ?domeinwaarde.
-      # ?domeinwaarde owl:sameAs ?same_begrip;
-                    # xhtml:link ?edit.
-      # ?same_begrip rdfs:label ?begrip_label.}
-
       SELECT DISTINCT
 
       ?waarde
@@ -28,18 +23,22 @@ GRAPH config:Theatre {
       (?domeintabel as ?edit)
 
       WHERE {
-
-        GRAPH <http://standaard.aquo.nl/id/dataset/links> {?waarde owl:sameAs ?same_begrip}
-        
-        OPTIONAL{ 
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> 
-            {<http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
-              ?domeintabel rdfs:label ?domeintabel_label}
+        GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          ?waarde owl:sameAs ?same_begrip
         }
-        GRAPH  ?domeintabel {?waarde ?p ?o}
-                          
-        OPTIONAL{ 
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {?same_begrip skos:prefLabel ?begrip_label}
+        OPTIONAL { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+            ?domeintabel rdfs:label ?domeintabel_label
+          }
+        }
+        GRAPH  ?domeintabel {
+          ?waarde ?p ?o
+        }
+        OPTIONAL { 
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> { 
+            ?same_begrip skos:prefLabel ?begrip_label
+          }
         }
       }
       """

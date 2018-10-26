@@ -13,9 +13,9 @@ GRAPH config:Theatre {
       SELECT ?begrip ?begrip_label ?definitie 
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-          ?begrip a skos:Concept.
-          ?begrip dct:subject ?subject.
-          ?begrip skos:prefLabel ?begrip_label.
+          ?begrip a skos:Concept;
+            dct:subject ?subject;
+            skos:prefLabel ?begrip_label.
           OPTIONAL {?begrip skos:definition ?definitie}
         }
       }
@@ -32,16 +32,16 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
-        ?subject rdf:type skos:Concept.
-        ?subject rdfs:label ?clabel.
-        ?subject rdfs:comment ?comment.
+        ?subject rdf:type skos:Concept;
+          rdfs:label ?clabel;
+          rdfs:comment ?comment.
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
             ?subject rdfs:label ?label.
             OPTIONAL{?subject rdfs:comment ?comment}
           }
-          BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
+        BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }
     """
   .

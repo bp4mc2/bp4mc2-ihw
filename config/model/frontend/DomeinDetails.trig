@@ -38,6 +38,7 @@ GRAPH config:Theatre {
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
+    elmo:contains config:DomeinMeta;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
@@ -97,7 +98,7 @@ GRAPH config:Theatre {
   .
 
   config:DomeinTitelAppearance a elmo:ContentAppearance;
-    elmo:index 2;
+    elmo:index "01";
     elmo:fragment [
       elmo:appliesTo dct:hasPart;
       elmo:appearance elmo:HiddenAppearance;
@@ -110,6 +111,11 @@ GRAPH config:Theatre {
       elmo:appliesTo dcat:dataset;
       xhtml:link "/domeinmeta";
       rdfs:label "Metadata"@nl;
+    ];    
+    elmo:fragment [  
+      elmo:appliesTo  dct:publisher; 
+      xhtml:link "/domeinmeta-agent";
+      rdfs:label "Beheerder"@nl; 
     ];
   .
 
