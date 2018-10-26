@@ -104,7 +104,7 @@ GRAPH config:Theatre {
   .
 
   config:DomeinTitelAppearance a elmo:TableAppearance;
-    elmo:index "03";
+    elmo:index "01";
     elmo:fragment [
       elmo:appliesTo dct:hasPart;
       elmo:appearance elmo:HiddenAppearance;
@@ -116,7 +116,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo dcat:dataset;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
-      rdfs:label "Metadata"@nl;
+      rdfs:label "Domeintabel metadata"@nl;
     ];    
     elmo:fragment [  
       elmo:appliesTo  dct:publisher; 
