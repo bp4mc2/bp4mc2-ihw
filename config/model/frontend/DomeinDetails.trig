@@ -103,8 +103,8 @@ GRAPH config:Theatre {
     elmo:informationProduct config:PublishDomeintabelData
   .
 
-  config:DomeinTitelAppearance a elmo:ContentAppearance;
-    elmo:index "01";
+  config:DomeinTitelAppearance a elmo:TableAppearance;
+    elmo:index "03";
     elmo:fragment [
       elmo:appliesTo dct:hasPart;
       elmo:appearance elmo:HiddenAppearance;
@@ -125,7 +125,7 @@ GRAPH config:Theatre {
     ];
   .
 
-  config:DomeintabelGroepTitelAppearance a elmo:ContentAppearance;
+  config:DomeintabelGroepTitelAppearance a elmo:TableAppearance;
     elmo:index "01";
     elmo:fragment [
       elmo:appliesTo rdfs:label;
@@ -144,6 +144,7 @@ GRAPH config:Theatre {
   .
 
   config:DomeintabelAppearance a elmo:TableAppearance;
+    elmo:index "02";
     elmo:fragment [
       elmo:appliesTo rdf:type;
       elmo:appearance elmo:HiddenAppearance;
