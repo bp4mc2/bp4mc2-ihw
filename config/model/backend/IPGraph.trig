@@ -11,13 +11,13 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       
       CONSTRUCT {
-        ?subject ?p ?o.
-        ?subject rdfs:label ?subjectlabel.
-        ?subject elmo1:style ?type.
+        ?subject ?p ?o;
+          rdfs:label ?subjectlabel;
+          elmo1:style ?type.
         
-        ?o rdfs:label ?olabel.
-        ?o elmo1:style ?oelmostyle.
-        ?o elmo1:style ?otype.
+        ?o rdfs:label ?olabel;
+          elmo1:style ?oelmostyle;
+          elmo1:style ?otype.
         
         skos:Concept elmo1:name "begrip".
         dct:subject rdfs:label "Categorie".
@@ -55,8 +55,8 @@ GRAPH config:Theatre {
           UNION
           {
             ?subject ?p ?o.
-            ?o rdfs:label ?olabel.
-            ?o a ?otype.
+            ?o rdfs:label ?olabel;
+              a ?otype.
           }
         }
       }

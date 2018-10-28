@@ -9,7 +9,8 @@ GRAPH config:Theatre {
   config:DomeinMeta a elmo:Representation; 
   elmo:appearance config:DomeinMetaAppearance;
   elmo:stage config:Stage;
-  #elmo:contains config:Image;
+  elmo:index "03";
+  elmo:contains config:Image;
   elmo:contains config:ConceptImage;
 	elmo:contains config:Menu;
   elmo:contains config:Footer;

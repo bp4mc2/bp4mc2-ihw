@@ -1,0 +1,1231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="dbc7ec9f-a1ce-4929-b3f9-ee1dad25e8a3" activeEnvironment="Default" name="Aquo WSDL op domeintabellen-idsw-ws.rws.nl" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f6d8be9d-0907-41f7-8c81-338f6527b124" wsaVersion="NONE" name="basic" type="wsdl" bindingName="{http://rws.services.nl/DomainTableWS/2010/10}basic" soapVersion="1_1" anonymous="optional" definition="file:/Users/marcobrattinga/GITREPO/bp4mc2-ihw/resources/DomainTableWS-rws.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint></con:endpoints><con:operation id="adbf6d66-acc6-45f8-b292-8c0e7014172a" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" name="GetDateLastPublished" bindingOperationName="GetDateLastPublished" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="eea0d566-eaa8-4bfa-82da-511461ca49fb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDateLastPublished>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDateLastPublished>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished"/></con:call></con:operation><con:operation id="b3b09fc4-7fc4-4b63-9860-2c08ad2894d8" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" name="GetDomainTable" bindingOperationName="GetDomainTable" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2111fbd0-4a4a-413f-96e3-a780e23fa504" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTable>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:PageSize>?</ns1:PageSize>
+            <ns1:StartPage>?</ns1:StartPage>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTable>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable"/></con:call></con:operation><con:operation id="f039a239-a59c-49d4-bf74-1fb714b8a822" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" name="GetDomainTableChanges" bindingOperationName="GetDomainTableChanges" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="791d9ccc-b61b-40cb-b290-bead8f66f1ce" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableChanges>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:PageSize>?</ns1:PageSize>
+            <ns1:StartPage>?</ns1:StartPage>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableChanges>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges"/></con:call></con:operation><con:operation id="f9ffe13a-dae3-4b22-b659-c29a02d9ac29" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" name="GetDomainTableChangesInfo" bindingOperationName="GetDomainTableChangesInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8f9c0068-58ad-4566-ac17-31b718d93513" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableChangesInfo>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableChangesInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo"/></con:call></con:operation><con:operation id="3bb0673c-4a03-416a-81b4-84b379935c2c" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" name="GetDomainTableInfo" bindingOperationName="GetDomainTableInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="54ef9889-2606-42d3-a53d-2963ae00b2cc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableInfo>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo"/></con:call></con:operation><con:operation id="d28f4e45-7c59-4028-8b80-e052dc8dcade" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" name="GetDomainTableNames" bindingOperationName="GetDomainTableNames" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dd6d7343-0fcc-4532-9896-4c451780d4eb" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableNames>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>2018-10-22</ns1:CheckDate>
+         </ns:request>
+      </ns:GetDomainTableNames>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="13b06065-85e9-44d0-84de-e30cbee34d71" wsaVersion="200508" name="ws" type="wsdl" bindingName="{http://rws.services.nl/DomainTableWS/2010/10}ws" soapVersion="1_2" anonymous="optional" definition="file:/Users/marcobrattinga/GITREPO/bp4mc2-ihw/resources/DomainTableWS-rws.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/marcobrattinga/GITREPO/bp4mc2-ihw/resources/DomainTableWS-rws.xml"><con:part><con:url>file:/Users/marcobrattinga/GITREPO/bp4mc2-ihw/resources/DomainTableWS-rws.xml</con:url><con:content><![CDATA[<wsdl:definitions name="DomainTableWS" targetNamespace="http://rws.services.nl/DomainTableWS/2010/10" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsp:Policy wsu:Id="basic_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys/>
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body/>
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body/>
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys/>
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256/>
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict/>
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp/>
+                            <sp:EncryptSignature/>
+                            <sp:OnlySignEntireHeadersAndBody/>
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy/>
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens/>
+                            <sp:RequireClientEntropy/>
+                            <sp:RequireServerEntropy/>
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp/>
+            <sp:EncryptSignature/>
+            <sp:OnlySignEntireHeadersAndBody/>
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy/>
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens/>
+            <sp:RequireClientEntropy/>
+            <sp:RequireServerEntropy/>
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableNames_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableNames_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableNames_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDateLastPublished_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDateLastPublished_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDateLastPublished_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChangesInfo_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChangesInfo_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChangesInfo_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChanges_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChanges_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableChanges_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableInfo_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableInfo_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTableInfo_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTable_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTable_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ws_GetDomainTable_DomainTableFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body/>
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://rws.services.nl/DomainTableWS/2010/10/Imports">
+      <xsd:import schemaLocation="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd0" namespace="http://rws.services.nl/DomainTableWS/2010/10"/>
+      <xsd:import schemaLocation="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd2" namespace="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      <xsd:import schemaLocation="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableNames"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableNamesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault" xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateLastPublished"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateLastPublishedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q2:DomainTableFault" xmlns:q2="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesInfo"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q3:DomainTableFault" xmlns:q3="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChanges"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q4:DomainTableFault" xmlns:q4="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableInfo"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q5:DomainTableFault" xmlns:q5="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTable"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTable_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q6:DomainTableFault" xmlns:q6="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  </wsdl:message>
+  <wsdl:portType name="DomainTableService">
+    <wsdl:operation name="GetDomainTableNames">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" message="tns:DomainTableService_GetDomainTableNames_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNamesResponse" message="tns:DomainTableService_GetDomainTableNames_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNamesDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableNames_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateLastPublished">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" message="tns:DomainTableService_GetDateLastPublished_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublishedResponse" message="tns:DomainTableService_GetDateLastPublished_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublishedDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDateLastPublished_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChangesInfo">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" message="tns:DomainTableService_GetDomainTableChangesInfo_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfoResponse" message="tns:DomainTableService_GetDomainTableChangesInfo_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfoDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableChangesInfo_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChanges">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" message="tns:DomainTableService_GetDomainTableChanges_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesResponse" message="tns:DomainTableService_GetDomainTableChanges_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableChanges_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableInfo">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" message="tns:DomainTableService_GetDomainTableInfo_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfoResponse" message="tns:DomainTableService_GetDomainTableInfo_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfoDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableInfo_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTable">
+      <wsdl:input wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" message="tns:DomainTableService_GetDomainTable_InputMessage"/>
+      <wsdl:output wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableResponse" message="tns:DomainTableService_GetDomainTable_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableDomainTableFaultFault" name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTable_DomainTableFaultFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="basic" type="tns:DomainTableService">
+    <wsp:PolicyReference URI="#basic_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDomainTableNames">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateLastPublished">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChangesInfo">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChanges">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableInfo">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTable">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ws" type="tns:DomainTableService">
+    <wsp:PolicyReference URI="#ws_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDomainTableNames">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDomainTableNames_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDomainTableNames_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDomainTableNames_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateLastPublished">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDateLastPublished_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDateLastPublished_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDateLastPublished_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChangesInfo">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDomainTableChangesInfo_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDomainTableChangesInfo_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDomainTableChangesInfo_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChanges">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDomainTableChanges_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDomainTableChanges_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDomainTableChanges_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableInfo">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDomainTableInfo_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDomainTableInfo_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDomainTableInfo_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTable">
+      <soap12:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" style="document"/>
+      <wsdl:input>
+        <wsp:PolicyReference URI="#ws_GetDomainTable_Input_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#ws_GetDomainTable_output_policy"/>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <wsp:PolicyReference URI="#ws_GetDomainTable_DomainTableFaultFault_Fault"/>
+        <soap12:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomainTableWS">
+    <wsdl:port name="basic" binding="tns:basic">
+      <soap:address location="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/basic"/>
+    </wsdl:port>
+    <wsdl:port name="ws" binding="tns:ws">
+      <soap12:address location="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws"/>
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://rws.services.nl/DomainTableWS/2010/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://rws.services.nl/DomainTableWS/2010/10">
+  <xs:import schemaLocation="http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd2" namespace="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+  <xs:element name="GetDomainTableNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q1:GetDomainTableNamesRequest" xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDomainTableNamesResult" nillable="true" type="q2:GetDomainTableNamesResponse" xmlns:q2="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDateLastPublished">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q3:GetDateLastPublishedRequest" xmlns:q3="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDateLastPublishedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDateLastPublishedResult" nillable="true" type="q4:GetDateLastPublishedResponse" xmlns:q4="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableChangesInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q5:GetDomainTableChangesInfoRequest" xmlns:q5="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableChangesInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDomainTableChangesInfoResult" nillable="true" type="q6:GetDomainTableChangesInfoResponse" xmlns:q6="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableChanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q7:GetDomainTableChangesRequest" xmlns:q7="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableChangesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDomainTableChangesResult" nillable="true" type="q8:GetDomainTableChangesResponse" xmlns:q8="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q9:GetDomainTableInfoRequest" xmlns:q9="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDomainTableInfoResult" nillable="true" type="q10:GetDomainTableInfoResponse" xmlns:q10="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q11:GetDomainTableRequest" xmlns:q11="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDomainTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDomainTableResult" nillable="true" type="q12:GetDomainTableResponse" xmlns:q12="http://rws.services.nl/DomainTableWS/Contracts/2010/10"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+  <xs:complexType name="GetDomainTableNamesRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableNamesRequest" nillable="true" type="tns:GetDomainTableNamesRequest"/>
+  <xs:complexType name="GetDomainTableNamesResponse">
+    <xs:sequence>
+      <xs:element name="DomainTableNames" nillable="true" type="tns:DomainTableNames"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableNamesResponse" nillable="true" type="tns:GetDomainTableNamesResponse"/>
+  <xs:complexType name="DomainTableNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainTableNames" nillable="true" type="tns:DomainTableNames"/>
+  <xs:complexType name="DomainTableFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainTableFault" nillable="true" type="tns:DomainTableFault"/>
+  <xs:complexType name="GetDateLastPublishedRequest">
+    <xs:sequence>
+      <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDateLastPublishedRequest" nillable="true" type="tns:GetDateLastPublishedRequest"/>
+  <xs:complexType name="GetDateLastPublishedResponse">
+    <xs:sequence>
+      <xs:element name="MostRecentPublicationDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDateLastPublishedResponse" nillable="true" type="tns:GetDateLastPublishedResponse"/>
+  <xs:complexType name="GetDomainTableChangesInfoRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+      <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableChangesInfoRequest" nillable="true" type="tns:GetDomainTableChangesInfoRequest"/>
+  <xs:complexType name="GetDomainTableChangesInfoResponse">
+    <xs:sequence>
+      <xs:element name="MaxDataRowsInResponse" type="xs:int"/>
+      <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+      <xs:element name="Name" nillable="true" type="xs:string"/>
+      <xs:element name="TotalDataRows" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableChangesInfoResponse" nillable="true" type="tns:GetDomainTableChangesInfoResponse"/>
+  <xs:complexType name="MetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MetaDataColumn" nillable="true" type="tns:MetaDataColumn"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+  <xs:complexType name="MetaDataColumn">
+    <xs:sequence>
+      <xs:element name="ColumnNumber" type="xs:int"/>
+      <xs:element name="Datatype" type="tns:DtDatatype"/>
+      <xs:element name="Description" nillable="true" type="xs:string"/>
+      <xs:element name="FieldLength" type="xs:int"/>
+      <xs:element name="Name" nillable="true" type="xs:string"/>
+      <xs:element name="NumberOfDecimals" type="xs:int"/>
+      <xs:element minOccurs="0" name="PKSequenceNumber" type="xs:int"/>
+      <xs:element name="Required" type="xs:boolean"/>
+      <xs:element name="Unique" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetaDataColumn" nillable="true" type="tns:MetaDataColumn"/>
+  <xs:simpleType name="DtDatatype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DtString"/>
+      <xs:enumeration value="DtInteger"/>
+      <xs:enumeration value="DtDouble"/>
+      <xs:enumeration value="DtDateTime"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DtDatatype" nillable="true" type="tns:DtDatatype"/>
+  <xs:complexType name="GetDomainTableChangesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestPageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+          <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDomainTableChangesRequest" nillable="true" type="tns:GetDomainTableChangesRequest"/>
+  <xs:complexType name="RequestPageBase">
+    <xs:sequence>
+      <xs:element name="PageSize" type="xs:int"/>
+      <xs:element name="StartPage" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestPageBase" nillable="true" type="tns:RequestPageBase"/>
+  <xs:complexType name="GetDomainTableChangesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PagingResultSet">
+        <xs:sequence>
+          <xs:element name="Data" nillable="true" type="tns:Data"/>
+          <xs:element name="Name" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDomainTableChangesResponse" nillable="true" type="tns:GetDomainTableChangesResponse"/>
+  <xs:complexType name="PagingResultSet">
+    <xs:sequence>
+      <xs:element name="DataRowsReadPage" type="xs:int"/>
+      <xs:element name="PageSize" type="xs:int"/>
+      <xs:element name="TotalDataRows" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PagingResultSet" nillable="true" type="tns:PagingResultSet"/>
+  <xs:complexType name="Data">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataRow" nillable="true" type="tns:DataRow"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Data" nillable="true" type="tns:Data"/>
+  <xs:complexType name="DataRow">
+    <xs:sequence>
+      <xs:element name="BeginDate" type="xs:dateTime"/>
+      <xs:element name="EndDate" type="xs:dateTime"/>
+      <xs:element name="Fields" nillable="true" type="tns:Fields"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataRow" nillable="true" type="tns:DataRow"/>
+  <xs:complexType name="Fields">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataField" nillable="true" type="tns:DataField"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fields" nillable="true" type="tns:Fields"/>
+  <xs:complexType name="DataField">
+    <xs:sequence>
+      <xs:element name="IsNull" type="xs:boolean"/>
+      <xs:element name="Name" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataField" nillable="true" type="tns:DataField"/>
+  <xs:complexType name="StringField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataField">
+        <xs:sequence>
+          <xs:element name="Data" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringField" nillable="true" type="tns:StringField"/>
+  <xs:complexType name="DateTimeField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataField">
+        <xs:sequence>
+          <xs:element name="Data" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeField" nillable="true" type="tns:DateTimeField"/>
+  <xs:complexType name="IntegerField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataField">
+        <xs:sequence>
+          <xs:element name="Data" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IntegerField" nillable="true" type="tns:IntegerField"/>
+  <xs:complexType name="BooleanField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataField">
+        <xs:sequence>
+          <xs:element name="Data" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BooleanField" nillable="true" type="tns:BooleanField"/>
+  <xs:complexType name="DoubleField">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataField">
+        <xs:sequence>
+          <xs:element name="Data" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DoubleField" nillable="true" type="tns:DoubleField"/>
+  <xs:complexType name="GetDomainTableInfoRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+      <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableInfoRequest" nillable="true" type="tns:GetDomainTableInfoRequest"/>
+  <xs:complexType name="GetDomainTableInfoResponse">
+    <xs:sequence>
+      <xs:element name="MaxDataRowsInResponse" type="xs:int"/>
+      <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+      <xs:element name="Name" nillable="true" type="xs:string"/>
+      <xs:element name="TotalDataRows" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDomainTableInfoResponse" nillable="true" type="tns:GetDomainTableInfoResponse"/>
+  <xs:complexType name="GetDomainTableRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestPageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+          <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDomainTableRequest" nillable="true" type="tns:GetDomainTableRequest"/>
+  <xs:complexType name="GetDomainTableResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PagingResultSet">
+        <xs:sequence>
+          <xs:element name="Data" nillable="true" type="tns:Data"/>
+          <xs:element name="Name" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetDomainTableResponse" nillable="true" type="tns:GetDomainTableResponse"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc?xsd=xsd1</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+  <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+  <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+  <xs:element name="byte" nillable="true" type="xs:byte"/>
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+  <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+  <xs:element name="double" nillable="true" type="xs:double"/>
+  <xs:element name="float" nillable="true" type="xs:float"/>
+  <xs:element name="int" nillable="true" type="xs:int"/>
+  <xs:element name="long" nillable="true" type="xs:long"/>
+  <xs:element name="QName" nillable="true" type="xs:QName"/>
+  <xs:element name="short" nillable="true" type="xs:short"/>
+  <xs:element name="string" nillable="true" type="xs:string"/>
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+  <xs:element name="char" nillable="true" type="tns:char"/>
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int"/>
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration"/>
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid"/>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName"/>
+  <xs:attribute name="Id" type="xs:ID"/>
+  <xs:attribute name="Ref" type="xs:IDREF"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint></con:endpoints><con:operation id="d8f2fb7b-ac44-48de-923c-fdb87b18aeab" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" name="GetDateLastPublished" bindingOperationName="GetDateLastPublished" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c00ed274-bccb-47f1-8305-7aa9c78088eb" name="Request 1" useWsAddressing="true"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDateLastPublished>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDateLastPublished>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished"/></con:call></con:operation><con:operation id="cf5d7318-7c29-4b35-ba7d-0e1de99d1d54" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" name="GetDomainTable" bindingOperationName="GetDomainTable" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ada90ece-f491-48f1-8891-ced2a6f77866" name="Request 1" useWsAddressing="true"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDomainTable>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:PageSize>?</ns1:PageSize>
+            <ns1:StartPage>?</ns1:StartPage>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTable>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable"/></con:call></con:operation><con:operation id="53554599-97e6-4978-acd3-3a44344402a6" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" name="GetDomainTableChanges" bindingOperationName="GetDomainTableChanges" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2ae08679-beb5-4366-81ce-49936f034147" name="Request 1" useWsAddressing="true"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDomainTableChanges>
+         <!--Optional:-->
+         <ns:request>
+            <ns1:PageSize>?</ns1:PageSize>
+            <ns1:StartPage>?</ns1:StartPage>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableChanges>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges"/></con:call></con:operation><con:operation id="f73a9625-a4b5-46c9-935c-8c874e4e3fef" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" name="GetDomainTableChangesInfo" bindingOperationName="GetDomainTableChangesInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="26c603aa-a544-4aa1-bb8a-44ec9961b793" name="Request 1" useWsAddressing="true"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDomainTableChangesInfo>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableChangesInfo>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo"/></con:call></con:operation><con:operation id="0cd14134-2df7-4e21-a86e-c5510b248057" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" name="GetDomainTableInfo" bindingOperationName="GetDomainTableInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="83f9f742-d878-4709-b0fa-7840f090e703" name="Request 1" useWsAddressing="true"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDomainTableInfo>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>?</ns1:CheckDate>
+            <ns1:DomaintableName>?</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableInfo>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo"/></con:call></con:operation><con:operation id="7c61c8aa-37cc-4c45-9d0b-2c65be325187" isOneWay="false" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" name="GetDomainTableNames" bindingOperationName="GetDomainTableNames" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="972c4c24-f2a9-472d-8d80-259bf412c0c4" name="Request 1" useWsAddressing="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://domeintabellen-idsw-ws.rws.nl/DomainTableWS.svc/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soap:Header/>
+   <soap:Body>
+      <ns:GetDomainTableNames>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>2018-10-22</ns1:CheckDate>
+         </ns:request>
+      </ns:GetDomainTableNames>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

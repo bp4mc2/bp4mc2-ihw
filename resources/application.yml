@@ -4,19 +4,27 @@ spring:
   jersey:
     type: filter
   resources:
-    static-locations: file:./config/static/,classpath:/static/
+    static-locations: file:./static/,classpath:/static/
 
 logging.level:
   org.dotwebstack.framework: INFO
-  org.dotwebstack.ldtlegacy: DEBUG
+  org.dotwebstack.ldtlegacy: INFO
+  org.springframework.boot.autoconfigure.logging: INFO
+  org.eclipse.rdf4j: INFO
 
 dotwebstack:
   config:
     aquoroot:
-    resourcePath: file:../config
+    resourcePath: file:../../bp4mc2-ihw/config
     host: localhost
-    linkstrategy: global
+    port: 8080
+    linkstrategy: local
     systemGraph: http://dotwebstack.org/configuration/Theatre
+    shacl:
+      uri:
+        result:
+          path: http://www.w3.org/ns/shacl#resultPath
+          message:
 
 security:
   authentication: form
@@ -26,5 +34,5 @@ security:
       password: $2a$11$Z0uBLK6ocuMoqVYFUimZre./Y4iBq5v8IrhOVpR.oVJzJK6V7.lVu
       role: admin
   protect:
-    - path: /beheer/domeintabel
+    - path: /beheer
       role: admin

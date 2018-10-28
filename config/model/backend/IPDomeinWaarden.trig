@@ -15,14 +15,14 @@ GRAPH config:Theatre {
       SELECT ?subject ?subjectlabel ?domeintabel ?domeinlabel  ?CASnummer ?Code  ?ID
 
       WHERE {
-            GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-           ?id dct:hasPart ?domeintabel.
-    		?domeintabel rdfs:label ?domeinlabel.
+        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+          ?id dct:hasPart ?domeintabel.
+          ?domeintabel rdfs:label ?domeinlabel.
         }
 
         GRAPH ?domeintabel {
           ?subject rdf:type ?domein_model
-          }
+        }
         OPTIONAL {
           GRAPH ?domeintabel {?subject aquo:Omschrijving ?subjectlabel}
         }
