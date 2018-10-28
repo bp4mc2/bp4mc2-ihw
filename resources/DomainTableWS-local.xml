@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="DomainTableWS"
+    targetNamespace="http://rws.services.nl/DomainTableWS/2010/10"
+    xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:tns="http://rws.services.nl/DomainTableWS/2010/10"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+    xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+    xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+    xmlns:dws="http://dotwebstack.org/wsdl-extension/"
+>
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+      <xs:complexType name="GetDomainTableNamesRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableNamesRequest" nillable="true" type="tns:GetDomainTableNamesRequest"/>
+      <xs:complexType name="GetDomainTableNamesResponse">
+        <xs:sequence>
+          <xs:element name="DomainTableNames" nillable="true" type="tns:DomainTableNames"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableNamesResponse" nillable="true" type="tns:GetDomainTableNamesResponse"/>
+      <xs:complexType name="DomainTableNames">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xs:string">
+            <xs:annotation dws:cursor="true" dws:valuesFrom="domaintablename"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DomainTableNames" nillable="true" type="tns:DomainTableNames"/>
+      <xs:complexType name="DomainTableFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DomainTableFault" nillable="true" type="tns:DomainTableFault"/>
+      <xs:complexType name="GetDateLastPublishedRequest">
+        <xs:sequence>
+          <xs:element name="DomaintableName" nillable="true" type="xs:string">
+            <xs:annotation dws:parameter="domaintablename"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDateLastPublishedRequest" nillable="true" type="tns:GetDateLastPublishedRequest"/>
+      <xs:complexType name="GetDateLastPublishedResponse">
+        <xs:sequence>
+          <xs:element name="MostRecentPublicationDate" type="xs:dateTime">
+            <xs:annotation dws:valuesFrom="lastdatepublished"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDateLastPublishedResponse" nillable="true" type="tns:GetDateLastPublishedResponse"/>
+      <xs:complexType name="GetDomainTableChangesInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+          <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableChangesInfoRequest" nillable="true" type="tns:GetDomainTableChangesInfoRequest"/>
+      <xs:complexType name="GetDomainTableChangesInfoResponse">
+        <xs:sequence>
+          <xs:element name="MaxDataRowsInResponse" type="xs:int">
+            <xs:annotation dws:valuesFrom="maxaantal"/>
+          </xs:element>
+          <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+          <xs:element name="Name" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="domaintablename"/>
+          </xs:element>
+          <xs:element name="TotalDataRows" type="xs:int">
+            <xs:annotation dws:valuesFrom="aantal"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableChangesInfoResponse" nillable="true" type="tns:GetDomainTableChangesInfoResponse"/>
+      <xs:complexType name="MetaData">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="MetaDataColumn" nillable="true" type="tns:MetaDataColumn">
+            <xs:annotation dws:cursor="true"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+      <xs:complexType name="MetaDataColumn">
+        <xs:sequence>
+          <xs:element name="ColumnNumber" type="xs:int"/>
+          <xs:element name="Datatype" type="tns:DtDatatype"/>
+          <xs:element name="Description" nillable="true" type="xs:string"/>
+          <xs:element name="FieldLength" type="xs:int"/>
+          <xs:element name="Name" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="kolomnaam"/>
+          </xs:element>
+          <xs:element name="NumberOfDecimals" type="xs:int"/>
+          <xs:element minOccurs="0" name="PKSequenceNumber" type="xs:int"/>
+          <xs:element name="Required" type="xs:boolean"/>
+          <xs:element name="Unique" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MetaDataColumn" nillable="true" type="tns:MetaDataColumn"/>
+      <xs:simpleType name="DtDatatype">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="DtString"/>
+          <xs:enumeration value="DtInteger"/>
+          <xs:enumeration value="DtDouble"/>
+          <xs:enumeration value="DtDateTime"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="DtDatatype" nillable="true" type="tns:DtDatatype"/>
+      <xs:complexType name="GetDomainTableChangesRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:RequestPageBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+              <xs:element name="DomaintableName" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetDomainTableChangesRequest" nillable="true" type="tns:GetDomainTableChangesRequest"/>
+      <xs:complexType name="RequestPageBase">
+        <xs:sequence>
+          <xs:element name="PageSize" type="xs:int"/>
+          <xs:element name="StartPage" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RequestPageBase" nillable="true" type="tns:RequestPageBase"/>
+      <xs:complexType name="GetDomainTableChangesResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:PagingResultSet">
+            <xs:sequence>
+              <xs:element name="Name" nillable="true" type="xs:string">
+                <xs:annotation dws:valuesFrom="domaintablename"/>
+              </xs:element>
+              <xs:element name="Data" nillable="true" type="tns:Data"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetDomainTableChangesResponse" nillable="true" type="tns:GetDomainTableChangesResponse"/>
+      <xs:complexType name="PagingResultSet">
+        <xs:sequence>
+          <xs:element name="DataRowsReadPage" type="xs:int"/>
+          <xs:element name="PageSize" type="xs:int"/>
+          <xs:element name="TotalDataRows" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PagingResultSet" nillable="true" type="tns:PagingResultSet"/>
+      <xs:complexType name="Data">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DataRow" nillable="true" type="tns:DataRow">
+            <xs:annotation dws:group="true"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Data" nillable="true" type="tns:Data"/>
+      <xs:complexType name="DataRow">
+        <xs:sequence>
+          <xs:element name="BeginDate" type="xs:dateTime">
+            <xs:annotation dws:valuesFrom="begindate"/>
+          </xs:element>
+          <xs:element name="EndDate" type="xs:dateTime">
+            <xs:annotation dws:valuesFrom="enddate"/>
+          </xs:element>
+          <xs:element name="Fields" nillable="true" type="tns:Fields"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DataRow" nillable="true" type="tns:DataRow"/>
+      <xs:complexType name="Fields">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DataField" nillable="true" type="tns:DataField">
+            <xs:annotation dws:cursor="true" dws:groupBy="id"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Fields" nillable="true" type="tns:Fields"/>
+      <xs:complexType name="DataField">
+        <xs:sequence>
+          <xs:element name="IsNull" type="xs:boolean">
+            <xs:annotation dws:valuesFrom="isnull"/>
+          </xs:element>
+          <xs:element name="Name" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="property"/>
+          </xs:element>
+          <!-- HACK -->
+          <!-- We need to include this element, because extension aren't supported in SOAP-UI library we are using -->
+          <xs:element name="Date" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="value"/>
+          </xs:element>
+          <!-- END HACK -->
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DataField" nillable="true" type="tns:DataField"/>
+      <xs:complexType name="StringField">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DataField">
+            <xs:sequence>
+              <xs:element name="Data" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="StringField" nillable="true" type="tns:StringField"/>
+      <xs:complexType name="DateTimeField">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DataField">
+            <xs:sequence>
+              <xs:element name="Data" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DateTimeField" nillable="true" type="tns:DateTimeField"/>
+      <xs:complexType name="IntegerField">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DataField">
+            <xs:sequence>
+              <xs:element name="Data" type="xs:int"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="IntegerField" nillable="true" type="tns:IntegerField"/>
+      <xs:complexType name="BooleanField">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DataField">
+            <xs:sequence>
+              <xs:element name="Data" type="xs:boolean"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="BooleanField" nillable="true" type="tns:BooleanField"/>
+      <xs:complexType name="DoubleField">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:DataField">
+            <xs:sequence>
+              <xs:element name="Data" type="xs:double"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="DoubleField" nillable="true" type="tns:DoubleField"/>
+      <xs:complexType name="GetDomainTableInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+          <xs:element name="DomaintableName" nillable="true" type="xs:string">
+            <xs:annotation dws:parameter="domaintablename"/>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableInfoRequest" nillable="true" type="tns:GetDomainTableInfoRequest"/>
+      <xs:complexType name="GetDomainTableInfoResponse">
+        <xs:sequence>
+          <xs:element name="MaxDataRowsInResponse" type="xs:int">
+            <xs:annotation dws:valuesFrom="maxaantal"/>
+          </xs:element>
+          <xs:element name="Name" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="domaintablename"/>
+          </xs:element>
+          <xs:element name="TotalDataRows" type="xs:int">
+            <xs:annotation dws:valuesFrom="aantal"/>
+          </xs:element>
+          <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetDomainTableInfoResponse" nillable="true" type="tns:GetDomainTableInfoResponse"/>
+      <xs:complexType name="GetDomainTableRequest">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:RequestPageBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+              <xs:element name="DomaintableName" nillable="true" type="xs:string">
+                <xs:annotation dws:parameter="domaintablename"/>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetDomainTableRequest" nillable="true" type="tns:GetDomainTableRequest"/>
+      <xs:complexType name="GetDomainTableResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:PagingResultSet">
+            <xs:sequence>
+              <xs:element name="Name" nillable="true" type="xs:string">
+                <xs:annotation dws:valuesFrom="domaintablename"/>
+              </xs:element>
+              <xs:element name="Data" nillable="true" type="tns:Data"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetDomainTableResponse" nillable="true" type="tns:GetDomainTableResponse"/>
+    </xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:q1="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://rws.services.nl/DomainTableWS/2010/10">
+      <xs:element name="GetDomainTableNames">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="q1:GetDomainTableNamesRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableNamesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDomainTableNamesResult" nillable="true" type="q2:GetDomainTableNamesResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDateLastPublished">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="request" nillable="true" type="q3:GetDateLastPublishedRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDateLastPublishedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDateLastPublishedResult" nillable="true" type="q4:GetDateLastPublishedResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableChangesInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="request" nillable="true" type="q5:GetDomainTableChangesInfoRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableChangesInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDomainTableChangesInfoResult" nillable="true" type="q6:GetDomainTableChangesInfoResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableChanges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="request" nillable="true" type="q7:GetDomainTableChangesRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableChangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDomainTableChangesResult" nillable="true" type="q8:GetDomainTableChangesResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="request" nillable="true" type="q9:GetDomainTableInfoRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDomainTableInfoResult" nillable="true" type="q10:GetDomainTableInfoResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTable">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="request" nillable="true" type="q11:GetDomainTableRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDomainTableResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://rws.services.nl/DomainTableWS/Contracts/2010/10" minOccurs="0" name="GetDomainTableResult" nillable="true" type="q12:GetDomainTableResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DomainTableService_GetDomainTable_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTable">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableNamesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChangesInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChangesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateLastPublished">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableChanges">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateLastPublishedResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDateLastPublished_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableChanges_DomainTableFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:DomainTableFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableNames">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DomainTableService_GetDomainTableInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainTableInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DomainTableService">
+    <wsdl:operation name="GetDomainTableNames">
+      <wsdl:input message="tns:DomainTableService_GetDomainTableNames_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDomainTableNames_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNamesResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableNames_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNamesDomainTableFaultFault">
+      </wsdl:fault>
+      <wsdl:documentation dws:informationProduct="http://dotwebstack.org/configuration/GetDomainTableNames"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateLastPublished">
+      <wsdl:input message="tns:DomainTableService_GetDateLastPublished_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDateLastPublished_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublishedResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDateLastPublished_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublishedDomainTableFaultFault">
+      </wsdl:fault>
+      <wsdl:documentation dws:informationProduct="http://dotwebstack.org/configuration/GetDateLastPublished"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChangesInfo">
+      <wsdl:input message="tns:DomainTableService_GetDomainTableChangesInfo_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDomainTableChangesInfo_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfoResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableChangesInfo_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfoDomainTableFaultFault">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChanges">
+      <wsdl:input message="tns:DomainTableService_GetDomainTableChanges_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDomainTableChanges_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableChanges_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesDomainTableFaultFault">
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableInfo">
+      <wsdl:input message="tns:DomainTableService_GetDomainTableInfo_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDomainTableInfo_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfoResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTableInfo_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfoDomainTableFaultFault">
+      </wsdl:fault>
+      <wsdl:documentation dws:informationProduct="http://dotwebstack.org/configuration/GetDomainTableInfo"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTable">
+      <wsdl:input message="tns:DomainTableService_GetDomainTable_InputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable">
+      </wsdl:input>
+      <wsdl:output message="tns:DomainTableService_GetDomainTable_OutputMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableResponse">
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault" message="tns:DomainTableService_GetDomainTable_DomainTableFaultFault_FaultMessage" wsaw:Action="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableDomainTableFaultFault">
+      </wsdl:fault>
+      <wsdl:documentation dws:informationProduct="http://dotwebstack.org/configuration/GetDomainTable"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="basic" type="tns:DomainTableService">
+    <wsp:PolicyReference URI="#basic_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDomainTableNames">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableNames" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDateLastPublished">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDateLastPublished" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChangesInfo">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChangesInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableChanges">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableChanges" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTableInfo">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTableInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDomainTable">
+      <soap:operation soapAction="http://rws.services.nl/DomainTableWS/2010/10/DomainTableService/GetDomainTable" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DomainTableFaultFault">
+        <soap:fault name="DomainTableFaultFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomainTableWS">
+    <wsdl:port name="basic" binding="tns:basic">
+      <soap:address location="http://localhost:8080/DomainTableWS.svc/basic"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
