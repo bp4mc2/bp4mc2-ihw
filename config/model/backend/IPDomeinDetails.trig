@@ -110,7 +110,7 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?subject dct:hasPart ?domeintabel;
-        dct:subject ?subject.
+          dct:subject ?subject.
         ?domeintabel rdfs:label ?domeintabel_label.
       }
       WHERE {

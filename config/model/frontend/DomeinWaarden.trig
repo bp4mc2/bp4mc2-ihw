@@ -15,31 +15,59 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeinWaardenData;
   .
  
-  config:DomeinWaardenAppearance a elmo:TableAppearance;
+  config:DomeinWaardenAppearance a elmo:ContentAppearance;
     elmo:fragment [
       elmo:index 1;
-      elmo:appliesTo "subject";
+      elmo:appliesTo rdfs:label;
       elmo:appearance elmo:HiddenAppearance;
-      rdfs:label "Domeintabel waarde"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
     ];
    elmo:fragment [
-      elmo:index 1;
-      elmo:appliesTo "subjectlabel";
-      rdfs:label "Domeintabel waarde"@nl;
-    ];
-    elmo:fragment [
       elmo:index 2;
-      elmo:appliesTo "domeintabel";
-      xhtml:link "/domeintabel";
-      elmo:name "domein";
-      rdfs:label "Domeintabel"@nl;
+      elmo:appliesTo dct:identifier;
+      elmo:appearance elmo:HiddenAppearance;
     ];
-    elmo:fragment [ 
-      elmo:index 2;
-      elmo:appliesTo "domeinlabel";
-      xhtml:link "/domeintabel";
-      elmo:name "domein";
+   elmo:fragment [
+      elmo:index 3;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
+    ];
+   elmo:fragment [
+      elmo:index 4;
+      elmo:appliesTo aquo:Cijfercode;
+      rdfs:label "Cijfercode"@nl;
+    ];
+   elmo:fragment [
+      elmo:index 5;
+      elmo:appliesTo aquo:Omschrijving;
+      rdfs:label "Omschrijving"@nl;
+    ];
+   elmo:fragment [
+      elmo:index 6;
+      elmo:appliesTo dct:subject;
+      rdfs:label "Groep"@nl;
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
+    ];
+   elmo:fragment [
+      elmo:index 7;
+      elmo:appliesTo prov:generatedAtTime;
+      rdfs:label "Begin geldigheid"@nl;
+    ];
+   elmo:fragment [
+      elmo:index 8;
+      elmo:appliesTo owl:sameAs;
+      rdfs:label "Begrip"@nl;
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
+    ];
+   elmo:fragment [
+      elmo:index 9;
+      elmo:appliesTo dct:hasPart;
       rdfs:label "Domeintabel"@nl;
-    ];  
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
+    ];
   .
 }
