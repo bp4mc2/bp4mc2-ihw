@@ -8,6 +8,7 @@ GRAPH config:Theatre {
   
   config:ConceptenCategorieLijst a elmo:Representation;
     elmo:contains config:CategorieTitel;
+    elmo:contains config:CategorieDomein;
     elmo:appearance config:CategorieConceptenLijstAppearance;
     elmo:stage config:Stage;
     #elmo:contains config:Image;
@@ -44,8 +45,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "begrip";
-      xhtml:link "begrip";
-#      elmo:name "begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       rdfs:label "Term"@nl;
     ];
     elmo:fragment [ 
@@ -54,5 +54,28 @@ GRAPH config:Theatre {
       rdfs:label "Definitie"@nl;
     ];
   .
- 
+
+  config:CategorieDomein a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:CategorieDomeinAppearance;
+    elmo:informationProduct config:CategorieDomeinData;
+  .
+
+  config:CategorieDomeinAppearance a elmo:TableAppearance;
+    elmo:index 3;
+    elmo:fragment [
+      elmo:appliesTo rdf:type;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo rdfs:label;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
+      elmo:appliesTo dcat:dataset;
+      rdfs:label "Domeintabel"@nl;
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
+    ];
+   .
+  
 }

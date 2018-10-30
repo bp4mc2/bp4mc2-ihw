@@ -40,6 +40,7 @@ GRAPH config:Theatre {
       elmo:index 4;
       elmo:appliesTo aquo:Cijfercode;
       rdfs:label "Cijfercode"@nl;
+      elmo:appearance elmo:HiddenAppearance;
     ];
    elmo:fragment [
       elmo:index 5;
