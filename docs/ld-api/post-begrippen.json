@@ -1,0 +1,16 @@
+[ {
+  "@id" : "urn:uuid:44552d06-db81-44b8-9582-fad660c20cf6",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://purl.org/dc/elements/1.1/source" : [ {
+    "@value" : "Aquo documentatie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "DotwebStack"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "DotwebStack"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Data on the Web Stack, een raamwerk voor het publiceren van data op het web"
+  } ]
+} ]

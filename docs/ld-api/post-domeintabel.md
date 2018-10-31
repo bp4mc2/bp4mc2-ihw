@@ -11,6 +11,10 @@ Deze API verzorgt het toevoegen van een domeinwaarde in een specifieke domeintab
 |------|------|
 |Content-Type:|application/ld+json|
 
+### Body
+
+De body bevat een [JSON-LD](https://json-ld.org) bericht met de nieuwe domeinwaarde(n).
+
 ### Aanroep
 De aanroep van deze API is als volgt:
 
@@ -25,7 +29,7 @@ Hierbij staat `{uri-domeintabel}` voor de URI van de betreffende domeintabel.
 Hierbij is `post-domeintabel.json` het bestand beschreven in de Input-sectie.
 
 ## Input
-De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeelaanroep, ook beschikbaar in het bestand [post-domeintabel.json](post-domeintabel.json)
+De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeeldaanroep, ook beschikbaar in het bestand [post-domeintabel.json](post-domeintabel.json)
 
     [ {
       "@id" : "urn:uuid:9c363af8-1e86-43df-9149-be76e263fa2a",
@@ -42,9 +46,9 @@ De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hie
       } ]
     } ]
 
-Merk op dat het mogelijk is om meer dan 1 waarde toe te voegen, door de meerdere waarden in het inputbericht te plaatsen.
+Merk op dat het mogelijk is om meer dan 1 domeinwaarde toe te voegen, door de meerdere domeinwaarden in het inputbericht te plaatsen.
 
-Aangezien in dit geval de domeinwaarde wordt toegevoegd, dient het veld `@id` een nieuwe unieke waarde te hebben, voor elke toegevoegde waarde. Bij de afhandeling zal dit veld overigens worden vervangen conform de aquo-standaard, dus het maakt niet zoveel uit welke waarde dit veld heeft, zolang deze maar uniek is (in bovenstaand voorbeeld is daarom een uuid genomen).
+Aangezien in dit geval de domeinwaarde wordt toegevoegd, dient het veld `@id` een nieuwe unieke waarde te hebben, voor elke toegevoegde domeinwaarde. Bij de afhandeling zal dit veld overigens worden vervangen conform de aquo-standaard, dus het maakt niet zoveel uit welke waarde dit veld heeft, zolang deze maar uniek is (in bovenstaand voorbeeld is daarom een uuid genomen).
 
 ## Output
 De output van deze service is afhankelijk van de wijze van verwerking. De basis is de HTTP response code:

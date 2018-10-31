@@ -1,4 +1,4 @@
-# PUT domeintabel
+# DELETE domeintabel
 
 ## Omschrijving
 Deze API verzorgt het verwijderen van een domeinwaarde in een specifieke domeintabel
@@ -10,6 +10,10 @@ Deze API verzorgt het verwijderen van een domeinwaarde in een specifieke domeint
 |Header|Waarde|
 |------|------|
 |Content-Type:|application/ld+json|
+
+### Body
+
+De body bevat een [JSON-LD](https://json-ld.org) bericht met een opsomming van de te verwijderen domeinwaarden.
 
 ### Aanroep
 De aanroep van deze API is als volgt:
@@ -25,7 +29,7 @@ Hierbij staat `{uri-domeintabel}` voor de URI van de betreffende domeintabel.
 Hierbij is `delete-domeintabel.json` het bestand beschreven in de Input-sectie.
 
 ## Input
-De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeelaanroep, ook beschikbaar in het bestand [delete-domeintabel.json](delete-domeintabel.json)
+De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeeldaanroep, ook beschikbaar in het bestand [delete-domeintabel.json](delete-domeintabel.json)
 
     [ {
       "@id" : "http://standaard.aquo.nl/id/AfsluitmiddelType/7",
@@ -37,7 +41,7 @@ Merk op dat het mogelijk is om meer dan 1 waarde te verwijderen, door de meerder
 Van belang is dat er precies twee eigenschappen worden meegegeven:
 
 * De eigenschap `@id`, waarmee de domeinwaarde wordt geïdentificeerd;
-* De eigenschap `http://www.w3.org/ns/prov#invalidatedAtTime`, waarmee wordt aangegeven op welk tijdstip de waarde is gewijzigd. Voor dit tijdstip kan de huidige systeemtijd worden gebruikt.
+* De eigenschap `http://www.w3.org/ns/prov#invalidatedAtTime`, waarmee wordt aangegeven op welk tijdstip de waarde is verwijderd. Voor dit tijdstip kan de huidige systeemtijd worden gebruikt.
 
 ## Output
 De output van deze service is afhankelijk van de wijze van verwerking. De basis is de HTTP response code:

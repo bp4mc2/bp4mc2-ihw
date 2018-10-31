@@ -11,6 +11,10 @@ Deze API levert een lijst van waarden van een specifieke domeintabel
 |------|------|
 |Accept:|application/ld+json|
 
+### Body
+
+De body is leeg
+
 ### Aanroep
 De aanroep van deze API is als volgt:
 
@@ -23,7 +27,7 @@ Hierbij staat `{uri-domeintabel}` voor de URI van de betreffende domeintabel.
 > `curl -H "Accept:application/ld+json" http://localhost:8080/beheer/domeintabel?subject=http://standaard.aquo.nl/id/dataset/domeintabel/AfsluitmiddelType`
 
 ## Output
-De output van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is (een deel) van de output afgebeeld van bovengenoemde voorbeelaanroep.
+De output van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is (een deel) van de output afgebeeld van bovengenoemde voorbeeldaanroep.
 
     [ {
       "@id" : "http://standaard.aquo.nl/id/AfsluitmiddelType/1",

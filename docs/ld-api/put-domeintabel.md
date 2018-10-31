@@ -11,6 +11,10 @@ Deze API verzorgt het wijzigen van een domeinwaarde in een specifieke domeintabe
 |------|------|
 |Content-Type:|application/ld+json|
 
+### Body
+
+De body bevat een [JSON-LD](https://json-ld.org) bericht met een opsomming van de gewijzigde domeinwaarde(n).
+
 ### Aanroep
 De aanroep van deze API is als volgt:
 
@@ -25,7 +29,7 @@ Hierbij staat `{uri-domeintabel}` voor de URI van de betreffende domeintabel.
 Hierbij is `put-domeintabel.json` het bestand beschreven in de Input-sectie.
 
 ## Input
-De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeelaanroep, ook beschikbaar in het bestand [put-domeintabel.json](put-domeintabel.json)
+De input van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de input afgebeeld van bovengenoemde voorbeeldaanroep, ook beschikbaar in het bestand [put-domeintabel.json](put-domeintabel.json)
 
     [ {
       "@id" : "http://standaard.aquo.nl/id/AfsluitmiddelType/1",
