@@ -32,21 +32,21 @@ GRAPH config:Theatre {
           BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
             <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
             ?domeintabel rdfs:label ?domeintabel_label
           }
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
             ?categorie rdfs:label ?categorie_label.
           }
         }
       }
-      
+
     """
   .
-  
+
    config:DomeinMetaAgentData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
@@ -59,18 +59,18 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?subject ?p ?o.
-         
+
       }
       WHERE {
-       
+
         GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
               ?domeintabel dct:publisher ?subject.
-              ?subject ?p ?o. }  
+              ?subject ?p ?o. }
       }
-      
+
     """
   .
-  
+
    config:ShaclData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
@@ -82,22 +82,33 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX shacl: <http://www.w3.org/ns/shacl#>
       PREFIX sh:			<http://www.w3.org/ns/shacl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-      CONSTRUCT { ?property ?pp ?op }
-      
+      SELECT  ?kolomnummer
+              ?kolomnaam
+              ?kolombeschrijving
+              (if(?path=aquo:Code,"1","") as ?kolompkseq)
+              (if(bound(?datatype),if(?datatype=xsd:int,"Numeriek","Karakter"),"nvt") as ?kolomdatatype)
+              ?kolomlengte
+              (if(?datatype=xsd:int,"0","") as ?kolomdecimalen)
+              (if(bound(?mincount),if(?mincount=1,"Ja","Nee"),"Nee") as ?kolomverplicht)
+              (if(bound(?mincount),if(?mincount=1,"Ja","Nee"),"Nee") as ?kolomuniek)
       WHERE {
-       
-        GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
-              ?s ?p ?o;
-                  dcat:dataset ?subject;
-                  sh:property ?property.
-              }  
-        Graph  <http://standaard.aquo.nl/id/dataset/shacl> {
-        ?property ?pp ?op}
+        GRAPH  <http://standaard.aquo.nl/id/dataset/shacl> {
+          ?subject rdfs:isDefinedBy ?shape.
+          ?shape sh:property ?property.
+          ?property sh:path ?path.
+          ?property rdfs:label ?kolomnaam.
+          ?property sh:order ?kolomnummer.
+          ?property rdfs:comment ?kolombeschrijving.
+          ?property sh:maxLength ?kolomlengte.
+          OPTIONAL {?property sh:datatype ?datatype}
+          OPTIONAL {?property sh:minCount ?mincount}
+        }
       }
-      
+      ORDER BY ?kolomnummer
     """
   .
-  
+
 
 }

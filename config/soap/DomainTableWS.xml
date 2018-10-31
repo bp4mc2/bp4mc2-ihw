@@ -96,17 +96,33 @@
       <xs:element name="MetaData" nillable="true" type="tns:MetaData"/>
       <xs:complexType name="MetaDataColumn">
         <xs:sequence>
-          <xs:element name="ColumnNumber" type="xs:int"/>
-          <xs:element name="Datatype" type="tns:DtDatatype"/>
-          <xs:element name="Description" nillable="true" type="xs:string"/>
-          <xs:element name="FieldLength" type="xs:int"/>
+          <xs:element name="ColumnNumber" type="xs:int">
+            <xs:annotation dws:valuesFrom="kolomnummer"/>
+          </xs:element>
+          <xs:element name="Datatype" type="tns:DtDatatype">
+            <xs:annotation dws:valuesFrom="kolomdatatype"/>
+          </xs:element>
+          <xs:element name="Description" nillable="true" type="xs:string">
+            <xs:annotation dws:valuesFrom="kolombeschrijving"/>
+          </xs:element>
+          <xs:element name="FieldLength" type="xs:int">
+            <xs:annotation dws:valuesFrom="kolomlengte"/>
+          </xs:element>
           <xs:element name="Name" nillable="true" type="xs:string">
             <xs:annotation dws:valuesFrom="kolomnaam"/>
           </xs:element>
-          <xs:element name="NumberOfDecimals" type="xs:int"/>
-          <xs:element minOccurs="0" name="PKSequenceNumber" type="xs:int"/>
-          <xs:element name="Required" type="xs:boolean"/>
-          <xs:element name="Unique" type="xs:boolean"/>
+          <xs:element name="NumberOfDecimals" type="xs:int">
+            <xs:annotation dws:valuesFrom="kolomdecimalen"/>
+          </xs:element>
+          <xs:element minOccurs="0" name="PKSequenceNumber" type="xs:int">
+            <xs:annotation dws:valuesFrom="kolompkseq"/>
+          </xs:element>
+          <xs:element name="Required" type="xs:boolean">
+            <xs:annotation dws:valuesFrom="kolomverplicht"/>
+          </xs:element>
+          <xs:element name="Unique" type="xs:boolean">
+            <xs:annotation dws:valuesFrom="kolomverplicht"/>
+          </xs:element>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="MetaDataColumn" nillable="true" type="tns:MetaDataColumn"/>
