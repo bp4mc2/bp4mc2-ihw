@@ -3,7 +3,7 @@ GRAPH config:Theatre {
   config:DomeinWaardenData a elmo:InformationProduct;
       elmo:backend config:LocalBackend;
       elmo:optionalParameter elmo:SubjectParameter;
-      elmo:resultType elmo-rt:Tuple;
+      elmo:resultType elmo-rt:Graph;
       elmo:query """
 
       PREFIX dct: <http://purl.org/dc/terms/>
@@ -11,8 +11,18 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX owl:<http://www.w3.org/2002/07/owl#>
 
-      SELECT ?subject ?subjectlabel ?domeintabel ?domeinlabel  ?CASnummer ?Code  ?ID
+      CONSTRUCT {
+        ?subject ?p ?o;
+          owl:sameAs ?begrip;
+          dct:subject ?groep;
+          dct:hasPart ?domeintabel;
+          rdfs:label ?dlabel.
+        ?begrip rdfs:label ?begrip_label.
+        ?groep rdfs:label ?groep_label.
+        ?domeintabel rdfs:label ?domeinlabel.
+      }
 
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
@@ -21,18 +31,25 @@ GRAPH config:Theatre {
         }
 
         GRAPH ?domeintabel {
-          ?subject rdf:type ?domein_model
+          ?subject ?p ?o;
+            rdf:type ?domeintype.
         }
         OPTIONAL {
-          GRAPH ?domeintabel {?subject aquo:Omschrijving ?subjectlabel}
-        }
-        OPTIONAL{
           GRAPH ?domeintabel {
-             ?subject aquo:CASnummer ?CASnummer;
-                 aquo:Code ?Code;
-                 dct:identifier ?ID.
+            ?subject aquo:Omschrijving ?subjectlabel;
+              dct:subject ?groep.
+            ?groep skos:prefLabel ?groep_label.
+              }
+        }
+        OPTIONAL { 
+          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+            ?subject owl:sameAs ?begrip
+          }
+          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+            ?begrip skos:prefLabel ?begrip_label
           }
         }
+        BIND(CONCAT("Domeinwaarde: ",?subjectlabel) AS ?dlabel)
       }
 
       """
