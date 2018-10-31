@@ -1,7 +1,7 @@
-# GET domeintabel
+# GET begrip
 
 ## Omschrijving
-Deze API levert een lijst van waarden van een specifieke domeintabel
+Deze API levert de eigenschappen van een begrip
 
 ## Specificatie
 
