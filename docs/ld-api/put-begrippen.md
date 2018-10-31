@@ -1,4 +1,4 @@
-# PUT domeintabel
+# PUT begrippen
 
 ## Omschrijving
 Deze API verzorgt het wijzigen van een begrip

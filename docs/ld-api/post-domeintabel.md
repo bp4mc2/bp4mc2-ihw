@@ -1,4 +1,4 @@
-# PUT domeintabel
+# POST domeintabel
 
 ## Omschrijving
 Deze API verzorgt het toevoegen van een domeinwaarde in een specifieke domeintabel
