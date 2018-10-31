@@ -6,9 +6,9 @@
             <ns1:DomainTableNames>
                <ns1:string>AfsluitmiddelType</ns1:string>
                <ns1:string>AtRisktype</ns1:string>
-               <ns1:string>BekledinglaagType</ns1:string>
-               <ns1:string>Bekledingmateriaal</ns1:string>
                <ns1:string>BekledingType</ns1:string>
+               <ns1:string>Bekleding_materiaal</ns1:string>
+               <ns1:string>BekledinglaagType</ns1:string>
                <ns1:string>Bemonsteringsapparaat</ns1:string>
                <ns1:string>Bemonsteringssoort</ns1:string>
                <ns1:string>BeschermdGebiedtype</ns1:string>
@@ -16,31 +16,26 @@
                <ns1:string>Bevaarbaarheidsklassen</ns1:string>
                <ns1:string>BevoegdGezagSoort</ns1:string>
                <ns1:string>BiologischKenmerk</ns1:string>
-               <ns1:string>Biotaxon</ns1:string>
-               <ns1:string>BodemlaagBodemkenmerken</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenGradatie</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenOorsprong</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenSpecificatie</ns1:string>
+               <ns1:string>BodemlaagBodemkenmerken</ns1:string>
                <ns1:string>BodemlaagType</ns1:string>
                <ns1:string>CertificeringsCode</ns1:string>
                <ns1:string>ClassificatieCIW</ns1:string>
+               <ns1:string>ClassificatieKRWGW</ns1:string>
                <ns1:string>ClassificatieKRWbiologischOW</ns1:string>
                <ns1:string>ClassificatieKRWchemischOW</ns1:string>
-               <ns1:string>ClassificatieKRWGW</ns1:string>
                <ns1:string>Compartiment</ns1:string>
                <ns1:string>DoelMeetLocatieType</ns1:string>
+               <ns1:string>EUfonds</ns1:string>
                <ns1:string>Eenheid</ns1:string>
                <ns1:string>EmissieBrontype</ns1:string>
-               <ns1:string>EUfonds</ns1:string>
                <ns1:string>FunctieKunstwerk</ns1:string>
-               <ns1:string>Functiesvanadressen</ns1:string>
+               <ns1:string>Functies_van_adressen</ns1:string>
                <ns1:string>Geslacht</ns1:string>
                <ns1:string>Hoedanigheid</ns1:string>
                <ns1:string>Inrichtingtype</ns1:string>
-               <ns1:string>Kansverdeling</ns1:string>
-               <ns1:string>KenmerkBodemlaag</ns1:string>
-               <ns1:string>Kleur</ns1:string>
-               <ns1:string>Kleursterkte</ns1:string>
                <ns1:string>KRWMaatregelGebiedsniveau</ns1:string>
                <ns1:string>KRWMaatregeltype</ns1:string>
                <ns1:string>KRWMeetLocatietype</ns1:string>
@@ -48,23 +43,29 @@
                <ns1:string>KRWStroomgebiedsdistrict</ns1:string>
                <ns1:string>KRWWaterlichaamCategorie</ns1:string>
                <ns1:string>KRWWatertype</ns1:string>
+               <ns1:string>Kansverdeling</ns1:string>
+               <ns1:string>KenmerkBodemlaag</ns1:string>
+               <ns1:string>Kleur</ns1:string>
+               <ns1:string>Kleursterkte</ns1:string>
                <ns1:string>Kunstwerktype</ns1:string>
                <ns1:string>Kwaliteitsoordeel</ns1:string>
                <ns1:string>LabopdrachtStatus</ns1:string>
                <ns1:string>LeggerStatus</ns1:string>
                <ns1:string>LocatietypeWaardeBepaling</ns1:string>
-               <ns1:string>MappingSDNL</ns1:string>
-               <ns1:string>MappingSDNL05Bemonsteringsapparaat</ns1:string>
-               <ns1:string>MappingSDNL05Meetapparaat</ns1:string>
-               <ns1:string>MappingSDNL05Plaatsbepalingsapparaat</ns1:string>
-               <ns1:string>MappingSDNP</ns1:string>
+               <ns1:string>Mapping_SDN_L05_Bemonsteringsapparaat</ns1:string>
+               <ns1:string>Mapping_SDN_L05_Meetapparaat</ns1:string>
+               <ns1:string>Mapping_SDN_L05_Plaatsbepalingsapparaat</ns1:string>
+               <ns1:string>Mapping_SDN_L111</ns1:string>
+               <ns1:string>Mapping_SDN_L201</ns1:string>
+               <ns1:string>Mapping_SDN_P01</ns1:string>
+               <ns1:string>Mapping_SDN_P61</ns1:string>
+               <ns1:string>MeetObjectSoort</ns1:string>
                <ns1:string>Meetapparaat</ns1:string>
                <ns1:string>Meetinstantie</ns1:string>
-               <ns1:string>MeetObjectSoort</ns1:string>
                <ns1:string>Monsterbewerkingsmethode</ns1:string>
+               <ns1:string>NormRelatieRol</ns1:string>
                <ns1:string>Normgroep</ns1:string>
                <ns1:string>Normkader</ns1:string>
-               <ns1:string>NormRelatieRol</ns1:string>
                <ns1:string>NoseCodetype</ns1:string>
                <ns1:string>ObjectStatus</ns1:string>
                <ns1:string>OeverType</ns1:string>
@@ -93,8 +94,8 @@
                <ns1:string>StatistischeParameter</ns1:string>
                <ns1:string>StreefpeilType</ns1:string>
                <ns1:string>Stroomrichting</ns1:string>
-               <ns1:string>Subjectrollen</ns1:string>
-               <ns1:string>Subjectsoorten</ns1:string>
+               <ns1:string>Subject_rollen</ns1:string>
+               <ns1:string>Subject_soorten</ns1:string>
                <ns1:string>Substraattype</ns1:string>
                <ns1:string>TijdDimensietype</ns1:string>
                <ns1:string>Toetsoordeel</ns1:string>
@@ -108,7 +109,8 @@
                <ns1:string>Waardebewerkingsmethode</ns1:string>
                <ns1:string>WaarnemingReeksType</ns1:string>
                <ns1:string>Waarnemingssoort</ns1:string>
-               <ns1:string>Wandconstructiesoort</ns1:string>
+               <ns1:string>Wandconstructie_soort</ns1:string>
+               <ns1:string>WaterTypeKwantitatief</ns1:string>
                <ns1:string>Waterbeheerder</ns1:string>
                <ns1:string>Waterbeheergebiedtype</ns1:string>
                <ns1:string>WaterkerendeConstructieType</ns1:string>
@@ -116,11 +118,10 @@
                <ns1:string>WaterkeringsectieType</ns1:string>
                <ns1:string>WaterkeringstelselType</ns1:string>
                <ns1:string>Waterkeringtype</ns1:string>
-               <ns1:string>Waterketenfunctienaam</ns1:string>
+               <ns1:string>Waterketen_functienaam</ns1:string>
                <ns1:string>Waterrijkheidtype</ns1:string>
                <ns1:string>Waterstaatkundigezonering</ns1:string>
                <ns1:string>WatertypeKwalitatief</ns1:string>
-               <ns1:string>WaterTypeKwantitatief</ns1:string>
                <ns1:string>WaterveiligheidNormclassificatie</ns1:string>
                <ns1:string>WegAardtype</ns1:string>
                <ns1:string>WetVerordeningtype</ns1:string>
