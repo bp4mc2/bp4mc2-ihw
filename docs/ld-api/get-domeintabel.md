@@ -14,7 +14,7 @@ Deze API levert een lijst van waarden van een specifieke domeintabel
 ### Aanroep
 De aanroep van deze API is als volgt:
 
-> `/beheer/domeintabel?subject={uri-domeintabel}`
+> `GET /beheer/domeintabel?subject={uri-domeintabel}`
 
 Hierbij staat `{uri-domeintabel}` voor de URI van de betreffende domeintabel.
 
