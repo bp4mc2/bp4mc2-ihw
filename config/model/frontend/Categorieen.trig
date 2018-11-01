@@ -27,6 +27,14 @@ GRAPH config:Theatre {
       xhtml:link "/begrippen-per-categorie";
       elmo:name "categorie";
     ];
+    elmo:fragment [
+      elmo:appliesTo "categoriecount";
+      elmo:name "aantal begrippen";
+    ];
+    elmo:fragment [
+      elmo:appliesTo "domeincount";
+      elmo:name "aantal domeintabellen";
+    ];
   .
 
 }
