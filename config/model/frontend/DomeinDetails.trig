@@ -30,7 +30,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeintabelStaging
   .
-  
+
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
@@ -106,22 +106,14 @@ GRAPH config:Theatre {
   config:DomeinTitelAppearance a elmo:TableAppearance;
     elmo:index "01";
     elmo:fragment [
-      elmo:appliesTo dct:hasPart;
-      elmo:appearance elmo:HiddenAppearance;
-    ];
-    elmo:fragment [
-      elmo:appliesTo rdfs:label;
-      elmo:appearance elmo:HiddenAppearance;
-    ];
-    elmo:fragment [
-      elmo:appliesTo dcat:dataset;
+      elmo:appliesTo "metadata";
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
       rdfs:label "Domeintabel metadata"@nl;
-    ];    
-    elmo:fragment [  
-      elmo:appliesTo  dct:publisher; 
+    ];
+    elmo:fragment [
+      elmo:appliesTo "beheerder";
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta-agent";
-      rdfs:label "Beheerder"@nl; 
+      rdfs:label "Beheerder"@nl;
     ];
   .
 
@@ -136,9 +128,9 @@ GRAPH config:Theatre {
       rdfs:label "Domeintabel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];
-    elmo:fragment [  
-      elmo:appliesTo  dct:subject; 
-      rdfs:label "Groep"@nl; 
+    elmo:fragment [
+      elmo:appliesTo  dct:subject;
+      rdfs:label "Groep"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
     ];
   .
@@ -299,7 +291,7 @@ GRAPH config:Theatre {
       elmo:index "34";
     ];
     elmo:fragment [
-      elmo:appliesTo aquo:opgericht;     
+      elmo:appliesTo aquo:opgericht;
       rdfs:label "Opgericht in"@nl;
       elmo:index "35";
     ];
