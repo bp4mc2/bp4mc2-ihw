@@ -72,7 +72,7 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
-      elmo:appliesTo dcat:dataset;
+      elmo:appliesTo "domeintabel";
       rdfs:label "Domeintabel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];

@@ -20,7 +20,7 @@ GRAPH config:Theatre {
    elmo:fragment [
       elmo:index 4;
       elmo:appliesTo "waarde";
-      xhtml:link "/domeinwaarden";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeinwaarden";
       rdfs:label "Domeinwaarde"@nl;
     ];
     elmo:fragment [
@@ -28,19 +28,19 @@ GRAPH config:Theatre {
       elmo:appliesTo "domeintabel";
       elmo:name "domein_label";
       rdfs:label "Domeintabel"@nl;
-      xhtml:link "/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];
     elmo:fragment [ 
       elmo:index 3;
       elmo:appliesTo "begrip";
       elmo:name "begrip_label";
-      xhtml:link "/begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       rdfs:label "Begrip"@nl;
     ];  
       elmo:fragment [ 
       elmo:index 5;
       elmo:appliesTo "edit";
-      xhtml:link "/beheer/domeintabellink";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
       rdf:value "Edit relatie"@nl;
     ];  
   .

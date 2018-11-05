@@ -54,11 +54,14 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
-      SELECT ?domeintabel ?domeintabel_label
+      SELECT ?domeintabel ?domeintabel_label ?beschrijving
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
           ?domeinmeta dct:subject ?subject;
             dcat:distribution ?domeintabel.
+          OPTIONAL {
+            ?domeinmeta dct:description ?beschrijving.
+          }
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> { 
@@ -66,7 +69,6 @@ GRAPH config:Theatre {
             ?domeintabel rdfs:label ?domeintabel_label
           }
         }
-        BIND("Dataset" AS ?subjectlabel)
       }
     """
   .

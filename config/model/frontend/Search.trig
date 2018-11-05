@@ -46,7 +46,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "begrip";
-      xhtml:link "begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       elmo:name "SUBJECT";
       rdfs:label "Term"@nl;
     ];
@@ -57,15 +57,15 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:index 3;
-      elmo:appliesTo dct:subject;
-      xhtml:link "/begrippen-per-categorie";
+      elmo:appliesTo "categorie_begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
     elmo:fragment [ 
       elmo:index 3;
       elmo:appliesTo rdfs:label;
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];  
     elmo:fragment [ 
@@ -90,14 +90,14 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "categorie";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       elmo:name "categorie";
       rdfs:label "Categorie"@nl;
     ];
     elmo:fragment [ 
       elmo:index 1;
       elmo:appliesTo "categorie_label";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];  
     
@@ -107,14 +107,14 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 1;
       elmo:appliesTo "domeintabel";
-      xhtml:link "/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
       elmo:name "domein";
       rdfs:label "Domeintabel"@nl;
     ];
     elmo:fragment [ 
       elmo:index 1;
       elmo:appliesTo "domein_label";
-      xhtml:link "/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
       rdfs:label "Domeintabel"@nl;
     ];  
   .
@@ -128,14 +128,14 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "domeintabel_waarde";
-      xhtml:link "/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
       elmo:name "domein";
       rdfs:label "Domeintabel"@nl;
     ];
     elmo:fragment [ 
       elmo:index 2;
       elmo:appliesTo "domeintabel_waarde_label";
-      xhtml:link "/domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
       rdfs:label "Domeintabel"@nl;
     ];  
     elmo:fragment [ 
