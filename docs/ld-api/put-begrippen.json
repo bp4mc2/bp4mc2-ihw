@@ -1,0 +1,19 @@
+[ {
+  "@id" : "http://standaard.aquo.nl/id/begrip/30793",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://purl.org/dc/elements/1.1/source" : [ {
+    "@value" : "BPRW"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "1-mijlzone"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#broader" : [ {
+    "@id" : "http://standaard.aquo.nl/id/begrip/30526"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "zone, die tot 1 zeemijl zeewaarts loopt vanaf het dichtstbijzijnde punt van de basislijn."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#note" : [ {
+    "@value" : "Tot en met deze 1-mijlzone moet conform de KRW worden getoetst op goede toestand."
+  } ]
+} ]

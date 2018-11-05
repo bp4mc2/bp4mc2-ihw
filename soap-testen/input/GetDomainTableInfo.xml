@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableInfo>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns1:CheckDate>2018-10-31</ns1:CheckDate>
+            <ns1:DomaintableName>AfsluitmiddelType</ns1:DomaintableName>
+         </ns:request>
+      </ns:GetDomainTableInfo>
+   </soapenv:Body>
+</soapenv:Envelope>

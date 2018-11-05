@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:GetDomainTableInfoResponse>
+         <ns:GetDomainTableInfoResult>
+            <ns1:MaxDataRowsInResponse>3</ns1:MaxDataRowsInResponse>
+            <ns1:Name>gero et</ns1:Name>
+            <ns1:TotalDataRows>3</ns1:TotalDataRows>
+            <ns1:MetaData/>
+         </ns:GetDomainTableInfoResult>
+      </ns:GetDomainTableInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

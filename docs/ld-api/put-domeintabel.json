@@ -1,0 +1,14 @@
+[ {
+  "@id" : "http://standaard.aquo.nl/id/AfsluitmiddelType/1",
+  "@type" : [ "http://standaard.aquo.nl/def/aquo#AfsluitmiddelType" ],
+  "http://purl.org/dc/terms/identifier" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "1"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Code" : [ {
+    "@value" : "01"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Omschrijving" : [ {
+    "@value" : "Superdeur"
+  } ]
+} ]

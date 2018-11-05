@@ -1,0 +1,14 @@
+[ {
+  "@id" : "urn:uuid:9c363af8-1e86-43df-9149-be76e263fa2a",
+  "@type" : [ "http://standaard.aquo.nl/def/aquo#AfsluitmiddelType" ],
+  "http://purl.org/dc/terms/identifier" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "8"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Code" : [ {
+    "@value" : "08"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Omschrijving" : [ {
+    "@value" : "Draaideur"
+  } ]
+} ]

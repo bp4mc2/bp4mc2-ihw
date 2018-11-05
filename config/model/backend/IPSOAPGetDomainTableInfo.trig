@@ -7,29 +7,47 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       SELECT ?domaintablename
-             (7 as ?aantal)
+             ?aantal
              (2500 as ?maxaantal)
-#            (count(?waarde) as ?aantal)
+             ?kolomnummer
+             (if(bound(?datatype),if(?datatype=xsd:int,"DtInteger","DtString"),"DtString") as ?kolomdatatype)
+             ?kolombeschrijving
+             ?kolomlengte
              ?kolomnaam
+             (if(?datatype=xsd:int,0,-1) as ?kolomdecimalen)
+             (if(?path=aquo:Code,"1","") as ?kolompkseq)
+             (if(bound(?mincount),if(?mincount=1,true,false),false) as ?kolomverplicht)
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
           <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?name
           FILTER(str(?name)=?domaintablename)
         }
-#        GRAPH ?domeintabel {
-#          ?waarde a ?type
-#        }
         GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
           ?domeintabel rdfs:isDefinedBy ?shape.
           ?shape sh:property ?property.
-          ?property rdfs:label ?kolomnaam
+          ?property sh:path ?path.
+          ?property rdfs:label ?kolomnaam.
+          ?property sh:order ?kolomnummer.
+          ?property rdfs:comment ?kolombeschrijving.
+          ?property sh:maxLength ?kolomlengte.
+          OPTIONAL {?property sh:datatype ?datatype}
+          OPTIONAL {?property sh:minCount ?mincount}
+        }
+        {
+          select (count(?waarde) as ?aantal)
+          where {
+            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domaintablename)) as ?domeintabel)
+            graph ?domeintabel {
+              ?waarde a ?type
+            }
+          }
         }
       }
-#      group by ?domaintablename
     """
   .
 

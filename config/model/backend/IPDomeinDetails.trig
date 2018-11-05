@@ -24,7 +24,7 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH ?subject {
           ?id ?p ?o;
-          OPTIONAL { 
+          OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
             BIND(strbefore(?dt,"T") as ?opgehevendate)
@@ -35,7 +35,7 @@ GRAPH config:Theatre {
               ?id a skos:Concept.
             }
           }
-        OPTIONAL { 
+        OPTIONAL {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?id owl:sameAs ?begrip
           }
@@ -84,7 +84,7 @@ GRAPH config:Theatre {
               ?domaintabel dct:replacedBy ?newversion
             }
           }
-         OPTIONAL { 
+         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?id owl:sameAs ?begrip
           }
@@ -110,7 +110,7 @@ GRAPH config:Theatre {
 
       CONSTRUCT {
         ?subject dct:hasPart ?domeintabel;
-        dct:subject ?subject.
+          dct:subject ?subject.
         ?domeintabel rdfs:label ?domeintabel_label.
       }
       WHERE {
@@ -127,7 +127,7 @@ GRAPH config:Theatre {
       }
     """
   .
-  
+
   config:DomeintabelHistorieData a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
@@ -154,7 +154,7 @@ GRAPH config:Theatre {
           GRAPH ?subject {
             ?id ?p ?o
             OPTIONAL {?o skos:prefLabel ?olabel}
-            OPTIONAL { 
+            OPTIONAL {
               ?id aquo:Opgeheven_per ?dt;
                 aquo:Opgericht_in ?odt.
               BIND(strbefore(?dt,"T") as ?opgehevendate)
@@ -164,7 +164,7 @@ GRAPH config:Theatre {
               ?id a skos:Concept.
             }
           }
-          OPTIONAL {  
+          OPTIONAL {
             GRAPH <http://standaard.aquo.nl/id/dataset/links> {
               ?id owl:sameAs ?begrip
             }
@@ -199,28 +199,19 @@ GRAPH config:Theatre {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-        CONSTRUCT {
-          ?subject dct:hasPart <http://standaard.aquo.nl/id/dataset/domeintabel>;
-            dcat:dataset ?dataset;
-            rdfs:label ?dlabel;
-            dct:publisher ?agent.
-          ?dataset rdfs:label ?label.
-          ?agent rdfs:label ?agent_label.
-            
-        }
+        SELECT ?metadata ?metadata_label ?beheerder
         WHERE {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
-            ?subject rdfs:label ?label.
-            OPTIONAL { ?subject dcat:dataset ?dataset}
+            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?metadata.
+            ?metadata rdfs:label ?metadata_label.
+            FILTER (?metadata = ?subject)
           }
           OPTIONAL {
             GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
-              ?dataset dct:publisher ?agent.
-              ?agent rdfs:label ?agent_label.
+              ?dataset dct:publisher ?beheerder.
+              ?beheerder rdfs:label ?beheerder_label.
             }
           }
-        BIND(CONCAT("Domeintabel: ", ?label) AS ?dlabel)
         }
       """
     .
