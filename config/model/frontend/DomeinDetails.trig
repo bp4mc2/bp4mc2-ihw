@@ -38,7 +38,6 @@ GRAPH config:Theatre {
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
-    elmo:contains config:DomeinMeta;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" lang="nl">
+   
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta charset="utf-8">
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>IHW Catalogus</title>
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/dataTables.bootstrap.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-datepicker3.standalone.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/ldt-theme.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/aquo-theme.min.css">
+      <script type="text/javascript" src="/assets/js/jquery-3.1.1.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/jquery.dataTables.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/dataTables.bootstrap.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/bootstrap.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/bootstrap-datepicker.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/locales/bootstrap-datepicker.nl.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/d3.v3.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/ldt.min.js?version="></script>
+      <script type="text/javascript">var elmo_language = {language:{info:"_START_ tot _END_ van _TOTAL_ resultaten",search:"Filter:",lengthMenu:"Toon _MENU_ rijen",zeroRecords:"Niets gevonden",infoEmpty: "Geen resultaten",paginate:{first:"Eerste",previous:"Vorige",next:"Volgende",last:"Laatste"}},paging:true,searching:true,info:true}</script>
+      </head>
+   
+   <body>
+      
+      <div id="page">
+         
+         <div class="container hidden-xs">
+            
+            <div class="row text-center">
+               
+               <div class="text-left">
+                  
+                  <h5> 
+                     <a href="https://www.aquo.nl">
+                        <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/ldt-logo-aquo.png" alt="HTML5 Icon">
+                           
+                        </a>
+                     <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
+                        
+                     
+                  </h5>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+         <nav class="navbar navbar-default">
+            
+            <div class="container">
+               
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                  <a class="navbar-brand" href="http://www.aquo.nl/">Aquo</a>
+                  
+               </div>
+               
+               <div id="navbar" class="collapse navbar-collapse">
+                  
+                  <ul class="nav navbar-nav">
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Begrippen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="/begrippen">Begrippen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="/categorieen">Categorieen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/">Informatie</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Domeintabellen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="/domeintabellen">Domeintabellen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/">Informatie</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Modellen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/">Standaardisatie</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/imwa/">Informatiemodel Water</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/im-metingen/">Informatiemodel Metingen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/Aquo/uitwisselmodellen/">Grafisch</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Uitwisseling<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/gmlxml-formaat/">IMWA XML en GML</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/xsd/">IMWA XSD</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/shp-formaat/">IMWA Waterveiligheid: shape</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/csv-formaat/">CSV uitwisselingingsformaten</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Proces<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/update/">Wijzigingsproces</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="https://hetwaterschapshuis.sharepoint.com/sites/aquo/">Wijzigingsvoorstellen</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  <form class="navbar-form navbar-right" method="get" action="/search">
+                     
+                     <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search" name="term">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="submit">
+                              <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                           </span>
+                        
+                     </div>
+                     
+                  </form>
+                  
+               </div>
+               
+            </div>
+            
+         </nav>
+         
+         <div class="content">
+            
+            <div class="container">
+               <script type="text/javascript">
+				$(document).ready(function() {
+					elmo_language.paging = true;
+					elmo_language.searching = true;
+					elmo_language.info = true;
+					elmo_language.order = [];
+					$('#datatable1').dataTable(elmo_language);
+				} );
+			</script>
+               <table id="datatable1" class="table table-striped table-bordered">
+                  
+                  <thead>
+                     
+                     <tr>
+                        
+                        <th>Domeintabel</th>
+                        
+                        <th>Groep</th>
+                        
+                     </tr>
+                     
+                  </thead>
+                  
+                  <tbody>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/domeintabel?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fdataset%2Fdomeintabel%2FBekleding_materiaal">Bekleding_materiaal</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                  </tbody>
+                  
+               </table>
+               <script type="text/javascript">
+				$(document).ready(function() {
+					elmo_language.paging = true;
+					elmo_language.searching = true;
+					elmo_language.info = true;
+					elmo_language.order = [];
+					$('#datatable2').dataTable(elmo_language);
+				} );
+			</script>
+               <table id="datatable2" class="table table-striped table-bordered">
+                  
+                  <thead>
+                     
+                     <tr>
+                        
+                        <th>ID</th>
+                        
+                        <th>Code</th>
+                        
+                        <th>Omschrijving</th>
+                        
+                        <th>Groep</th>
+                        
+                        <th>Begin geldigheid</th>
+                        
+                     </tr>
+                     
+                  </thead>
+                  
+                  <tbody>
+                     
+                     <tr>
+                        
+                        <td>1</td>
+                        
+                        <td>01</td>
+                        
+                        <td>Asfaltbeton</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>10</td>
+                        
+                        <td>10</td>
+                        
+                        <td>Betonblokken met afgeschuinde hoeken met gaten erin</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>11</td>
+                        
+                        <td>11</td>
+                        
+                        <td>Betonblokken zonder openingen</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>12</td>
+                        
+                        <td>12</td>
+                        
+                        <td>Open blokkenmatten, afgestrooid met granulair materiaal</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>13</td>
+                        
+                        <td>13</td>
+                        
+                        <td>Blokkenmatten zonder openingen als drager materiaal</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>14</td>
+                        
+                        <td>14</td>
+                        
+                        <td>Betonplaten van cementbeton of gesloten colloïdaal beton</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>15</td>
+                        
+                        <td>15</td>
+                        
+                        <td>Colloïdaal beton (open structuur)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>16</td>
+                        
+                        <td>16</td>
+                        
+                        <td>Betonplaten (prefab)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>17</td>
+                        
+                        <td>17</td>
+                        
+                        <td>Betonnen doorgroeistenen</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>18</td>
+                        
+                        <td>18</td>
+                        
+                        <td>Grasbetontegels</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>19</td>
+                        
+                        <td>19</td>
+                        
+                        <td>Breuksteen, gepenetreerd met cement- of colloïdaal beton (vol en zat)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>2</td>
+                        
+                        <td>02</td>
+                        
+                        <td>Mastiek</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>20</td>
+                        
+                        <td>20</td>
+                        
+                        <td>Breuksteen, gepenetreerd met cement- of colloïdaal beton (patroonpenetratie)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>21</td>
+                        
+                        <td>21</td>
+                        
+                        <td>Gezaaid gras</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>22</td>
+                        
+                        <td>22</td>
+                        
+                        <td>Graszoden en graszaad/zoden in kunststofmatten</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>23</td>
+                        
+                        <td>23</td>
+                        
+                        <td>Bestorting van grof grind en andere granulaire materialen</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>24</td>
+                        
+                        <td>24</td>
+                        
+                        <td>Grof granulair materiaal danwel breuksteen verpakt in gaas</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>25</td>
+                        
+                        <td>25</td>
+                        
+                        <td>Fijn granulair materiaal danwel zand/grind verpakt in gaas</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>26</td>
+                        
+                        <td>26</td>
+                        
+                        <td>Breuksteen (stortsteen)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>27</td>
+                        
+                        <td>27</td>
+                        
+                        <td>Gezette basalt</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>28</td>
+                        
+                        <td>28</td>
+                        
+                        <td>Gezette polygoonvormige betonzuilen</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>29</td>
+                        
+                        <td>29</td>
+                        
+                        <td>Gezette natuursteen</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>3</td>
+                        
+                        <td>03</td>
+                        
+                        <td>Dicht steenasfalt</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>30</td>
+                        
+                        <td>30</td>
+                        
+                        <td>Kruidenvegetatie</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>31</td>
+                        
+                        <td>31</td>
+                        
+                        <td>Koperslak</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>32</td>
+                        
+                        <td>32</td>
+                        
+                        <td>Hoogovenslakken</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>33</td>
+                        
+                        <td>33</td>
+                        
+                        <td>Bak-/betonsteen, gepenetreerd met asfalt (vol+zat)/basalt+asfalt</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>34</td>
+                        
+                        <td>34</td>
+                        
+                        <td>Blokkenmatten zonder openingen met of zonder geotextiel</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>35</td>
+                        
+                        <td>35</td>
+                        
+                        <td>Fijn granulair materiaal c.q. breuksteen verpakt in geotextiel</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>4</td>
+                        
+                        <td>04</td>
+                        
+                        <td>Open prefab steenasfaltmatten evt. met wapening, op geotextiel</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>5</td>
+                        
+                        <td>05</td>
+                        
+                        <td>Open steenasfalt</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>6</td>
+                        
+                        <td>06</td>
+                        
+                        <td>Zandasfalt (tijdelijk of in onderlaag)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>7</td>
+                        
+                        <td>07</td>
+                        
+                        <td>Breuksteen, gepenetreerd met asfalt (vol en zat)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>8</td>
+                        
+                        <td>08</td>
+                        
+                        <td>Baksteen/betonsteen, gepenetreerd met asfalt (vol en zat)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>9</td>
+                        
+                        <td>09</td>
+                        
+                        <td>Breuksteen gepenetreerd met asfalt (patroonpenetratie)</td>
+                        
+                        <td>
+                           <a href="domeintabelgroep?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FBekleding_materiaal-Groep%2FToplaag">Toplaag</a>
+                           
+                        </td>
+                        
+                        <td>2016-03-12</td>
+                        
+                     </tr>
+                     
+                  </tbody>
+                  
+               </table>
+               
+               <ul class="nav nav-tabs">
+                  
+                  <li>
+                     <a href="http://localhost:8080/domeintabelgroep?format=xml">xml</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/domeintabelgroep?format=csv">csv</a>
+                     
+                  </li>
+                  
+               </ul>
+               
+            </div>
+            
+         </div>
+         
+         <div class="footer bg-primary">
+            
+            <div class="container hidden-xs">
+               
+               <div class="row">
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>Links</h4>
+                     
+                     <ul class="list-unstyled">
+                        
+                        <li>
+                           <a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+                           
+                        </li>
+                        
+                        <li>
+                           <a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+                           
+                        </li>
+                        
+                     </ul>
+                     
+                  </div>
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>configuration</h4>
+                     
+                     <p>Dit is de nieuwe concept omgeving voor de Aquo domeintabellen en woordenboek. We hebben de meest recente Aquo informatie ge�mporteerd
+                        maar de inhoud is niet gegarandeerd actueel. Kijk op <a href="http://domeintabellen-idsw.rws.nl/">domeintabellen-idsw.rws.nl</a> en op <a href="http://www.aquolex.nl/">www.aquolex.nl</a> voor de actuele Aquo. 
+                     </p>
+                     
+                  </div>
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>License</h4>
+                     
+                     <p>GPL 3.0 / CC-BY-SA</p>
+                     
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+   </body>
+   
+</html>

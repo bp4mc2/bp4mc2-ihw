@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" lang="nl">
+   
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta charset="utf-8">
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>IHW Catalogus</title>
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/dataTables.bootstrap.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-datepicker3.standalone.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/ldt-theme.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css?version=">
+      
+      <link rel="stylesheet" type="text/css" href="/assets/css/aquo-theme.min.css">
+      <script type="text/javascript" src="/assets/js/jquery-3.1.1.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/jquery.dataTables.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/dataTables.bootstrap.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/bootstrap.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/bootstrap-datepicker.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/locales/bootstrap-datepicker.nl.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/d3.v3.min.js?version="></script>
+      <script type="text/javascript" src="/assets/js/ldt.min.js?version="></script>
+      <script type="text/javascript">var elmo_language = {language:{info:"_START_ tot _END_ van _TOTAL_ resultaten",search:"Filter:",lengthMenu:"Toon _MENU_ rijen",zeroRecords:"Niets gevonden",infoEmpty: "Geen resultaten",paginate:{first:"Eerste",previous:"Vorige",next:"Volgende",last:"Laatste"}},paging:true,searching:true,info:true}</script>
+      </head>
+   
+   <body>
+      
+      <div id="page">
+         
+         <div class="container hidden-xs">
+            
+            <div class="row text-center">
+               
+               <div class="text-left">
+                  
+                  <h5> 
+                     <a href="https://www.aquo.nl">
+                        <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/ldt-logo-aquo.png" alt="HTML5 Icon">
+                           
+                        </a>
+                     <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
+                        
+                     
+                  </h5>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+         <nav class="navbar navbar-default">
+            
+            <div class="container">
+               
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     </button>
+                  <a class="navbar-brand" href="http://www.aquo.nl/">Aquo</a>
+                  
+               </div>
+               
+               <div id="navbar" class="collapse navbar-collapse">
+                  
+                  <ul class="nav navbar-nav">
+                     
+                     <li class="dropdown active">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Begrippen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="active">
+                              <a href="/begrippen">Begrippen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="/categorieen">Categorieen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-lex/">Informatie</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Domeintabellen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="/domeintabellen">Domeintabellen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-domeintabellen/">Informatie</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Modellen<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/">Standaardisatie</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/imwa/">Informatiemodel Water</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-modellen/im-metingen/">Informatiemodel Metingen</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/Aquo/uitwisselmodellen/">Grafisch</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Uitwisseling<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/gmlxml-formaat/">IMWA XML en GML</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/xsd/">IMWA XSD</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/shp-formaat/">IMWA Waterveiligheid: shape</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/over-aquo/aquo-onderdelen/aquo-uitwisselformaten/csv-formaat/">CSV uitwisselingingsformaten</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                     <li class="dropdown ">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Proces<span class="caret"></span>
+                           </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                           
+                           <li class="">
+                              <a href="http://www.aquo.nl/update/">Wijzigingsproces</a>
+                              
+                           </li>
+                           
+                           <li class="">
+                              <a href="https://hetwaterschapshuis.sharepoint.com/sites/aquo/">Wijzigingsvoorstellen</a>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                     </li>
+                     
+                  </ul>
+                  
+                  <form class="navbar-form navbar-right" method="get" action="/search">
+                     
+                     <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search" name="term">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="submit">
+                              <span class="glyphicon glyphicon-search"></span>
+                              </button>
+                           </span>
+                        
+                     </div>
+                     
+                  </form>
+                  
+               </div>
+               
+            </div>
+            
+         </nav>
+         
+         <div class="content">
+            
+            <div class="container">
+               
+               <ul class="nav nav-tabs">
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=[0-9]">0-9</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=a">a</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=b">b</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=c">c</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=d">d</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=e">e</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=f">f</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=g">g</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=h">h</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=i">i</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=j">j</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=k">k</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=l">l</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=m">m</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=n">n</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=o">o</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=p">p</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=q">q</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=r">r</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=s">s</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=t">t</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=u">u</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=v">v</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=w">w</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=x">x</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=y">y</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=z">z</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?term=">toon alles</a>
+                     
+                  </li>
+                  
+               </ul>
+               
+               <ul class="nav nav-tabs">
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?format=xml">xml</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/begrippen?format=csv">csv</a>
+                     
+                  </li>
+                  
+               </ul>
+               <script type="text/javascript">
+				$(document).ready(function() {
+					elmo_language.paging = true;
+					elmo_language.searching = true;
+					elmo_language.info = true;
+					elmo_language.order = [];
+					$('#datatable3').dataTable(elmo_language);
+				} );
+			</script>
+               <table id="datatable3" class="table table-striped table-bordered">
+                  
+                  <thead>
+                     
+                     <tr>
+                        
+                        <th>Term</th>
+                        
+                        <th>Categorie</th>
+                        
+                        <th>Definitie</th>
+                        
+                     </tr>
+                     
+                  </thead>
+                  
+                  <tbody>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27162&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27162">1% norm</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F8&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27162">ecologie        </a>
+                           
+                        </td>
+                        
+                        <td>een wetland wordt in de conventie van Ramsar beschouwd als internationaal belangrijk als het regelmatig meer dan 20.000 watervogels
+                           herbergt of als er regelmatig minstens 1 % van de individuen van een geografische populatie van één of meer watervogelsoorten
+                           aanwezig is (het zogenaamde 1 % -criterium).
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30793&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30793">1-mijlzone</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>zone, die tot 1 zeemijl zeewaarts loopt vanaf het dichtstbijzijnde punt van de basislijn.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23014&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23014">17b-estradiol equivalenten</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>mate voor de hormoonverstorende activiteit door deze uit te drukken ten opzichte van het natuurlijke oestrogene hormoon 17b-estradiol</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24235&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24235">1d-alfanumerieke-constante</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>alfanumerieke constante.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23641&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23641">1d-berekening</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>meta-informatie over de berekening met een 1D-oppervlaktewatermodel.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23826&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23826">1d-bodemsprong</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>1D-Kunstwerk waarmee een abrupt verschil in bodemhoogte in de stroomrichting in een waterloop wordt weergegeven.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23988&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F23988">1d-brugpijler</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een of meerdere brugpijler(s) die dwars op de stroomrichting in een waterloop is/zijn gesitueerd.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24237&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24237">1d-constante</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>waarde van een toestandsvariabele.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24668&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24668">1d-duiker</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een duiker</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24697&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24697">1d-dwarsprof-hoogte-breedte-rel</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F27&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24697">hydrologie      </a>
+                           
+                        </td>
+                        
+                        <td>de stroomvoerende breedte en de totale breedte op het betreffende niveau in het dwarsprofiel.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24698&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24698">1d-dwarsprofiel</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>set gegevens waarmee de denkbeeldige doorsnijding van een 1D-vak of gedeelte daarvan, eventueel samengesteld als geschematiseerd
+                           gemiddelde van een of meerdere actuele en/of historische dwarsprofielen, wordt vastgelegd
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24699&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24699">1d-dwarsprofiel-cirkelboog</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de gegevens waarmee een cirkelvormig dwarsprofiel wordt beschreven.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24700&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24700">1d-dwarsprofiel-lijn</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de gegevens van een dwarsprofiel, dat wordt beschreven door de breedte op een of meer niveaus.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24701&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24701">1d-dwarsprofiel-trapezium</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de gegevens waarmee een trapeziumvormig dwarsprofiel wordt beschreven.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25071&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25071">1d-functie(t)</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de parameters waarmee een tijdfunctie wordt beschreven.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25072&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25072">1d-functie(u)</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de parameters waarmee een functie van de uitvoerwaarden van een rekenpunt wordt beschreven.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25100&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25100">1d-gebied</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de informatie voor het berekenen van de afvoer (lozing) uit een op het netwerk afwaterend gebied. De lozing wordt in een 1D-schematisatiepunt
+                           aan de schematisatie toegevoegd.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25207&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25207">1d-gemaal</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een gemaal</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25569&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F25569">1d-hevel</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een hevel</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28042&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28042">1d-interne randvoorwaarde</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F27&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28042">hydrologie      </a>
+                           
+                        </td>
+                        
+                        <td>de interne randvoorwaarde, opgelegd door een 1D-Kunstwerk.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26173&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26173">1d-knooppunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een virtueel punt dat de begrenzing vormt van een of meer 1D-vakken</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26272&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26272">1d-krooshek</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een krooshek</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26301&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26301">1d-kunstwerk</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>1D-Schematisatiepunt waar een kunstwerk in een 1D-vak is gesitueerd.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26306&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26306">1d-kunstwerk-algemeen</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de karakteristieken van een kunstwerk in het algemeen dat niet getypeerd is.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26307&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26307">1d-kunstwerkpunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een aan/-afvoerpunt van een kunstwerk.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26644&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F26644">1d-lozingspunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>1D-Schematisatiepunt waar water van buiten het model wordt toegevoegd aan een 1D-vak. Indien de hoeveelheid negatief is, wordt
+                           water onttrokken.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24236&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24236">1d-numerieke-constante</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>numerieke constante.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28016&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28016">1d-qh-relatie</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de gegevens voor het beschrijven van de relatie tussen debiet en waterstand.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28039&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28039">1d-randknooppunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een 1D-knooppunt dat de begrenzing vormt van een enkel 1D-vak.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28043&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28043">1d-randvoorwaarde</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de informatie voor het berekenen van de toestandsvariabelen in de 1D-randknooppunten.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28168&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28168">1d-rekenpunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een virtueel punt in een 1D-vak waarin de wiskundige vergelijking die de waterbeweging (of stoftransport) beschrijft wordt
+                           opgelost.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28447&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28447">1d-schematisatie</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>meta-informatie over de schematisatie van het 1D-oppervlaktewatermodel.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27948&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27948">1d-schematisatiepunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>punt op een 1D-vak waar interne randvoorwaarden, zoals waterstanden, debieten, stofconcentraties, vrachten of meteogegevens
+                           worden gespecificeerd,
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29051&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29051">1d-schuifstuw</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een beweegbare schuif, die dient om de waterstand boven- en benedenstrooms van de constructie
+                           of een debiet te regelen.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28555&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28555">1d-segment</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>rekeneenheid van het waterkwaliteitsmodel. Een 1D-segment omvat een of meer 1D-vakken of gedeelten daarvan. De eigenschappen
+                           van een 1D-segment zijn over de gehele lengte gelijk. De eigenschappen van inliggende 1D-vakken, zoals dwarsprofielgegevens
+                           worden
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27949&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27949">1d-segmentpunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>punt in een 1D-vak dat de begrenzing vormt van een of meer segmenten. In een 1D-segment kunnen splitsingen of samenvoegingen
+                           van (gedeelten van) 1D-vakken voorkomen. In die gevallen wordt het 1D-segment door meer dan twee 1D-segmentpunten begrensd.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28557&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28557">1d-segmentpunt-relatie</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de relatie waarmee geregistreerd wordt welke segmentpunten een segment begrenzen. Een segmentpunt kan de grens vormen van
+                           meer segmenten.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30020&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30020">1d-startwaarde</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de waarden van de toestandsvariabelen op een 1D-rekenpunt bij het begin van de berekening.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30021&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30021">1d-stuurwaarde</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de informatie voor het sturen van een 1D-kunstwerk.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29053&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29053">1d-stuw</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een constructie met een vaste drempel of een beweegbare klep. De klep dient om de waterstand
+                           boven- en benedenstrooms van de constructie of een debiet te regelen.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29052&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29052">1d-stuw-uitgebreid</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een constructie met een vaste drempel en een vaste of beweegbare schuif c.q. klep. De schuif/klep
+                           dient om de waterstand boven- en benedenstrooms van de constructie of een debiet te regelen.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24667&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F24667">1d-stuwduiker</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een geschematiseerde weergave van een stuwduiker</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28106&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F28106">1d-tijdreeks</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de waarden van een toestandsvariabele, vastgelegd als een tijdreeks.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29447&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29447">1d-uitvoerpunt</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een 1D-rekenpunt waarvan de resultaten van de berekening worden weggeschreven</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27950&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F27950">1d-uitvoerpunt-instelling</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de instelling van een uitvoerpunt tijdens een berekening.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29346&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29346">1d-uitvoertraject</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een verzameling 1D-uitvoerpunten gelegen langs een aaneengesloten deel van de schematisatie.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30022&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30022">1d-uitvoerwaarde</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>de berekende waarden waarin de waarden van de toestandsvariabelen op een 1D-uitvoerpunt zijn vastgelegd.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29507&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29507">1d-vak</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>rekeneenheid van het waterkwantiteitsmodel. In een 1D-vak kunnen verschillende 1D-rekenpunten, 1D-schematisatiepunten en 1D-dwarsprofielen
+                           voorkomen
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29505&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29505">1d-vak afstand</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F27&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29505">hydrologie      </a>
+                           
+                        </td>
+                        
+                        <td>de afstand tussen een punt in een 1D-vak en de beginknoop van het 1D-vak, gemeten langs de verbindingslijn tussen begin- en
+                           eindknoop van het vak. De langste afstand in een 1D-vak is gelijk aan de lengte van het 1D-vak.
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29506&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29506">1d-vak-uitvoertraject</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een entiteit waarin is vastgelegd welke 1D-vakken behoren tot een 1D-uitvoertraject.</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30651&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30651">2,5-dichloor-6-nitroaniline</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een benzeenring met een aminegroep (NH2) waarop de 2e en 5e plaats een Cl zit en op de 6e een NO2</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30652&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F30652">2,6-dichloorfluorbenzamide</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>een metaboliet van dichlobenyl, een bestrijdingsmiddel</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29302&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29302">5-jaarlijkse toetsing</a>
+                           
+                        </td>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F17&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29302">civiele techniek</a>, <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcategory%2F35&amp;SUBJECT=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F29302">waterkeringbeheer</a>
+                           
+                        </td>
+                        
+                        <td>periodieke beoordeling van de veiligheid en sterkte van een dijkring</td>
+                        
+                     </tr>
+                     
+                  </tbody>
+                  
+               </table>
+               
+            </div>
+            
+         </div>
+         
+         <div class="footer bg-primary">
+            
+            <div class="container hidden-xs">
+               
+               <div class="row">
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>Links</h4>
+                     
+                     <ul class="list-unstyled">
+                        
+                        <li>
+                           <a href="https://github.com/architolk/linked-data-theatre">Github codebase</a>
+                           
+                        </li>
+                        
+                        <li>
+                           <a href="https://github.com/architolk/linked-data-theatre/wiki">Wiki documentation</a>
+                           
+                        </li>
+                        
+                     </ul>
+                     
+                  </div>
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>configuration</h4>
+                     
+                     <p>Dit is de nieuwe concept omgeving voor de Aquo domeintabellen en woordenboek. We hebben de meest recente Aquo informatie ge�mporteerd
+                        maar de inhoud is niet gegarandeerd actueel. Kijk op <a href="http://domeintabellen-idsw.rws.nl/">domeintabellen-idsw.rws.nl</a> en op <a href="http://www.aquolex.nl/">www.aquolex.nl</a> voor de actuele Aquo. 
+                     </p>
+                     
+                  </div>
+                  
+                  <div class="col-sm-4">
+                     
+                     <h4>License</h4>
+                     
+                     <p>GPL 3.0 / CC-BY-SA</p>
+                     
+                  </div>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
+      </div>
+      
+   </body>
+   
+</html>
