@@ -28,7 +28,7 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:appearance config:BegrippenEditorAppearance;
-    elmo:informationProduct config:BegrippenEditableData;
+    elmo:informationProduct config:ConceptenLijstData;
   .
 
   config:BegrippenEditorAppearance a elmo:EditorAppearance;

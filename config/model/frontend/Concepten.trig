@@ -28,13 +28,13 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo "begrip";
       elmo:name "SUBJECT";
-      xhtml:link "begrip";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       rdfs:label "Term"@nl;
     ];
     elmo:fragment [
       elmo:index 4;
       elmo:appliesTo "categorie";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       rdfs:label "Categorie"@nl;
     ];
     elmo:fragment [
@@ -45,7 +45,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "categorie_label";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       rdfs:label "CategorieNaam"@nl;
     ];
   .

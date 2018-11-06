@@ -24,11 +24,11 @@ GRAPH config:Theatre {
   config:DomeinenLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:appliesTo "domeintabel";
-      xhtml:link "domeintabel";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];
     elmo:fragment [
       elmo:appliesTo "domeintabel_met_historie";
-      xhtml:link "domeintabel/historie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel/historie";
       rdf:value "historie"
     ];
   .
