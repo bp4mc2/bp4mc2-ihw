@@ -11,30 +11,30 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
       CONSTRUCT {
-        ?subject ?p ?o;
+        ?metadata ?p ?o;
           rdfs:label ?titellabel.
         ?agent rdfs:label ?agent_label.
         ?thema rdfs:label ?thema_label.
         ?categorie rdfs:label ?categorie_label.
-        ?domeintabel rdfs:label ?domeintabel_label.
+        ?subject rdfs:label ?subject_label.
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
-          ?subject ?p ?o.
-          OPTIONAL {?subject dcat:distribution ?domeintabel.}
-          OPTIONAL {?subject rdfs:label ?slabel.}
-          OPTIONAL {?subject dct:publisher ?agent.
+          ?metadata dcat:distribution ?subject.
+          ?metadata ?p ?o.
+          OPTIONAL {?metadata rdfs:label ?slabel.}
+          OPTIONAL {?metadata dct:publisher ?agent.
           ?agent rdfs:label ?agent_label.}
-          OPTIONAL {?subject dcat:theme ?thema.
+          OPTIONAL {?metadata dcat:theme ?thema.
           ?thema rdfs:label ?thema_label.}
-          OPTIONAL { ?subject dct:subject ?categorie.}
-          MINUS {?subject rdfs:label ?o}
+          OPTIONAL { ?metadata dct:metadata ?categorie.}
+          MINUS {?metadata rdfs:label ?o}
           BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
-            ?domeintabel rdfs:label ?domeintabel_label
+            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+            ?subject rdfs:label ?subject_label
           }
         }
         OPTIONAL {
