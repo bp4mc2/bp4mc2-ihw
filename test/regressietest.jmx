@@ -758,7 +758,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">d48ee75c50253aff4d39de5e2fa1b6e0</stringProp>
+            <stringProp name="MD5HexAssertion.size">e6e054b074490fef6d148eacf1168e2a</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>
