@@ -19,7 +19,7 @@ GRAPH config:Theatre {
         ?subject rdfs:label ?subject_label.
       }
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
           ?metadata dcat:distribution ?subject.
           ?metadata ?p ?o.
           OPTIONAL {?metadata rdfs:label ?slabel.}
@@ -63,7 +63,7 @@ GRAPH config:Theatre {
       }
       WHERE {
 
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
               ?domeintabel dct:publisher ?subject.
               ?subject ?p ?o. }
       }

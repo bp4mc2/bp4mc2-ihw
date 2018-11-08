@@ -43,7 +43,7 @@ GRAPH config:Theatre {
               }
         }
         OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
               ?dataset dcat:distribution ?dist.
               FILTER (?dist = ?subject)
             }

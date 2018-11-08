@@ -207,7 +207,7 @@ GRAPH config:Theatre {
             FILTER (?metadata = ?subject)
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
               ?dataset dcat:distribution ?dist.
               ?dataset dct:publisher ?beheerder.
               ?beheerder rdfs:label ?beheerder_label.

@@ -58,7 +58,7 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       SELECT ?domeintabel ?domeintabel_label ?beschrijving
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeinmeta> {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
           ?domeinmeta dct:subject ?subject;
             dcat:distribution ?domeintabel.
           OPTIONAL {
