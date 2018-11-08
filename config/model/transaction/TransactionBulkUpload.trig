@@ -21,117 +21,124 @@ GRAPH config:Theatre {
     elmo:sequentialFlow (
       [
         a elmo:UpdateStep;
+        rdfs:label "clear target graph";
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/begrippen>"
+        elmo:query "clear graph <http://standaard.aquo.nl/data/begrippen>"
       ]
+      [ a elmo:AssertionStep;
+        rdfs:label "De upload mag geen concepten zonder rdfs:label bevatten.";
+        elmo:assertNot '''
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          ASK {
+            ?s rdf:type ?type.
+            FILTER(  ?type IN ( skos:Concept ) )
+            FILTER NOT EXISTS {
+              ?s rdfs:label ?label.
+            }
+          }
+      ''';
+      ]      
       [
         a elmo:PersistenceStep;
+        rdfs:label "voeg triples toe aan targetGraph";
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/begrippen>
+        elmo:targetGraph <http://standaard.aquo.nl/data/begrippen>
       ]
       [ a elmo:UpdateStep;
-      # We zoeken naar begrippen die een skos:narrower relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
+        rdfs:label "We zoeken naar begrippen die een skos:narrower relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.";
         elmo:backend config:UpdateBackend;
         elmo:query """
-         prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          insert {
-            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?narrower skos:broader ?begrip
             }
           }
-             where {
-              graph <http://standaard.aquo.nl/id/dataset/begrippen>
-              {
-               ?begrip a  skos:Concept;
-                  skos:narrower ?narrower.
-                    FILTER NOT EXISTS {
-                      ?narrower a skos:Concept;
-                        skos:broader ?begrip
-                    }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a  skos:Concept;
+                skos:narrower ?narrower.
+              FILTER NOT EXISTS {
+                ?narrower a skos:Concept;
+                  skos:broader ?begrip
               }
             }
+          }
         """
       ]
       [ a elmo:UpdateStep;
-      # We zoeken naar begrippen die een skos:broader relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.
+        rdfs:label "We zoeken naar begrippen die een skos:broader relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse broader relatie heeft, die relatie voegen we daarna alsnog toe.";
         elmo:backend config:UpdateBackend;
         elmo:query """
-         prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          insert {
-            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?broader skos:narrower ?begrip
             }
           }
-             where {
-              graph <http://standaard.aquo.nl/id/dataset/begrippen>
-              {
-               ?begrip a  skos:Concept;
-                  skos:broader ?broader.
-                    FILTER NOT EXISTS {
-                      ?broader a skos:Concept;
-                        skos:narrower ?begrip
-                    }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a  skos:Concept;
+                skos:broader ?broader.
+              FILTER NOT EXISTS {
+                ?broader a skos:Concept;
+                  skos:narrower ?begrip
               }
             }
+          }
         """
       ]
       [ a elmo:UpdateStep;
+        rdfs:label "We zoeken naar begrippen die een skosthes:narrowerPartitive relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse relatie heeft, die relatie voegen we daarna alsnog toe.";
         elmo:backend config:UpdateBackend;
         elmo:query """
-          prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  {
-            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          PREFIX skosthes: <http://purl.org/iso25964/skos-thes#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?narrower skosthes:broaderPartitive ?begrip
             }
           }
-            where {
-              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
-                ?begrip a  skos:Concept;
-                  skosthes:narrowerPartitive ?narrower.
-                    FILTER NOT EXISTS {
-                      ?narrower a skos:Concept;
-                        skos:broaderPartitive ?begrip
-                    }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a skos:Concept;
+                skosthes:narrowerPartitive ?narrower.
+              FILTER NOT EXISTS {
+                ?narrower a skos:Concept;
+                  skos:broaderPartitive ?begrip
               }
             }
+          }
        """
       ]
       [ a elmo:UpdateStep;
+        rdfs:label "We zoeken naar begrippen die een skos:related relatie hebben naar een ander begrip, maar waar dat andere begrip niet de inverse relatie heeft, die relatie voegen we daarna alsnog toe.";
         elmo:backend config:UpdateBackend;
         elmo:query """
-          prefix skos: <http://www.w3.org/2004/02/skos/core#>
-          prefix skosthes: <http://purl.org/iso25964/skos-thes#>
-          insert  {
-            graph <http://standaard.aquo.nl/id/dataset/begrippen> {
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          PREFIX skosthes: <http://purl.org/iso25964/skos-thes#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?related skosthes:narrowerPartitive ?begrip
             }
           }
-            where {
-              graph <http://standaard.aquo.nl/id/dataset/begrippen> {
-                ?begrip a  skos:Concept;
-                  skos:related ?related.
-                    FILTER NOT EXISTS {
-                      ?related a skos:Concept;
-                        skos:related ?begrip
-                    }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a skos:Concept;
+                skos:related ?related.
+              FILTER NOT EXISTS {
+                ?related a skos:Concept;
+                  skos:related ?begrip
               }
             }
+          }
        """
       ]
     )
   .
-
-
-
-
-
-
-
-
-  # updatestep is het infoproduct
-
 
 
 
@@ -535,7 +542,7 @@ GRAPH config:Theatre {
 
     # ==========================
 #
-# Shacl Upload tbv domeintabel metdata
+# Shacl Upload tbv domeintabel metadata
 #
 # ==========================
 
