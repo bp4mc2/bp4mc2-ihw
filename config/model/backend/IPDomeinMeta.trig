@@ -38,7 +38,7 @@ GRAPH config:Theatre {
           }
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?categorie rdfs:label ?categorie_label.
           }
         }

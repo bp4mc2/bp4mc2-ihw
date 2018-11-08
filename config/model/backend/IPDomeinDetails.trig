@@ -39,7 +39,7 @@ GRAPH config:Theatre {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?id owl:sameAs ?begrip
           }
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
             ?begrip skos:prefLabel ?begrip_label
           }
         }
@@ -88,7 +88,7 @@ GRAPH config:Theatre {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?id owl:sameAs ?begrip
           }
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
             ?begrip skos:prefLabel ?begrip_label
           }
         }
@@ -168,7 +168,7 @@ GRAPH config:Theatre {
             GRAPH <http://standaard.aquo.nl/id/dataset/links> {
               ?id owl:sameAs ?begrip
             }
-            GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+            GRAPH  <http://standaard.aquo.nl/data/begrippen> {
               ?begrip skos:prefLabel ?begrip_label
             }
           }

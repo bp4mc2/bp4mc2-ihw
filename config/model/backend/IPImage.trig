@@ -10,7 +10,7 @@ GRAPH config:Theatre {
       
       CONSTRUCT {?subject skos:example ?o}
       WHERE { 
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> { 
+        GRAPH <http://standaard.aquo.nl/data/begrippen> { 
           ?subject skos:example ?o 
         } 
       } 

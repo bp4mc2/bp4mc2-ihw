@@ -36,7 +36,7 @@ GRAPH config:Theatre {
           ?waarde ?p ?o
         }
         OPTIONAL { 
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> { 
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> { 
             ?same_begrip skos:prefLabel ?begrip_label
           }
         }

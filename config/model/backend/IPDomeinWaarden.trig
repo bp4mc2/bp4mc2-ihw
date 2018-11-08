@@ -52,7 +52,7 @@ GRAPH config:Theatre {
           GRAPH <http://standaard.aquo.nl/id/dataset/links> {
             ?subject owl:sameAs ?begrip
           }
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
             ?begrip skos:prefLabel ?begrip_label
           }
         }

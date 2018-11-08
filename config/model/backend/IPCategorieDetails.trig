@@ -11,11 +11,13 @@ GRAPH config:Theatre {
       
       SELECT ?begrip ?begrip_label ?definitie 
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-          ?begrip a skos:Concept;
-            dct:subject ?subject;
-            skos:prefLabel ?begrip_label.
-          OPTIONAL {?begrip skos:definition ?definitie}
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?subject a skos:Collection;
+            skos:member ?begrip.
+        }
+        GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          ?begrip rdfs:label ?begrip_label;
+            skos:definition ?definitie
         }
       }
       order by ?begrip_label
@@ -36,7 +38,7 @@ GRAPH config:Theatre {
           rdfs:comment ?comment.
       }
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?subject rdfs:label ?label.
             OPTIONAL{?subject rdfs:comment ?comment}
           }
