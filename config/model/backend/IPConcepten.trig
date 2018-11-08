@@ -4,7 +4,6 @@ GRAPH config:Theatre {
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
     elmo:optionalParameter config:TermParameter;
-    elmo:optionalParameter config:CategorieParameter;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -12,18 +11,19 @@ GRAPH config:Theatre {
        
       SELECT ?begrip ?categorie ?begrip_label ?definitie ?categorie_label
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/data/begrippen> {
           ?begrip a  skos:Concept;
                      skos:prefLabel ?begrip_label;
           OPTIONAL {?begrip skos:definition ?definitie}
           FILTER regex(?begrip_label,concat("^",?term),"i")
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-            ?begrip dct:subject ?categorie.
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+            
           }
-          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?categorie_label
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?begrip;
+              rdfs:label ?categorie_label.
           }
         }
       }

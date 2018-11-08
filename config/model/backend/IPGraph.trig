@@ -1,7 +1,7 @@
 GRAPH config:Theatre { 
 
   config:ConceptenDetailGraph a elmo:InformationProduct;
-    elmo:requiredParameter config:ConceptTabelParameter;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
@@ -30,7 +30,7 @@ GRAPH config:Theatre {
         dct:replaces rdfs:label "Gebruik in plaats van".
       }
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/data/begrippen> {
           {
             ?subject a ?type.
             OPTIONAL
@@ -41,8 +41,7 @@ GRAPH config:Theatre {
             {
               ?subject ?p ?o.
               FILTER (
-                ?p = dct:subject
-              ||?p = skos:broader
+                ?p = skos:broader
               ||?p = skos:narrower
               ||?p = skos:related
               ||?p = thes:broaderPartitive
@@ -58,6 +57,9 @@ GRAPH config:Theatre {
             ?o rdfs:label ?olabel;
               a ?otype.
           }
+        }
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?categorie skos:member ?subject.
         }
       }
     """

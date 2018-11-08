@@ -477,12 +477,12 @@ dcmiperiod:end<y:LabelModel>
     <node id="n22">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="272.5" width="268.55999999999995" x="941.3866666666668" y="736.1319999999998"/>
+          <y:Geometry height="224.99300000000017" width="268.55999999999995" x="941.3866666666668" y="736.1319999999998"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="246.5078125" x="11.026093749999973" y="4.0">begrip (skos:Concept)
 &lt;http://standaard.aquo.nl/id/begrip/{rdfs:label}</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="209.81640625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="111.396484375" x="2.0" y="45.40234375">rdfs:label
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="165.712890625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="99.408203125" x="2.0" y="45.40234375">rdfs:label
 skos:definition
 skos:prefLabel
 skos:altLabel
@@ -491,9 +491,6 @@ skos:note
 rdfs:comment
 dc:source
 aquo:abbreviation
-aquo:englishLabel
-aquo:flemmishLabel
-aquo:germanLabel
 skos:notation
 skos:example<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -527,7 +524,7 @@ skos:example<y:LabelModel>
     <node id="n24">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="65.0" width="279.52125883108533" x="1448.3181599229288" y="929.8819999999998"/>
+          <y:Geometry height="65.0" width="279.52125883108533" x="1448.3181599229288" y="916.2639999999997"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="273.54296875" x="2.989145040542553" y="4.0">Aquo begrippenkader
@@ -1216,7 +1213,7 @@ dcmiperiod:end<y:LabelModel>
     <edge id="e16" source="n21" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="17.72171945701238" ty="-74.78031884058018">
+          <y:Path sx="0.0" sy="0.0" tx="19.800515735388217" ty="-54.128500000000486">
             <y:Point x="1599.672623635196" y="794.4999999999994"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -1239,7 +1236,7 @@ dcmiperiod:end<y:LabelModel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="93.3671875" x="-46.68355305989576" y="73.04988671874992">skos:exactMatch<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="93.3671875" x="-46.68355305989576" y="73.09706689453117">skos:exactMatch<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1272,10 +1269,10 @@ dcmiperiod:end<y:LabelModel>
     <edge id="e19" source="n22" target="n24">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="115.08333333333235" sy="96.25" tx="0.5270008650645189" ty="6.25"/>
+          <y:Path sx="120.64851592428863" sy="98.09863952170497" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.369140625" x="76.51412716198524" y="-9.350604980468916">skos:inScheme<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.369140625" x="76.50314083386024" y="-8.730875640199656">skos:inScheme<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1290,14 +1287,14 @@ dcmiperiod:end<y:LabelModel>
     <edge id="e20" source="n22" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-2.1242083330319255" sy="-6.582125603864739" tx="-58.31835640138518" ty="120.30183833791173">
+          <y:Path sx="-2.008532245268043" sy="17.171374396135207" tx="-58.31835640138518" ty="99.32870280059373">
             <y:Point x="850.0299999999997" y="865.7998743961351"/>
             <y:Point x="850.0299999999997" y="1034.4999999999998"/>
             <y:Point x="1017.3483102652816" y="1034.4999999999998"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="106.908203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="120.712890625" x="-151.73135253906275" y="30.89596991291114">skos:broader
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="106.908203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="120.712890625" x="-151.72402832031275" y="30.89596991291114">skos:broader
 skos:narrower
 skos:related
 thes:broaderPartitive
@@ -1318,10 +1315,10 @@ dct:replaces<y:LabelModel>
     <edge id="e21" source="n22" target="n25">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="81.33333333333235" sy="-18.618000000000166" tx="0.0" ty="0.0"/>
+          <y:Path sx="82.22582613623467" sy="5.135499999999752" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.376953125" x="68.51888790417274" y="-9.350562988281581">skos:relatedMatch<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.376953125" x="68.52706661511024" y="-9.350562988281581">skos:relatedMatch<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1336,12 +1333,12 @@ dct:replaces<y:LabelModel>
     <edge id="e22" source="n22" target="n26">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="3.367126696832212" sy="-79.9595228426398" tx="0.0" ty="0.0">
+          <y:Path sx="3.1637529185084077" sy="-56.20602284263987" tx="0.0" ty="0.0">
             <y:Point x="547.8125" y="792.42247715736"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.009765625" x="-271.30514078776037" y="-9.350594131702564">isPrimaryTopicOf<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.009765625" x="-271.28414469401037" y="-9.350594131702564">isPrimaryTopicOf<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1512,10 +1509,10 @@ dct:replaces<y:LabelModel>
     <edge id="e34" source="n6" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="108.31797051412794" sy="39.28665996114671" tx="-134.28546660466736" ty="-119.96881221483106"/>
+          <y:Path sx="108.31797051412794" sy="39.28665996114671" tx="-134.28546660466736" ty="-99.05373565743672"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="standard" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.6875" x="409.04779928177885" y="-8.979643916430405">owl:sameAs<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.6875" x="409.04779928177885" y="-10.261324849559742">owl:sameAs<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1540,7 +1537,7 @@ dct:replaces<y:LabelModel>
     <edge id="e36" source="n34" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="110.50976562499966" sy="-22.87500000000057" tx="-134.2945570447405" ty="-100.28882773049247">
+          <y:Path sx="110.50976562499966" sy="-22.87500000000057" tx="-134.26548022214683" ty="-76.53532773049255">
             <y:Point x="125.74999999999966" y="839.4999999999994"/>
             <y:Point x="125.74999999999966" y="772.0931722695074"/>
           </y:Path>
