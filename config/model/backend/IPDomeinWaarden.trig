@@ -26,7 +26,7 @@ GRAPH config:Theatre {
       }
 
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
           ?id dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeinlabel.
         }

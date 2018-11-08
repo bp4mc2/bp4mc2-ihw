@@ -120,8 +120,8 @@ GRAPH config:Theatre {
             ?domaintabel dct:replacedBy ?newversion
           }
         }
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeintabel_label
         }
       }
@@ -201,8 +201,8 @@ GRAPH config:Theatre {
 
         SELECT ?metadata ?metadata_label ?beheerder ?beheerder_label
         WHERE {
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?metadata.
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?metadata.
             ?metadata rdfs:label ?metadata_label.
             FILTER (?metadata = ?subject)
           }

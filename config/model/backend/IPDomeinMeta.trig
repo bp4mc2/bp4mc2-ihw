@@ -32,8 +32,8 @@ GRAPH config:Theatre {
           BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject.
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
             ?subject rdfs:label ?subject_label
           }
         }

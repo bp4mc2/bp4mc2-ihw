@@ -140,182 +140,6 @@ GRAPH config:Theatre {
     )
   .
 
-
-
-
-
-# ==========================
-#
-# DomeintabelUpload
-#
-# ==========================
-
-  config:DomeintabelUploadEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/bulkupload/domeintabel";
-    elmo:stage config:Stage;
-    elmo:putService config:DomeintabelUploadService;
-  .
-
-  config:DomeintabelUploadService a elmo:Service;
-    elmo:stage config:Stage;
-    elmo:transaction config:DomeintabelUploadTransaction;
-  .
-
-  # Helaas werkt de mapper nog niet voor services, dus vandaar via een parameter
-  config:DomeinParameter a elmo:TermParameter;
-    elmo:name "domein";
-		elmo:shape [
-			sh:datatype xsd:string;
-		]
-  .
-
-  #
-  # UploadTransaction is nu nog wat ingewikkeld, omdat je niet goed met de parameter kunt werken
-  # De volgende stappen worden uitgevoerd:
-  # 1. Leegmaken van een tijdelijke graph
-  # 2. Vullen van de tijdelijke graph met de geuploade data
-  # 3. Overzetten van de data naar de juiste named graph, op basis van de parameter
-  #    Daarbij is de parameter een string, die omgezet moet worden naar een URI (het BIND gedeelte)
-  #
-  config:DomeintabelUploadTransaction a elmo:Transaction;
-    elmo:requiredParameter config:DomeinParameter;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>"
-      ]
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp>
-      ]
-
-      [
-        # ----------
-        # Alle historische data ook weggooien
-        #
-        #
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          PREFIX dct: <http://purl.org/dc/terms/>
-          delete {
-            graph ?domeingraphversion {
-              ?s ?p ?o
-            }
-          }
-          where {
-            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-            graph ?domeingraphversion {
-              ?domeingraphversion dct:replacedBy ?domeingraph.
-              ?s ?p ?o
-            }
-          }
-        """
-      ]
-      [
-        # ----------
-        # Oude data weggooien
-        #
-        #
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          delete {
-            graph ?domeingraph {
-              ?s ?p ?o
-            }
-          }
-          where {
-            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-            graph ?domeingraph {
-              ?s ?p ?o
-            }
-          }
-        """
-      ]
-      [
-        # ----------
-        # Nieuwe data toevoegen, maar alleen actuele data (dwz: waarden hebben geen einddatum)
-        #
-        #
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          PREFIX prov: <http://www.w3.org/ns/prov#>
-          insert {
-            graph ?domeingraph {
-              ?s ?p ?o
-            }
-          }
-          where {
-            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
-              ?s ?p ?o
-              FILTER NOT EXISTS {
-                ?s prov:invalidatedAtTime ?time
-              }
-              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-            }
-          }
-        """
-      ]
-      [
-        # ----------
-        # Data die al wel een einddatum hebben, toevoegen aan een versioned graph
-        #
-        #
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          PREFIX prov: <http://www.w3.org/ns/prov#>
-          PREFIX dct: <http://purl.org/dc/terms/>
-          insert {
-            graph ?domeingraphversion {
-              ?domeingraphversion dct:replacedBy ?domeingraph.
-              ?s ?p ?o
-            }
-          }
-          where {
-            graph <http://standaard.aquo.nl/id/dataset/domeintabel.tmp> {
-              ?s ?p ?o.
-              ?s prov:invalidatedAtTime ?time
-              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein,'#',substr(str(?time),1,10))) as ?domeingraphversion)
-            }
-          }
-        """
-      ]
-      [
-        # ----------
-        # Domeintabel toevoegen aan de lijst van domeintabellen
-        #
-        #
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          prefix dct: <http://purl.org/dc/terms/>
-          prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-          prefix dcat: <http://www.w3.org/ns/dcat#>
-          insert {
-            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
-              <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeingraph.
-              ?domeingraph rdfs:label ?domein.
-              ?domeingraph dcat:dataset ?dataset.
-            }
-          }
-          where {
-            graph <http://standaard.aquo.nl/id/dataset/domeintabel> {
-              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domein)) as ?domeingraph)
-              BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeinmeta/",?domein)) as ?dataset)
-            }
-          }
-        """
-      ]
-    )
-  .
-
 # ==========================
 #
 # CategorieenUpload
@@ -349,38 +173,124 @@ GRAPH config:Theatre {
     )
   .
 
+
+
+
 # ==========================
 #
-# VocabulaireUpload
+# DomeintabelUpload
 #
 # ==========================
 
-  config:VocabulaireUploadEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/bulkupload/vocabulaire";
+  config:DomeintabelUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/domeintabel";
     elmo:stage config:Stage;
-    elmo:putService config:VocabulaireUploadService
+    elmo:putService config:DomeintabelUploadService;
   .
 
-  config:VocabulaireUploadService a elmo:Service;
+  config:DomeintabelUploadService a elmo:Service;
     elmo:stage config:Stage;
-    elmo:transaction config:VocabulaireUploadTransaction
+    elmo:transaction config:DomeintabelUploadTransaction;
   .
 
-  config:VocabulaireUploadTransaction a elmo:Transaction;
+# Helaas werkt de mapper nog niet voor services, dus vandaar via een parameter
+  config:DomeinParameter a elmo:TermParameter;
+    elmo:name "domein";
+		elmo:shape [
+			sh:datatype xsd:string;
+		]
+  .
+
+ #
+ # UploadTransaction is nu nog wat ingewikkeld, omdat je niet goed met de parameter kunt werken
+ # De volgende stappen worden uitgevoerd:
+ # 1. Leegmaken van een tijdelijke graph
+ # 2. Vullen van de tijdelijke graph met de geuploade data
+ # 3. Overzetten van de data naar de juiste named graph, op basis van de parameter
+ #    Daarbij is de parameter een string, die omgezet moet worden naar een URI (het BIND gedeelte)
+ #
+
+ config:DomeintabelUploadTransaction a elmo:Transaction;
+    elmo:requiredParameter config:DomeinParameter;
     elmo:sequentialFlow (
       [
         a elmo:UpdateStep;
+        rdfs:label "Leegmaken van tijdelijke graph";
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/def/aquo>"
+        elmo:query "clear graph <http://standaard.aquo.nl/data/domeintabel.tmp>"
       ]
       [
         a elmo:PersistenceStep;
+        rdfs:label "Vullen van de tijdelijke graph met de geuploade data";
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/def/aquo>
+        elmo:targetGraph <http://standaard.aquo.nl/data/domeintabel.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        rdfs:label "oude data weggooien";
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          DELETE {
+            GRAPH ?domeingraph {
+              ?s ?p ?o
+            }
+          }
+          WHERE {
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",?domein)) as ?domeingraph)
+            GRAPH ?domeingraph {
+              ?s ?p ?o
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        rdfs:label "Nieuwe data toevoegen";
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
+          INSERT {
+            GRAPH ?domeingraph {
+              ?s ?p ?o
+            }
+          }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/domeintabel.tmp> {
+              ?s ?p ?o
+              BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",?domein)) as ?domeingraph)
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        rdfs:label "Domeintabel toevoegen aan de lijst van domeintabellen";
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          prefix dct: <http://purl.org/dc/terms/>
+          prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          prefix dcat: <http://www.w3.org/ns/dcat#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+              <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeingraph.
+              ?domeingraph rdfs:label ?domein.
+            }
+          }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+              ?s ?p ?o 
+              BIND (iri(concat("http://standaard.aquo.nl/id/domeintabel/",?domein)) as ?domeingraph)
+            }
+            GRAPH ?domeingraph {
+              ?domeingraph rdfs:label ?domein.
+            }
+          }
+        """
       ]
     )
   .
+
 
 
 # ==========================
@@ -540,7 +450,7 @@ GRAPH config:Theatre {
 
   .
 
-    # ==========================
+# ==========================
 #
 # Shacl Upload tbv domeintabel metadata
 #
@@ -574,6 +484,39 @@ GRAPH config:Theatre {
     )
 
 
+  .
+
+# ==========================
+#
+# VocabulaireUpload
+#
+# ==========================
+
+  config:VocabulaireUploadEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/bulkupload/vocabulaire";
+    elmo:stage config:Stage;
+    elmo:putService config:VocabulaireUploadService
+  .
+
+  config:VocabulaireUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:VocabulaireUploadTransaction
+  .
+
+  config:VocabulaireUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/def/aquo>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/def/aquo>
+      ]
+    )
   .
 
 
