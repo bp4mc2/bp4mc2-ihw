@@ -459,8 +459,8 @@ dcmiperiod:end<y:LabelModel>
           <y:Geometry height="65.0" width="279.52125883108533" x="1459.9119942196533" y="506.25"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="270.185546875" x="4.66785597804278" y="4.0">skos:Collection
-&lt;http://standaard.aquo.nl/id/collection/{rdfs:label}&gt;</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="263.51171875" x="8.00477004054278" y="4.0">skos:Collection
+&lt;http://standaard.aquo.nl/id/collectie/{rdfs:label}&gt;</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="52.69140625" x="2.0" y="45.40234375">rdfs:label<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -1551,7 +1551,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e37" source="n0" target="n46">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="147.09201442299553" ty="0.0">
@@ -1572,7 +1571,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e38" source="n46" target="n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-100.2691835260116" sy="21.81059730250479" tx="94.24617854849069" ty="10.962427745664769"/>
