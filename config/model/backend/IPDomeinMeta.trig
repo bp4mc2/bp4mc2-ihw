@@ -20,7 +20,7 @@ GRAPH config:Theatre {
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-          ?metadata dcat:distribution ?subject.
+          ?metadata dcat:landingPage ?subject.
           ?metadata ?p ?o.
           OPTIONAL {?metadata rdfs:label ?slabel.}
           OPTIONAL {?metadata dct:publisher ?agent.
