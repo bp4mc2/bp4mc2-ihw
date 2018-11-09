@@ -273,18 +273,12 @@ GRAPH config:Theatre {
           prefix dcat: <http://www.w3.org/ns/dcat#>
           INSERT {
             GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-              <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeingraph.
-              ?domeingraph rdfs:label ?domein.
+              <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
+              ?domeintabel rdfs:label ?domein.
             }
           }
           WHERE {
-            GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-              ?s ?p ?o 
-              BIND (iri(concat("http://standaard.aquo.nl/id/domeintabel/",?domein)) as ?domeingraph)
-            }
-            GRAPH ?domeingraph {
-              ?domeingraph rdfs:label ?domein.
-            }
+            BIND (iri(concat("http://standaard.aquo.nl/id/domeintabel/",?domein)) as ?domeintabel)
           }
         """
       ]
