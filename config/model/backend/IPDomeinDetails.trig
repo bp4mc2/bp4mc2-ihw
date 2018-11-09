@@ -231,19 +231,12 @@ GRAPH config:Theatre {
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-        SELECT ?metadata ?metadata_label ?beheerder ?beheerder_label
+        SELECT ?subject ?subject_label ?beheerder ?beheerder_label
         WHERE {
-          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?metadata.
-            ?metadata rdfs:label ?metadata_label.
-            FILTER (?metadata = ?subject)
-          }
-          OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-              ?dataset dcat:distribution ?dist.
-              ?dataset dct:publisher ?beheerder.
-              ?beheerder rdfs:label ?beheerder_label.
-              FILTER (?dist = ?subject)
+          GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject rdfs:label ?subject_label.
+            OPTIONAL {
+              ?subject dct:publisher ?beheerder.
             }
           }
         }
