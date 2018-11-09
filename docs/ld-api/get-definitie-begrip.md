@@ -29,6 +29,31 @@ De output van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hi
 
 Merk op dat de volgorde van de elementen willekeurig is! Het veld `http://www.w3.org/ns/shacl#order` kan gebruikt worden voor sortering.
 
+### Context
+
+```
+{
+  "naam": {
+    "@id": "http://www.w3.org/ns/shacl#name"
+  },
+  "label": {
+    "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+  },
+  "path": {
+    "@id": "http://www.w3.org/ns/shacl#path",
+    "@type": "@id"
+  },
+  "order": {
+    "@id": "http://www.w3.org/ns/shacl#order"
+  },
+  "datatype": {
+    "@id": "http://www.w3.org/ns/shacl#datatype"
+  }
+}
+```
+
+### Voorbeeld
+
 ```
 [ {
   "@id" : "urn:property:p1",
