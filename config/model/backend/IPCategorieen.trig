@@ -14,10 +14,6 @@ GRAPH config:Theatre {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
           ?categorie a skos:Collection;
             rdfs:label ?categorie_label.
-#          OPTIONAL {
-#            ?categorie skos:member ?catbegrip.
-#            ?catbegrip rdfs:label ?catbegrip_label.
-#          }
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/categorieen> {

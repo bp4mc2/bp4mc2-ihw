@@ -33,7 +33,7 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
-        ?subject rdf:type skos:Concept;
+        ?subject rdf:type skos:Collection;
           rdfs:label ?clabel;
           rdfs:comment ?comment.
       }
@@ -58,17 +58,19 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       SELECT ?domeintabel ?domeintabel_label ?beschrijving
       WHERE {
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?subject skos:member ?catbegrip.
+        }
         GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-          ?domeinmeta dct:subject ?subject;
-            dcat:distribution ?domeintabel.
+          ?domeintabel dcat:theme ?catbegrip;
+            rdfs:label ?domeintabel_label.
           OPTIONAL {
-            ?domeinmeta dct:description ?beschrijving.
+            ?domeintabel dct:description ?beschrijving.
           }
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> { 
             <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
-            ?domeintabel rdfs:label ?domeintabel_label
           }
         }
       }
