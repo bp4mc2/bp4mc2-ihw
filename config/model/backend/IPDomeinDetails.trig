@@ -11,41 +11,63 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      prefix xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
       CONSTRUCT {
         ?id ?p ?o;
-             owl:sameAs ?begrip;
-             skos:comment ?status;
-             aquo:opgeheven ?opgehevendate;
-             aquo:opgericht ?opgerichtdate.
+          owl:sameAs ?begrip;
+          skos:comment ?status;
+          aquo:opgeheven ?opgehevendate;
+          aquo:opgericht ?opgerichtdate;
+          dcmiperiod:start ?start.
         ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
       }
       WHERE {
-        GRAPH ?subject {
+        GRAPH ?domeingraph {
           ?id ?p ?o;
+            a ?type;
+            foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start.
+          FILTER (?type != prov:Entity)
+          FILTER NOT EXISTS {
+            ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
+            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
+          }
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
             BIND(strbefore(?dt,"T") as ?opgehevendate)
             BIND(strbefore(?odt,"T") as ?opgerichtdate)
           }
-          OPTIONAL {?o skos:prefLabel ?olabel}
+          OPTIONAL {
+            ?o skos:prefLabel ?olabel
+          }
           FILTER NOT EXISTS {
               ?id a skos:Concept.
-            }
           }
+        }
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
+        }
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject dcat:landingPage ?domeingraph
+        }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/data/links> {
             ?id owl:sameAs ?begrip
           }
           GRAPH  <http://standaard.aquo.nl/data/begrippen> {
             ?begrip skos:prefLabel ?begrip_label
           }
         }
+        
         FILTER (
           ?p != aquo:Opgeheven_per
           && ?p != aquo:Opgericht_in
+          && ?p != foaf:isPrimaryTopicOf
+          && ?p != rdf:type
         )
       }
     """
@@ -85,7 +107,7 @@ GRAPH config:Theatre {
             }
           }
          OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/data/links> {
             ?id owl:sameAs ?begrip
           }
           GRAPH  <http://standaard.aquo.nl/data/begrippen> {
@@ -139,53 +161,68 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      prefix xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX adms: <http://www.w3.org/ns/adms#>
       CONSTRUCT {
         ?id ?p ?o;
-            skos:comment ?status;
-            owl:sameAs ?begrip;
-            aquo:opgeheven ?opgehevendate;
-             aquo:opgericht ?opgerichtdate.
-        ?begrip  rdfs:label ?begrip_label.
-        ?o rdfs:label ?olabel
+          owl:sameAs ?begrip;
+          skos:comment ?status;
+          aquo:opgeheven ?opgehevendate;
+          aquo:opgericht ?opgerichtdate;
+          dcmiperiod:start ?start;
+          dcmiperiod:end ?einde;
+          adms:status ?status.
+        ?begrip rdfs:label ?begrip_label.
+        ?o rdfs:label ?olabel.
       }
       WHERE {
-        {
-          GRAPH ?subject {
-            ?id ?p ?o
-            OPTIONAL {?o skos:prefLabel ?olabel}
-            OPTIONAL {
-              ?id aquo:Opgeheven_per ?dt;
-                aquo:Opgericht_in ?odt.
-              BIND(strbefore(?dt,"T") as ?opgehevendate)
-              BIND(strbefore(?odt,"T") as ?opgerichtdate)
-            }
-            FILTER NOT EXISTS {
-              ?id a skos:Concept.
-            }
+        GRAPH ?domeingraph {
+          ?id ?p ?o;
+            a ?type;
+            foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start.
+          OPTIONAL {
+            ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
-              ?id owl:sameAs ?begrip
-            }
-            GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-              ?begrip skos:prefLabel ?begrip_label
-            }
+            ?id foaf:isPrimaryTopicOf/adms:status ?status.
+          }
+          FILTER (?type != prov:Entity)
+          OPTIONAL {
+            ?id aquo:Opgeheven_per ?dt;
+              aquo:Opgericht_in ?odt.
+            BIND(strbefore(?dt,"T") as ?opgehevendate)
+            BIND(strbefore(?odt,"T") as ?opgerichtdate)
+          }
+          OPTIONAL {
+            ?o skos:prefLabel ?olabel
+          }
+          FILTER NOT EXISTS {
+              ?id a skos:Concept.
           }
         }
-
-        UNION
-        {
-          GRAPH ?historic {
-            ?historic dct:replacedBy ?subject.
-            ?id ?p ?o.
-            OPTIONAL {?id prov:invalidatedAtTime ?einddatum}
-            FILTER (?id!=?historic)
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
+        }
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject dcat:landingPage ?domeingraph
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?id owl:sameAs ?begrip
+          }
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
+            ?begrip skos:prefLabel ?begrip_label
           }
         }
-        BIND(IF(BOUND(?einddatum), "historisch","gepubliceerd") as ?status)
-        FILTER (?p != aquo:Opgeheven_per
+        
+        FILTER (
+          ?p != aquo:Opgeheven_per
           && ?p != aquo:Opgericht_in
+          && ?p != foaf:isPrimaryTopicOf
+          && ?p != rdf:type
         )
       }
     """

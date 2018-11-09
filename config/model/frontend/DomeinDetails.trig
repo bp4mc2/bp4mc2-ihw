@@ -169,7 +169,7 @@ GRAPH config:Theatre {
       elmo:index "05";
     ];
     elmo:fragment [
-      elmo:appliesTo dct:subject;
+      elmo:appliesTo dct:type;
       rdfs:label "Groep"@nl;
       elmo:index "07";
       xhtml:link "domeintabelgroep";
@@ -181,12 +181,12 @@ GRAPH config:Theatre {
       elmo:index "08";
     ];
     elmo:fragment [
-      elmo:appliesTo prov:generatedAtTime;
+      elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
       elmo:index "09";
     ];
     elmo:fragment [
-      elmo:appliesTo prov:invalidatedAtTime;
+      elmo:appliesTo dcmiperiod:end;
       rdfs:label "Einde geldigheid"@nl;
       elmo:index "10";
     ];
