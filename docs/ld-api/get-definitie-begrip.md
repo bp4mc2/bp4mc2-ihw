@@ -27,6 +27,8 @@ De aanroep van deze API is als volgt:
 ## Output
 De output van deze API is conform het [JSON-LD](https://json-ld.org) formaat. Hieronder is de output afgebeeld van bovengenoemde voorbeeldaanroep.
 
+Merk op dat de volgorde van de elementen willekeurig is! Het veld `http://www.w3.org/ns/shacl#order` kan gebruikt worden voor sortering.
+
 ```
 [ {
   "@id" : "urn:property:p1",
