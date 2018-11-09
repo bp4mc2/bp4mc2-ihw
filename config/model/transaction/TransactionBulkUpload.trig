@@ -350,17 +350,11 @@ GRAPH config:Theatre {
 
   config:RelatieUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
-      # omdat de links ook via het editor scherm kunnen worden gewijzigd kan een upload verschillen van de bestaande data, daarom is het leegmaken van de Graph niet van toepassing.
-      # [
-        # a elmo:UpdateStep;
-        # elmo:backend config:UpdateBackend;
-        # elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/links>"
-      # ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/links>
+        elmo:targetGraph <http://standaard.aquo.nl/data/links>
       ]
 
     )
@@ -390,13 +384,13 @@ GRAPH config:Theatre {
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/id/dataset/shacl>"
+        elmo:query "clear graph <http://standaard.aquo.nl/def/domeintabel>"
       ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
         elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/id/dataset/shacl>
+        elmo:targetGraph <http://standaard.aquo.nl/def/domeintabel>
       ]
 
     )
