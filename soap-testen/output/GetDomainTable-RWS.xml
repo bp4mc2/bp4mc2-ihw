@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetDomainTableResponse xmlns="http://rws.services.nl/DomainTableWS/2010/10">
+      <GetDomainTableResult xmlns:a="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <a:DataRowsReadPage>6</a:DataRowsReadPage>
+        <a:PageSize>2500</a:PageSize>
+        <a:TotalDataRows>7</a:TotalDataRows>
+        <a:Data>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>2</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>02</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Schotbalk sponning</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>3</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>03</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Zandzakken</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>4</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>04</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Schuif</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>5</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>05</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Terugslagklep</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>6</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>06</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Tolklep</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>7</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>97</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Niet afsluitbaar</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+        </a:Data>
+        <a:Name>AfsluitmiddelType</a:Name>
+      </GetDomainTableResult>
+    </GetDomainTableResponse>
+  </s:Body>
+</s:Envelope>
