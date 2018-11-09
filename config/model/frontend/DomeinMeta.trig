@@ -32,6 +32,12 @@ GRAPH config:Theatre {
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
 	];
+  elmo:fragment [
+    elmo:index 02;
+	  elmo:appliesTo foaf:isPrimaryTopicOf;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Label"@nl;
+	];
 	elmo:fragment [
 	  elmo:index 03;
 	  elmo:appliesTo skos:prefLabel;
@@ -40,7 +46,7 @@ GRAPH config:Theatre {
 
   elmo:fragment [
 	  elmo:index 04;
-	  elmo:appliesTo dcat:distribution;
+	  elmo:appliesTo dcat:landingPage;
     xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
 	  rdfs:label "Domeintabel"@nl;
 	];

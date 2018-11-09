@@ -11,7 +11,7 @@ GRAPH config:Theatre {
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
       CONSTRUCT {
-        ?metadata ?p ?o;
+        ?subject ?p ?o;
           rdfs:label ?titellabel.
         ?agent rdfs:label ?agent_label.
         ?thema rdfs:label ?thema_label.
@@ -20,16 +20,15 @@ GRAPH config:Theatre {
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-          ?metadata dcat:landingPage ?subject.
-          ?metadata ?p ?o.
-          OPTIONAL {?metadata rdfs:label ?slabel.}
-          OPTIONAL {?metadata dct:publisher ?agent.
+          ?subject dcat:landingPage ?domeintabelgraph.
+          ?subject ?p ?o.
+          ?subject rdfs:label ?slabel.
+          OPTIONAL {?subject dct:publisher ?agent.
           ?agent rdfs:label ?agent_label.}
-          OPTIONAL {?metadata dcat:theme ?thema.
+          OPTIONAL {?subject dcat:theme ?thema.
           ?thema rdfs:label ?thema_label.}
-          OPTIONAL { ?metadata dct:metadata ?categorie.}
-          MINUS {?metadata rdfs:label ?o}
-          BIND(CONCAT("Domeintabel(metadata): ", ?slabel) AS ?titellabel)
+          OPTIONAL { ?subject dct:subject ?categorie.}
+          BIND(CONCAT("Domeintabel(subject): ", ?slabel) AS ?titellabel)
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
@@ -39,7 +38,8 @@ GRAPH config:Theatre {
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/categorieen> {
-            ?categorie rdfs:label ?categorie_label.
+          	?categorie skos:member ?thema.
+      		?thema rdfs:label ?thema_label.
           }
         }
       }
