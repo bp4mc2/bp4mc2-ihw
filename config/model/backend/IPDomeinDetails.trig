@@ -42,7 +42,7 @@ GRAPH config:Theatre {
             BIND(strbefore(?odt,"T") as ?opgerichtdate)
           }
           OPTIONAL {
-            ?o skos:prefLabel ?olabel
+            ?o rdfs:label ?olabel
           }
           FILTER NOT EXISTS {
               ?id a skos:Concept.
@@ -86,27 +86,22 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
       CONSTRUCT {
         ?id ?p ?o;
-             owl:sameAs ?begrip;
-             skos:comment ?status.
+          owl:sameAs ?begrip;
+          skos:comment ?status.
         ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
       }
       WHERE {
         GRAPH ?domeintabel {
-            ?id dct:subject ?subject;
-              ?p ?o.
-            OPTIONAL {?o skos:prefLabel ?olabel}
-            FILTER NOT EXISTS {
-              ?id a skos:Concept.
-            }
-            FILTER NOT EXISTS {
-              ?domaintabel dct:replacedBy ?newversion
-            }
-          }
-         OPTIONAL {
+          ?id dct:type ?subject;
+            ?p ?o.
+          OPTIONAL {?o rdfs:label ?olabel}
+        }
+        OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
             ?id owl:sameAs ?begrip
           }
@@ -114,6 +109,10 @@ GRAPH config:Theatre {
             ?begrip skos:prefLabel ?begrip_label
           }
         }
+        FILTER (
+          ?p != rdf:type
+          && ?p != foaf:isPrimaryTopicOf
+        )
       }
     """
   .
@@ -128,23 +127,19 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-      CONSTRUCT {
-        ?subject dct:hasPart ?domeintabel;
-          dct:subject ?subject.
-        ?domeintabel rdfs:label ?domeintabel_label.
-      }
+      SELECT
+        ?subject ?subject_label ?domeintabel ?domeintabel_label
+        
       WHERE {
-        GRAPH ?domeintabel {
-          ?id dct:subject ?subject.
-          FILTER NOT EXISTS {
-            ?domaintabel dct:replacedBy ?newversion
-          }
+        GRAPH ?domeintabelgraph {
+          ?subject rdfs:label ?subject_label.
         }
-        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
-          ?domeintabel rdfs:label ?domeintabel_label
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?domeintabel dcat:landingPage ?domeintabelgraph;
+           	rdfs:label ?domeintabel_label.
         }
       }
     """
