@@ -181,9 +181,7 @@ GRAPH config:Theatre {
           OPTIONAL {
             ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
           }
-          OPTIONAL {
-            ?id foaf:isPrimaryTopicOf/adms:status ?status.
-          }
+          BIND(IF(BOUND(?einde), "historisch","gepubliceerd") as ?status)
           FILTER (?type != prov:Entity)
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
@@ -237,6 +235,7 @@ GRAPH config:Theatre {
             ?subject rdfs:label ?subject_label.
             OPTIONAL {
               ?subject dct:publisher ?beheerder.
+              ?beheerder rdfs:label ?beheerder_label.
             }
           }
         }
