@@ -7,11 +7,12 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX sh: <http://www.w3.org/ns/shacl#>
       SELECT ?domaintablename
              ?id
              ?begindate
              ("2999-12-31" as ?enddate)
-             (false as ?isnull)
+             ?isnull
              ?property
              ?value
       WHERE {
@@ -19,12 +20,40 @@ GRAPH config:Theatre {
           ?domaintable rdfs:label ?domaintablename
         }
         OPTIONAL {
-          GRAPH ?domaintable {
-            ?id prov:generatedAtTime ?begindate.
-            ?id ?property ?value
+          {
+            BIND (false as ?isnull)
+            GRAPH ?domaintable {
+              ?id prov:generatedAtTime ?begindate.
+              ?id ?prop ?value
+            }
+            GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+              ?meta sh:path ?prop.
+              ?meta rdfs:label ?property.
+              ?meta sh:order ?nr.
+            }
+          }
+          UNION
+          {
+            BIND (true as ?isnull)
+            GRAPH ?domaintable {
+              ?id a ?type
+            }
+            GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+              ?shape sh:targetClass ?type.
+              ?shape sh:property ?pshape.
+              ?pshape sh:path ?prop.
+              ?pshape rdfs:label ?property.
+              ?pshape sh:order ?nr.
+            }
+            FILTER NOT EXISTS {
+              GRAPH ?domaintable {
+                ?id ?prop ?value
+              }
+            }
           }
         }
       }
+      ORDER BY ?id ?nr
     """
   .
 

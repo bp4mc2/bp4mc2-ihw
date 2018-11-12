@@ -212,13 +212,16 @@
           </xs:element>
           <!-- HACK -->
           <!-- We need to include this element, because extension aren't supported in SOAP-UI library we are using -->
-          <xs:element name="Date" nillable="true" type="xs:string">
+          <xs:element name="Data" nillable="true" type="xs:string">
             <xs:annotation dws:valuesFrom="value"/>
           </xs:element>
           <!-- END HACK -->
         </xs:sequence>
       </xs:complexType>
       <xs:element name="DataField" nillable="true" type="tns:DataField"/>
+      <!-- HACK -->
+      <!-- Disabled this to get everything running -->
+      <!--
       <xs:complexType name="StringField">
         <xs:complexContent mixed="false">
           <xs:extension base="tns:DataField">
@@ -269,6 +272,8 @@
         </xs:complexContent>
       </xs:complexType>
       <xs:element name="DoubleField" nillable="true" type="tns:DoubleField"/>
+      -->
+      <!-- END HACK -->
       <xs:complexType name="GetDomainTableInfoRequest">
         <xs:sequence>
           <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
