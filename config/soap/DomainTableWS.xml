@@ -197,7 +197,7 @@
       <xs:complexType name="Fields">
         <xs:sequence>
           <xs:element maxOccurs="unbounded" minOccurs="0" name="DataField" nillable="true" type="tns:DataField">
-            <xs:annotation dws:cursor="true" dws:groupBy="id"/>
+            <xs:annotation dws:cursor="true" dws:groupBy="id" dws:typeFrom="datatype"/>
           </xs:element>
         </xs:sequence>
       </xs:complexType>
