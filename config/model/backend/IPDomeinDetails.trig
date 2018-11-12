@@ -18,7 +18,6 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
-          skos:comment ?status;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start.
@@ -164,7 +163,6 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
-          skos:comment ?status;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start;

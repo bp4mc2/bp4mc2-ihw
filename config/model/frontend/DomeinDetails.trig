@@ -203,7 +203,7 @@ GRAPH config:Theatre {
       elmo:index "12";
     ];
     elmo:fragment [
-      elmo:appliesTo skos:comment;
+      elmo:appliesTo adms:status;
       rdfs:label "Status"@nl;
       elmo:index "13";
     ];

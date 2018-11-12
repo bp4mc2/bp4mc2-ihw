@@ -14,7 +14,7 @@ GRAPH config:Theatre {
           ?domeintabel rdfs:label ?domeintabel_label
         }
       }
-      order by ?domeintabel
+      ORDER BY ?domeintabel
     """
   .
 

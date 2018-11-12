@@ -23,7 +23,7 @@ GRAPH config:Theatre {
       (?domeintabel as ?edit)
 
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+        GRAPH <http://standaard.aquo.nl/data/links> {
           ?waarde owl:sameAs ?same_begrip
         }
         OPTIONAL { 

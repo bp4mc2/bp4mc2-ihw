@@ -49,7 +49,7 @@ GRAPH config:Theatre {
             }
           }
         OPTIONAL { 
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/data/links> {
             ?subject owl:sameAs ?begrip
           }
           GRAPH  <http://standaard.aquo.nl/data/begrippen> {
