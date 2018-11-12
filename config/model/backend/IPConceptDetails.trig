@@ -1,8 +1,7 @@
 GRAPH config:Theatre {
 
   config:ConceptDetailData a elmo:InformationProduct;
-    elmo:requiredParameter config:ConceptTabelParameter;
-    elmo:optionalParameter elmo:SubjectParameter;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -24,7 +23,7 @@ GRAPH config:Theatre {
         ?subject aquo:dutchLabel ?dutchLabel.
       }
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+        GRAPH <http://standaard.aquo.nl/data/begrippen> {
           ?subject ?p ?o;
             rdfs:label ?slabel.
           OPTIONAL {?o rdfs:label ?olabel}
@@ -35,15 +34,13 @@ GRAPH config:Theatre {
           MINUS {?subject rdfs:label ?o}
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-            ?subject dct:subject ?categorie
-          }
-          GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
-            ?categorie rdfs:label ?categorie_label
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?subject;
+              rdfs:label ?categorie_label
           }
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/data/links> {
             ?subject owl:sameAs ?domeinwaarde
           }
          }

@@ -14,18 +14,16 @@ GRAPH config:Theatre {
 
       WHERE {
         {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-              ?begrip dct:subject ?categorie_begrip.
-            }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
-              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
+              ?categorie_begrip skos:member ?begrip;
+                rdfs:label ?categorie_begrip_label
             }
           }
           BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
@@ -33,38 +31,33 @@ GRAPH config:Theatre {
           BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
         }
         UNION {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-              ?begrip dct:subject ?categorie_begrip.
-            }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
-              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
+              ?categorie_begrip skos:member ?begrip;
+                rdfs:label ?categorie_begrip_label
             }
           }
           BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
           FILTER regex(?search_label,concat("^",?term),"i")
           BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
         }
-
         UNION {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-              ?begrip dct:subject ?categorie_begrip.
-            }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
-              ?categorie_begrip rdfs:label ?categorie_begrip_label
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
+              ?categorie_begrip skos:member ?begrip;
+                rdfs:label ?categorie_begrip_label
             }
           }
           BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
@@ -90,11 +83,11 @@ GRAPH config:Theatre {
       SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
       
         WHERE {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-            ?begrip dct:subject ?categorie.
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?begrip.
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
               ?categorie rdfs:label ?categorie_label
             }
           }
@@ -115,8 +108,8 @@ GRAPH config:Theatre {
 
       SELECT ?domeintabel ?domeintabel_label
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/data/domeintabel> {
+          <http://standaard.aquo.nl/data/domeintabel> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeintabel_label
         }
         FILTER regex(?domeintabel_label,concat("^",?term),"i")
@@ -139,7 +132,7 @@ GRAPH config:Theatre {
 
     WHERE {
     {
-      GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+      GRAPH <http://standaard.aquo.nl/data/domeintabel> {
           ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
       }
       OPTIONAL{
@@ -160,7 +153,7 @@ GRAPH config:Theatre {
      }
      UNION
       {
-      GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+      GRAPH <http://standaard.aquo.nl/data/domeintabel> {
           ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
       }
       OPTIONAL{
@@ -210,17 +203,17 @@ GRAPH config:Theatre {
       
       WHERE {
         {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniemTp}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?begrip dct:subject ?categorie_begrip.
             }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
               ?categorie_begrip rdfs:label ?categorie_begrip_label
             }
           }
@@ -231,17 +224,17 @@ GRAPH config:Theatre {
           BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
         }
         UNION {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniemTp}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?begrip dct:subject ?categorie_begrip.
             }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
               ?categorie_begrip rdfs:label ?categorie_begrip_label
             }
           }
@@ -252,17 +245,17 @@ GRAPH config:Theatre {
         }
 
         UNION {
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniemTp}
             OPTIONAL {?begrip skos:definition ?definitie}
           }
           OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
+            GRAPH <http://standaard.aquo.nl/data/begrippen> {
               ?begrip dct:subject ?categorie_begrip.
             }
-            GRAPH <http://standaard.aquo.nl/id/dataset/categorieen> {
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
               ?categorie_begrip rdfs:label ?categorie_begrip_label
             }
           }

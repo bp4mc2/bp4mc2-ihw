@@ -24,16 +24,16 @@ GRAPH config:Theatre {
   config:CategorieLijstAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:appliesTo "categorie";
-      xhtml:link "/begrippen-per-categorie";
+      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
       elmo:name "categorie";
     ];
     elmo:fragment [
       elmo:appliesTo "categoriecount";
-      elmo:name "aantal begrippen";
+      rdfs:label "aantal begrippen"@nl;
     ];
     elmo:fragment [
       elmo:appliesTo "domeincount";
-      elmo:name "aantal domeintabellen";
+      rdfs:label "aantal domeintabellen"@nl;
     ];
   .
 

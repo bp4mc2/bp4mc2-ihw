@@ -32,6 +32,12 @@ GRAPH config:Theatre {
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
 	];
+  elmo:fragment [
+    elmo:index 02;
+	  elmo:appliesTo foaf:isPrimaryTopicOf;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Label"@nl;
+	];
 	elmo:fragment [
 	  elmo:index 03;
 	  elmo:appliesTo skos:prefLabel;
@@ -40,8 +46,8 @@ GRAPH config:Theatre {
 
   elmo:fragment [
 	  elmo:index 04;
-	  elmo:appliesTo dcat:distribution;
-    xhtml:link "/domeintabel";
+	  elmo:appliesTo dcat:landingPage;
+    xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
 	  rdfs:label "Domeintabel"@nl;
 	];
   elmo:fragment [
@@ -110,7 +116,7 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 35;
 	  elmo:appliesTo  dct:subject;
-    xhtml:link "/begrippen-per-categorie";
+    xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
 	  rdfs:label "Categorie"@nl;
 	];
   elmo:fragment [
@@ -126,7 +132,7 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 42;
 	  elmo:appliesTo  dct:publisher;
-    xhtml:link "/domeinmeta-agent";
+    xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta-agent";
 	  rdfs:label "Beheerder"@nl;
 	];
   .
@@ -173,12 +179,14 @@ GRAPH config:Theatre {
 	  elmo:index 04;
 	  elmo:appliesTo foaf:mbox;
 	  rdfs:label "Email"@nl;
+    elmo:appearance elmo:GlobalLink;
 	];
   elmo:fragment [
 	  elmo:index 05;
 	  elmo:appliesTo foaf:homepage;
     xhtml:link "";
 	  rdfs:label "Homepage"@nl;
+    elmo:appearance elmo:GlobalLink;
 	];
 
   .

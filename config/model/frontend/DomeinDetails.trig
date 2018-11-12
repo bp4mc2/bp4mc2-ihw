@@ -38,7 +38,6 @@ GRAPH config:Theatre {
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
-    elmo:contains config:DomeinMeta;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
@@ -106,7 +105,7 @@ GRAPH config:Theatre {
   config:DomeinTitelAppearance a elmo:TableAppearance;
     elmo:index "01";
     elmo:fragment [
-      elmo:appliesTo "metadata";
+      elmo:appliesTo "subject";
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
       rdfs:label "Domeintabel metadata"@nl;
     ];
@@ -124,14 +123,16 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
-      elmo:appliesTo dct:hasPart;
+      elmo:appliesTo "domeintabel";
       rdfs:label "Domeintabel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
+      elmo:index "01";
     ];
     elmo:fragment [
-      elmo:appliesTo  dct:subject;
+      elmo:appliesTo  "subject";
       rdfs:label "Groep"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
+      elmo:index "02";
     ];
   .
 
@@ -170,7 +171,7 @@ GRAPH config:Theatre {
       elmo:index "05";
     ];
     elmo:fragment [
-      elmo:appliesTo dct:subject;
+      elmo:appliesTo dct:type;
       rdfs:label "Groep"@nl;
       elmo:index "07";
       xhtml:link "domeintabelgroep";
@@ -182,12 +183,12 @@ GRAPH config:Theatre {
       elmo:index "08";
     ];
     elmo:fragment [
-      elmo:appliesTo prov:generatedAtTime;
+      elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
       elmo:index "09";
     ];
     elmo:fragment [
-      elmo:appliesTo prov:invalidatedAtTime;
+      elmo:appliesTo dcmiperiod:end;
       rdfs:label "Einde geldigheid"@nl;
       elmo:index "10";
     ];
@@ -202,7 +203,7 @@ GRAPH config:Theatre {
       elmo:index "12";
     ];
     elmo:fragment [
-      elmo:appliesTo skos:comment;
+      elmo:appliesTo adms:status;
       rdfs:label "Status"@nl;
       elmo:index "13";
     ];

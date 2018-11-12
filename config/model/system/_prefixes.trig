@@ -17,3 +17,5 @@
 @prefix owl:<http://www.w3.org/2002/07/owl#>.
 @prefix adms: <http://www.w3.org/ns/adms#>.
 @prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>.

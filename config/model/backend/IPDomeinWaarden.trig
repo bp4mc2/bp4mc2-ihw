@@ -12,6 +12,7 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
       CONSTRUCT {
         ?subject ?p ?o;
@@ -25,7 +26,7 @@ GRAPH config:Theatre {
       }
 
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
           ?id dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeinlabel.
         }
@@ -41,11 +42,17 @@ GRAPH config:Theatre {
             ?groep skos:prefLabel ?groep_label.
               }
         }
+        OPTIONAL {
+            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+              ?dataset dcat:distribution ?dist.
+              FILTER (?dist = ?subject)
+            }
+          }
         OPTIONAL { 
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+          GRAPH <http://standaard.aquo.nl/data/links> {
             ?subject owl:sameAs ?begrip
           }
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> {
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
             ?begrip skos:prefLabel ?begrip_label
           }
         }

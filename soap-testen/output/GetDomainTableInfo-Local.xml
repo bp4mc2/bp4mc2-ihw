@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
    <soapenv:Header/>
    <soapenv:Body>
       <ns:GetDomainTableInfoResponse>
@@ -10,7 +10,7 @@
                <ns1:MetaDataColumn>
                   <ns1:ColumnNumber>1</ns1:ColumnNumber>
                   <ns1:Datatype>DtInteger</ns1:Datatype>
-                  <ns1:Description>Identifier</ns1:Description>
+                  <ns1:Description>ID-kolom</ns1:Description>
                   <ns1:FieldLength>6</ns1:FieldLength>
                   <ns1:Name>ID</ns1:Name>
                   <ns1:NumberOfDecimals>0</ns1:NumberOfDecimals>
@@ -21,7 +21,7 @@
                <ns1:MetaDataColumn>
                   <ns1:ColumnNumber>2</ns1:ColumnNumber>
                   <ns1:Datatype>DtString</ns1:Datatype>
-                  <ns1:Description>Aquo-code</ns1:Description>
+                  <ns1:Description>Code</ns1:Description>
                   <ns1:FieldLength>12</ns1:FieldLength>
                   <ns1:Name>Code</ns1:Name>
                   <ns1:NumberOfDecimals>-1</ns1:NumberOfDecimals>
@@ -43,7 +43,7 @@
                <ns1:MetaDataColumn>
                   <ns1:ColumnNumber>4</ns1:ColumnNumber>
                   <ns1:Datatype>DtString</ns1:Datatype>
-                  <ns1:Description>Groepsindeling</ns1:Description>
+                  <ns1:Description>aanduiding van een subtabel</ns1:Description>
                   <ns1:FieldLength>60</ns1:FieldLength>
                   <ns1:Name>Groep</ns1:Name>
                   <ns1:NumberOfDecimals>-1</ns1:NumberOfDecimals>

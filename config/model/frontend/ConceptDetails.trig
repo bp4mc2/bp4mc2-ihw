@@ -102,7 +102,7 @@ GRAPH config:Theatre {
 	elmo:fragment [
 	   elmo:index 10;
      elmo:appliesTo dct:subject;
-     xhtml:link "begrippen-per-categorie";
+     xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
 	  ];
   elmo:fragment [
 	  elmo:index 11;
@@ -140,33 +140,33 @@ GRAPH config:Theatre {
 	  elmo:index 20;
 	  elmo:appliesTo skos:broader;
 	  rdfs:label "Bredere term"@nl;
-    xhtml:link "begrip";
+    xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
     elmo:name "begrip";
 	];
 	elmo:fragment [
 	  elmo:index 21;
 	  elmo:appliesTo skos:narrower;
 	  rdfs:label "Nauwere term"@nl;
-    xhtml:link "begrip";
+    xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
     elmo:name "begrip";
   ];
 	elmo:fragment [
 	  elmo:index 22;
 	  elmo:appliesTo skos:related;
 	  rdfs:label "Gerelateerde term"@nl;
-    xhtml:link "begrip";
+    xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
 	];
     elmo:fragment [
      elmo:index 23;
 	  elmo:appliesTo thes:broaderPartitive;
 	  rdfs:label "Onderdeel van"@nl;
-	  xhtml:link "begrip";
+	  xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
 	];
 	elmo:fragment [
 	  elmo:index 24;
 	  elmo:appliesTo thes:narrowerPartitive;
 	  rdfs:label "Heeft onderdeel"@nl;
-	  xhtml:link "begrip";
+	  xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
 	];
 	elmo:fragment [
 	  elmo:index 25;
@@ -179,13 +179,13 @@ GRAPH config:Theatre {
 		elmo:index 25;
 		elmo:appliesTo dct:isReplacedBy;
 		rdfs:label "Gebruik"@nl;
-		xhtml:link "begrip";
+		xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
 	];
 	elmo:fragment [
 		elmo:index 26;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
-		xhtml:link "begrip";
+		xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
 	];
   elmo:fragment [
     elmo:index 27;

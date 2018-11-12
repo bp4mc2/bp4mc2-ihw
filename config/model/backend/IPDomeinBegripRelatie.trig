@@ -23,12 +23,12 @@ GRAPH config:Theatre {
       (?domeintabel as ?edit)
 
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+        GRAPH <http://standaard.aquo.nl/data/links> {
           ?waarde owl:sameAs ?same_begrip
         }
         OPTIONAL { 
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-            <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
             ?domeintabel rdfs:label ?domeintabel_label
           }
         }
@@ -36,7 +36,7 @@ GRAPH config:Theatre {
           ?waarde ?p ?o
         }
         OPTIONAL { 
-          GRAPH  <http://standaard.aquo.nl/id/dataset/begrippen> { 
+          GRAPH  <http://standaard.aquo.nl/data/begrippen> { 
             ?same_begrip skos:prefLabel ?begrip_label
           }
         }
