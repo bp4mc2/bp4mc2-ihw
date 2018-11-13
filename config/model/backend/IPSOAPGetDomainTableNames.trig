@@ -1,4 +1,4 @@
-GRAPH config:Theatre { 
+GRAPH config:Theatre {
 
   config:GetDomainTableNames a elmo:InformationProduct;
     elmo:resultType elmo-rt:Tuple;
@@ -9,8 +9,8 @@ GRAPH config:Theatre {
 
       SELECT ?domaintablename
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domaintablename
         }
       }

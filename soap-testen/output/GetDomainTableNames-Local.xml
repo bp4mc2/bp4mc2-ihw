@@ -16,10 +16,10 @@
                <ns1:string>Bevaarbaarheidsklassen</ns1:string>
                <ns1:string>BevoegdGezagSoort</ns1:string>
                <ns1:string>BiologischKenmerk</ns1:string>
+               <ns1:string>BodemlaagBodemkenmerken</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenGradatie</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenOorsprong</ns1:string>
                <ns1:string>BodemlaagBodemkenmerkenSpecificatie</ns1:string>
-               <ns1:string>BodemlaagBodemkenmerken</ns1:string>
                <ns1:string>BodemlaagType</ns1:string>
                <ns1:string>CertificeringsCode</ns1:string>
                <ns1:string>ClassificatieCIW</ns1:string>
@@ -30,6 +30,7 @@
                <ns1:string>DoelMeetLocatieType</ns1:string>
                <ns1:string>EUfonds</ns1:string>
                <ns1:string>Eenheid</ns1:string>
+               <ns1:string>Effecttype</ns1:string>
                <ns1:string>EmissieBrontype</ns1:string>
                <ns1:string>FunctieKunstwerk</ns1:string>
                <ns1:string>Functies_van_adressen</ns1:string>
@@ -108,7 +109,6 @@
                <ns1:string>Waardebepalingstechniek</ns1:string>
                <ns1:string>Waardebewerkingsmethode</ns1:string>
                <ns1:string>WaarnemingReeksType</ns1:string>
-               <ns1:string>Waarnemingssoort</ns1:string>
                <ns1:string>Wandconstructie_soort</ns1:string>
                <ns1:string>WaterTypeKwantitatief</ns1:string>
                <ns1:string>Waterbeheerder</ns1:string>
