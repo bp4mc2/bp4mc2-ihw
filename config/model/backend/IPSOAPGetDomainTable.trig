@@ -9,6 +9,9 @@ GRAPH config:Theatre {
       PREFIX prov: <http://www.w3.org/ns/prov#>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       SELECT ?domaintablename
              ?id
              ?begindate
@@ -18,17 +21,18 @@ GRAPH config:Theatre {
              (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),""),"Field") as ?datatype)
              ?value
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-          ?domaintable rdfs:label ?domaintablename
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?domaintable rdfs:label ?domaintablename.
+          ?domaintable dcat:landingPage ?domaintablegraph.
         }
         OPTIONAL {
           {
             BIND (false as ?isnull)
-            GRAPH ?domaintable {
-              ?id prov:generatedAtTime ?begindate.
+            GRAPH ?domaintablegraph {
+              ?id foaf:isPrimaryTopicOf/prov:generatedAtTime ?begindate.
               ?id ?prop ?value
             }
-            GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
               ?meta sh:path ?prop.
               ?meta rdfs:label ?property.
               ?meta sh:order ?nr.
@@ -38,10 +42,10 @@ GRAPH config:Theatre {
           UNION
           {
             BIND (true as ?isnull)
-            GRAPH ?domaintable {
+            GRAPH ?domaintablegraph {
               ?id a ?type
             }
-            GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
               ?shape sh:targetClass ?type.
               ?shape sh:property ?pshape.
               ?pshape sh:path ?prop.
@@ -50,7 +54,7 @@ GRAPH config:Theatre {
               ?pshape sh:datatype ?dtype.
             }
             FILTER NOT EXISTS {
-              GRAPH ?domaintable {
+              GRAPH ?domaintablegraph {
                 ?id ?prop ?value
               }
             }
