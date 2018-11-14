@@ -108,8 +108,8 @@ GRAPH config:Theatre {
 
       SELECT ?domeintabel ?domeintabel_label
       WHERE {
-        GRAPH <http://standaard.aquo.nl/data/domeintabel> {
-          <http://standaard.aquo.nl/data/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeintabel_label
         }
         FILTER regex(?domeintabel_label,concat("^",?term),"i")
