@@ -18,8 +18,8 @@ GRAPH config:Theatre {
              ("2999-12-31" as ?enddate)
              ?isnull
              ?property
-#             (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),""),"Field") as ?datatype)
-             (concat("ns1:",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),""),"Field") as ?datatype)
+             (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),""),"Field") as ?datatype)
+#             (concat("ns1:",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),"String"),"Field") as ?datatype)
              ?value
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
@@ -42,6 +42,21 @@ GRAPH config:Theatre {
           }
           UNION
           {
+            BIND (false as ?isnull)
+            GRAPH ?domaintablegraph {
+              ?id foaf:isPrimaryTopicOf/prov:generatedAtTime ?begindate.
+              ?id ?prop ?valueresource.
+              ?valueresource rdfs:label ?value
+            }
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+              ?meta sh:path ?prop.
+              ?meta rdfs:label ?property.
+              ?meta sh:order ?nr.
+              ?meta sh:class ?valueclass.
+            }
+          }
+          UNION
+          {
             BIND (true as ?isnull)
             GRAPH ?domaintablegraph {
               ?id a ?type
@@ -52,7 +67,7 @@ GRAPH config:Theatre {
               ?pshape sh:path ?prop.
               ?pshape rdfs:label ?property.
               ?pshape sh:order ?nr.
-              ?pshape sh:datatype ?dtype.
+              OPTIONAL {?pshape sh:datatype ?dtype}.
             }
             FILTER NOT EXISTS {
               GRAPH ?domaintablegraph {
