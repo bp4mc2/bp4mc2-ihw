@@ -27,8 +27,8 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
-          FILTER regex(?search_label,concat("^",?term),"i")
-          BIND( IF(regex(?search_label,concat("^",?term),"i"), "term","") as ?found)
+          FILTER regex(?search_label,?term,"i")
+          BIND( IF(regex(?search_label,?term,"i"), "term","") as ?found)
         }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -44,8 +44,8 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
-          FILTER regex(?search_label,concat("^",?term),"i")
-          BIND( IF(regex(?search_label,concat("^",?term),"i"), "synoniem","") as ?found)
+          FILTER regex(?search_label,?term,"i")
+          BIND( IF(regex(?search_label,?term,"i"), "synoniem","") as ?found)
         }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -61,8 +61,8 @@ GRAPH config:Theatre {
             }
           }
           BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
-          FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
-          BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
+          FILTER regex(?search_label,?term,"i")
+          BIND( IF(regex(?search_label,?term,"i"), "definitie","") as ?found)
         }
 
       }
@@ -91,7 +91,7 @@ GRAPH config:Theatre {
               ?categorie rdfs:label ?categorie_label
             }
           }
-         FILTER regex(?categorie_label,concat("^",?term),"i")
+         FILTER regex(?categorie_label,?term,"i")
         }
       group by ?categorie ?categorie_label
       order by ?categorie_label
@@ -112,7 +112,7 @@ GRAPH config:Theatre {
           <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?domeintabel_label
         }
-        FILTER regex(?domeintabel_label,concat("^",?term),"i")
+        FILTER regex(?domeintabel_label,?term,"i")
       }
       order by ?domeintabel_label
     """
@@ -123,58 +123,34 @@ GRAPH config:Theatre {
     elmo:resultType elmo-rt:Tuple;
     elmo:requiredParameter config:TermParameter;
     elmo:query """
-    PREFIX dct: <http://purl.org/dc/terms/>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-
-    SELECT  DISTINCT ?label_waarde ?domeintabel_waarde ?domeintabel_waarde_label ?Code ?ID ?gevonden_in
-
-    WHERE {
-    {
-      GRAPH <http://standaard.aquo.nl/data/domeintabel> {
-          ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
-      }
-      OPTIONAL{
-        GRAPH ?domeintabel_waarde {
-           ?id aquo:Omschrijving ?label_waarde.
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      SELECT  DISTINCT ?domeintabel ?domeintabel_label ?omschrijving ?Code ?ID ?gevonden_in
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
+          ?domeintabel rdfs:label ?domeintabel_label
         }
-
-      }
-      OPTIONAL{
-        GRAPH ?domeintabel_waarde {
-           ?id aquo:Code ?Code;
-               dct:identifier ?ID.
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?domeintabel dcat:landingPage ?dist.
         }
-
-      }
-      FILTER regex (?label_waarde,concat("^",?term),"i")
-      BIND( IF(regex(?label_waarde,concat("^",?term),"i"), "label","") as ?gevonden_in)
-     }
-     UNION
-      {
-      GRAPH <http://standaard.aquo.nl/data/domeintabel> {
-          ?domeintabel_waarde rdfs:label ?domeintabel_waarde_label
-      }
-      OPTIONAL{
-        GRAPH ?domeintabel_waarde {
-           ?id aquo:Omschrijving ?label_waarde.
+        OPTIONAL{
+          GRAPH ?dist {
+           ?id aquo:Omschrijving ?omschrijving.
         }
-
       }
-      OPTIONAL{
-        GRAPH ?domeintabel_waarde {
-           ?id aquo:Code ?Code;
-               dct:identifier ?ID.
+        OPTIONAL{
+          GRAPH ?dist {
+            ?id aquo:Code ?Code;
+              dct:identifier ?ID.
+          }
         }
-
+        FILTER regex(?omschrijving,?term,"i")
+        BIND( IF(regex(?omschrijving,?term,"i"), "omschrijving","") as ?gevonden_in)
       }
-      FILTER regex (?CASnummer,concat("^",?term),"i")
-      BIND( IF(regex(?CASnummer,concat("^",?term),"i"), "CASnummer","") as ?gevonden_in)
-     }
-
-    }
-    order by ?label_waarde
+      order by ?domeintabel_label
     """
   .
 
