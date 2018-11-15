@@ -26,6 +26,11 @@ GRAPH config:Theatre {
       elmo:appliesTo rdf:type;
       elmo:appearance elmo:HiddenAppearance;
     ];
+    elmo:fragment [
+      elmo:index 1;
+      elmo:appliesTo foaf:isPrimaryTopicOf;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
    elmo:fragment [
       elmo:index 2;
       elmo:appliesTo dct:identifier;
@@ -49,7 +54,7 @@ GRAPH config:Theatre {
     ];
    elmo:fragment [
       elmo:index 6;
-      elmo:appliesTo dct:subject;
+      elmo:appliesTo dct:type;
       rdfs:label "Groep"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
     ];

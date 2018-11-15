@@ -25,6 +25,12 @@ GRAPH config:Theatre {
         ?o rdfs:label ?olabel.
       }
       WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
+        }
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject dcat:landingPage ?domeingraph
+        }
         GRAPH ?domeingraph {
           ?id ?p ?o;
             a ?type;
@@ -46,12 +52,6 @@ GRAPH config:Theatre {
           FILTER NOT EXISTS {
               ?id a skos:Concept.
           }
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-            ?subject dcat:landingPage ?domeingraph
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
