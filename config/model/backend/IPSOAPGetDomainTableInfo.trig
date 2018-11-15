@@ -19,7 +19,7 @@ GRAPH config:Theatre {
              ?kolombeschrijving
              ?kolomlengte
              ?kolomnaam
-             (if(bound(?datatype),if(?datatype=xsd:int,0,-1,-1)) as ?kolomdecimalen)
+             (if(bound(?datatype),if(?datatype=xsd:int,0,-1),-1) as ?kolomdecimalen)
              (if(?path=aquo:Code,"1","") as ?kolompkseq)
              (if(bound(?mincount),if(?mincount=1,true,false),false) as ?kolomverplicht)
       WHERE {
