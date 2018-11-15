@@ -8,7 +8,9 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
-      
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
       SELECT ?begrip ?begrip_label ?definitie 
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
