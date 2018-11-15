@@ -1,0 +1,8 @@
+
+--uuid:0aebda91-380f-4337-a285-5dddfb23bfbb+id=1
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetDateLastPublishedResponse xmlns="http://rws.services.nl/DomainTableWS/2010/10"><GetDateLastPublishedResult xmlns:a="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:MostRecentPublicationDate>2016-03-12T00:00:00</a:MostRecentPublicationDate></GetDateLastPublishedResult></GetDateLastPublishedResponse></s:Body></s:Envelope>
+--uuid:0aebda91-380f-4337-a285-5dddfb23bfbb+id=1--

@@ -13,7 +13,7 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-      prefix xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       CONSTRUCT {
         ?id ?p ?o;
@@ -25,6 +25,12 @@ GRAPH config:Theatre {
         ?o rdfs:label ?olabel.
       }
       WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
+        }
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject dcat:landingPage ?domeingraph
+        }
         GRAPH ?domeingraph {
           ?id ?p ?o;
             a ?type;
@@ -32,7 +38,7 @@ GRAPH config:Theatre {
           FILTER (?type != prov:Entity)
           FILTER NOT EXISTS {
             ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
-            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
+          FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
           }
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
@@ -46,12 +52,6 @@ GRAPH config:Theatre {
           FILTER NOT EXISTS {
               ?id a skos:Concept.
           }
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-            ?subject dcat:landingPage ?domeingraph
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {

@@ -13,6 +13,7 @@ GRAPH config:Theatre {
           <li><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen beheren</button></a></li>
           <li><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Overzicht van domein-begrip relatie</button></a></li>
         </ul>
+        <p><a href="%{dotwebstack.config.aquoroot}/beheer/fase2"><button type="button" class="btn btn-default">Demo fase2 beheer (begrippen)</button></a></p>
       '''
       }
       WHERE {}

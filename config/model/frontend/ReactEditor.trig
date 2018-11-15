@@ -1,0 +1,32 @@
+GRAPH config:Theatre {
+
+  config:ReactEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/fase2";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ReactEditor;
+  .
+
+  config:ReactEditor a elmo:Representation;
+    elmo:appearance config:ReactEditorAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ReactEditorData;
+  .
+
+  config:ReactEditorAppearance a elmo:ReactEditorAppearance;
+  .
+
+  # Moet uiteindelijk de config worden, voor nu ff dummy
+  config:ReactEditorData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      CONSTRUCT {
+        <http://standaard.aquo.nl/dummy> rdfs:label "dummy".
+      }
+      WHERE {}
+    """
+  .
+
+}

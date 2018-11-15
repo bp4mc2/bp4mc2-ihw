@@ -1,3 +1,8 @@
+--uuid:e2347d89-ea40-45fd-802f-5fcc266a3858+id=1
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
 <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://rws.services.nl/DomainTableWS/2010/10" xmlns:ns1="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
    <soapenv:Header/>
    <soapenv:Body>
@@ -131,3 +136,4 @@
       </ns:GetDomainTableNamesResponse>
    </soapenv:Body>
 </soapenv:Envelope>
+--uuid:e2347d89-ea40-45fd-802f-5fcc266a3858+id=1--

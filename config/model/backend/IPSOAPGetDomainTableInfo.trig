@@ -10,6 +10,7 @@ GRAPH config:Theatre {
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
       SELECT ?domaintablename
              ?aantal
              (2500 as ?maxaantal)
@@ -18,16 +19,16 @@ GRAPH config:Theatre {
              ?kolombeschrijving
              ?kolomlengte
              ?kolomnaam
-             (if(?datatype=xsd:int,0,-1) as ?kolomdecimalen)
+             (if(bound(?datatype),if(?datatype=xsd:int,0,-1),-1) as ?kolomdecimalen)
              (if(?path=aquo:Code,"1","") as ?kolompkseq)
              (if(bound(?mincount),if(?mincount=1,true,false),false) as ?kolomverplicht)
       WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-          <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?domeintabel.
+        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           ?domeintabel rdfs:label ?name
           FILTER(str(?name)=?domaintablename)
         }
-        GRAPH <http://standaard.aquo.nl/id/dataset/shacl> {
+        GRAPH <http://standaard.aquo.nl/def/domeintabel> {
           ?domeintabel rdfs:isDefinedBy ?shape.
           ?shape sh:property ?property.
           ?property sh:path ?path.
@@ -41,13 +42,14 @@ GRAPH config:Theatre {
         {
           select (count(?waarde) as ?aantal)
           where {
-            BIND (iri(concat("http://standaard.aquo.nl/id/dataset/domeintabel/",?domaintablename)) as ?domeintabel)
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",?domaintablename)) as ?domeintabel)
             graph ?domeintabel {
-              ?waarde a ?type
+              ?waarde a prov:Entity
             }
           }
         }
       }
+      ORDER BY ?kolomnummer
     """
   .
 

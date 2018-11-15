@@ -13,9 +13,9 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?subject ?p ?o;
           rdfs:label ?titellabel;
-          dcat:landingPage ?subject.
+          dcat:landingPage ?subject;
+          dcat:theme ?categorie.
         ?agent rdfs:label ?agent_label.
-        ?thema rdfs:label ?thema_label.
         ?categorie rdfs:label ?categorie_label.
         ?subject rdfs:label ?subject_label.
       }
@@ -24,11 +24,10 @@ GRAPH config:Theatre {
           ?subject dcat:landingPage ?domeintabelgraph.
           ?subject ?p ?o.
           ?subject rdfs:label ?slabel.
-          OPTIONAL {?subject dct:publisher ?agent.
-          ?agent rdfs:label ?agent_label.}
-#          OPTIONAL {?subject dcat:theme ?thema.
-#          ?thema rdfs:label ?thema_label.}
- #         BIND(CONCAT("Domeintabel(subject): ", ?slabel) AS ?titellabel)
+          OPTIONAL {
+            ?subject dct:publisher ?agent.
+            ?agent rdfs:label ?agent_label.
+          }
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
@@ -38,15 +37,16 @@ GRAPH config:Theatre {
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-            ?subject dcat:theme ?categorie.
+            ?subject dcat:theme ?thema.
           }
           GRAPH <http://standaard.aquo.nl/data/categorieen> {
           	?categorie skos:member ?thema.
-            ?thema rdfs:label ?thema_label.
+            ?categorie rdfs:label ?categorie_label.
           }
         }
         FILTER (
           ?p != dcat:landingPage
+          && ?p != dcat:theme
         )
       }
 
