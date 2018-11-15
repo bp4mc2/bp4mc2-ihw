@@ -18,7 +18,7 @@ GRAPH config:Theatre {
              ("2999-12-31" as ?enddate)
              ?isnull
              ?property
-             (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),""),"Field") as ?datatype)
+             (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),"String"),"Field") as ?datatype)
 #             (concat("ns1:",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),"String"),"Field") as ?datatype)
              ?value
       WHERE {
