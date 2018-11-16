@@ -175,7 +175,7 @@ GRAPH config:Theatre {
             ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
           }
           BIND(IF(BOUND(?einde), "historisch","gepubliceerd") as ?status)
-          FILTER (?type != prov:Entity)
+          FILTER (?type != prov:Entity && ?type != skos:Concept)
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
@@ -183,14 +183,11 @@ GRAPH config:Theatre {
             BIND(strbefore(?odt,"T") as ?opgerichtdate)
           }
           OPTIONAL {
-            ?o skos:prefLabel ?olabel
+            ?o rdfs:label ?olabel
           }
           FILTER NOT EXISTS {
               ?id a skos:Concept.
           }
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
-          <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
         }
         GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
             ?subject dcat:landingPage ?domeingraph

@@ -22,7 +22,7 @@ GRAPH config:Theatre {
           }
           FILTER NOT EXISTS {
             ?categorie foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
-            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
+#            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
           }
         }
         OPTIONAL {
