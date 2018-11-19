@@ -23,119 +23,119 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       CONSTRUCT {
         <urn:property:p1> a sh:PropertyShape;
           sh:order 1;
           sh:name "source";
           rdfs:label "Bron"@nl;
-          sh:datatype xsd:string;
           sh:path <http://purl.org/dc/elements/1.1/source>;
+          sh:datatype xsd:string;
         .
         <urn:property:p2> a sh:PropertyShape;
           sh:order 2;
           sh:name "dateCreated";
           rdfs:label "Datum aangemaakt"@nl;
           sh:path <http://purl.org/dc/terms/created>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime>;
+          sh:datatype xsd:dateTime;
         .
         <urn:property:p3> a sh:PropertyShape;
           sh:order 3;
           sh:name "dateModified";
           rdfs:label "Datum laatste wijziging"@nl;
           sh:path <http://purl.org/dc/terms/modified>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#dateTime>;
+          sh:datatype xsd:dateTime;
         .
-        <urn:property:p4> a sh:PropertyShape;
-          sh:order 4;
-          sh:name "subject";
-          rdfs:label "Categorie"@nl;
-          sh:path <http://purl.org/dc/terms/subject>;
-        .
+# Uitzoeken: categorie werkt nu reverse, maar moet wel getoond worden hier!
+#        <urn:property:p4> a sh:PropertyShape;
+#          sh:order 4;
+#          sh:name "subject";
+#          rdfs:label "Categorie"@nl;
+#          sh:path <http://purl.org/dc/terms/subject>;
+#        .
         <urn:property:p5> a sh:PropertyShape;
           sh:order 5;
           sh:name "isPartOf";
           rdfs:label "Onderdeel van"@nl;
           sh:path <http://purl.org/iso25964/skos-thes#broaderPartitive>;
+          sh:class skos:Concept
         .
         <urn:property:p6> a sh:PropertyShape;
           sh:order 6;
-          sh:name "hasPartOf";
+          sh:name "hasPart";
           rdfs:label "Bestaat uit"@nl;
           sh:path <http://purl.org/iso25964/skos-thes#narrowerPartitive>;
+          sh:class skos:Concept
         .
         <urn:property:p7> a sh:PropertyShape;
           sh:order 7;
           sh:name "label";
           rdfs:label "Naam"@nl;
           sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p8> a sh:PropertyShape;
           sh:order 8;
           sh:name "altLabel";
           rdfs:label "Synoniem"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p9> a sh:PropertyShape;
           sh:order 9;
           sh:name "broaderTerm";
           rdfs:label "Bredere term"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#broader>;
+          sh:class skos:Concept
         .
         <urn:property:p10> a sh:PropertyShape;
           sh:order 10;
           sh:name "definition";
           rdfs:label "Definitie"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#definition>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p11> a sh:PropertyShape;
           sh:order 11;
           sh:name "narrowerTerm";
           rdfs:label "Smallere term"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#narrower>;
+          sh:class skos:Concept
         .
         <urn:property:p12> a sh:PropertyShape;
           sh:order 12;
           sh:name "notation";
           rdfs:label "Code"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#notation>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p13> a sh:PropertyShape;
           sh:order 13;
           sh:name "note";
           rdfs:label "Notitie"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#note>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p14> a sh:PropertyShape;
           sh:order 14;
           sh:name "prefLabel";
           rdfs:label "Voorkeursterm"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#prefLabel>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          sh:datatype xsd:string;
         .
         <urn:property:p15> a sh:PropertyShape;
           sh:order 15;
           sh:name "related";
           rdfs:label "Gerelateerd aan"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#related>;
+          sh:class skos:Concept
         .
         <urn:property:p16> a sh:PropertyShape;
           sh:order 16;
           sh:name "relatedMatch";
           rdfs:label "Begrip ander domein"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#relatedMatch>;
-        .
-        <urn:property:p17> a sh:PropertyShape;
-          sh:order 17;
-          sh:name "status";
-          rdfs:label "Status"@nl;
-          sh:path <http://www.w3.org/ns/adms#status>;
-          sh:datatype <http://www.w3.org/2001/XMLSchema#string>;
+          # Begrip ander domein is een uri, maar kan niet gevonden worden. Hoe gaan we dit tonen?
         .
       }
       WHERE {
