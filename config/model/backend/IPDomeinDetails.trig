@@ -53,7 +53,8 @@ GRAPH config:Theatre {
             ?id owl:sameAs ?begrip
           }
           GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-            ?begrip skos:prefLabel ?begrip_label
+            ?begrip a skos:Concept;
+              skos:prefLabel ?begrip_label
           }
         }
 

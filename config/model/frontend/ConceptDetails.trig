@@ -53,6 +53,11 @@ GRAPH config:Theatre {
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Term"@nl;
 	];
+	elmo:fragment [
+	  elmo:appliesTo foaf:isPrimaryTopicOf;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Term"@nl;
+	];
   elmo:fragment [
 	  elmo:appliesTo rdfs:label;
     elmo:appearance elmo:HiddenAppearance;
