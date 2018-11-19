@@ -110,6 +110,7 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 34;
 	  elmo:appliesTo  dct:source;
+    elmo:appearance elmo:GlobalLink;
     xhtml:link "";
 	  rdfs:label "Url achtergronddocumentatie"@nl;
 	];

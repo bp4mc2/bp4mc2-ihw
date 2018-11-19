@@ -127,7 +127,7 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 15;;
 	  elmo:appliesTo owl:sameAs;
-    xhtml:link "domeinwaarden";
+    xhtml:link "%{dotwebstack.config.aquoroot}/domeinwaarden";
 	  rdfs:label "Domeinwaarde"@nl;
 	];
   # elmo:fragment [
