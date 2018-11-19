@@ -1,15 +1,35 @@
 GRAPH config:Theatre {
 
+# Definition for the user interface
+#
+# sh:order => The order in which the properties should be displayed
+# sh:name => The name of the property as used for the JSON scheme
+# sh:path => The URI of the property as used in the JSON-LD data
+# sh:datatype => Indicates a literal datatype to be displayed:
+#                 - xsd:string => text input field or textarea
+#                 - xsd:int    => nummeric input field
+#                 - xsd:date or xsd:dateTime => date picker input field
+#                 - xsd:boolean => Three state radio button or checkbox (undefined, true, false)
+# rdfs:label => The label to be displayed
+# sh:class => Indicates a search input field (select from dynamic list)
+# sh:minCount 1 => Indicates mandatory field
+# sh:maxCount 1 => Indicates at most one entry
+# sh:maxLength => Indicates the length of the string (60 or larger means textarea field)
+#
+
   config:BegripDefinitieData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
       CONSTRUCT {
         <urn:property:p1> a sh:PropertyShape;
           sh:order 1;
           sh:name "source";
+          rdfs:label "Bron"@nl;
+          sh:datatype xsd:string;
           sh:path <http://purl.org/dc/elements/1.1/source>;
         .
         <urn:property:p2> a sh:PropertyShape;

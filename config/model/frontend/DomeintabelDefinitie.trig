@@ -1,0 +1,23 @@
+GRAPH config:Theatre {
+
+  config:DomeintabelDefinitieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/def/domeintabel/{domaintablename}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeintabelDefinitie;
+  .
+
+  config:DomeintabelDefinitie a elmo:Representation;
+    elmo:appearance [a elmo:Appearance];
+    elmo:stage config:Stage;
+  	elmo:informationProduct config:DomeintabelDefinitieData;
+    elmo:parameterMapper config:DomeintabelFromUrl;
+  .
+
+  config:DomeintabelFromUrl a elmo:UriParameterMapper;
+  	elmo:source http:requestURI;
+  	elmo:pattern "http://{domain}/def/domeintabel/{domaintablename}";
+  	elmo:template "http://standaard.aquo.nl/id/domeintabel/{domaintablename}";
+  	elmo:target elmo:SubjectParameter;
+  .
+
+}
