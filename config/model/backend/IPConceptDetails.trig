@@ -44,7 +44,7 @@ GRAPH config:Theatre {
             ?subject owl:sameAs ?domeinwaarde
           }
          }
-        BIND(CONCAT("Begrip: ", ?slabel) AS ?titellabel)
+        BIND(CONCAT("", ?slabel) AS ?titellabel) #Even eruit gehaald, ivm editing
       }
     """
   .

@@ -5,6 +5,11 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:getRepresentation config:ReactEditor;
   .
+  config:ReactEditorDomeinEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/fase2-domein";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ReactEditorDomein;
+  .
 
   config:ReactEditor a elmo:Representation;
     elmo:appearance config:ReactEditorAppearance;
@@ -13,17 +18,44 @@ GRAPH config:Theatre {
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorData;
   .
+  config:ReactEditorDomein a elmo:Representation;
+    elmo:appearance config:ReactEditorDomeinAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ReactEditorDomeinData;
+  .
 
   config:ReactEditorAppearance a elmo:ReactEditorAppearance;
+  .
+  config:ReactEditorDomeinAppearance a elmo:ReactEditorAppearance;
   .
 
   # Moet uiteindelijk de config worden, voor nu ff dummy
   config:ReactEditorData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
-        <http://standaard.aquo.nl/dummy> rdfs:label "dummy".
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:endpoint "/beheer/begrippen";
+          elmo:definition "/def/begrip?format=json"
+        .
+      }
+      WHERE {}
+    """
+  .
+  config:ReactEditorDomeinData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:endpoint "/beheer/domeintabel/AfsluitmiddelType";
+          elmo:definition "/def/domeintabel/AfsluitmiddelType?format=json"
+        .
       }
       WHERE {}
     """

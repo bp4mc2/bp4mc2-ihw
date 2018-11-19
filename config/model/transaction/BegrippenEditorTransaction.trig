@@ -183,6 +183,25 @@ config:BegrippenPutTransaction a elmo:Transaction;
       elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
     ]
     [
+      a elmo:UpdateStep; #Tijdelijk: prefLabel gelijk maken aan rdfs:label
+      elmo:backend config:UpdateBackend;
+      elmo:query """
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        INSERT {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s skos:prefLabel ?label
+          }
+        }
+        WHERE {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s a skos:Concept.
+            ?s rdfs:label ?label
+          }
+        }
+      """
+    ]
+    [
       a elmo:UpdateStep;
       elmo:backend config:UpdateBackend;
       elmo:query """
@@ -203,6 +222,7 @@ config:BegrippenPutTransaction a elmo:Transaction;
             ?ms adms:status "Geldig".
             ?ms dct:modified ?t.
             ?ms prov:generatedAtTime ?t.
+            ?ms dct:temporal ?mst.
           }
         }
         WHERE {
@@ -210,6 +230,7 @@ config:BegrippenPutTransaction a elmo:Transaction;
             ?s ?pnew ?onew
             BIND (now() as ?t)
             BIND (iri(replace(str(?s),"/id/","/doc/")) as ?ms)
+            BIND (iri(concat(replace(str(?s),"/id/","/doc/"),"#temporal")) as ?mst)
           }
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?s ?pold ?oold.
