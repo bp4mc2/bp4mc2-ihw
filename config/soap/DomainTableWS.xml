@@ -302,7 +302,9 @@
         <xs:complexContent mixed="false">
           <xs:extension base="tns:RequestPageBase">
             <xs:sequence>
-              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime">
+                <xs:annotation dws:parameter="checkdate"/>
+              </xs:element>
               <xs:element name="DomaintableName" nillable="true" type="xs:string">
                 <xs:annotation dws:parameter="domaintablename"/>
               </xs:element>
