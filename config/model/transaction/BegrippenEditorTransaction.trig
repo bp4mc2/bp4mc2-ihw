@@ -64,9 +64,52 @@ GRAPH config:Theatre {
 
 # ==========================
 #
+# Begrippenlijst voor editor
+#
+# ==========================
+
+config:BegrippenZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/begrippenlijst";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:BegrippenZoeklijst;
+.
+
+config:BegrippenZoeklijst a elmo:Representation;
+  elmo:stage config:Stage;
+  elmo:appearance [a elmo:Appearance];
+  elmo:informationProduct config:BegrippenZoeklijstData;
+.
+# ==========================
+#
 # Informatieproduct in de editor
 #
 # ==========================
+
+  config:BegrippenZoeklijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:query """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      SELECT ?uri (concat(?urilabel,if(bound(?cata),concat(" (",?cata,")"),"")) as ?label)
+      WHERE {
+        SELECT ?uri ?urilabel (group_concat(?catlabel; separator=", ") as ?cata)
+        WHERE {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+            ?uri a skos:Concept.
+            ?uri rdfs:label ?urilabel.
+          }
+          OPTIONAL {
+              GRAPH <http://standaard.aquo.nl/data/categorieen> {
+                ?cat skos:member ?uri.
+                ?cat rdfs:label ?catlabel.
+            }
+          }
+        }
+        GROUP BY ?uri ?urilabel
+      }
+    """;
+  .
 
   config:BegrippenEditableData a elmo:InformationProduct;
     elmo:optionalParameter elmo:SubjectParameter;
