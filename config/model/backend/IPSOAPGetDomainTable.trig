@@ -14,8 +14,23 @@ GRAPH config:Theatre {
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-      SELECT ?domaintablename ?id ?begindate ?enddate ?isnull ?property ?datatype ?value
+      SELECT ?count ?domaintablename ?id ?begindate ?enddate ?isnull ?property ?datatype ?value
       WHERE {
+        {
+          SELECT (count(*) as ?count)
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+              ?domaintable rdfs:label ?domaintablename.
+              ?domaintable dcat:landingPage ?domaintablegraph.
+            }
+            GRAPH ?domaintablegraph {
+              ?temporal dcmiperiod:start ?start
+              OPTIONAL {?temporal dcmiperiod:end ?endr}
+              BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
+              FILTER (str(?start) <= ?checkdate && ?checkdate < str(?end))
+            }
+          }
+        }
         {
         SELECT ?domaintablename
                ?id
@@ -26,6 +41,7 @@ GRAPH config:Theatre {
                (concat("http://rws.services.nl/DomainTableWS/Contracts/2010/10",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),"String"),"Field") as ?datatype)
   #             (concat("ns1:",if(bound(?dtype),if(?dtype=xsd:int,"Integer","String"),"String"),"Field") as ?datatype)
                ?value
+               ?nr
         WHERE {
           GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
             ?domaintable rdfs:label ?domaintablename.
@@ -66,7 +82,9 @@ GRAPH config:Theatre {
             {
               BIND (true as ?isnull)
               GRAPH ?domaintablegraph {
-                ?id a ?type
+                ?id a ?type.
+                ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?begindate.
+                OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?enddater}
               }
               GRAPH <http://standaard.aquo.nl/def/domeintabel> {
                 ?shape sh:targetClass ?type.

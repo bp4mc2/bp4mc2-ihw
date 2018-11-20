@@ -88,6 +88,7 @@ config:BegrippenZoeklijst a elmo:Representation;
   config:BegrippenZoeklijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
     elmo:query """
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -98,11 +99,12 @@ config:BegrippenZoeklijst a elmo:Representation;
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?uri a skos:Concept.
             ?uri rdfs:label ?urilabel.
+            FILTER regex(?urilabel,concat("^",?term),"i")
           }
           OPTIONAL {
-              GRAPH <http://standaard.aquo.nl/data/categorieen> {
-                ?cat skos:member ?uri.
-                ?cat rdfs:label ?catlabel.
+            GRAPH <http://standaard.aquo.nl/data/categorieen> {
+              ?cat skos:member ?uri.
+              ?cat rdfs:label ?catlabel.
             }
           }
         }

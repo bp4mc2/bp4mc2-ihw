@@ -3,42 +3,11 @@
    <soapenv:Body>
       <ns:GetDomainTableResponse>
          <ns:GetDomainTableResult>
-            <ns1:DataRowsReadPage>3</ns1:DataRowsReadPage>
-            <ns1:PageSize>3</ns1:PageSize>
-            <ns1:TotalDataRows>3</ns1:TotalDataRows>
+            <ns1:DataRowsReadPage>79</ns1:DataRowsReadPage>
+            <ns1:PageSize>79</ns1:PageSize>
+            <ns1:TotalDataRows>79</ns1:TotalDataRows>
             <ns1:Name>Bemonsteringsapparaat</ns1:Name>
             <ns1:Data>
-               <ns1:DataRow>
-                  <ns1:BeginDate>2011-06-10</ns1:BeginDate>
-                  <ns1:EndDate>2999-12-31</ns1:EndDate>
-                  <ns1:Fields>
-                     <ns:DataField xsi:type="ns:IntegerField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>false</ns:IsNull>
-                        <ns:Name>ID</ns:Name>
-                        <ns:Data>19</ns:Data>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>false</ns:IsNull>
-                        <ns:Name>Code</ns:Name>
-                        <ns:Data>72</ns:Data>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>false</ns:IsNull>
-                        <ns:Name>Omschrijving</ns:Name>
-                        <ns:Data>Continous soil sampler</ns:Data>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>false</ns:IsNull>
-                        <ns:Name>Groep</ns:Name>
-                        <ns:Data>Bodembemonstering</ns:Data>
-                     </ns:DataField>
-                  </ns1:Fields>
-               </ns1:DataRow>
                <ns1:DataRow>
                   <ns1:BeginDate>2011-06-10</ns1:BeginDate>
                   <ns1:EndDate>2999-12-31</ns1:EndDate>
@@ -59,14 +28,14 @@
                         <ns:Data>Edelmanboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -90,14 +59,14 @@
                         <ns:Data>Ramguts</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -121,14 +90,14 @@
                         <ns:Data>Gutsboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -152,14 +121,14 @@
                         <ns:Data>Steektoestel zonder folie</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -183,14 +152,14 @@
                         <ns:Data>Aqualock</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -214,14 +183,14 @@
                         <ns:Data>Avegaarboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -245,14 +214,14 @@
                         <ns:Data>Beeker-sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -276,14 +245,14 @@
                         <ns:Data>Begeman-sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -307,14 +276,14 @@
                         <ns:Data>Box-corer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -338,14 +307,14 @@
                         <ns:Data>Continuous soil sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -369,14 +338,14 @@
                         <ns:Data>Riversideboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -400,14 +369,14 @@
                         <ns:Data>Drukkend boorsysteem</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -431,14 +400,14 @@
                         <ns:Data>Eckman-Birge happer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -462,14 +431,14 @@
                         <ns:Data>Foliesteektoestel</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -493,14 +462,14 @@
                         <ns:Data>Grindboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -524,14 +493,14 @@
                         <ns:Data>Hamerend boorsysteem</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -555,14 +524,14 @@
                         <ns:Data>Handpuls</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -586,14 +555,14 @@
                         <ns:Data>Holle avegaar</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -617,14 +586,14 @@
                         <ns:Data>Jenkins-mudsampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -648,14 +617,14 @@
                         <ns:Data>Kernboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -679,14 +648,14 @@
                         <ns:Data>Mostap</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -710,14 +679,14 @@
                         <ns:Data>Multi-sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -741,14 +710,14 @@
                         <ns:Data>Akkermanboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -772,14 +741,14 @@
                         <ns:Data>Pulsboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -803,14 +772,14 @@
                         <ns:Data>Sonisch boorsysteem</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -834,14 +803,14 @@
                         <ns:Data>Spitsmuisboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -865,14 +834,14 @@
                         <ns:Data>Valbom</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -896,14 +865,14 @@
                         <ns:Data>Van der Horst-steektoestel</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -927,14 +896,14 @@
                         <ns:Data>Van Veenhapper</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -958,14 +927,14 @@
                         <ns:Data>Veenboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -989,14 +958,14 @@
                         <ns:Data>Vibro-corer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1020,14 +989,14 @@
                         <ns:Data>Vrijwitboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1051,14 +1020,14 @@
                         <ns:Data>Zuigerboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1082,14 +1051,14 @@
                         <ns:Data>Akoestische zandtransportmeter</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1113,14 +1082,14 @@
                         <ns:Data>Automatisch monstername apparaat</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1144,14 +1113,14 @@
                         <ns:Data>Bodemschaaf</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1175,14 +1144,14 @@
                         <ns:Data>Boomkor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1206,14 +1175,14 @@
                         <ns:Data>Dompelpomp</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1237,14 +1206,14 @@
                         <ns:Data>Doorstroomcentrifuge</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1268,14 +1237,14 @@
                         <ns:Data>Elektrisch schepnet</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1299,14 +1268,14 @@
                         <ns:Data>Emmer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1330,14 +1299,14 @@
                         <ns:Data>Flushing sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1361,14 +1330,14 @@
                         <ns:Data>Fuik</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1392,14 +1361,14 @@
                         <ns:Data>Handnet</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1423,14 +1392,14 @@
                         <ns:Data>Korf</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1454,14 +1423,14 @@
                         <ns:Data>Kuil</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1485,14 +1454,14 @@
                         <ns:Data>Modderpuls</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1516,14 +1485,14 @@
                         <ns:Data>Mosselkorf</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1547,14 +1516,14 @@
                         <ns:Data>Pelagic trawl</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1578,14 +1547,14 @@
                         <ns:Data>Piston-corer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1609,14 +1578,14 @@
                         <ns:Data>Planktonnet</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1640,14 +1609,14 @@
                         <ns:Data>Poliepgrijper</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1671,14 +1640,14 @@
                         <ns:Data>Pollepel</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1702,14 +1671,14 @@
                         <ns:Data>Puinboor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1733,14 +1702,14 @@
                         <ns:Data>Pomp</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1764,14 +1733,14 @@
                         <ns:Data>Roset sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1795,14 +1764,14 @@
                         <ns:Data>Schietfuik</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1826,14 +1795,14 @@
                         <ns:Data>Sedimentval</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1857,14 +1826,14 @@
                         <ns:Data>Siliconen rubber passive sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1888,14 +1857,14 @@
                         <ns:Data>Slib sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1919,14 +1888,14 @@
                         <ns:Data>Snoeischaar</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1950,14 +1919,14 @@
                         <ns:Data>Sondeerapparaat</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -1981,14 +1950,14 @@
                         <ns:Data>Speeddisk passive sampler</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2012,14 +1981,14 @@
                         <ns:Data>Spiraal</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2043,14 +2012,14 @@
                         <ns:Data>Steekbuis</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2074,14 +2043,14 @@
                         <ns:Data>Vacuümpomp</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2105,14 +2074,14 @@
                         <ns:Data>Waterhapper</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Waterbemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2136,14 +2105,14 @@
                         <ns:Data>Werpkorf</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2167,14 +2136,14 @@
                         <ns:Data>Elektrisch schepnet met keernetten</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2198,14 +2167,14 @@
                         <ns:Data>Stortkuil</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2229,14 +2198,14 @@
                         <ns:Data>Wonderkuil</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2260,14 +2229,14 @@
                         <ns:Data>Zegen</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2291,14 +2260,14 @@
                         <ns:Data>Zegen met keernetten</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2322,14 +2291,14 @@
                         <ns:Data>Elektrostramienkor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2353,14 +2322,14 @@
                         <ns:Data>Zuigkor</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2384,14 +2353,14 @@
                         <ns:Data>Hamon happer</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Bodembemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2415,14 +2384,14 @@
                         <ns:Data>Videocamera</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2446,14 +2415,14 @@
                         <ns:Data>Atoomkuil</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>
@@ -2477,14 +2446,14 @@
                         <ns:Data>Ankerkuil</ns:Data>
                      </ns:DataField>
                      <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
-                        <ns:IsNull>true</ns:IsNull>
-                        <ns:Name>Cijfercode</ns:Name>
-                        <ns:Data xsi:nil="true"/>
-                     </ns:DataField>
-                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
                         <ns:IsNull>false</ns:IsNull>
                         <ns:Name>Groep</ns:Name>
                         <ns:Data>Ecologische bemonstering</ns:Data>
+                     </ns:DataField>
+                     <ns:DataField xsi:type="ns:StringField" xmlns:ns="http://rws.services.nl/DomainTableWS/Contracts/2010/10">
+                        <ns:IsNull>true</ns:IsNull>
+                        <ns:Name>Cijfercode</ns:Name>
+                        <ns:Data xsi:nil="true"/>
                      </ns:DataField>
                   </ns1:Fields>
                </ns1:DataRow>

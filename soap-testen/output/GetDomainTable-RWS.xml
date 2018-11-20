@@ -3,10 +3,36 @@
   <s:Body>
     <GetDomainTableResponse xmlns="http://rws.services.nl/DomainTableWS/2010/10">
       <GetDomainTableResult xmlns:a="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-        <a:DataRowsReadPage>6</a:DataRowsReadPage>
+        <a:DataRowsReadPage>7</a:DataRowsReadPage>
         <a:PageSize>2500</a:PageSize>
         <a:TotalDataRows>7</a:TotalDataRows>
         <a:Data>
+          <a:DataRow>
+            <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>1</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Code</a:Name>
+                <a:Data>01</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Deur</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>true</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data i:nil="true"/>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
           <a:DataRow>
             <a:BeginDate>2016-03-12T00:00:00</a:BeginDate>
             <a:EndDate>2999-12-31T00:00:00</a:EndDate>
