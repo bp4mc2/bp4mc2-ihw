@@ -54,6 +54,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:searchEndpoint "/beheer/domeinwaardenlijst/AfsluitmiddelType";
           elmo:endpoint "/beheer/domeintabel/AfsluitmiddelType";
           elmo:definition "/def/domeintabel/AfsluitmiddelType?format=json"
         .

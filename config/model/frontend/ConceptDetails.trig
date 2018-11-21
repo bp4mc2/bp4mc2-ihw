@@ -6,11 +6,12 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:ConceptenDetails
   .
 
-  config:ConceptenDetailsURIRedirection a elmo:Redirection;
-    elmo:pathPattern "/id/begrip/{id}";
-   elmo:redirectTemplate "/doc/begrip/{id}";
-    elmo:stage config:Stage;
-  .
+# Zie DomeinWaarden.ttl: het redirect patroon kan ook daar worden toegepast!
+#  config:ConceptenDetailsURIRedirection a elmo:Redirection;
+#    elmo:pathPattern "/id/begrip/{id}";
+#    elmo:redirectTemplate "/doc/begrip/{id}";
+#    elmo:stage config:Stage;
+#  .
   config:SubjectFromUrl a elmo:UriParameterMapper;
     elmo:source http:requestURI;
     elmo:pattern "http://{domain}/doc/begrip/{reference}";
