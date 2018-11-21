@@ -53,6 +53,11 @@ GRAPH config:Theatre {
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Term"@nl;
 	];
+	elmo:fragment [
+	  elmo:appliesTo foaf:isPrimaryTopicOf;
+    elmo:appearance elmo:HiddenAppearance;
+	  rdfs:label "Term"@nl;
+	];
   elmo:fragment [
 	  elmo:appliesTo rdfs:label;
     elmo:appearance elmo:HiddenAppearance;
@@ -127,7 +132,7 @@ GRAPH config:Theatre {
   elmo:fragment [
 	  elmo:index 15;;
 	  elmo:appliesTo owl:sameAs;
-    xhtml:link "domeinwaarden";
+    xhtml:link "%{dotwebstack.config.aquoroot}/domeinwaarden";
 	  rdfs:label "Domeinwaarde"@nl;
 	];
   # elmo:fragment [

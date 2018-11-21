@@ -18,7 +18,8 @@ GRAPH config:Theatre {
         ?subject ?p ?o;
           owl:sameAs ?begrip;
           dct:type ?groep;
-          rdfs:label ?dlabel.
+          rdfs:label ?dlabel;
+          dct:hasPart ?domeintabel.
         ?begrip rdfs:label ?begrip_label.
         ?groep rdfs:label ?groep_label.
         ?domeintabel rdfs:label ?domeinlabel.

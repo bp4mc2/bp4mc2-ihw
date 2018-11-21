@@ -129,7 +129,7 @@ GRAPH config:Theatre {
       elmo:index "01";
     ];
     elmo:fragment [
-      elmo:appliesTo  "subject";
+      elmo:appliesTo  "type";
       rdfs:label "Groep"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
       elmo:index "02";

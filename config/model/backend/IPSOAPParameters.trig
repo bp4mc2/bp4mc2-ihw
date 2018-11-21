@@ -7,4 +7,11 @@ GRAPH config:Theatre {
     ]
   .
 
+  config:CheckDateParameter a elmo:TermParameter;
+    elmo:name "checkdate";
+    elmo:shape [
+      sh:datatype xsd:string
+    ]
+  .
+
 }

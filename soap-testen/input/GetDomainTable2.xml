@@ -5,9 +5,9 @@
          <!--Optional:-->
          <ns:request>
             <ns1:PageSize>2500</ns1:PageSize>
-            <ns1:StartPage>1</ns1:StartPage>
+            <ns1:StartPage>0</ns1:StartPage>
             <!--Optional:-->
-            <ns1:CheckDate>2018-11-09</ns1:CheckDate>
+            <ns1:CheckDate>2018-06-01</ns1:CheckDate>
             <ns1:DomaintableName>Bemonsteringsapparaat</ns1:DomaintableName>
          </ns:request>
       </ns:GetDomainTable>

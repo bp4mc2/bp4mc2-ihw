@@ -168,9 +168,15 @@
       <xs:element name="GetDomainTableChangesResponse" nillable="true" type="tns:GetDomainTableChangesResponse"/>
       <xs:complexType name="PagingResultSet">
         <xs:sequence>
-          <xs:element name="DataRowsReadPage" type="xs:int"/>
-          <xs:element name="PageSize" type="xs:int"/>
-          <xs:element name="TotalDataRows" type="xs:int"/>
+          <xs:element name="DataRowsReadPage" type="xs:int">
+            <xs:annotation dws:valuesFrom="count"/>
+          </xs:element>
+          <xs:element name="PageSize" type="xs:int">
+            <xs:annotation dws:valuesFrom="count"/>
+          </xs:element>
+          <xs:element name="TotalDataRows" type="xs:int">
+            <xs:annotation dws:valuesFrom="count"/>
+          </xs:element>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="PagingResultSet" nillable="true" type="tns:PagingResultSet"/>
@@ -302,7 +308,9 @@
         <xs:complexContent mixed="false">
           <xs:extension base="tns:RequestPageBase">
             <xs:sequence>
-              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="CheckDate" type="xs:dateTime">
+                <xs:annotation dws:parameter="checkdate"/>
+              </xs:element>
               <xs:element name="DomaintableName" nillable="true" type="xs:string">
                 <xs:annotation dws:parameter="domaintablename"/>
               </xs:element>

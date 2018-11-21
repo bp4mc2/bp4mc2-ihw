@@ -1,0 +1,2069 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <GetDomainTableResponse xmlns="http://rws.services.nl/DomainTableWS/2010/10">
+      <GetDomainTableResult xmlns:a="http://rws.services.nl/DomainTableWS/Contracts/2010/10" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <a:DataRowsReadPage>79</a:DataRowsReadPage>
+        <a:PageSize>2500</a:PageSize>
+        <a:TotalDataRows>79</a:TotalDataRows>
+        <a:Data>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>31</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Akkermanboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>42</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>50</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Akoestische zandtransportmeter</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>43</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2018-05-12T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>98</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Ankerkuil</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>98</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>14</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Aqualock</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>83</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2017-05-20T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>93</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Atoomkuil</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>97</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>51</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Automatisch monstername apparaat</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>71</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>15</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Avegaarboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>54</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>16</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Beeker-sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>12</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>17</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Begeman-sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>44</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>52</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Bodemschaaf</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>45</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>53</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Boomkor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>55</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>18</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Box-corer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>46</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2013-07-01T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>19</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Continuous soil sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>72</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>54</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Dompelpomp</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>35</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2012-05-24T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>55</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Doorstroomcentrifuge</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>85</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>20</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Drukkend boorsysteem</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>73</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>21</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Eckman-Birge happer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>41</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>1</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Edelmanboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>20</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>56</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Elektrisch schepnet</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>56</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2015-03-05T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>84</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Elektrisch schepnet met keernetten</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>88</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-01-16T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>89</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Elektrostramienkor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>93</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>57</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Emmer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>33</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>58</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Flushing sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>67</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>22</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Foliesteektoestel</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>74</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>59</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Fuik</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>57</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>23</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Grindboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>24</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>12</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Gutsboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>31</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>24</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Hamerend boorsysteem</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>75</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-11-03T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>91</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Hamon happer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>95</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>60</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Handnet</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>58</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>25</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Handpuls</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>76</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>26</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Holle avegaar</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>77</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>27</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Jenkins-mudsampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>78</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>28</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Kernboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>79</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>61</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Korf</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>59</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>62</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Kuil</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>60</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>63</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Modderpuls</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>47</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>64</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Mosselkorf</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>61</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>29</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Mostap</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>80</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>30</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Multi-sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>48</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>65</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Pelagic trawl</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>62</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>66</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Piston-corer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>13</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>67</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Planktonnet</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>63</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>68</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Poliepgrijper</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>49</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>69</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Pollepel</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>69</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>70</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Pomp</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>68</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2014-09-13T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>7</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Puinboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>87</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>32</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Pulsboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>26</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>10</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Ramguts</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>27</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>2</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Riversideboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>25</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>71</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Roset sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>70</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>72</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Schietfuik</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>64</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>73</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Sedimentval</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>50</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2012-04-24T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>74</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Siliconen rubber passive sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>84</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>75</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Slib sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>51</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>76</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Snoeischaar</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>65</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>77</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Sondeerapparaat</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>28</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>33</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Sonisch boorsysteem</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>81</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2012-12-15T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>78</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Speeddisk passive sampler</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>86</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>79</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Spiraal</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>23</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>34</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Spitsmuisboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>29</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>80</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Steekbuis</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>34</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>13</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Steektoestel zonder folie</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>53</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2015-03-05T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>85</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Stortkuil</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>89</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>81</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Vacuümpomp</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>36</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>35</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Valbom</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>14</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>37</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Van Veenhapper</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>15</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>36</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Van der Horst-steektoestel</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>82</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>38</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Veenboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>18</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>39</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Vibro-corer</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>16</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-12-08T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>92</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Videocamera</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>96</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>40</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Vrijwitboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>52</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>82</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Waterhapper</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Waterbemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>32</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>83</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Werpkorf</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>66</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2015-03-05T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>86</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Wonderkuil</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>90</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2015-03-05T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>87</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Zegen</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>91</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2015-03-05T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>88</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Zegen met keernetten</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>92</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2011-06-10T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>41</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Zuigerboor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Bodembemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>17</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+          <a:DataRow>
+            <a:BeginDate>2016-07-09T00:00:00</a:BeginDate>
+            <a:EndDate>2999-12-31T00:00:00</a:EndDate>
+            <a:Fields>
+              <a:DataField i:type="a:IntegerField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>ID</a:Name>
+                <a:Data>90</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Omschrijving</a:Name>
+                <a:Data>Zuigkor</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Groep</a:Name>
+                <a:Data>Ecologische bemonstering</a:Data>
+              </a:DataField>
+              <a:DataField i:type="a:StringField">
+                <a:IsNull>false</a:IsNull>
+                <a:Name>Cijfercode</a:Name>
+                <a:Data>94</a:Data>
+              </a:DataField>
+            </a:Fields>
+          </a:DataRow>
+        </a:Data>
+        <a:Name>Bemonsteringsapparaat</a:Name>
+      </GetDomainTableResult>
+    </GetDomainTableResponse>
+  </s:Body>
+</s:Envelope>

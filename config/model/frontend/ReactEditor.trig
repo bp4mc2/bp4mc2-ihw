@@ -39,6 +39,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:searchEndpoint "/beheer/begrippenlijst";
           elmo:endpoint "/beheer/begrippen";
           elmo:definition "/def/begrip?format=json"
         .

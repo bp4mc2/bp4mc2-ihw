@@ -1,0 +1,22 @@
+GRAPH config:Theatre {
+
+  config:DomeintabelDefinitieData a elmo:InformationProduct;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX sh: <http://www.w3.org/ns/shacl#>
+      CONSTRUCT {
+        ?prop ?pprop ?oprop
+      }
+      WHERE {
+        GRAPH  <http://standaard.aquo.nl/def/domeintabel> {
+          ?subject rdfs:isDefinedBy ?shape.
+          ?shape sh:property ?prop.
+          ?prop ?pprop ?oprop
+        }
+      }
+    """
+  .
+
+}
