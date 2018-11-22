@@ -14,7 +14,7 @@ GRAPH config:Theatre {
   config:ConceptenLijst a elmo:Representation;
     elmo:appearance config:ConceptenLijstAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
+#   elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
