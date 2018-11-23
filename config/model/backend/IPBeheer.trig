@@ -13,12 +13,45 @@ GRAPH config:Theatre {
           <li><a href="%{dotwebstack.config.aquoroot}/beheer/domeintabellen"><button type="button" class="btn btn-default">Domeintabellen beheren</button></a></li>
           <li><a href="%{dotwebstack.config.aquoroot}/beheer/relatie"><button type="button" class="btn btn-default">Overzicht van domein-begrip relatie</button></a></li>
         </ul>
-        <p><a href="%{dotwebstack.config.aquoroot}/beheer/fase2"><button type="button" class="btn btn-default">Demo fase2 beheer (begrippen)</button></a></p>
-        <p><a href="%{dotwebstack.config.aquoroot}/beheer/fase2-domein"><button type="button" class="btn btn-default">Demo fase2 beheer (domeintabel AfsluitmiddelType)</button></a></p>
       '''
       }
       WHERE {}
     """
+  .
+
+  config:BeheerMenuData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      prefix elmo1: <http://bp4mc2.org/elmo/def#>
+      prefix xhtml: <http://www.w3.org/1999/xhtml/vocab#>
+      prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+      CONSTRUCT {
+        [ xhtml:link "%{dotwebstack.config.aquoroot}/beheer";
+          rdfs:label "Aquobeheer";
+          xhtml:search "search";
+          elmo1:data [
+            elmo1:index "1"; rdfs:label "Beheer";
+            elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/begrippen"];
+            elmo1:data [elmo1:index "1a"; rdfs:label "Domeintabellen (demotest)"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/fase2-domein?subject=http://standaard.aquo.nl/id/domeintabel/AfsluitmiddelType"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellen"];
+            elmo1:data [elmo1:index "3"; rdfs:label "Nieuwe domeintabel"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/nieuwedomeintabel"];
+            elmo1:data [elmo1:index "4"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/categorieen"];
+            elmo1:data [elmo1:index "5"; rdfs:label "Domeinwaarde-begrip relatie"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/relatie"];
+          ];
+          elmo1:data [
+            elmo1:index "2"; rdfs:label "Publicatie";
+            elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+          ];
+          elmo1:data [
+            elmo1:index "3"; rdfs:label "Site";
+            elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/begrippen"];
+            elmo1:data [elmo1:index "2"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/domeintabellen"];
+          ];
+        ]
+      }
+      WHERE {}
+    """;
   .
 
 }

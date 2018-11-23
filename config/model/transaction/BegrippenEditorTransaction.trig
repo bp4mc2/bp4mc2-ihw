@@ -6,60 +6,34 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:BegripEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/begrip";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:BegripEditor;
-  .
   config:BegrippenEditorEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/begrippen";
     elmo:stage config:Stage;
     elmo:getRepresentation config:BegrippenEditor;
   .
 
-  config:BegripEditor a elmo:Representation;
-    elmo:stage config:Stage;
-    elmo:appearance [a elmo:Appearance];
-    elmo:informationProduct config:BegrippenEditableData;
-  .
   config:BegrippenEditor a elmo:Representation;
+    elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
-    elmo:contains config:ConceptImage;
-    elmo:contains config:Menu;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
-    elmo:appearance config:BegrippenEditorAppearance;
-    elmo:informationProduct config:ConceptenLijstData;
+    elmo:informationProduct config:BegrippenEditorData;
   .
 
-  config:BegrippenEditorAppearance a elmo:EditorAppearance;
-    elmo:fragment [
-      elmo:index 1;
-      elmo:appliesTo "@id";
-      rdfs:label "URI"@nl;
-    ];
-    elmo:fragment [
-      elmo:appearance elmo:HiddenAppearance;
-      elmo:index 2;
-      elmo:appliesTo rdf:type;
-      rdfs:label "Type"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 3;
-      elmo:appliesTo skos:prefLabel;
-      rdfs:label "term"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 4;
-      elmo:appliesTo skos:definition;
-      rdfs:label "Definitie"@nl;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
-      elmo:appearance elmo:ChangeSubmitAppearance;
-      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/begrippen";
-      rdfs:label "Opslaan"@nl;
-      rdfs:label "Save"@en;
-    ];
+  config:BegrippenEditorData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:searchEndpoint "/beheer/begrippenlijst";
+          elmo:endpoint "/beheer/begrippen";
+          elmo:definition "/def/begrip?format=json"
+        .
+      }
+      WHERE {}
+    """
   .
 
 # ==========================
@@ -79,6 +53,7 @@ config:BegrippenZoeklijst a elmo:Representation;
   elmo:appearance [a elmo:Appearance];
   elmo:informationProduct config:BegrippenZoeklijstData;
 .
+
 # ==========================
 #
 # Informatieproduct in de editor
@@ -113,104 +88,28 @@ config:BegrippenZoeklijst a elmo:Representation;
     """;
   .
 
-  config:BegrippenEditableData a elmo:InformationProduct;
-    elmo:optionalParameter elmo:SubjectParameter;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      PREFIX dct: <http://purl.org/dc/terms/>
-      PREFIX prov: <http://www.w3.org/ns/prov#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-      CONSTRUCT {
-        ?subject ?p ?o.
-      }
-      WHERE {
-        GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-          ?subject ?p ?o
-          FILTER NOT EXISTS {
-            ?subject prov:invalidatedAtTime ?time
-          }
-        }
-      }
-    """
-  .
-
 # ==========================
 #
-# Transaction
+# Transaction endpoint and service
 #
 # ==========================
-
-# --
-# Tijdelijk geen staging, maar direct doorvoeren van de wijziging t.b.v. testen van de nieuwe front-end
-# --
 
   config:BegrippenEditEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/begrippen";
     elmo:stage config:Stage;
-#    elmo:putService config:BegrippenStagingService;
-#    elmo:postService config:BegrippenStagingService;
-#    elmo:deleteService config:BegrippenStagingService;
     elmo:putService config:BegrippenPutService;
     elmo:postService config:BegrippenPostService;
-    elmo:deleteService config:BegrippenDeleteService;
   .
 
-  config:BegrippenStagingService a elmo:Service;
-    elmo:transaction config:BegrippenStagingTransaction;
-  .
   config:BegrippenPutService a elmo:Service;
     elmo:transaction config:BegrippenPutTransaction;
   .
   config:BegrippenPostService a elmo:Service;
     elmo:transaction config:BegrippenPostTransaction;
   .
-  config:BegrippenDeleteService a elmo:Service;
-    elmo:transaction config:BegrippenDeleteTransaction;
-  .
 
 # =======
-# Staging transaction
-# =======
-
-  config:BegrippenStagingTransaction a elmo:Transaction;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
-      ]
-
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          prefix prov: <http://www.w3.org/ns/prov#>
-          PREFIX dct: <http://purl.org/dc/terms/>
-          insert {
-            graph <http://standaard.aquo.nl/id/dataset/begrippen/staging> {
-              ?s ?p ?o
-            }
-          }
-          where {
-            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s ?p ?o
-              FILTER (?p!=prov:generatedAtTime)
-            }
-          }
-        """
-      ]
-    )
-  .
-
-# =======
-# Directe put, post en delete transactions
+# PUT
 # =======
 
 config:BegrippenPutTransaction a elmo:Transaction;
@@ -289,9 +188,10 @@ config:BegrippenPutTransaction a elmo:Transaction;
   )
 .
 
-# ----
-# TODO: Query hieronder werkt alleen voor 1 begrip
-# ----
+# =======
+# POST
+# =======
+
 config:BegrippenPostTransaction a elmo:Transaction;
   elmo:sequentialFlow (
     [
@@ -334,49 +234,6 @@ config:BegrippenPostTransaction a elmo:Transaction;
             BIND(?label as ?localname)
             BIND(iri(concat("http://standaard.aquo.nl/id/begrip/",?localname)) as ?uri)
             BIND(iri(concat("http://standaard.aquo.nl/doc/begrip/",?localname)) as ?metauri)
-          }
-        }
-      """
-    ]
-  )
-.
-
-config:BegrippenDeleteTransaction a elmo:Transaction;
-  elmo:sequentialFlow (
-    [
-      a elmo:UpdateStep;
-      elmo:backend config:UpdateBackend;
-      elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
-    ]
-
-    [
-      a elmo:PersistenceStep;
-      elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-      elmo:backend config:UpdateBackend;
-      elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
-    ]
-    [
-      a elmo:UpdateStep;
-      elmo:backend config:UpdateBackend;
-      elmo:query """
-        PREFIX prov: <http://www.w3.org/ns/prov#>
-        PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        DELETE {
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
-            ?s ?pold ?oold.
-            ?msold ?mpold ?moold.
-          }
-        }
-        WHERE {
-          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
-            ?s foaf:isPrimaryTopicOf ?ms.
-            ?ms prov:invalidatedAtTime ?t
-          }
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
-            ?s ?pold ?oold.
-            ?s foaf:isPrimaryTopicOf ?msold.
-            ?msold ?mpold ?moold.
           }
         }
       """

@@ -15,12 +15,27 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
-    elmo:contains config:Menu;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
     elmo:informationProduct config:BeheerData;
   .
 
   config:BeheerAppearance a elmo:HtmlAppearance;
+  .
+
+  # ==========================
+  #
+  # Menu
+  #
+  # ==========================
+
+  config:BeheerMenu a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:BeheerMenuAppearance;
+    elmo:informationProduct config:BeheerMenuData;
+  .
+
+  config:BeheerMenuAppearance a elmo:NavbarSearchAppearance;
   .
 
 }
