@@ -6,17 +6,33 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:DomeinMeta
   .
 
+  config:DomeinMetaURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/doc/domeintabel/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinMetaURI;
+  .
+
   config:DomeinMeta a elmo:Representation;
-  elmo:appearance config:DomeinMetaAppearance;
-  elmo:stage config:Stage;
-  elmo:index "03";
-#  elmo:contains config:Image;
-  elmo:contains config:ConceptImage;
-	elmo:contains config:Menu;
-  elmo:contains config:Footer;
-  elmo:contains config:ExportIndex;
-  elmo:contains config:ShaclRepresentation;
-	elmo:informationProduct config:DomeinMetaData;
+    elmo:stage config:Stage;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:ShaclRepresentation;
+    elmo:appearance config:DomeinMetaAppearance;
+    elmo:informationProduct config:DomeinMetaData;
+  .
+  
+  config:DomeinMetaURI a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:parameterMapper config:SubjectFromUrl;    
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:ShaclRepresentation;
+    elmo:appearance config:DomeinMetaAppearance;
+    elmo:informationProduct config:DomeinMetaData;
   .
 
   config:DomeinMetaAppearance a elmo:Appearance;
@@ -142,15 +158,31 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:DomeinMetaAgent
   .
 
+  config:DomeinMetaAgentURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/doc/publisher/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinMetaAgentURI;
+  .
+
   config:DomeinMetaAgent a elmo:Representation;
-  elmo:appearance config:DomeinMetaAgentAppearance;
-  elmo:stage config:Stage;
-  #elmo:contains config:Image;
-  elmo:contains config:ConceptImage;
-	elmo:contains config:Menu;
-  elmo:contains config:Footer;
-  elmo:contains config:ExportIndex;
-	elmo:informationProduct config:DomeinMetaAgentData;
+    elmo:stage config:Stage;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:appearance config:DomeinMetaAgentAppearance;
+    elmo:informationProduct config:DomeinMetaAgentData;
+  .
+
+  config:DomeinMetaAgentURI a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:parameterMapper config:SubjectFromUrl;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:contains config:ExportIndex;
+    elmo:appearance config:DomeinMetaAgentAppearance;
+    elmo:informationProduct config:DomeinMetaAgentData;
   .
 
   config:DomeinMetaAgentAppearance a elmo:Appearance;

@@ -45,7 +45,6 @@ GRAPH config:Theatre {
   config:DomeintabelGroep a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinGroepTitel;
     elmo:contains config:ExportIndex;
@@ -57,7 +56,6 @@ GRAPH config:Theatre {
   config:DomeintabelHistorie a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:ExportIndex;
@@ -71,7 +69,6 @@ GRAPH config:Theatre {
   config:DomeintabelStaging a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Menu;
@@ -128,7 +125,7 @@ GRAPH config:Theatre {
       elmo:index "01";
     ];
     elmo:fragment [
-      elmo:appliesTo  "type";
+      elmo:appliesTo  "subject";
       rdfs:label "Groep"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
       elmo:index "02";
