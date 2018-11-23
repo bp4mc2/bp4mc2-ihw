@@ -5,15 +5,33 @@ GRAPH config:Theatre {
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenCategorieLijst
   .
+
+  config:CategorieURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/doc/collectie/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:CategorieURI
+  .
   
   config:ConceptenCategorieLijst a elmo:Representation;
+    elmo:stage config:Stage;
     elmo:contains config:CategorieTitel;
     elmo:contains config:CategorieDomein;
-    elmo:appearance config:CategorieConceptenLijstAppearance;
-    elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
+    elmo:appearance config:CategorieConceptenLijstAppearance;
+    elmo:informationProduct config:ConceptenCategorieLijstData;
+  .
+  
+  config:CategorieURI a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:parameterMapper config:SubjectFromUrl;
+    elmo:contains config:CategorieTitel;
+    elmo:contains config:CategorieDomein;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:appearance config:CategorieConceptenLijstAppearance;
     elmo:informationProduct config:ConceptenCategorieLijstData;
   .
   
