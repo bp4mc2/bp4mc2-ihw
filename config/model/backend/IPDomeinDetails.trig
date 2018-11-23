@@ -34,10 +34,9 @@ GRAPH config:Theatre {
             foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
           .
           FILTER (?type != prov:Entity && ?type != skos:Concept)
-          FILTER NOT EXISTS {
-            ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
-#            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
-          }
+          OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+          BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
+          FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
