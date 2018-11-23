@@ -1,0 +1,16 @@
+GRAPH config:Theatre {
+
+  config:IdNaarDocURIRedirection a elmo:Redirection;
+    elmo:pathPattern "/id/{class}/{reference}";
+    elmo:redirectTemplate "/doc/{class}/{reference}";
+    elmo:stage config:Stage;
+  .
+
+  config:SubjectFromUrl a elmo:UriParameterMapper;
+    elmo:source http:requestURI;
+    elmo:pattern "http://{domain}/doc/{class}/{reference}";
+    elmo:template "http://standaard.aquo.nl/id/{class}/{reference}";
+    elmo:target elmo:SubjectParameter;
+  .
+
+}

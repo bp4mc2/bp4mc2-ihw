@@ -14,17 +14,6 @@ GRAPH config:Theatre {
     elmo:informationProduct config:DomeinWaardenData;
   .
 
-  config:DomeinwaardeDetailsURIRedirection a elmo:Redirection;
-    elmo:pathPattern "/id/{domeintabel}/{id}";
-    elmo:redirectTemplate "/doc/{domeintabel}/{id}";
-    elmo:stage config:Stage;
-  .
-  config:DomeinwaardeSubjectFromUrl a elmo:UriParameterMapper;
-    elmo:source http:requestURI;
-    elmo:pattern "http://{domain}/doc/{domeintabel}/{reference}";
-    elmo:template "http://standaard.aquo.nl/id/{domeintabel}/{reference}";
-    elmo:target elmo:SubjectParameter;
-  .
   # Alles behalve /begrip/ wordt gematched, /begrip/ gaat naar een specifiek endpoint
   config:DomeinwaardeDetailsURIEndpoint a elmo:Endpoint;
 #    elmo:pathPattern "/doc/{domeintabel:^(?!begrip)[^\/]+$}/{id}";
@@ -34,7 +23,7 @@ GRAPH config:Theatre {
   .
   config:DomeinwaardeDetailsURI a elmo:Representation;
     elmo:appearance config:DomeinWaardenAppearance;
-    elmo:parameterMapper config:DomeinwaardeSubjectFromUrl;
+    elmo:parameterMapper config:SubjectFromUrl;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
