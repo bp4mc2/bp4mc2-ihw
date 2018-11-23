@@ -24,6 +24,7 @@ GRAPH config:Theatre {
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX elmo: <http://dotwebstack.org/def/elmo#>
       CONSTRUCT {
         <urn:property:p1> a sh:PropertyShape;
           sh:order 1;
@@ -58,7 +59,8 @@ GRAPH config:Theatre {
           sh:name "isPartOf";
           rdfs:label "Onderdeel van"@nl;
           sh:path <http://purl.org/iso25964/skos-thes#broaderPartitive>;
-          sh:class skos:Concept
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
         .
         <urn:property:p6> a sh:PropertyShape;
           sh:order 6;
@@ -94,6 +96,7 @@ GRAPH config:Theatre {
           rdfs:label "Definitie"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#definition>;
           sh:datatype xsd:string;
+          sh:maxLength 60;
         .
         <urn:property:p11> a sh:PropertyShape;
           sh:order 11;

@@ -33,8 +33,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo "edit";
-#      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
-      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/fase2-domein";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
       rdf:value "edit"
     ];
     elmo:fragment [

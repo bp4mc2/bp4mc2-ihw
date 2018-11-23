@@ -15,8 +15,10 @@ GRAPH config:Theatre {
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX elmo: <http://dotwebstack.org/def/elmo#>
       CONSTRUCT {
         ?id ?p ?o;
+          elmo:subject ?id;
           owl:sameAs ?begrip;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;

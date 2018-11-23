@@ -1,10 +1,11 @@
 GRAPH config:Theatre {
 
-# ==========================
-#
-# Editor endpoint, representation en appearance
-#
-# ==========================
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Begrippen (aanpassen)
+  #
+  # ==========================
 
   config:BegrippenEditorEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/begrippen";
@@ -28,6 +29,42 @@ GRAPH config:Theatre {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
           elmo:searchEndpoint "/beheer/begrippenlijst";
+          elmo:endpoint "/beheer/begrippen";
+          elmo:definition "/def/begrip?format=json"
+        .
+      }
+      WHERE {}
+    """
+  .
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Begrippen (toevoegen)
+  #
+  # ==========================
+
+  config:NieuwBegripEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/nieuwbegrip";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:NieuwBegripEditor;
+  .
+
+  config:NieuwBegripEditor a elmo:Representation;
+    elmo:appearance [a elmo:ReactEditorAppearance];
+    elmo:stage config:Stage;
+    elmo:contains config:BeheerMenu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:NieuwBegripEditorData;
+  .
+
+  config:NieuwBegripEditorData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
           elmo:endpoint "/beheer/begrippen";
           elmo:definition "/def/begrip?format=json"
         .
