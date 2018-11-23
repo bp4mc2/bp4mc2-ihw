@@ -6,17 +6,6 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:ConceptenDetails
   .
 
-  config:ConceptenDetailsURIRedirection a elmo:Redirection;
-    elmo:pathPattern "/id/begrip/{id}";
-   elmo:redirectTemplate "/doc/begrip/{id}";
-    elmo:stage config:Stage;
-  .
-  config:SubjectFromUrl a elmo:UriParameterMapper;
-    elmo:source http:requestURI;
-    elmo:pattern "http://{domain}/doc/begrip/{reference}";
-    elmo:template "http://standaard.aquo.nl/id/begrip/{reference}";
-    elmo:target elmo:SubjectParameter;
-  .
   config:ConceptenDetailsURIEndpoint a elmo:Endpoint;
     elmo:pathPattern "/doc/begrip/{id}";
     elmo:stage config:Stage;
@@ -30,18 +19,15 @@ GRAPH config:Theatre {
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:contains config:GraphDisplay;
-    #elmo:contains config:ImageDisplay;
     elmo:appearance config:ConceptDetailAppearance;
     elmo:informationProduct config:ConceptDetailData;
   .
   config:ConceptenDetails a elmo:Representation;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:contains config:GraphDisplay;
-    #elmo:contains config:ImageDisplay;
     elmo:appearance config:ConceptDetailAppearance;
     elmo:informationProduct config:ConceptDetailData;
   .

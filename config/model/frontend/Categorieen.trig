@@ -11,10 +11,8 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:CategorieLijst
   .
   config:CategorieLijst a elmo:Representation;
-    #elmo:pathPattern "/categorieen";
     elmo:appearance config:CategorieLijstAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;

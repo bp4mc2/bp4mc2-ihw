@@ -7,132 +7,22 @@ GRAPH config:Theatre {
 #
 # ==========================
 
-  config:DomeintabelEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/domeintabel";
+  config:BeheerDomeintabelEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/domeintabel";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:Domeintabel
+    elmo:getRepresentation config:BeheerDomeintabel
   .
 
-  config:DomeintabelGroepEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/domeintabelgroep";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:DomeintabelGroep
-  .
-
-  config:DomeintabelHistorieEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/domeintabel/historie";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:DomeintabelHistorie
-  .
-
-  config:DomeintabelStagingEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/domeintabel/staging";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:DomeintabelStaging
-  .
-
-  config:Domeintabel a elmo:Representation;
-    elmo:appearance config:DomeintabelAppearance;
+  config:BeheerDomeintabel a elmo:Representation;
+    elmo:appearance config:BeheerDomeintabelAppearance;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
-    elmo:contains config:DomeinTitel;
-    elmo:contains config:ExportIndex;
-    elmo:contains config:Menu;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
   .
 
-  config:DomeintabelGroep a elmo:Representation;
-    elmo:appearance config:DomeintabelAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:ConceptImage;
-    elmo:contains config:DomeinGroepTitel;
-    elmo:contains config:ExportIndex;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:DomeintabelGroepData;
-  .
-
-  config:DomeintabelHistorie a elmo:Representation;
-    elmo:appearance config:DomeintabelAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:ConceptImage;
-    elmo:contains config:DomeinTitel;
-    elmo:contains config:ExportIndex;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:DomeintabelHistorieData;
-  .
-
-
-
-  config:DomeintabelStaging a elmo:Representation;
-    elmo:appearance config:DomeintabelAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:ConceptImage;
-    elmo:contains config:DomeinTitel;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:contains config:PublicerenLink;
-    elmo:informationProduct config:DomeintabelStagingData;
-  .
-
-  config:DomeinTitel a elmo:Representation;
-    elmo:stage config:Stage;
-    elmo:appearance config:DomeinTitelAppearance;
-    elmo:informationProduct config:DomeinTitelData;
-  .
-
-  config:DomeinGroepTitel a elmo:Representation;
-    elmo:stage config:Stage;
-    elmo:appearance config:DomeintabelGroepTitelAppearance;
-    elmo:informationProduct config:DomeintabelGroepTitelData;
-  .
-
-  config:PublicerenLink a elmo:Representation;
-    elmo:stage config:Stage;
-    elmo:appearance [
-      elmo:index 1;
-      a elmo:IndexAppearance
-    ];
-    elmo:informationProduct config:PublishDomeintabelData
-  .
-
-  config:DomeinTitelAppearance a elmo:TableAppearance;
-    elmo:index "01";
-    elmo:fragment [
-      elmo:appliesTo "subject";
-      xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
-      rdfs:label "Domeintabel metadata"@nl;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "beheerder";
-      xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta-agent";
-      rdfs:label "Beheerder"@nl;
-    ];
-  .
-
-  config:DomeintabelGroepTitelAppearance a elmo:TableAppearance;
-    elmo:index "01";
-    elmo:fragment [
-      elmo:appliesTo rdfs:label;
-      elmo:appearance elmo:HiddenAppearance;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "domeintabel";
-      rdfs:label "Domeintabel"@nl;
-      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
-      elmo:index "01";
-    ];
-    elmo:fragment [
-      elmo:appliesTo  "subject";
-      rdfs:label "Groep"@nl;
-      xhtml:link "%{dotwebstack.config.aquoroot}/domeintabelgroep";
-      elmo:index "02";
-    ];
-  .
-
-  config:DomeintabelAppearance a elmo:TableAppearance;
+  config:BeheerDomeintabelAppearance a elmo:TableAppearance;
     elmo:index "02";
     elmo:fragment [
       elmo:appliesTo rdf:type;
@@ -145,7 +35,10 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo elmo:subject;
-      elmo:appearance elmo:HiddenAppearance;
+      rdfs:label "ID"@nl;
+      rdf:value "edit";
+      elmo:index "00";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelwaarde";
     ];
     elmo:fragment [
       elmo:appliesTo dct:identifier;
@@ -161,7 +54,6 @@ GRAPH config:Theatre {
       elmo:appliesTo aquo:Cijfercode;
       elmo:index "03";
     ];
-
     elmo:fragment [
       elmo:appliesTo aquo:Omschrijving;
       elmo:index "04";
@@ -178,8 +70,7 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
-      xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-      rdfs:label "relatie"@nl;
+      elmo:appearance elmo:HiddenAppearance;
       elmo:index "08";
     ];
     elmo:fragment [

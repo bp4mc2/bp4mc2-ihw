@@ -11,11 +11,9 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:SearchLijst
   .
   config:SearchLijst a elmo:Representation;
-    #elmo:appearance config:SearchLijstAppearance;
     elmo:appearance config:SearchConceptenAppearance;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
-    #elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:contains config:SearchCategorieen;

@@ -6,16 +6,29 @@ GRAPH config:Theatre {
 #
 # ==========================    
 
+  config:AquoVocabEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/def/aquo";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:AquoVocab
+  .
+  config:AquoVocab a elmo:Representation;
+    elmo:appearance [ a elmo:VocabularyAppearance ];
+    elmo:stage config:Stage;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:AquoVocabulaireData;
+  .
+
   config:VocabulaireEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/def/aquo";
-  elmo:stage config:Stage;
-  elmo:getRepresentation config:Vocabulaire
+    elmo:pathPattern "/def/aquoprofiel";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:Vocabulaire
   .
   config:Vocabulaire a elmo:Representation;
     elmo:appearance [ a elmo:VocabularyAppearance ];
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
-    #elmo:contains config:Image;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:VocabulaireData;

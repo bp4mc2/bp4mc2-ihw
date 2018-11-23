@@ -1,64 +1,44 @@
 GRAPH config:Theatre {
 
-  config:ReactEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/fase2";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:ReactEditor;
-  .
   config:ReactEditorDomeinEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/fase2-domein";
     elmo:stage config:Stage;
     elmo:getRepresentation config:ReactEditorDomein;
   .
 
-  config:ReactEditor a elmo:Representation;
-    elmo:appearance config:ReactEditorAppearance;
-    elmo:stage config:Stage;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:informationProduct config:ReactEditorData;
-  .
   config:ReactEditorDomein a elmo:Representation;
-    elmo:appearance config:ReactEditorDomeinAppearance;
+    elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
-    elmo:contains config:Menu;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorDomeinData;
   .
 
-  config:ReactEditorAppearance a elmo:ReactEditorAppearance;
-  .
-  config:ReactEditorDomeinAppearance a elmo:ReactEditorAppearance;
-  .
-
-  # Moet uiteindelijk de config worden, voor nu ff dummy
-  config:ReactEditorData a elmo:InformationProduct;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
-      CONSTRUCT {
-        <http://localhost:8080/editor>
-          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
-          elmo:searchEndpoint "/beheer/begrippenlijst";
-          elmo:endpoint "/beheer/begrippen";
-          elmo:definition "/def/begrip?format=json"
-        .
-      }
-      WHERE {}
-    """
-  .
   config:ReactEditorDomeinData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
     elmo:query """
       PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      PREFIX dct: <http://purl.org/dc/terms/>
       CONSTRUCT {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
-          elmo:endpoint "/beheer/domeintabel/AfsluitmiddelType";
-          elmo:definition "/def/domeintabel/AfsluitmiddelType?format=json"
+          elmo:searchEndpoint ?searchendpoint;
+          elmo:endpoint ?endpoint;
+          elmo:definition ?definition
         .
       }
-      WHERE {}
+      WHERE {
+        SELECT (concat("/beheer/domeinwaardenlijst/",?domeintabelnaam) as ?searchendpoint)
+               (concat("/beheer/domeintabel/",?domeintabelnaam) as ?endpoint)
+               (concat("/def/domeintabel/",?domeintabelnaam,"?format=json") as ?definition)
+        WHERE {
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
+            BIND(strafter(str(?subject),"domeintabel/") as ?domeintabelnaam)
+          }
+        }
+      }
     """
   .
 

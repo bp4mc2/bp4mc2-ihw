@@ -1,0 +1,59 @@
+GRAPH config:Theatre {
+
+# ==========================
+#
+# Domeintabelwaarden voor editor
+#
+# ==========================
+
+config:DomeintabelZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/domeinwaardenlijst/{domaintablename}";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:DomeintabelZoeklijst;
+.
+
+config:DomeintabelZoeklijst a elmo:Representation;
+  elmo:stage config:Stage;
+  elmo:appearance [a elmo:Appearance];
+  elmo:informationProduct config:DomeintabelZoeklijstData;
+  elmo:parameterMapper config:DomeintabelFromLijstUrl;
+.
+
+config:DomeintabelFromLijstUrl a elmo:UriParameterMapper;
+  elmo:source http:requestURI;
+  elmo:pattern "http://{domain}/beheer/domeinwaardenlijst/{domaintablename}";
+  elmo:template "http://standaard.aquo.nl/id/domeintabel/{domaintablename}";
+  elmo:target elmo:SubjectParameter;
+.
+
+# ==========================
+#
+# Informatieproduct in de editor
+#
+# ==========================
+
+  config:DomeintabelZoeklijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      SELECT ?uri ?label
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?subject dcat:landingPage ?domaintablegraph.
+        }
+        GRAPH ?domaintablegraph {
+          ?uri aquo:Omschrijving ?label.
+          ?uri foaf:isPrimaryTopicOf ?meta.
+        }
+      }
+    """;
+  .
+
+}

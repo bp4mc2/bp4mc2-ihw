@@ -8,13 +8,29 @@ GRAPH config:Theatre {
   config:DomeinWaardenLijst a elmo:Representation;
     elmo:appearance config:DomeinWaardenAppearance;
     elmo:stage config:Stage;
-    #elmo:contains config:Image;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeinWaardenData;
   .
- 
+
+  # Alles behalve /begrip/ wordt gematched, /begrip/ gaat naar een specifiek endpoint
+  config:DomeinwaardeDetailsURIEndpoint a elmo:Endpoint;
+#    elmo:pathPattern "/doc/{domeintabel:^(?!begrip)[^\/]+$}/{id}";
+    elmo:pathPattern "/doc/{domeintabel:[A-Z][^\/]+}/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinwaardeDetailsURI;
+  .
+  config:DomeinwaardeDetailsURI a elmo:Representation;
+    elmo:appearance config:DomeinWaardenAppearance;
+    elmo:parameterMapper config:SubjectFromUrl;
+    elmo:stage config:Stage;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeinWaardenData;
+  .
+
   config:DomeinWaardenAppearance a elmo:ContentAppearance;
     elmo:fragment [
       elmo:index 1;

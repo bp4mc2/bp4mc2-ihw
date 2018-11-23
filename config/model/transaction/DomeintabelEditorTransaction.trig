@@ -7,7 +7,7 @@ GRAPH config:Theatre {
 # ==========================
 
   config:DomeintabelEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/domeintabel";
+    elmo:pathPattern "/beheer/domeintabel-oud";
     elmo:stage config:Stage;
     elmo:getRepresentation config:DomeintabelEditor;
   .
