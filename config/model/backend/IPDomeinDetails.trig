@@ -152,7 +152,7 @@ GRAPH config:Theatre {
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-      prefix xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX adms: <http://www.w3.org/ns/adms#>
       CONSTRUCT {
@@ -161,21 +161,23 @@ GRAPH config:Theatre {
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start;
-          dcmiperiod:end ?einde;
+          dcmiperiod:end ?endr;
           adms:status ?status.
         ?begrip rdfs:label ?begrip_label.
         ?o rdfs:label ?olabel.
       }
       WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?subject dcat:landingPage ?domeingraph
+        }
         GRAPH ?domeingraph {
           ?id ?p ?o;
             a ?type;
             foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start.
-          OPTIONAL {
-            ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
-          }
-          BIND(IF(BOUND(?einde), "historisch","gepubliceerd") as ?status)
           FILTER (?type != prov:Entity && ?type != skos:Concept)
+          OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+          BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
+          BIND(IF(BOUND(?end), "historisch","gepubliceerd") as ?status)
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
@@ -185,19 +187,14 @@ GRAPH config:Theatre {
           OPTIONAL {
             ?o rdfs:label ?olabel
           }
-          FILTER NOT EXISTS {
-              ?id a skos:Concept.
-          }
-        }
-        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-            ?subject dcat:landingPage ?domeingraph
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
             ?id owl:sameAs ?begrip
           }
           GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-            ?begrip skos:prefLabel ?begrip_label
+            ?begrip a skos:Concept;
+              skos:prefLabel ?begrip_label
           }
         }
 
@@ -208,6 +205,8 @@ GRAPH config:Theatre {
           && ?p != rdf:type
         )
       }
+
+
     """
   .
 
