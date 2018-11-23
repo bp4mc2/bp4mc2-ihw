@@ -12,44 +12,38 @@ GRAPH config:Theatre {
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
-      SELECT ?categorie ?categorie_label ?categoriecount ?domeincount 
+      SELECT ?categorie ?categorie_label (count(distinct ?begrip) as ?categoriecount) (count(distinct ?domein) as ?domeincount) 
       WHERE {
-        {
-          SELECT ?categorie ?categorie_label
-          WHERE {
-            GRAPH <http://standaard.aquo.nl/data/categorieen> {
-              ?categorie a skos:Collection;
-                rdfs:label ?categorie_label.
-            }
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?categorie a skos:Collection;
+            rdfs:label ?categorie_label.
+          OPTIONAL {
+            ?categorie foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start.
+          }
+          FILTER NOT EXISTS {
+            ?categorie foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?einde.
+#            FILTER (now() > xsd:dateTime(concat(str(?einde),"T00:00:00")))
           }
         }
         OPTIONAL {
-        SELECT  ?categorie (count(*) as ?categoriecount)
-          WHERE {
-            GRAPH <http://standaard.aquo.nl/data/categorieen> {
-              ?categorie skos:member ?begrip.
-            }
-            GRAPH <http://standaard.aquo.nl/data/begrippen> {
-              ?begrip rdf:type skos:Concept.
-            }
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?begrip.
           }
-        GROUP BY ?categorie
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+            ?begrip rdf:type skos:Concept.
+          }
         }
         OPTIONAL {
-          SELECT ?categorie (count(distinct ?domein) as ?domeincount) 
-          WHERE {
-            GRAPH <http://standaard.aquo.nl/data/categorieen> {
-              ?categorie skos:member ?catbegrip.
-            }
-            GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
-              ?domein dcat:theme ?catbegrip.
-            }
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?catbegrip.
           }
-        GROUP BY ?categorie
+           GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?domein dcat:theme ?catbegrip.
+          }
         }
       }
-      GROUP BY ?categorie ?categorie_label ?categoriecount ?domeincount
-      ORDER BY ?categorie 
+      group by ?categorie ?categorie_label ?start
+      order by ?categorie
     """
   .
   
