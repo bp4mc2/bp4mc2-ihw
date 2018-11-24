@@ -10,13 +10,18 @@ GRAPH config:Theatre {
 #                 - xsd:int    => nummeric input field
 #                 - xsd:date or xsd:dateTime => date picker input field
 #                 - xsd:boolean => Three state radio button or checkbox (undefined, true, false)
+#                 - If this element is missing, use xsd:string as default
 # rdfs:label => The label to be displayed
-# sh:class => Indicates a search input field (select from dynamic list)
-# sh:minCount 1 => Indicates mandatory field
-# sh:maxCount 1 => Indicates at most one entry
-# sh:maxLength => Indicates the length of the string (60 or larger means textarea field)
+# sh:class => Indicates a search input field (select from dynamic list), use elmo:endpoint for the location of the list
+# sh:minCount 1 => Indicates mandatory field. If this element is missing, the field is not mandatory
+# sh:maxCount 1 => Indicates at most one entry. If this element is missing, multiple entries are allowed
+# sh:maxLength => Indicates the length of the string (60 or larger means textarea field). If this element is missing, use a standard input field
 #
 
+  # NB:
+  # Helaas kun je nog niet een query doen op de configuratie repo zelf
+  # Hieronder is een kopie van BegrippenShapesGraph.trig!!
+  #
   config:BegripDefinitieData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
@@ -26,119 +31,164 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX elmo: <http://dotwebstack.org/def/elmo#>
       CONSTRUCT {
-        <urn:property:p1> a sh:PropertyShape;
+        <urn:property:prefLabel> a sh:PropertyShape;
           sh:order 1;
+          sh:name "prefLabel";
+          rdfs:label "Voorkeursterm"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#prefLabel>;
+          sh:datatype xsd:string;
+          sh:minCount 1;
+          sh:maxCount 1;
+        .
+        # Label en voorkeursterm zijn aan elkaar gekoppeld, dat gebeurt in de API. Voorlopig toch editable houden
+        <urn:property:label> a sh:PropertyShape;
+          sh:order 2;
+          sh:name "label";
+          rdfs:label "Te tonen label"@nl;
+          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+          sh:datatype xsd:string;
+          sh:minCount 1;
+          sh:maxCount 1;
+        .
+        <urn:property:definition> a sh:PropertyShape;
+          sh:order 3;
+          sh:name "definition";
+          rdfs:label "Definitie"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#definition>;
+          sh:datatype xsd:string;
+          sh:maxCount 1;
+          sh:maxLength 2000;
+        .
+        <urn:property:altLabel> a sh:PropertyShape;
+          sh:order 4;
+          sh:name "altLabel";
+          rdfs:label "Synoniem"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
+        .
+        <urn:property:abbreviation> a sh:PropertyShape;
+          sh:order 5;
+          sh:name "abbreviation";
+          rdfs:label "Afkorting"@nl;
+          sh:path <http://standaard.aquo.nl/def/aquo#abbreviation>;
+          sh:datatype xsd:string;
+          sh:maxLength 59;
+        .
+        <urn:property:source> a sh:PropertyShape;
+          sh:order 6;
           sh:name "source";
           rdfs:label "Bron"@nl;
           sh:path <http://purl.org/dc/elements/1.1/source>;
+          sh:maxLength 1000;
+        .
+        <urn:property:notation> a sh:PropertyShape;
+          sh:order 7;
+          sh:name "notation";
+          rdfs:label "Code"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#notation>;
           sh:datatype xsd:string;
+          sh:maxCount 1;
         .
-        <urn:property:p2> a sh:PropertyShape;
-          sh:order 2;
-          sh:name "dateCreated";
-          rdfs:label "Datum aangemaakt"@nl;
-          sh:path <http://purl.org/dc/terms/created>;
-          sh:datatype xsd:dateTime;
+        # Deze velden worden automatisch gezet
+        #        <urn:property:p2> a sh:PropertyShape;
+        #          sh:order 8;
+        #          sh:name "dateCreated";
+        #          rdfs:label "Datum aangemaakt"@nl;
+        #          sh:path <http://purl.org/dc/terms/created>;
+        #          sh:datatype xsd:dateTime;
+        #        .
+        #        <urn:property:p3> a sh:PropertyShape;
+        #          sh:order 9;
+        #          sh:name "dateModified";
+        #          rdfs:label "Datum laatste wijziging"@nl;
+        #          sh:path <http://purl.org/dc/terms/modified>;
+        #          sh:datatype xsd:dateTime;
+        #        .
+        # Uitzoeken: categorie werkt nu reverse, maar moet wel getoond worden hier!
+        #        <urn:property:p4> a sh:PropertyShape;
+        #          sh:order 10;
+        #          sh:name "subject";
+        #          rdfs:label "Categorie"@nl;
+        #          sh:path <http://purl.org/dc/terms/subject>;
+        #        .
+        <urn:property:broader> a sh:PropertyShape;
+          sh:order 11;
+          sh:name "broaderTerm";
+          rdfs:label "Bredere term"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#broader>;
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
         .
-        <urn:property:p3> a sh:PropertyShape;
-          sh:order 3;
-          sh:name "dateModified";
-          rdfs:label "Datum laatste wijziging"@nl;
-          sh:path <http://purl.org/dc/terms/modified>;
-          sh:datatype xsd:dateTime;
+        <urn:property:narrower> a sh:PropertyShape;
+          sh:order 12;
+          sh:name "narrowerTerm";
+          rdfs:label "Smallere term"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#narrower>;
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
         .
-# Uitzoeken: categorie werkt nu reverse, maar moet wel getoond worden hier!
-#        <urn:property:p4> a sh:PropertyShape;
-#          sh:order 4;
-#          sh:name "subject";
-#          rdfs:label "Categorie"@nl;
-#          sh:path <http://purl.org/dc/terms/subject>;
-#        .
-        <urn:property:p5> a sh:PropertyShape;
-          sh:order 5;
+        <urn:property:broaderPartitive> a sh:PropertyShape;
+          sh:order 13;
           sh:name "isPartOf";
           rdfs:label "Onderdeel van"@nl;
           sh:path <http://purl.org/iso25964/skos-thes#broaderPartitive>;
           sh:class skos:Concept;
           elmo:endpoint "/beheer/begrippenlijst";
         .
-        <urn:property:p6> a sh:PropertyShape;
-          sh:order 6;
+        <urn:property:narrowerPartitive> a sh:PropertyShape;
+          sh:order 14;
           sh:name "hasPart";
           rdfs:label "Bestaat uit"@nl;
           sh:path <http://purl.org/iso25964/skos-thes#narrowerPartitive>;
-          sh:class skos:Concept
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
         .
-        <urn:property:p7> a sh:PropertyShape;
-          sh:order 7;
-          sh:name "label";
-          rdfs:label "Naam"@nl;
-          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
-          sh:datatype xsd:string;
-        .
-        <urn:property:p8> a sh:PropertyShape;
-          sh:order 8;
-          sh:name "altLabel";
-          rdfs:label "Synoniem"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
-          sh:datatype xsd:string;
-        .
-        <urn:property:p9> a sh:PropertyShape;
-          sh:order 9;
-          sh:name "broaderTerm";
-          rdfs:label "Bredere term"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#broader>;
-          sh:class skos:Concept
-        .
-        <urn:property:p10> a sh:PropertyShape;
-          sh:order 10;
-          sh:name "definition";
-          rdfs:label "Definitie"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#definition>;
-          sh:datatype xsd:string;
-          sh:maxLength 60;
-        .
-        <urn:property:p11> a sh:PropertyShape;
-          sh:order 11;
-          sh:name "narrowerTerm";
-          rdfs:label "Smallere term"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#narrower>;
-          sh:class skos:Concept
-        .
-        <urn:property:p12> a sh:PropertyShape;
-          sh:order 12;
-          sh:name "notation";
-          rdfs:label "Code"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#notation>;
-          sh:datatype xsd:string;
-        .
-        <urn:property:p13> a sh:PropertyShape;
-          sh:order 13;
-          sh:name "note";
-          rdfs:label "Notitie"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#note>;
-          sh:datatype xsd:string;
-        .
-        <urn:property:p14> a sh:PropertyShape;
-          sh:order 14;
-          sh:name "prefLabel";
-          rdfs:label "Voorkeursterm"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#prefLabel>;
-          sh:datatype xsd:string;
-        .
-        <urn:property:p15> a sh:PropertyShape;
+        <urn:property:related> a sh:PropertyShape;
           sh:order 15;
           sh:name "related";
           rdfs:label "Gerelateerd aan"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#related>;
-          sh:class skos:Concept
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
         .
-        <urn:property:p16> a sh:PropertyShape;
+        <urn:property:note> a sh:PropertyShape;
           sh:order 16;
+          sh:name "note";
+          rdfs:label "Notitie"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#note>;
+          sh:datatype xsd:string;
+          elmo:endpoint "/beheer/begrippenlijst";
+        .
+        <urn:property:replaces> a sh:PropertyShape;
+          sh:order 17;
+          sh:name "replaces";
+          rdfs:label "Vervangt begrip"@nl;
+          sh:path <http://purl.org/dc/terms/replaces>;
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst"; #Deze lijst moet dus ook vervallen begrippen bevatten!
+        .
+        <urn:property:relatedMatch> a sh:PropertyShape;
+          sh:order 18;
           sh:name "relatedMatch";
           rdfs:label "Begrip ander domein"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#relatedMatch>;
           # Begrip ander domein is een uri, maar kan niet gevonden worden. Hoe gaan we dit tonen?
+        .
+        <urn:property:beginGeldigheid> a sh:PropertyShape;
+          sh:order 19;
+          sh:name "beginGeldigheid";
+          rdfs:label "Begin geldigheid"@nl;
+          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+          sh:datatype xsd:date;
+          sh:minCount 1;
+          sh:maxCount 1;
+        .
+        <urn:property:eindeGeldigheid> a sh:PropertyShape;
+          sh:order 19;
+          sh:name "eindeGeldigheid";
+          rdfs:label "Einde geldigheid"@nl;
+          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+          sh:datatype xsd:date;
+          sh:maxCount 1;
         .
       }
       WHERE {
