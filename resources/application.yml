@@ -34,5 +34,5 @@ security:
       password: $2a$11$Z0uBLK6ocuMoqVYFUimZre./Y4iBq5v8IrhOVpR.oVJzJK6V7.lVu
       role: admin
   protect:
-    - path: /beheer
+    - path: /beheer/**
       role: admin
