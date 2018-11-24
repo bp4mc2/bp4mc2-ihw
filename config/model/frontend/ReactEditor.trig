@@ -5,6 +5,11 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:getRepresentation config:ReactEditorDomein;
   .
+  config:ReactEditorDomeinwaardeEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/domeintabelwaarde";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:ReactEditorDomeinwaarde;
+  .
 
   config:ReactEditorDomein a elmo:Representation;
     elmo:appearance [a elmo:ReactEditorAppearance];
@@ -12,6 +17,13 @@ GRAPH config:Theatre {
     elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorDomeinData;
+  .
+  config:ReactEditorDomeinwaarde a elmo:Representation;
+    elmo:appearance [a elmo:ReactEditorAppearance];
+    elmo:stage config:Stage;
+    elmo:contains config:BeheerMenu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:ReactEditorDomeinwaardeData;
   .
 
   config:ReactEditorDomeinData a elmo:InformationProduct;
@@ -36,6 +48,34 @@ GRAPH config:Theatre {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
             <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?subject.
             BIND(strafter(str(?subject),"domeintabel/") as ?domeintabelnaam)
+          }
+        }
+      }
+    """
+  .
+  config:ReactEditorDomeinwaardeData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:query """
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      CONSTRUCT {
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:searchEndpoint ?searchendpoint;
+          elmo:endpoint ?endpoint;
+          elmo:definition ?definition;
+          elmo:searchResult ?subject
+        .
+      }
+      WHERE {
+        SELECT (concat("/beheer/domeinwaardenlijst/",?domeintabelnaam) as ?searchendpoint)
+               (concat("/beheer/domeintabel/",?domeintabelnaam) as ?endpoint)
+               (concat("/def/domeintabel/",?domeintabelnaam,"?format=json") as ?definition)
+        WHERE {
+          GRAPH ?domeintabel {
+            ?subject a ?type
+            BIND(strafter(str(?type),"#") as ?domeintabelnaam)
           }
         }
       }
