@@ -59,6 +59,7 @@ Als je aanpassingen hebt gedaan aan de configuratie, stop dan de dotwebstack met
 		- `upload-links` voor de links tussen domeintabelwaarden en begrippen;
 		- `upload-metadata` voor de metadata van de domeintabellen;
 		- `upload-vocabulaire` voor de aquo vocabulaire.
+    - `upload-shacl` voor de configuratie van domeintabellen
 4. Zorg dat je weer bent uitgelogd:
     - `logout` (de keycookie.txt wordt weer verwijderd)
 
