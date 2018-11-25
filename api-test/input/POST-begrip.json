@@ -1,0 +1,16 @@
+[ {
+  "@id" : "http://standaard.aquo.nl/id/begrip/BEGRIP",
+  "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "daTa on the web stack"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "DotWebStack"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Dotwebstack"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "De Data on the web Stack - voor al uw API's, Linked Data en meer!"
+  } ]
+} ]
