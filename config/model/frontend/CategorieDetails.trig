@@ -52,10 +52,11 @@ GRAPH config:Theatre {
 
   config:CategorieTitel a elmo:Representation;
     elmo:stage config:Stage;
-    elmo:appearance config:CategorieTitelAppearance;
+    elmo:appearance config:ConceptDetailAppearance; #Hergebruik uit ConceptDetails.trig
     elmo:informationProduct config:CategorieTitelData;
   .
 
+  #LET OP: Deprecated, kan weg
   config:CategorieTitelAppearance a elmo:ContentAppearance;
     elmo:index 1;
     elmo:fragment [
@@ -73,7 +74,7 @@ GRAPH config:Theatre {
    .
 
   config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
-    elmo:index 2;
+    elmo:index 3;
     elmo:fragment [
       elmo:index 2;
       elmo:appliesTo "begrip";
@@ -94,7 +95,7 @@ GRAPH config:Theatre {
   .
 
   config:CategorieDomeinAppearance a elmo:TableAppearance;
-    elmo:index 3;
+    elmo:index 4;
     elmo:fragment [
       elmo:appliesTo rdf:type;
       elmo:appearance elmo:HiddenAppearance;

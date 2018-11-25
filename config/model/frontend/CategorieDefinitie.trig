@@ -1,0 +1,15 @@
+GRAPH config:Theatre {
+
+  config:CategorieDefinitieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/def/categorie";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:CategorieDefinitie
+  .
+
+  config:CategorieDefinitie a elmo:Representation;
+    elmo:appearance [a elmo:Appearance];
+    elmo:stage config:Stage;
+  	elmo:informationProduct config:CategorieDefinitieData;
+  .
+
+}

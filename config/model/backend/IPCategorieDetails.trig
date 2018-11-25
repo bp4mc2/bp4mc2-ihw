@@ -37,13 +37,25 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?subject rdf:type skos:Collection;
           rdfs:label ?clabel;
-          rdfs:comment ?comment.
+          rdfs:comment ?comment;
+          ?p ?o
+        .
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
-            ?subject rdfs:label ?label.
-            OPTIONAL{?subject rdfs:comment ?comment}
+          ?subject rdfs:label ?label.
+          OPTIONAL{?subject rdfs:comment ?comment}
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?subject skos:member ?catbegrip.
+            ?catbegrip skos:exactMatch ?begrip.
           }
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+            ?begrip ?p ?o
+            FILTER (?p != rdfs:label)
+          }
+        }
         BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }
     """
