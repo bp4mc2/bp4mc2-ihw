@@ -1,17 +1,22 @@
 GRAPH config:Theatre {
- 
+
  config:ConceptenCategorieLijstEndpoint a elmo:Endpoint;
   elmo:pathPattern "/begrippen-per-categorie";
   elmo:stage config:Stage;
   elmo:getRepresentation config:ConceptenCategorieLijst
   .
 
-  config:CategorieURIEndpoint a elmo:Endpoint;
+  config:CategorieDomeinURIEndpoint a elmo:Endpoint;
     elmo:pathPattern "/doc/collectie/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:CategorieDomeinURI
+  .
+  config:CategorieURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/doc/categorie/{id}";
     elmo:stage config:Stage;
     elmo:getRepresentation config:CategorieURI
   .
-  
+
   config:ConceptenCategorieLijst a elmo:Representation;
     elmo:stage config:Stage;
     elmo:contains config:CategorieTitel;
@@ -22,8 +27,8 @@ GRAPH config:Theatre {
     elmo:appearance config:CategorieConceptenLijstAppearance;
     elmo:informationProduct config:ConceptenCategorieLijstData;
   .
-  
-  config:CategorieURI a elmo:Representation;
+
+  config:CategorieDomeinURI a elmo:Representation;
     elmo:stage config:Stage;
     elmo:parameterMapper config:SubjectFromUrl;
     elmo:contains config:CategorieTitel;
@@ -34,7 +39,17 @@ GRAPH config:Theatre {
     elmo:appearance config:CategorieConceptenLijstAppearance;
     elmo:informationProduct config:ConceptenCategorieLijstData;
   .
-  
+
+  config:CategorieURI a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:parameterMapper config:SubjectFromUrl;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:appearance [a elmo:Appearance];
+    elmo:informationProduct config:CategorieData;
+  .
+
   config:CategorieTitel a elmo:Representation;
     elmo:stage config:Stage;
     elmo:appearance config:CategorieTitelAppearance;
@@ -56,7 +71,7 @@ GRAPH config:Theatre {
       rdfs:label "Omschrijving"@nl;
     ];
    .
-   
+
   config:CategorieConceptenLijstAppearance a elmo:TableAppearance;
     elmo:index 2;
     elmo:fragment [
@@ -65,7 +80,7 @@ GRAPH config:Theatre {
       xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
       rdfs:label "Term"@nl;
     ];
-    elmo:fragment [ 
+    elmo:fragment [
       elmo:index 3;
       elmo:appliesTo "definitie";
       rdfs:label "Definitie"@nl;
@@ -94,5 +109,5 @@ GRAPH config:Theatre {
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];
    .
-  
+
 }
