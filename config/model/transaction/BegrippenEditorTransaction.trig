@@ -322,6 +322,46 @@ config:BegrippenPostTransaction a elmo:Transaction;
       a elmo:UpdateStep;
       elmo:backend config:UpdateBackend;
       elmo:query """
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        DELETE {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s adms:identifier ?olduriterm
+          }
+        }
+        INSERT {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s adms:identifier ?newuriterm
+          }
+        }
+        WHERE {
+          SELECT ?s ?olduriterm (concat(?olduriterm,"_",str(1+?cnt)) as ?newuriterm)
+          WHERE {
+            {
+              GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s adms:identifier ?olduriterm.
+                BIND(iri(concat("http://standaard.aquo.nl/id/begrip/",?olduriterm)) as ?uri)
+              }
+              GRAPH <http://standaard.aquo.nl/data/begrippen> {
+                ?uri a skos:Concept.
+              }
+            }
+            {
+              SELECT (count(?begrip) as ?cnt)
+              WHERE {
+                GRAPH <http://standaard.aquo.nl/data/begrippen> {
+                  ?begrip a skos:Concept.
+                }
+              }
+            }
+          }
+        }
+      """
+    ]
+    [
+      a elmo:UpdateStep;
+      elmo:backend config:UpdateBackend;
+      elmo:query """
         PREFIX prov: <http://www.w3.org/ns/prov#>
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>

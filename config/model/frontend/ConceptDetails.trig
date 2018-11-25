@@ -53,13 +53,13 @@ GRAPH config:Theatre {
 	  elmo:index 01;
 	  elmo:appliesTo skos:definition;
 	  rdfs:label "Definitie"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 02;
 	  elmo:appliesTo skos:prefLabel;
 	  rdfs:label "Naam"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   elmo:fragment [
 	  elmo:index 03;
@@ -70,69 +70,69 @@ GRAPH config:Theatre {
 	  elmo:index 04;
 	  elmo:appliesTo aquo:dutchLabel;
 	  rdfs:label "Synoniem"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 
 	elmo:fragment [
 	  elmo:index 06;
 	  elmo:appliesTo skos:note;
 	  rdfs:label "Toelichting"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 07;
 	  elmo:appliesTo rdfs:comment;
 	  rdfs:label "Uitleg"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 08;
 	  elmo:appliesTo dc:source;
 	  rdfs:label "Bron"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 9;
 	  elmo:appliesTo aquo:abbreviation;
 	  rdfs:label "Afkorting"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	   elmo:index 10;
      elmo:appliesTo dct:subject;
      xhtml:link "%{dotwebstack.config.aquoroot}/begrippen-per-categorie";
-     xhtml:meta rdf:nil;
+     #xhtml:meta rdf:nil;
 	  ];
   elmo:fragment [
 	  elmo:index 11;
 	  elmo:appliesTo aquo:englishLabel;
 	  rdfs:label "Engels label"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   elmo:fragment [
 	  elmo:index 12;
 	  elmo:appliesTo aquo:flemmishLabel;
 	  rdfs:label "Vlaams label"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   elmo:fragment [
 	  elmo:index 13;
 	  elmo:appliesTo aquo:germanLabel;
 	  rdfs:label "Duits label"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 14;
 	  elmo:appliesTo skos:notation;
 	  rdfs:label "Code"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   elmo:fragment [
 	  elmo:index 15;;
 	  elmo:appliesTo owl:sameAs;
     xhtml:link "%{dotwebstack.config.aquoroot}/domeinwaarden";
 	  rdfs:label "Domeinwaarde"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   # elmo:fragment [
 	  # elmo:index 14;
@@ -146,7 +146,7 @@ GRAPH config:Theatre {
 	  rdfs:label "Bredere term"@nl;
     xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
     elmo:name "begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 21;
@@ -154,28 +154,28 @@ GRAPH config:Theatre {
 	  rdfs:label "Nauwere term"@nl;
     xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
     elmo:name "begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
   ];
 	elmo:fragment [
 	  elmo:index 22;
 	  elmo:appliesTo skos:related;
 	  rdfs:label "Gerelateerde term"@nl;
     xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
     elmo:fragment [
      elmo:index 23;
 	  elmo:appliesTo thes:broaderPartitive;
 	  rdfs:label "Onderdeel van"@nl;
 	  xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 24;
 	  elmo:appliesTo thes:narrowerPartitive;
 	  rdfs:label "Heeft onderdeel"@nl;
 	  xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 	  elmo:index 25;
@@ -183,46 +183,46 @@ GRAPH config:Theatre {
 	  rdfs:label "Gerelateerde term in andere begrippencatalogus"@nl;
     elmo:appearance elmo:GlobalLink;
 	  xhtml:link "";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 		elmo:index 25;
 		elmo:appliesTo dct:isReplacedBy;
 		rdfs:label "Gebruik"@nl;
 		xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
 	elmo:fragment [
 		elmo:index 26;
 		elmo:appliesTo dct:replaces;
 		rdfs:label "Gebruik in plaats van"@nl;
 		xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
 	];
   elmo:fragment [
     elmo:index 27;
     elmo:appliesTo dct:created;
     rdfs:label "Created"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
   ];
   elmo:fragment [
     elmo:index 28;
     elmo:appliesTo dct:modified;
     rdfs:label "Modified"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
   ];
   elmo:fragment [
     elmo:index 29;
     elmo:appliesTo adms:status;
     rdfs:label "Status"@nl;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
   ];
   elmo:fragment [
     elmo:index 99;
     elmo:appliesTo skos:example;
     rdfs:label "Voorbeeld afbeelding"@nl;
     elmo:appearance elmo:ImageAppearance;
-    xhtml:meta rdf:nil;
+    #xhtml:meta rdf:nil;
   ];
 
 
