@@ -20,7 +20,7 @@ GRAPH config:Theatre {
     elmo:contains config:Footer;
     elmo:contains config:GraphDisplay;
     elmo:appearance config:ConceptDetailAppearance;
-    elmo:informationProduct config:ConceptDetailData;
+    elmo:informationProduct config:ConceptDetailPlainData;
   .
   config:ConceptenDetails a elmo:Representation;
     elmo:stage config:Stage;

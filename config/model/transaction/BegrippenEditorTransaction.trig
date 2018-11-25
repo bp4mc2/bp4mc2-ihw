@@ -190,33 +190,43 @@ config:BegrippenPutTransaction a elmo:Transaction;
         PREFIX dct: <http://purl.org/dc/terms/>
         PREFIX adms: <http://www.w3.org/ns/adms#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         DELETE {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?s ?pold ?oold.
             ?msold ?mpold ?moold.
+            ?mstold ?mstpold ?mstoold.
           }
         }
         INSERT  {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?s ?pnew ?onew.
             ?s foaf:isPrimaryTopicOf ?ms.
-            ?ms adms:status "Geldig".
             ?ms dct:modified ?t.
             ?ms prov:generatedAtTime ?t.
             ?ms dct:temporal ?mst.
+            ?mst dcmiperiod:start ?start.
+            ?mst dcmiperiod:end ?end.
           }
         }
         WHERE {
           GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
             ?s ?pnew ?onew
+            FILTER (?pnew != dct:created && ?pnew != dct:modified && ?pnew != dcmiperiod:start && ?pnew != dcmiperiod:end)
             BIND (now() as ?t)
             BIND (iri(replace(str(?s),"/id/","/doc/")) as ?ms)
             BIND (iri(concat(replace(str(?s),"/id/","/doc/"),"#temporal")) as ?mst)
+            OPTIONAL {?s dcmiperiod:start ?startr}
+            OPTIONAL {?s dcmiperiod:end ?end}
+            BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
           }
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?s ?pold ?oold.
             ?s foaf:isPrimaryTopicOf ?msold.
             ?msold ?mpold ?moold.
+            ?msold dct:temporal ?mstold.
+            ?mstold ?mstpold ?mstoold.
             FILTER (?mpold != dct:created)
           }
         }
@@ -376,20 +386,22 @@ config:BegrippenPostTransaction a elmo:Transaction;
             ?uri foaf:isPrimaryTopicOf ?metauri.
             ?metauri dct:created ?t.
             ?metauri dct:modified ?t.
-            ?metauri adms:status "Geldig".
             ?metauri prov:generatedAtTime ?t.
             ?metauri dct:temporal ?tempuri.
-            ?tempuri dcmiperiod:start "2018-01-01".
+            ?tempuri dcmiperiod:start ?start.
           }
         }
         WHERE {
           GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
             ?snew ?pnew ?onew.
+            FILTER (?pnew != dct:created && ?pnew != dct:modified && ?pnew != dcmiperiod:start && ?pnew != dcmiperiod:end && ?pnew != adms:identifier)
             ?snew adms:identifier ?localname.
             BIND (now() as ?t)
             BIND(iri(concat("http://standaard.aquo.nl/id/begrip/",?localname)) as ?uri)
             BIND(iri(concat("http://standaard.aquo.nl/doc/begrip/",?localname)) as ?metauri)
             BIND(iri(concat("http://standaard.aquo.nl/doc/begrip/",?localname,"#temporal")) as ?tempuri)
+            OPTIONAL {?snew dcmiperiod:start ?startr}
+            BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
           }
         }
       """
