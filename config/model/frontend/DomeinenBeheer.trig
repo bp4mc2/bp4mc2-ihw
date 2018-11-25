@@ -24,25 +24,36 @@ GRAPH config:Theatre {
   config:DomeinenLijstBeheerAppearance a elmo:TableAppearance;
     elmo:fragment [
       elmo:appliesTo "domeintabel";
+      rdfs:label "Domeintabel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel";
     ];
     elmo:fragment [
       elmo:appliesTo "historie";
+      rdfs:label "Historie"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/domeintabel/historie";
       rdf:value "historie"
     ];
     elmo:fragment [
       elmo:appliesTo "edit";
+      rdfs:label "Aanpassen"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel";
-      rdf:value "edit"
+      rdf:value "aanpassen"
+    ];
+    elmo:fragment [
+      elmo:appliesTo "add";
+      rdfs:label "Toevoegen"@nl;
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/nieuwedomeintabelwaarde";
+      rdf:value "toevoegen"
     ];
     elmo:fragment [
       elmo:appliesTo "link";
+      rdfs:label "Relaties"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
       rdf:value "link"
     ];
     elmo:fragment [
       elmo:appliesTo "staging";
+      rdfs:label "Op stapel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel/staging";
       rdf:value "op stapel"
     ];
