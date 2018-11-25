@@ -1,0 +1,256 @@
+GRAPH config:Theatre {
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Domeintabellen (toevoegen)
+  #
+  # ==========================
+
+  config:NieuweDomeintabelEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/nieuwedomeintabel";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:NieuweDomeintabelEditor;
+  .
+
+  config:NieuweDomeintabelEditor a elmo:Representation;
+    elmo:appearance [a elmo:ReactEditorAppearance];
+    elmo:stage config:Stage;
+    elmo:contains config:BeheerMenu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:NieuweDomeintabelEditorData;
+  .
+
+  config:NieuweDomeintabelEditorData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX elmo: <http://bp4mc2.org/elmo/def#>
+      CONSTRUCT {
+        <http://localhost:8080/editor>
+          elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
+          elmo:endpoint "/beheer/domeintabellenmeta";
+          elmo:definition "/def/domeintabelmeta?format=json"
+        .
+      }
+      WHERE {}
+    """
+  .
+
+# ==========================
+#
+# Transaction endpoint and service
+#
+# ==========================
+
+  config:DomeintabellenEditEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/domeintabellenmeta";
+    elmo:stage config:Stage;
+#    elmo:putService config:DomeintabellenPutService;
+    elmo:postService config:DomeintabellenPostService;
+  .
+
+#  config:DomeintabellenPutService a elmo:Service;
+#    elmo:transaction config:DomeintabellenPutTransaction;
+#  .
+  config:DomeintabellenPostService a elmo:Service;
+    elmo:transaction config:DomeintabellenPostTransaction;
+  .
+
+# =======
+# PUT
+# =======
+
+# Geen PUT van een domeintabel: alleen toevoegen van een domeintabel wordt nu ondersteund.
+
+# =======
+# POST
+# =======
+
+config:DomeintabellenPostTransaction a elmo:Transaction;
+  elmo:sequentialFlow (
+    [
+      a elmo:UpdateStep;
+      elmo:backend config:UpdateBackend;
+      elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
+    ]
+
+    [
+      a elmo:PersistenceStep;
+      elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+      elmo:backend config:UpdateBackend;
+      elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
+    ]
+    [
+      a elmo:UpdateStep;
+      elmo:backend config:UpdateBackend;
+      elmo:query """
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        INSERT {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s adms:identifier ?uriterm
+          }
+        }
+        WHERE {
+          {
+            SELECT (replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(
+                    replace(?term
+                    ,"^a| a","A")
+                    ,"^b| b","B")
+                    ,"^c| c","C")
+                    ,"^d| d","D")
+                    ,"^e| e","E")
+                    ,"^f| f","F")
+                    ,"^g| g","G")
+                    ,"^h| h","H")
+                    ,"^i| i","I")
+                    ,"^j| j","J")
+                    ,"^k| k","K")
+                    ,"^l| l","L")
+                    ,"^m| m","M")
+                    ,"^n| n","N")
+                    ,"^o| o","O")
+                    ,"^p| p","P")
+                    ,"^q| q","Q")
+                    ,"^r| r","R")
+                    ,"^s| s","S")
+                    ,"^t| t","T")
+                    ,"^u| u","U")
+                    ,"^v| v","V")
+                    ,"^w| w","W")
+                    ,"^x| x","X")
+                    ,"^y| y","Y")
+                    ,"^z| z","Z")
+                    as ?uriterm) ?s
+            where {
+              GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s rdfs:label ?term.
+              }
+            }
+          }
+        }
+      """
+    ]
+    [
+      a elmo:UpdateStep;
+      elmo:backend config:UpdateBackend;
+      elmo:query """
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX dcat: <http://www.w3.org/ns/dcat#>
+        DELETE {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s adms:identifier ?olduriterm
+          }
+        }
+        INSERT {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?s adms:identifier ?newuriterm
+          }
+        }
+        WHERE {
+          SELECT ?s ?olduriterm (concat(?olduriterm,"_",str(1+?cnt)) as ?newuriterm)
+          WHERE {
+            {
+              GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s adms:identifier ?olduriterm.
+                BIND(iri(concat("http://standaard.aquo.nl/id/domeintabel/",?olduriterm)) as ?uri)
+              }
+              GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+                ?uri a dcat:Dataset.
+              }
+            }
+            {
+              SELECT (count(?dataset) as ?cnt)
+              WHERE {
+                GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+                  ?dataset a dcat:Dataset.
+                }
+              }
+            }
+          }
+        }
+      """
+    ]
+    [
+      a elmo:UpdateStep;
+      elmo:backend config:UpdateBackend;
+      elmo:query """
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+        PREFIX dcat: <http://www.w3.org/ns/dcat#>
+        PREFIX sh: <http://www.w3.org/ns/shacl#>
+        PREFIX aquo-ds: <http://standaard.aquo.nl/domeintabel/def#>
+        INSERT  {
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
+            <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?uri.
+            ?uri rdfs:label ?label.
+          }
+          GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+            ?uri a dcat:Dataset.
+            ?uri ?pnew ?onew.
+            ?uri dcat:landingPage ?datauri
+          }
+          GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+            ?uri rdfs:isDefinedBy ?shapeuri.
+            ?shapeuri a sh:NodeShape.
+            ?shapeuri sh:targetClass ?classuri.
+            ?shapeuri sh:name ?localname.
+            ?shapeuri rdfs:label ?label.
+            ?shapeuri
+                sh:property aquo-ds:ID;
+                sh:property aquo-ds:Code;
+                sh:property aquo-ds:Omschrijving;
+                sh:property aquo-ds:Groep;
+                sh:property aquo-ds:BeginDatumGeldigheid;
+                sh:property aquo-ds:EindDatumGeldigheid
+            .
+          }
+        }
+        WHERE {
+          GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+            ?snew ?pnew ?onew.
+            ?snew rdfs:label ?label.
+            FILTER (?pnew != dct:created && ?pnew != dct:modified && ?pnew != dcmiperiod:start && ?pnew != dcmiperiod:end && ?pnew != adms:identifier)
+            ?snew adms:identifier ?localname.
+            BIND(iri(concat("http://standaard.aquo.nl/id/domeintabel/",?localname)) as ?uri)
+            BIND(iri(concat("http://standaard.aquo.nl/data/domeintabel/",?localname)) as ?datauri)
+            BIND(iri(concat("http://standaard.aquo.nl/domeintabel/def#",?localname)) as ?shapeuri)
+            BIND(iri(concat("http://standaard.aquo.nl/def/aquo#",?localname)) as ?classuri)
+          }
+        }
+      """
+    ]
+  )
+.
+
+}

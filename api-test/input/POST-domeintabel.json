@@ -1,0 +1,19 @@
+[ {
+  "@id" : "http://standaard.aquo.nl/id/domeintabel/AfsluitmiddelType",
+  "@type" : [ "http://www.w3.org/ns/dcat#Dataset" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@value" : "Extra domeintabel voor testen"
+  } ],
+  "http://purl.org/dc/terms/language" : [ {
+    "@value" : "NL"
+  } ],
+  "http://purl.org/dc/terms/publisher" : [ {
+    "@id" : "http://standaard.aquo.nl/id/publisher/Informatiehuis_Water"
+  } ],
+  "http://purl.org/vocommons/voaf#reliesOn" : [ {
+    "@id" : "http://inspire.ec.europa.eu/codelist/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Altijd leuk een nieuwe domeintabel"
+  } ]
+} ]
