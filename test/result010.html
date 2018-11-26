@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" lang="nl">
+<html lang="nl">
    
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -51,26 +51,6 @@
                         </a>
                      <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
                         
-                     
-                  </h5>
-                  
-               </div>
-               
-            </div>
-            
-         </div>
-         
-         <div class="container hidden-xs">
-            
-            <div class="row text-center">
-               
-               <div class="text-left">
-                  
-                  <h5> 
-                     <a href="https://www.aquo.nl">
-                        <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
-                           
-                        </a>
                      
                   </h5>
                   
@@ -249,52 +229,24 @@
          <div class="content">
             
             <div class="container">
-               
-               <ul class="nav nav-tabs">
-                  
-                  <li>
-                     <a href="http://localhost:8080/domeinmeta?format=xml">xml</a>
-                     
-                  </li>
-                  
-                  <li>
-                     <a href="http://localhost:8080/domeinmeta?format=csv">csv</a>
-                     
-                  </li>
-                  
-               </ul>
                <script type="text/javascript">
 				$(document).ready(function() {
 					elmo_language.paging = true;
 					elmo_language.searching = true;
 					elmo_language.info = true;
 					elmo_language.order = [];
-					$('#datatable6').dataTable(elmo_language);
+					$('#datatable1').dataTable(elmo_language);
 				} );
 			</script>
-               <table id="datatable6" class="table table-striped table-bordered">
+               <table id="datatable1" class="table table-striped table-bordered">
                   
                   <thead>
                      
                      <tr>
                         
-                        <th>Kolom</th>
+                        <th>Groep</th>
                         
-                        <th>Naam</th>
-                        
-                        <th>Omschrijving</th>
-                        
-                        <th>Sleutel</th>
-                        
-                        <th>Datatype</th>
-                        
-                        <th>Veld</th>
-                        
-                        <th>Decimalen</th>
-                        
-                        <th>Verplicht</th>
-                        
-                        <th>Uniek</th>
+                        <th>Domeintabel</th>
                         
                      </tr>
                      
@@ -303,6 +255,40 @@
                   <tbody></tbody>
                   
                </table>
+               <script type="text/javascript">
+				$(document).ready(function() {
+					elmo_language.paging = true;
+					elmo_language.searching = true;
+					elmo_language.info = true;
+					elmo_language.order = [];
+					$('#datatable2').dataTable(elmo_language);
+				} );
+			</script>
+               <table id="datatable2" class="table table-striped table-bordered">
+                  
+                  <thead>
+                     
+                     <tr></tr>
+                     
+                  </thead>
+                  
+                  <tbody></tbody>
+                  
+               </table>
+               
+               <ul class="nav nav-tabs">
+                  
+                  <li>
+                     <a href="http://localhost:8080/domeintabelgroep?format=xml">xml</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="http://localhost:8080/domeintabelgroep?format=csv">csv</a>
+                     
+                  </li>
+                  
+               </ul>
                
             </div>
             
