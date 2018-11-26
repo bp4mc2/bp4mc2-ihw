@@ -19,6 +19,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           elmo:subject ?id;
+          elmo:subject1 ?id;
           owl:sameAs ?begrip;
           skos:exactMatch ?domeinwaarde;
           aquo:opgeheven ?opgehevendate;
@@ -93,7 +94,7 @@ GRAPH config:Theatre {
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
-      
+
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
@@ -111,7 +112,7 @@ GRAPH config:Theatre {
           OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
           BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
           FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
-          
+
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
@@ -281,14 +282,17 @@ GRAPH config:Theatre {
       PREFIX prov: <http://www.w3.org/ns/prov#>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       CONSTRUCT {
         ?s ?p ?o;
-         aquo:status ?status.
+          dcmiperiod:end ?end;
+          aquo:status ?status
+        .
       }
       WHERE {
         {
           {
-            SELECT ?s ?p ?o ("Verwijderen" as ?status)
+            SELECT ?s ?p ?o ("Verwijderen" as ?status) ?end
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
@@ -297,13 +301,13 @@ GRAPH config:Theatre {
                 FILTER (?p != foaf:isPrimaryTopicOf)
               }
               GRAPH ?staging {
-                ?s dcmiperiod:end ?t
+                ?s dcmiperiod:end ?end
               }
             }
           }
           UNION
           {
-            SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
+            SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status) (xsd:date(?start-xsd:duration("P1D")) as ?end)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
@@ -313,6 +317,7 @@ GRAPH config:Theatre {
               }
               GRAPH ?staging {
                 ?sold a ?t
+                OPTIONAL {?sold dcmiperiod:start ?start}
               }
             }
           }

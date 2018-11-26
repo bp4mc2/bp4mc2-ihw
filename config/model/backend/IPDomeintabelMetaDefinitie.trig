@@ -16,7 +16,7 @@ GRAPH config:Theatre {
         <urn:property:Dataset_label> a sh:PropertyShape;
           sh:order 1;
           sh:name "label";
-          rdfs:label "Te tonen label"@nl;
+          rdfs:label "Domeintabelnaam"@nl;
           sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
           sh:datatype xsd:string;
           sh:minCount 1;
@@ -46,7 +46,8 @@ GRAPH config:Theatre {
           sh:path <http://purl.org/dc/terms/publisher>;
           sh:class <http://www.w3.org/ns/prov#Agent>;
           elmo:endpoint "/beheer/publisherlijst";
-          sh:maxCount 1;
+# Maxcount 1 geeft om vreemde redenen een probleem in de editor, dus ff uitgezet
+#          sh:maxCount 1;
         .
         <urn:property:Dataset_reliesOn> a sh:PropertyShape;
           sh:order 5;
@@ -60,7 +61,7 @@ GRAPH config:Theatre {
           sh:order 6;
           sh:name "theme";
           rdfs:label "Categorie"@nl;
-          sh:path <http://purl.org/dc/terms/publisher>;
+          sh:path <http://www.w3.org/ns/dcat#theme>;
           sh:class <http://www.w3.org/2004/02/skos/core#Concept>;
           elmo:endpoint "/beheer/categorieenlijst";
         .

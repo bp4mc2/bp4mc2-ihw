@@ -67,7 +67,6 @@ GRAPH config:Theatre {
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
           elmo:endpoint "/beheer/categorieen";
           elmo:definition "/def/categorie?format=json";
-          elmo:searchResult <http://standaard.aquo.nl/id/resource/nieuw> #Zal niet bestaan
         .
       }
       WHERE {}

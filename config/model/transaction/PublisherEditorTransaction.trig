@@ -1,0 +1,63 @@
+GRAPH config:Theatre {
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Publisher (aanpassen)
+  #
+  # ==========================
+
+  # Voorlopig niet
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Categorieen (toevoegen)
+  #
+  # ==========================
+
+  # Voorlopig niet
+
+# ==========================
+#
+# Publisherlijst voor editor
+#
+# ==========================
+
+config:PublisherZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/publisherlijst";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:PublisherZoeklijst;
+.
+
+config:PublisherZoeklijst a elmo:Representation;
+  elmo:stage config:Stage;
+  elmo:appearance [a elmo:Appearance];
+  elmo:informationProduct config:PublisherZoeklijstData;
+.
+
+# ==========================
+#
+# Informatieproduct in de editor
+#
+# ==========================
+
+  config:PublisherZoeklijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      SELECT ?uri ?label
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?uri a prov:Agent.
+          ?uri rdfs:label ?label.
+          FILTER regex(?label,concat("^",?term),"i")
+        }
+      }
+    """;
+  .
+
+}

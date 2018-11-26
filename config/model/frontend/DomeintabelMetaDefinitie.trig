@@ -3,7 +3,7 @@ GRAPH config:Theatre {
   config:DomeintabelMetaDefinitieEndpoint a elmo:Endpoint;
     elmo:pathPattern "/def/domeintabelmeta";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:CategorieDefinitie
+    elmo:getRepresentation config:DomeintabelMetaDefinitie
   .
 
   config:DomeintabelMetaDefinitie a elmo:Representation;

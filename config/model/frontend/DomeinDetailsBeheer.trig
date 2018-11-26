@@ -35,10 +35,17 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:appliesTo elmo:subject;
-      rdfs:label "ID"@nl;
+      rdfs:label "Edit"@nl;
       rdf:value "edit";
       elmo:index "00";
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelwaarde";
+    ];
+    elmo:fragment [
+      elmo:appliesTo elmo:subject1;
+      rdfs:label "Link"@nl;
+      rdf:value "link";
+      elmo:index "00a";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelwaardelink";
     ];
     elmo:fragment [
       elmo:appliesTo dct:identifier;

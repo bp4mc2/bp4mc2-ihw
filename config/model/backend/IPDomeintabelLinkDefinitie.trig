@@ -2,9 +2,9 @@ GRAPH config:Theatre {
 
   # NB:
   # Helaas kun je nog niet een query doen op de configuratie repo zelf
-  # Hieronder is een kopie van CategorieenShapesGraph.trig!!
+  # Hieronder is een kopie van DomeintabelMetaShapesGraph.trig!!
   #
-  config:CategorieDefinitieData a elmo:InformationProduct;
+  config:DomeintabelLinkDefinitieData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -13,20 +13,20 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX elmo: <http://dotwebstack.org/def/elmo#>
       CONSTRUCT {
-        <urn:property:label> a sh:PropertyShape;
+        <urn:property:Waarde_omschrijving> a sh:PropertyShape;
           sh:order 1;
-          sh:name "label";
-          rdfs:label "Categorienaam"@nl;
-          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+          sh:name "omschrijving";
+          rdfs:label "Domeintabelwaarde"@nl;
+          sh:path <http://standaard.aquo.nl/def/aquo#Omschrijving>;
           sh:datatype xsd:string;
           sh:minCount 1;
           sh:maxCount 1;
         .
-        <urn:property:exactMatch> a sh:PropertyShape;
+        <urn:property:Waarde_link> a sh:PropertyShape;
           sh:order 2;
-          sh:name "exactMatch";
-          rdfs:label "Gelijk aan"@nl;
-          sh:path <http://www.w3.org/2004/02/skos/core#exactMatch>;
+          sh:name "link";
+          rdfs:label "Gerelateerd begrip"@nl;
+          sh:path <http://www.w3.org/2002/07/owl#sameAs>;
           sh:class skos:Concept;
           elmo:endpoint "/beheer/begrippenlijst";
         .

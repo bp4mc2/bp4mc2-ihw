@@ -30,7 +30,6 @@ GRAPH config:Theatre {
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
           elmo:endpoint "/beheer/domeintabellenmeta";
           elmo:definition "/def/domeintabelmeta?format=json";
-          elmo:searchResult <http://standaard.aquo.nl/id/resource/nieuw> #Zal niet bestaan
         .
       }
       WHERE {}

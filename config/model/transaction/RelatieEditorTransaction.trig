@@ -2,107 +2,6 @@ GRAPH config:Theatre {
 
 # ==========================
 #
-# Editor endpoint, representation en appearance
-#
-# ==========================
-
-## Via deze link komen we bij het overzicht van alle sameAs relaties tussen begrippen en domeinwaarden
-
-  config:RelatieEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/domeintabellink";
-    elmo:stage config:Stage;
-    elmo:getRepresentation config:RelatieEditor;
-  .
-
-  config:RelatieEditor a elmo:Representation;
-    elmo:stage config:Stage;
-    #elmo:contains config:Image;
-    elmo:contains config:ConceptImage;
-    elmo:contains config:Menu;
-    elmo:contains config:Footer;
-    elmo:appearance config:RelatieEditorAppearance;
-    elmo:informationProduct config:RelatieEditableData;
-  .
-
-  config:RelatieEditorAppearance a elmo:EditorAppearance;
-    elmo:fragment [
-      elmo:index 1;
-      elmo:appliesTo "@id";
-      rdfs:label "domeinwaarde"@nl;
-      elmo:appearance elmo:HiddenAppearance;
-    ];
-    elmo:fragment [
-      elmo:index 2;
-      elmo:appliesTo aquo:Omschrijving;
-      rdfs:label "Domeinwaarde"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 3;
-      elmo:appliesTo skos:prefLabel;
-      rdfs:label "Link naar begrip"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 4;
-      elmo:appliesTo skos:definition;
-      rdfs:label "Definitie"@nl;
-    ];
-    elmo:fragment [
-      elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
-      elmo:appearance elmo:ChangeSubmitAppearance;
-      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
-      rdfs:label "Opslaan"@nl;
-      rdfs:label "Save"@en;
-    ];
-  .
-
-# ==========================
-#
-# Informatieproduct in de editor
-#
-# ==========================
-
-  config:RelatieEditableData a elmo:InformationProduct;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:optionalParameter config:DomeinwaardeParameter;
-    elmo:backend config:LocalBackend;
-    elmo:query """
-      PREFIX dct: <http://purl.org/dc/terms/>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-      PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX owl:<http://www.w3.org/2002/07/owl#>
-
-      CONSTRUCT {
-        ?waarde aquo:Omschrijving ?omschrijving.
-        ?waarde skos:prefLabel ?term.
-        ?waarde skos:definition ?definitie.
-        ?waarde owl:sameAs ?begrip
-      }
-      WHERE {
-          GRAPH <http://standaard.aquo.nl/id/dataset/domeintabel> {
-                <http://standaard.aquo.nl/id/dataset/domeintabel> dct:hasPart ?subject
-          }
-          GRAPH ?subject {
-              ?waarde  aquo:Omschrijving ?omschrijving
-          }
-          OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
-              ?waarde owl:sameAs ?begrip
-            }
-            GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-              ?begrip skos:prefLabel ?term
-              OPTIONAL {?begrip skos:definition ?definitie}
-            }
-          }
-
-      }
-
-    """
-  .
-
-# ==========================
-#
 # Transaction
 #
 # ==========================
@@ -120,29 +19,6 @@ GRAPH config:Theatre {
   config:RelatieUpdateTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
-    [
-      a elmo:AssertionStep;
-      rdfs:label "Het begrip waarna u wil linken bestaat niet.";
-      elmo:assert """
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX config: <http://dotwebstack.org/configuration/>
-        ASK {
-          {
-            ?waarde skos:prefLabel ?termbegrip.
-            FILTER (strlen(?termbegrip) = 0)
-          }
-          UNION
-          {
-            ?waarde skos:prefLabel ?termbegrip
-            SERVICE config:LocalBackend {
-              GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-                ?begrip skos:prefLabel ?termbegrip
-              }
-            }
-          }
-        }
-      """
-    ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -161,16 +37,17 @@ GRAPH config:Theatre {
           PREFIX owl:<http://www.w3.org/2002/07/owl#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
           delete {
-            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
-              ?waarde owl:sameAs ?oudbegrip
+            GRAPH <http://standaard.aquo.nl/data/links> {
+              ?waarde owl:sameAs ?oudbegrip.
+              ?oudbegrip owl:sameAs ?waarde.
             }
           }
           where {
-            GRAPH <http://standaard.aquo.nl/id/dataset/links> {
+            GRAPH <http://standaard.aquo.nl/data/links> {
               ?waarde owl:sameAs ?oudbegrip.
             }
             GRAPH <http://standaard.aquo.nl/beheer/linkeditor.tmp> {
-              ?waarde skos:prefLabel ?termnieuwbegrip.
+              ?waarde a ?type
             }
           }
         """
@@ -182,16 +59,14 @@ GRAPH config:Theatre {
         PREFIX owl:<http://www.w3.org/2002/07/owl#>
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
         insert {
-          GRAPH <http://standaard.aquo.nl/id/dataset/links> {
-            ?waarde owl:sameAs ?nieuwbegrip
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?waarde owl:sameAs ?nieuwbegrip.
+            ?nieuwbegrip owl:sameAs ?waarde.
           }
         }
         where {
           GRAPH <http://standaard.aquo.nl/beheer/linkeditor.tmp> {
-            ?waarde skos:prefLabel ?termnieuwbegrip.
-          }
-          GRAPH <http://standaard.aquo.nl/id/dataset/begrippen> {
-            ?nieuwbegrip skos:prefLabel ?termnieuwbegrip
+            ?waarde owl:sameAs ?nieuwbegrip
           }
         }
         """

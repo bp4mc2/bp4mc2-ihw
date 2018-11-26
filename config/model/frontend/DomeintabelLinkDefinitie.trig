@@ -1,0 +1,15 @@
+GRAPH config:Theatre {
+
+  config:DomeintabelLinkDefinitieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/def/domeintabellink";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeintabelLinkDefinitie
+  .
+
+  config:DomeintabelLinkDefinitie a elmo:Representation;
+    elmo:appearance [a elmo:Appearance];
+    elmo:stage config:Stage;
+  	elmo:informationProduct config:DomeintabelLinkDefinitieData;
+  .
+
+}

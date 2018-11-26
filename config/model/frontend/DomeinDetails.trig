@@ -161,6 +161,10 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
+      elmo:appliesTo elmo:subject1;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
       elmo:appliesTo dct:identifier;
       rdfs:label "ID"@nl;
       elmo:index "01";
