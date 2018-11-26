@@ -350,6 +350,11 @@ GRAPH config:Theatre {
 
   config:RelatieUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
+            [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/data/links>"
+      ]
       [
         a elmo:PersistenceStep;
         elmo:persistenceStrategy elmo-ps:InsertIntoGraph;

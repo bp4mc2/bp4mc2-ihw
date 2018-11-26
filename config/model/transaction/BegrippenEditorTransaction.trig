@@ -66,7 +66,8 @@ GRAPH config:Theatre {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
           elmo:endpoint "/beheer/begrippen";
-          elmo:definition "/def/begrip?format=json"
+          elmo:definition "/def/begrip?format=json";
+          elmo:searchResult <http://standaard.aquo.nl/id/resource/nieuw> #Zal niet bestaan
         .
       }
       WHERE {}

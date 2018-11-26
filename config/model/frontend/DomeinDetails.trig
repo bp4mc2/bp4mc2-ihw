@@ -342,6 +342,11 @@ GRAPH config:Theatre {
       elmo:appliesTo aquo:Namespace;
       elmo:index "43";
     ];
+    elmo:fragment [
+      elmo:appliesTo skos:editorialNote;
+      rdfs:label "Wijzigingsvoorstel"@nl;
+      elmo:index "44";
+    ];
   .
 
 }

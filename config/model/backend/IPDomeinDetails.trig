@@ -53,9 +53,11 @@ GRAPH config:Theatre {
           GRAPH <http://standaard.aquo.nl/data/links> {
             ?id owl:sameAs ?begrip
           }
-          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-            ?begrip a skos:Concept;
-              skos:prefLabel ?begrip_label
+          OPTIONAL {
+            GRAPH  <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a skos:Concept;
+                skos:prefLabel ?begrip_label
+            }
           }
         }
 
@@ -301,6 +303,7 @@ GRAPH config:Theatre {
               GRAPH ?staging {
                 ?s a ?t.
                 ?s ?p ?o
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               FILTER EXISTS {
                 GRAPH ?datagraph {
@@ -317,6 +320,7 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?staging {
                 ?s ?p ?o
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               FILTER NOT EXISTS {
                 GRAPH ?datagraph {
