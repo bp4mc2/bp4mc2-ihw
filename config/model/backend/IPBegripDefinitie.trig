@@ -173,23 +173,24 @@ GRAPH config:Theatre {
           sh:path <http://www.w3.org/2004/02/skos/core#relatedMatch>;
           # Begrip ander domein is een uri, maar kan niet gevonden worden. Hoe gaan we dit tonen?
         .
-        <urn:property:beginGeldigheid> a sh:PropertyShape;
-          sh:order 19;
-          sh:name "beginGeldigheid";
-          rdfs:label "Begin geldigheid"@nl;
-          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
-          sh:datatype xsd:date;
-          sh:minCount 1;
-          sh:maxCount 1;
-        .
-        <urn:property:eindeGeldigheid> a sh:PropertyShape;
-          sh:order 19;
-          sh:name "eindeGeldigheid";
-          rdfs:label "Einde geldigheid"@nl;
-          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
-          sh:datatype xsd:date;
-          sh:maxCount 1;
-        .
+# Tijdelijk uit ivm bug
+#        <urn:property:beginGeldigheid> a sh:PropertyShape;
+#          sh:order 19;
+#          sh:name "beginGeldigheid";
+#          rdfs:label "Begin geldigheid"@nl;
+#          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+#          sh:datatype xsd:date;
+#          sh:minCount 1;
+#          sh:maxCount 1;
+#        .
+#        <urn:property:eindeGeldigheid> a sh:PropertyShape;
+#          sh:order 19;
+#          sh:name "eindeGeldigheid";
+#          rdfs:label "Einde geldigheid"@nl;
+#          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+#          sh:datatype xsd:date;
+#          sh:maxCount 1;
+#        .
       }
       WHERE {
       }
