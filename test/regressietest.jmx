@@ -511,7 +511,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="subject" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">http://standaard.aquo.nl/id/Compartiment/12</stringProp>
+                <stringProp name="Argument.value">http://standaard.aquo.nl/id/Compartiment/00000012</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">subject</stringProp>
@@ -544,7 +544,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">0bdaa8a00001013be2d64a4a63754506</stringProp>
+            <stringProp name="MD5HexAssertion.size">6cf089761f0b1228644e54fe226bcb52</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>
