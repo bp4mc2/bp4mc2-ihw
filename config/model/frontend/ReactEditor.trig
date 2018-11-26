@@ -54,7 +54,7 @@ GRAPH config:Theatre {
       }
       WHERE {
         SELECT (concat("/beheer/domeinwaardenlijst/",?domeintabelnaam) as ?searchendpoint)
-               (concat("/beheer/domeintabel/",?domeintabelnaam) as ?endpoint)
+               (concat("/beheer/domeintabel?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fdomeintabel%2F",?domeintabelnaam) as ?endpoint)
                (concat("/def/domeintabel/",?domeintabelnaam,"?format=json") as ?definition)
         WHERE {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
@@ -82,7 +82,7 @@ GRAPH config:Theatre {
       }
       WHERE {
         SELECT (concat("/beheer/domeinwaardenlijst/",?domeintabelnaam) as ?searchendpoint)
-               (concat("/beheer/domeintabel/",?domeintabelnaam) as ?endpoint)
+               (concat("/beheer/domeintabel?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fdomeintabel%2F",?domeintabelnaam) as ?endpoint)
                (concat("/def/domeintabel/",?domeintabelnaam,"?format=json") as ?definition)
         WHERE {
           GRAPH ?domeintabel {
@@ -107,7 +107,7 @@ GRAPH config:Theatre {
         .
       }
       WHERE {
-        SELECT (concat("/beheer/domeintabel/",?domeintabelnaam) as ?endpoint)
+        SELECT (concat("/beheer/domeintabel?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fdomeintabel%2F",?domeintabelnaam) as ?endpoint)
                (concat("/def/domeintabel/",?domeintabelnaam,"?format=json") as ?definition)
         WHERE {
           GRAPH <http://standaard.aquo.nl/data/domeintabellen> {

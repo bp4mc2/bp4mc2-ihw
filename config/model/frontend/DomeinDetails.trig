@@ -70,10 +70,10 @@ GRAPH config:Theatre {
     elmo:appearance config:DomeintabelAppearance;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
-    elmo:contains config:DomeinTitel;
-    elmo:contains config:Menu;
+    elmo:contains config:DomeinTitelPubliceren;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
-    elmo:contains config:PublicerenLink;
+#    elmo:contains config:PublicerenLink;
     elmo:informationProduct config:DomeintabelStagingData;
   .
 
@@ -81,6 +81,11 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:appearance config:DomeinTitelAppearance;
     elmo:informationProduct config:DomeinTitelData;
+  .
+  config:DomeinTitelPubliceren a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:DomeinTitelPublicerenAppearance;
+    elmo:informationProduct config:DomeinTitelPublicerenData;
   .
 
   config:DomeinGroepTitel a elmo:Representation;
@@ -109,6 +114,14 @@ GRAPH config:Theatre {
       elmo:appliesTo "beheerder";
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta-agent";
       rdfs:label "Beheerder"@nl;
+    ];
+  .
+  config:DomeinTitelPublicerenAppearance a elmo:TableAppearance;
+    elmo:index "01";
+    elmo:fragment [
+      elmo:appliesTo "subject";
+      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelpublish";
+      rdfs:label "Domeintabel publiceren"@nl;
     ];
   .
 
