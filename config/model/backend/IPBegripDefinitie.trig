@@ -156,7 +156,6 @@ GRAPH config:Theatre {
           rdfs:label "Notitie"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#note>;
           sh:datatype xsd:string;
-          elmo:endpoint "/beheer/begrippenlijst";
         .
         <urn:property:replaces> a sh:PropertyShape;
           sh:order 17;
