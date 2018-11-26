@@ -20,6 +20,7 @@ GRAPH config:Theatre {
         ?id ?p ?o;
           elmo:subject ?id;
           owl:sameAs ?begrip;
+          skos:exactMatch ?domeinwaarde;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start.
@@ -60,7 +61,11 @@ GRAPH config:Theatre {
             }
           }
         }
-
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?id skos:exactMatch ?domeinwaarde.
+          }
+        }
         FILTER (
           ?p != aquo:Opgeheven_per
           && ?p != aquo:Opgericht_in
@@ -162,6 +167,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
+          skos:exactMatch ?domeinwaarde;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start;
@@ -194,11 +200,18 @@ GRAPH config:Theatre {
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
-            ?id owl:sameAs ?begrip
+            ?id owl:sameAs ?begrip;
           }
-          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-            ?begrip a skos:Concept;
-              skos:prefLabel ?begrip_label
+          OPTIONAL {
+            GRAPH  <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a skos:Concept;
+                skos:prefLabel ?begrip_label
+            }
+          }
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?id skos:exactMatch ?domeinwaarde.
           }
         }
 
