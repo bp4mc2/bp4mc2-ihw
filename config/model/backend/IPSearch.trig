@@ -9,6 +9,10 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 
       SELECT ?search_label ?begrip ?synoniem ?categorie_begrip ?begrip_label ?definitie ?categorie_begrip_label ?found
 
@@ -19,6 +23,9 @@ GRAPH config:Theatre {
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
+            ?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+            OPTIONAL {?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+            BIND(if(bound(?endr),?endr,xsd:date("2999-12-31")) as ?end)
           }
           OPTIONAL {
             GRAPH <http://standaard.aquo.nl/data/categorieen> {
@@ -29,6 +36,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "term","") as ?found)
+          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
         }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -36,6 +44,9 @@ GRAPH config:Theatre {
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
+            ?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+            OPTIONAL {?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+            BIND(if(bound(?endr),?endr,xsd:date("2999-12-31")) as ?end)
           }
           OPTIONAL {
             GRAPH <http://standaard.aquo.nl/data/categorieen> {
@@ -46,6 +57,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "synoniem","") as ?found)
+          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
         }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -53,6 +65,9 @@ GRAPH config:Theatre {
                        skos:prefLabel ?begrip_label.
             OPTIONAL {?begrip skos:altLabel ?synoniem}
             OPTIONAL {?begrip skos:definition ?definitie}
+            ?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+            OPTIONAL {?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+            BIND(if(bound(?endr),?endr,xsd:date("2999-12-31")) as ?end)
           }
           OPTIONAL {
             GRAPH <http://standaard.aquo.nl/data/categorieen> {
@@ -63,6 +78,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "definitie","") as ?found)
+          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
         }
 
       }
@@ -79,12 +95,18 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       
-      SELECT ?categorie ?categorie_label (count(?begrip) as ?categorie_count)
+      SELECT ?categorie ?categorie_label 
       
         WHERE {
           GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?categorie skos:member ?begrip.
+            ?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+            OPTIONAL {?begrip foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+            BIND(if(bound(?endr),?endr,xsd:date("2999-12-31")) as ?end)
           }
           OPTIONAL {
             GRAPH <http://standaard.aquo.nl/data/categorieen> {
@@ -92,6 +114,7 @@ GRAPH config:Theatre {
             }
           }
          FILTER regex(?categorie_label,?term,"i")
+         FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
         }
       group by ?categorie ?categorie_label
       order by ?categorie_label
@@ -127,6 +150,10 @@ GRAPH config:Theatre {
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX dcat: <http://www.w3.org/ns/dcat#>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
       SELECT  DISTINCT ?domeintabel ?domeintabel_label ?omschrijving ?Code ?ID ?gevonden_in
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
@@ -139,6 +166,9 @@ GRAPH config:Theatre {
         OPTIONAL{
           GRAPH ?dist {
            ?id aquo:Omschrijving ?omschrijving.
+           ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+            OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+            BIND(if(bound(?endr),?endr,xsd:date("2999-12-31")) as ?end)
         }
       }
         OPTIONAL{
@@ -148,6 +178,7 @@ GRAPH config:Theatre {
           }
         }
         FILTER regex(?omschrijving,?term,"i")
+        FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
         BIND( IF(regex(?omschrijving,?term,"i"), "omschrijving","") as ?gevonden_in)
       }
       order by ?domeintabel_label

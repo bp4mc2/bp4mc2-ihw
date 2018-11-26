@@ -639,7 +639,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="term" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">gem</stringProp>
+                <stringProp name="Argument.value">eco</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">term</stringProp>
@@ -672,7 +672,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">4e4e8a2547f25cbb4af0ea2e2574ff21</stringProp>
+            <stringProp name="MD5HexAssertion.size">95f1d03f857a4df11738260fa69261ff</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>
