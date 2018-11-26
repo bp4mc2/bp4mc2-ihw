@@ -38,6 +38,28 @@
       
       <div id="page">
          
+         <div class="container hidden-xs">
+            
+            <div class="row text-center">
+               
+               <div class="text-left">
+                  
+                  <h5> 
+                     <a href="https://www.aquo.nl">
+                        <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/ldt-logo-aquo.png" alt="HTML5 Icon">
+                           
+                        </a>
+                     <img src="https://raw.githubusercontent.com/bp4mc2/bp4mc2/master/catalogusdata/BAG/Afbeeldingen/Aquo_logo_2012_small.png" alt="HTML5 Icon">
+                        
+                     
+                  </h5>
+                  
+               </div>
+               
+            </div>
+            
+         </div>
+         
          <nav class="navbar navbar-default">
             
             <div class="container">
@@ -208,39 +230,514 @@
             
             <div class="container">
                
-               <div xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" class="panel panel-primary">
+               <ul xmlns:shacl="http://www.w3.org/ns/shacl#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ldt="http://ldt/" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:foaf="http://xmlns.com/foaf/0.1/" class="nav nav-tabs">
+                  
+                  <li>
+                     <a href="?format=ttl">ttl</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="?format=xml">xml</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="?format=json">json</a>
+                     
+                  </li>
+                  
+                  <li>
+                     <a href="?format=yed">graphml</a>
+                     
+                  </li>
+                  
+               </ul>
+               
+               <div xmlns:shacl="http://www.w3.org/ns/shacl#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ldt="http://ldt/" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:foaf="http://xmlns.com/foaf/0.1/" class="panel panel-primary">
                   
                   <div class="panel-heading">
                      
-                     <h3 class="panel-title">Aquo LOC</h3>
+                     <h3 class="panel-title">
+                        <a href="http://standaard.aquo.nl/def/aquo#">Aquo vocabulaire</a>
+                        
+                     </h3>
                      
                   </div>
                   
-                  <div class="panel-body htmlapp">
+                  <div class="panel-body">
                      
-                     <h1>Aquo LOC</h1>
-                     
-                     <p>Aquo LOC is een tool waarmee u toegang hebt tot ruim 7000 termen en definities uit het Aquo-lex en de Aquo-objecten. Aquo-lex
-                        is het woordenboek voor de watersector dat eenduidige    definities geeft, toelichtingen en bronnen. De Aquo-objecten zijn
-                        bouwstenen van een uitwissel- of datamodel. Omdat Aquo LOC ook relaties tussen termen en objecten weergeeft, kunt u de termen
-                        in hun context plaatsen.
-                     </p>
-                     
-                     <h2>Gemakkelijk zoeken </h2>
-                     
-                     <p>U kunt gemakkelijk zoeken op verschillende termen. Zo wordt er niet alleen
-                        naar de exacte term gezocht, maar ook gekeken of de zoekterm deel van het
-                        resultaat is. Zoek je bijvoorbeeld op �brug�, dan krijg je ook resultaten terug
-                        als �hefbrug� en �draaibrug�. Bovendien worden eventuele synoniemen voorgesteld.
-                        Bezoek voor meer informatie over de Aquo LOC onze <a title="Aquo-website" target="_blank" href="http://www.aquo.nl/tools/aquo-oc/">Aquo-website.</a>
+                     <div class="row">
                         
-                     </p>
+                        <div class="col-md-12">
+                           
+                           <table class="basic-text-table">
+                              
+                              <tbody></tbody>
+                              
+                           </table>
+                           
+                        </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                        <div class="col-md-6">
+                           
+                           <div class="nav-tree">
+                              <b>Klassen</b>
+                              
+                              <ul style="max-height:500px; padding-bottom:20px; overflow-y: auto"></ul>
+                              
+                           </div>
+                           
+                        </div>
+                        
+                        <div class="col-md-6">
+                           
+                           <div class="nav-tree">
+                              <b>Eigenschappen</b>
+                              
+                              <ul style="max-height:500px; padding-bottom:20px; overflow-y: auto">
+                                 
+                                 <li>
+                                    
+                                    <p>
+                                       <a href="#Cijfercode">Cijfercode</a>
+                                       
+                                    </p>
+                                    
+                                 </li>
+                                 
+                                 <li>
+                                    
+                                    <p>
+                                       <a href="#Groep">Groep</a>
+                                       
+                                    </p>
+                                    
+                                 </li>
+                                 
+                                 <li>
+                                    
+                                    <p>
+                                       <a href="#Omschrijving">Omschrijving</a>
+                                       
+                                    </p>
+                                    
+                                 </li>
+                                 
+                                 <li>
+                                    
+                                    <p>
+                                       <a href="#status">status</a>
+                                       
+                                    </p>
+                                    
+                                 </li>
+                                 
+                                 <li class="has-child tree-collapsed">
+                                    
+                                    <p>
+                                       <a href="http://www.w3.org/2004/02/skos/core#altLabel" style="font-style: italic">altLabel</a>
+                                       
+                                    </p>
+                                    <a class="" href="#" onclick="toggleNode(this);return false;">
+                                       <i class="fa fa-plus-square"></i>
+                                       </a>
+                                    
+                                    <ul class="hide">
+                                       
+                                       <li>
+                                          
+                                          <p>
+                                             <a href="#abbreviation">abbreviation</a>
+                                             
+                                          </p>
+                                          
+                                       </li>
+                                       
+                                       <li>
+                                          
+                                          <p>
+                                             <a href="#englishLabel">englishLabel</a>
+                                             
+                                          </p>
+                                          
+                                       </li>
+                                       
+                                       <li>
+                                          
+                                          <p>
+                                             <a href="#flemishLabel">flemishLabel</a>
+                                             
+                                          </p>
+                                          
+                                       </li>
+                                       
+                                       <li>
+                                          
+                                          <p>
+                                             <a href="#germanLabel">germanLabel</a>
+                                             
+                                          </p>
+                                          
+                                       </li>
+                                       
+                                    </ul>
+                                    
+                                 </li>
+                                 
+                              </ul>
+                              
+                           </div>
+                           
+                        </div>
+                        
+                     </div>
                      
                   </div>
                   
                </div>
                
-            </div>
+               <div xmlns:shacl="http://www.w3.org/ns/shacl#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ldt="http://ldt/" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:foaf="http://xmlns.com/foaf/0.1/" class="panel panel-primary">
+                  
+                  <div class="panel-heading">
+                     
+                     <h3 class="panel-title">Klassen</h3>
+                     
+                  </div>
+                  
+                  <div class="panel-body"></div>
+                  
+               </div>
+               
+               <div xmlns:shacl="http://www.w3.org/ns/shacl#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ldt="http://ldt/" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:foaf="http://xmlns.com/foaf/0.1/" class="panel panel-primary">
+                  
+                  <div class="panel-heading">
+                     
+                     <h3 class="panel-title">Eigenschappen</h3>
+                     
+                  </div>
+                  
+                  <div class="panel-body">
+                     
+                     <h4 id="Cijfercode">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23Cijfercode">Cijfercode</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#Cijfercode</td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="Groep">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23Groep">Groep</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#Groep</td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="Omschrijving">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23Omschrijving">Omschrijving</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#Omschrijving</td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="abbreviation">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23abbreviation">abbreviation</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#abbreviation</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>Subeigenschap van:</td>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#altLabel" style="font-style: italic">altLabel</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="englishLabel">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23englishLabel">englishLabel</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#englishLabel</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>Subeigenschap van:</td>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#altLabel" style="font-style: italic">altLabel</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="flemishLabel">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23flemishLabel">flemishLabel</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#flemishLabel</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>Subeigenschap van:</td>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#altLabel" style="font-style: italic">altLabel</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="germanLabel">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23germanLabel">germanLabel</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#germanLabel</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>Subeigenschap van:</td>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#altLabel" style="font-style: italic">altLabel</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="status">
+                        <a href="/resource?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fdef%2Faquo%23status">status</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i>De status van een onderdeel van een domeintabel</i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://standaard.aquo.nl/def/aquo#status</td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                     <h4 id="altLabel">
+                        <a href="/resource?subject=http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23altLabel">altLabel</a>
+                        
+                     </h4>
+                     
+                     <p>
+                        <i></i>
+                        
+                     </p>
+                     
+                     <table class="basic-text-table">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>URI:</td>
+                              
+                              <td>http://www.w3.org/2004/02/skos/core#altLabel</td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                  </div>
+                  
+               </div>
+               <script xmlns:shacl="http://www.w3.org/ns/shacl#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ldt="http://ldt/" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+		function toggleNode(node) {
+			if (node.parentElement.children[2].className!='') {
+				node.children[0].className='fa fa-minus-square';
+				node.parentElement.className='has-child';
+				node.parentElement.children[2].className=''
+			} else {
+				node.children[0].className='fa fa-plus-square';
+				node.parentElement.className='has-child tree-collapsed';
+				node.parentElement.children[2].className='hide'
+			}
+		};
+		function expandShallowNodes(cnt,node) {
+			if ($(node).children("li").length+cnt<20) {
+				if (cnt!=0) {
+					node.className='';
+					node.parentElement.className='has-child';
+					node.parentElement.children[1].children[0].className='fa fa-minus-square';
+				}
+				$(node).children("li").each(function() {
+					if(this.children[2]) {
+						cnt = expandShallowNodes($(node).children("li").length+cnt,this.children[2]);
+					}
+				});
+			}
+			return cnt
+		}
+		$(".nav-tree").each(function() {
+			if ($(this).children("ul")) {
+				expandShallowNodes(0,$(this).children("ul")[0]);
+			}
+		});
+	</script>
+               </div>
             
          </div>
          
