@@ -11,7 +11,7 @@ GRAPH config:Theatre {
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
-      SELECT ?begrip ?begrip_label ?definitie 
+      SELECT ?begrip ?begrip_label ?definitie
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
           ?subject a skos:Collection;
@@ -25,7 +25,7 @@ GRAPH config:Theatre {
       order by ?begrip_label
     """
   .
-  
+
   config:CategorieTitelData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -37,18 +37,30 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?subject rdf:type skos:Collection;
           rdfs:label ?clabel;
-          rdfs:comment ?comment.
+          rdfs:comment ?comment;
+          ?p ?o
+        .
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
-            ?subject rdfs:label ?label.
-            OPTIONAL{?subject rdfs:comment ?comment}
+          ?subject rdfs:label ?label.
+          OPTIONAL{?subject rdfs:comment ?comment}
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?subject skos:member ?catbegrip.
+            ?catbegrip skos:exactMatch ?begrip.
           }
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+            ?begrip ?p ?o
+            FILTER (?p != rdfs:label)
+          }
+        }
         BIND(CONCAT("Categorie: ", UCASE(SUBSTR(?label, 1, 1)), SUBSTR(?label, 2)) AS ?clabel)
       }
     """
   .
-  
+
   config:CategorieDomeinData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:requiredParameter elmo:SubjectParameter;
@@ -71,7 +83,7 @@ GRAPH config:Theatre {
           }
         }
         OPTIONAL {
-          GRAPH <http://standaard.aquo.nl/data/domeintabellen> { 
+          GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
             <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
           }
         }
@@ -79,4 +91,30 @@ GRAPH config:Theatre {
     """
   .
 
+  # Voor de editor (die rechtstreeks de data ophaald vanaf het endpoint)
+  # is het belangrijk dat alles in de JSON zit, en ook redelijk plat
+  config:CategorieData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      CONSTRUCT {
+        ?subject ?p ?o.
+        ?subject dct:created ?created.
+        ?subject dct:modified ?modified.
+        ?subject ?ptemp ?otemp.
+      }
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?subject ?p ?o.
+          ?subject foaf:isPrimaryTopicOf ?meta.
+#          ?meta dct:created ?created.
+#          ?meta dct:modified ?modified.
+          ?meta dct:temporal ?temp.
+          ?temp ?ptemp ?otemp.
+        }
+      }
+    """
+  .
 }

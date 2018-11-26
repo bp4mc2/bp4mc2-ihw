@@ -1,0 +1,66 @@
+GRAPH config:DomeintabelMetaShapesGraph {
+
+  <urn:shape:domeintabelmeta> a sh:NodeShape;
+    sh:targetClass dcat:Dataset;
+    sh:closed true;
+    sh:ignoredProperties (rdf:type foaf:isPrimaryTopicOf);
+    sh:property <urn:property:Dataset_label>;
+    sh:property <urn:property:Dataset_description>;
+    sh:property <urn:property:Dataset_language>;
+    sh:property <urn:property:Dataset_publisher>;
+    sh:property <urn:property:Dataset_reliesOn>;
+    sh:property <urn:property:Dataset_theme>;
+  .
+
+  <urn:property:Dataset_label> a sh:PropertyShape;
+    sh:order 1;
+    sh:name "label";
+    rdfs:label "Te tonen label"@nl;
+    sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+    sh:datatype xsd:string;
+    sh:minCount 1;
+    sh:maxCount 1;
+  .
+  <urn:property:Dataset_description> a sh:PropertyShape;
+    sh:order 2;
+    sh:name "description";
+    rdfs:label "Beschrijving"@nl;
+    sh:path <http://purl.org/dc/terms/description>;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+    sh:maxLength 300;
+  .
+  <urn:property:Dataset_language> a sh:PropertyShape;
+    sh:order 3;
+    sh:name "language";
+    rdfs:label "Taal van de dataset"@nl;
+    sh:path <http://purl.org/dc/terms/language>;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+  .
+  <urn:property:Dataset_publisher> a sh:PropertyShape;
+    sh:order 4;
+    sh:name "publisher";
+    rdfs:label "Eigenaar"@nl;
+    sh:path <http://purl.org/dc/terms/publisher>;
+    sh:class <http://www.w3.org/ns/prov#Agent>;
+    elmo:endpoint "/beheer/publisherlijst";
+    sh:maxCount 1;
+  .
+  <urn:property:Dataset_reliesOn> a sh:PropertyShape;
+    sh:order 5;
+    sh:name "reliesOn";
+    rdfs:label "Gebaseerd op"@nl;
+    sh:path <http://purl.org/vocommons/voaf#reliesOn>;
+    sh:maxCount 1;
+    # Afkomstig uit andere dataset, dus voorlopig geen datatype
+  .
+  <urn:property:Dataset_theme> a sh:PropertyShape;
+    sh:order 6;
+    sh:name "theme";
+    rdfs:label "Categorie"@nl;
+    sh:path <http://purl.org/dc/terms/publisher>;
+    sh:class <http://www.w3.org/2004/02/skos/core#Concept>;
+    elmo:endpoint "/beheer/categorieenlijst";
+  .
+}

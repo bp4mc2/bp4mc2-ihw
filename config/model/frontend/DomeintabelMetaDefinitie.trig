@@ -1,0 +1,15 @@
+GRAPH config:Theatre {
+
+  config:DomeintabelMetaDefinitieEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/def/domeintabelmeta";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:CategorieDefinitie
+  .
+
+  config:DomeintabelMetaDefinitie a elmo:Representation;
+    elmo:appearance [a elmo:Appearance];
+    elmo:stage config:Stage;
+  	elmo:informationProduct config:DomeintabelMetaDefinitieData;
+  .
+
+}

@@ -1,22 +1,32 @@
 [ {
-  "@id" : "http://standaard.aquo.nl/id/begrip/Waadbroek",
+  "@id" : "http://standaard.aquo.nl/id/begrip/DaTaOnTheWebStack",
   "@type" : [ "http://www.w3.org/2004/02/skos/core#Concept" ],
-  "http://purl.org/dc/elements/1.1/source" : [ {
-    "@value" : "Wijk, J van der, Taal van het Water"
+  "http://dublincore.org/documents/2006/04/10/dcmi-period/start" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2018-11-20"
+  } ],
+  "http://dublincore.org/documents/2006/04/10/dcmi-period/end" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2018-11-24"
+  } ],
+  "http://purl.org/dc/terms/created" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "2018-11-25T15:23:35.178+01:00"
+  } ],
+  "http://purl.org/dc/terms/modified" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "2018-11-25T15:23:35.178+01:00"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "waadbroek"
+    "@value" : "daTa on the web stack"
   } ],
   "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
-    "@value" : "waadpak"
+    "@value" : "Dotwebstack"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@value" : "AANGEPAST waterdichte broek met rubberlaarzen en een borststuk"
+    "@value" : "De Data on the web Stack - voor al uw API's, Linked Data en meer!"
   } ],
-  "http://www.w3.org/2004/02/skos/core#note" : [ {
-    "@value" : "gebruikt bij het waden door betrekkelijk diep water."
-  } ],
-  "http://xmlns.com/foaf/0.1/isPrimaryTopicOf" : [ {
-    "@id" : "http://standaard.aquo.nl/doc/begrip/Waadbroek"
+  "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+    "@value" : "DotWebStack"
   } ]
 } ]

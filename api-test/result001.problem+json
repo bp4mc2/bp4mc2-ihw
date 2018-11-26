@@ -1,5 +1,0 @@
-{
-  "title" : "Internal Server Error",
-  "status" : 500,
-  "detail" : "An error occured from which the server was unable to recover.Please contact the system administrator with the following details: 'e5ed0ff8'"
-}

@@ -1,5 +1,5 @@
-GRAPH config:Theatre { 
-  
+GRAPH config:Theatre {
+
   config:GraphDisplayEndpoint a elmo:Endpoint;
     elmo:pathPattern "/resource";
     elmo:stage config:Stage;
@@ -11,7 +11,7 @@ GRAPH config:Theatre {
     elmo:appearance config:ConceptenGraphAppearance;
     elmo:informationProduct config:ConceptenDetailGraph;
   .
-  
+
   config:ConceptenGraphAppearance a elmo:GraphAppearance;
     elmo:fragment [
       elmo:appliesTo "begrip";
@@ -21,6 +21,15 @@ GRAPH config:Theatre {
       stroke #666;
       """;
       elmo:index 1;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "categorie";
+      xhtml:stylesheet """
+      fill: green;
+      fill-opacity: .3;
+      stroke #666;
+      """;
+      elmo:index 2;
     ];
     # elmo:fragment [
       # elmo:appliesTo "domeintabel";
@@ -32,5 +41,5 @@ GRAPH config:Theatre {
       # elmo:index 2;
     # ];
   .
- 
+
 }

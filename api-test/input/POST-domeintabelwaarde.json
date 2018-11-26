@@ -1,0 +1,13 @@
+[ {
+  "@id" : "http://standaard.aquo.nl/id/AfsluitmiddelType/NIEUW",
+  "http://purl.org/dc/terms/identifier" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "10"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Code" : [ {
+    "@value" : "10"
+  } ],
+  "http://standaard.aquo.nl/def/aquo#Omschrijving" : [ {
+    "@value" : "Rolluikdeur (nieuw)"
+  } ]
+} ]

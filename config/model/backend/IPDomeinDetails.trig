@@ -232,6 +232,22 @@ GRAPH config:Theatre {
         }
       """
     .
+  config:DomeinTitelPublicerenData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+      SELECT ?subject ?subject_label
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?subject rdfs:label ?subject_label.
+        }
+      }
+    """
+  .
 
   config:DomeintabelStagingData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
@@ -239,6 +255,8 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
       PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       CONSTRUCT {
         ?s ?p ?o;
          aquo:status ?status.
@@ -249,11 +267,13 @@ GRAPH config:Theatre {
             SELECT ?s ?p ?o ("Verwijderen" as ?status)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              GRAPH ?subject {
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              GRAPH ?datagraph {
                 ?s ?p ?o.
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               GRAPH ?staging {
-                ?s prov:invalidatedAtTime ?t
+                ?s dcmiperiod:end ?t
               }
             }
           }
@@ -262,8 +282,10 @@ GRAPH config:Theatre {
             SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-              GRAPH ?subject {
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              GRAPH ?datagraph {
                 ?sold ?p ?o.
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               GRAPH ?staging {
                 ?sold a ?t
@@ -275,12 +297,13 @@ GRAPH config:Theatre {
             SELECT ?s ?p ?o ("Wijzigen in" as ?status)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?staging {
                 ?s a ?t.
                 ?s ?p ?o
               }
               FILTER EXISTS {
-                GRAPH ?subject {
+                GRAPH ?datagraph {
                   ?s a ?t.
                 }
               }
@@ -291,11 +314,12 @@ GRAPH config:Theatre {
             SELECT ?s ?p ?o ("Toevoegen" as ?status)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?staging {
                 ?s ?p ?o
               }
               FILTER NOT EXISTS {
-                GRAPH ?subject {
+                GRAPH ?datagraph {
                   ?s a ?t.
                 }
               }

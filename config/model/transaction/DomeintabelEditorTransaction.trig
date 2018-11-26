@@ -103,45 +103,20 @@ GRAPH config:Theatre {
   config:DomeintabelEditEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/domeintabel";
     elmo:stage config:Stage;
-    elmo:putService config:DomeintabelStagingService;
-    elmo:postService config:DomeintabelStagingService;
-    elmo:deleteService config:DomeintabelStagingService;
+    elmo:putService config:DomeintabelPutStagingService;
+    elmo:postService config:DomeintabelPostStagingService;
   .
 
-  config:DomeintabelStagingService a elmo:Service;
-    elmo:transaction config:DomeintabelStagingTransaction;
+  config:DomeintabelPutStagingService a elmo:Service;
+    elmo:transaction config:DomeintabelPutStagingTransaction;
+  .
+  config:DomeintabelPostStagingService a elmo:Service;
+    elmo:transaction config:DomeintabelPostStagingTransaction;
   .
 
-  config:DomeintabelStagingTransaction a elmo:Transaction;
+  config:DomeintabelPutStagingTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
-#      [
-#        a elmo:AssertionStep;
-#        rdfs:label "Deze code is al in gebruik";
-#        elmo:assert """
-#          PREFIX dct:  <http://purl.org/dc/terms/>
-#          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-#          PREFIX config: <http://dotwebstack.org/configuration/>
-#          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-#          ASK {
-#            { ?id aquo:Code ?code;
-#                  ?p ?o.
-#            }
-#            FILTER EXISTS {
-#              SERVICE config:LocalBackend {
-#                GRAPH ?subject { ?id ?p ?o. }
-#              }
-#            }
-#            FILTER EXISTS {
-#              SERVICE config:LocalBackend {
-#                GRAPH ?subject {
-#                  ?id aquo:Code ?code.
-#                }
-#              }
-#            }
-#          }
-#        """;
-#      ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -158,8 +133,30 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s a ?type
+            }
+          }
+          WHERE {
+            SELECT DISTINCT ?s ?type
+            WHERE {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              BIND (iri(concat("http://standaard.aquo.nl/def/aquo#",strafter(str(?subject),"/id/domeintabel/"))) as ?type)
+              GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s ?p ?o
+              }
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
           PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           insert {
             graph ?staging {
               ?s ?p ?o
@@ -168,7 +165,102 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
-              FILTER (?p!=prov:generatedAtTime)
+              FILTER NOT EXISTS {
+                ?s dcmiperiod:end ?end
+              }
+            }
+            BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          prefix prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          insert {
+            graph ?staging {
+              ?s dcmiperiod:end ?end
+            }
+          }
+          where {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s dcmiperiod:end ?end
+            }
+            BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+          }
+        """
+      ]
+    )
+  .
+
+  config:DomeintabelPostStagingTransaction a elmo:Transaction;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
+      ]
+
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX adms: <http://www.w3.org/ns/adms#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s adms:identifier ?cnt.
+              ?s a ?type
+            }
+          }
+          WHERE {
+            SELECT DISTINCT ?s ?cnt ?type
+            WHERE {
+              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              BIND (iri(concat("http://standaard.aquo.nl/def/aquo#",strafter(str(?subject),"/id/domeintabel/"))) as ?type)
+              GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s ?p ?o
+              }
+              {
+                SELECT (count(?item) as ?cnt)
+                WHERE {
+                  GRAPH ?staging {
+                    ?item adms:identifier ?id
+                  }
+                }
+              }
+            }
+          }
+        """
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX adms: <http://www.w3.org/ns/adms#>
+          insert {
+            graph ?staging {
+              ?uri ?p ?o
+            }
+          }
+          where {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s ?p ?o.
+              FILTER (?p != adms:identifier)
+              ?s adms:identifier ?id
+              BIND (iri(concat(str(?subject),"/",str(?id))) as ?uri)
             }
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
           }

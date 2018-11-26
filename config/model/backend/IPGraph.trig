@@ -1,25 +1,26 @@
-GRAPH config:Theatre { 
+GRAPH config:Theatre {
 
   config:ConceptenDetailGraph a elmo:InformationProduct;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX elmo1: <http://bp4mc2.org/elmo/def#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-      PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX thes: <http://purl.org/iso25964/skos-thes#>
       PREFIX dct: <http://purl.org/dc/terms/>
-      
+
       CONSTRUCT {
         ?subject ?p ?o;
           rdfs:label ?subjectlabel;
           elmo1:style ?type.
-        
+
         ?o rdfs:label ?olabel;
           elmo1:style ?oelmostyle;
           elmo1:style ?otype.
-        
+
         skos:Concept elmo1:name "begrip".
+        skos:Collection elmo1:name "categorie".
         dct:subject rdfs:label "Categorie".
         skos:broader rdfs:label "Bredere term".
         skos:narrower rdfs:label "Nauwere term".
@@ -28,6 +29,12 @@ GRAPH config:Theatre {
         thes:narrowerPartitive rdfs:label "Heeft onderdeel".
         dct:isReplacedBy rdfs:label "Gebruik".
         dct:replaces rdfs:label "Gebruik in plaats van".
+
+        ?categorie skos:member ?subject.
+        ?categorie rdfs:label ?categorielabel.
+        ?categorie elmo1:style skos:Collection.
+        skos:member rdfs:label "categorie".
+
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -58,11 +65,14 @@ GRAPH config:Theatre {
               a ?otype.
           }
         }
-        GRAPH <http://standaard.aquo.nl/data/categorieen> {
-          ?categorie skos:member ?subject.
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?subject.
+            ?categorie rdfs:label ?categorielabel.
+          }
         }
       }
     """
   .
-    
+
 }

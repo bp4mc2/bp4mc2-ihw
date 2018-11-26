@@ -1,0 +1,185 @@
+GRAPH config:BegrippenShapesGraph {
+
+  <urn:shape:begrip> a sh:NodeShape;
+    sh:targetClass skos:Concept;
+    sh:closed true;
+    sh:ignoredProperties (rdf:type foaf:isPrimaryTopicOf);
+    sh:property <urn:property:prefLabel>;
+    sh:property <urn:property:label>;
+    sh:property <urn:property:definition>;
+    sh:property <urn:property:altLabel>;
+    sh:property <urn:property:abbreviation>;
+    sh:property <urn:property:source>;
+    sh:property <urn:property:notation>;
+    sh:property <urn:property:broader>;
+    sh:property <urn:property:narrower>;
+    sh:property <urn:property:broaderPartitive>;
+    sh:property <urn:property:narrowerPartitive>;
+    sh:property <urn:property:related>;
+    sh:property <urn:property:note>;
+    sh:property <urn:property:replaces>;
+    sh:property <urn:property:relatedMatch>;
+    sh:property <urn:property:beginGeldigheid>;
+    sh:property <urn:property:eindeGeldigheid>;
+  .
+
+  <urn:property:prefLabel> a sh:PropertyShape;
+    sh:order 1;
+    sh:name "prefLabel";
+    rdfs:label "Voorkeursterm"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#prefLabel>;
+    sh:datatype xsd:string;
+    sh:minCount 1;
+    sh:maxCount 1;
+  .
+  # Label en voorkeursterm zijn aan elkaar gekoppeld, dat gebeurt in de API. Voorlopig toch editable houden
+  <urn:property:label> a sh:PropertyShape;
+    sh:order 2;
+    sh:name "label";
+    rdfs:label "Te tonen label"@nl;
+    sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+    sh:datatype xsd:string;
+    sh:minCount 1;
+    sh:maxCount 1;
+  .
+  <urn:property:definition> a sh:PropertyShape;
+    sh:order 3;
+    sh:name "definition";
+    rdfs:label "Definitie"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#definition>;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+    sh:maxLength 2000;
+  .
+  <urn:property:altLabel> a sh:PropertyShape;
+    sh:order 4;
+    sh:name "altLabel";
+    rdfs:label "Synoniem"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
+  .
+  <urn:property:abbreviation> a sh:PropertyShape;
+    sh:order 5;
+    sh:name "abbreviation";
+    rdfs:label "Afkorting"@nl;
+    sh:path <http://standaard.aquo.nl/def/aquo#abbreviation>;
+    sh:datatype xsd:string;
+    sh:maxLength 59;
+  .
+  <urn:property:source> a sh:PropertyShape;
+    sh:order 6;
+    sh:name "source";
+    rdfs:label "Bron"@nl;
+    sh:path <http://purl.org/dc/elements/1.1/source>;
+    sh:maxLength 1000;
+  .
+  <urn:property:notation> a sh:PropertyShape;
+    sh:order 7;
+    sh:name "notation";
+    rdfs:label "Code"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#notation>;
+    sh:datatype xsd:string;
+    sh:maxCount 1;
+  .
+  # Deze velden worden automatisch gezet
+  #        <urn:property:p2> a sh:PropertyShape;
+  #          sh:order 8;
+  #          sh:name "dateCreated";
+  #          rdfs:label "Datum aangemaakt"@nl;
+  #          sh:path <http://purl.org/dc/terms/created>;
+  #          sh:datatype xsd:dateTime;
+  #        .
+  #        <urn:property:p3> a sh:PropertyShape;
+  #          sh:order 9;
+  #          sh:name "dateModified";
+  #          rdfs:label "Datum laatste wijziging"@nl;
+  #          sh:path <http://purl.org/dc/terms/modified>;
+  #          sh:datatype xsd:dateTime;
+  #        .
+  # Uitzoeken: categorie werkt nu reverse, maar moet wel getoond worden hier!
+  #        <urn:property:p4> a sh:PropertyShape;
+  #          sh:order 10;
+  #          sh:name "subject";
+  #          rdfs:label "Categorie"@nl;
+  #          sh:path <http://purl.org/dc/terms/subject>;
+  #        .
+  <urn:property:broader> a sh:PropertyShape;
+    sh:order 11;
+    sh:name "broaderTerm";
+    rdfs:label "Bredere term"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#broader>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:narrower> a sh:PropertyShape;
+    sh:order 12;
+    sh:name "narrowerTerm";
+    rdfs:label "Smallere term"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#narrower>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:broaderPartitive> a sh:PropertyShape;
+    sh:order 13;
+    sh:name "isPartOf";
+    rdfs:label "Onderdeel van"@nl;
+    sh:path <http://purl.org/iso25964/skos-thes#broaderPartitive>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:narrowerPartitive> a sh:PropertyShape;
+    sh:order 14;
+    sh:name "hasPart";
+    rdfs:label "Bestaat uit"@nl;
+    sh:path <http://purl.org/iso25964/skos-thes#narrowerPartitive>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:related> a sh:PropertyShape;
+    sh:order 15;
+    sh:name "related";
+    rdfs:label "Gerelateerd aan"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#related>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:note> a sh:PropertyShape;
+    sh:order 16;
+    sh:name "note";
+    rdfs:label "Notitie"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#note>;
+    sh:datatype xsd:string;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+  <urn:property:replaces> a sh:PropertyShape;
+    sh:order 17;
+    sh:name "replaces";
+    rdfs:label "Vervangt begrip"@nl;
+    sh:path <http://purl.org/dc/terms/replaces>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst"; #Deze lijst moet dus ook vervallen begrippen bevatten!
+  .
+  <urn:property:relatedMatch> a sh:PropertyShape;
+    sh:order 18;
+    sh:name "relatedMatch";
+    rdfs:label "Begrip ander domein"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#relatedMatch>;
+    # Begrip ander domein is een uri, maar kan niet gevonden worden. Hoe gaan we dit tonen?
+  .
+  <urn:property:beginGeldigheid> a sh:PropertyShape;
+    sh:order 19;
+    sh:name "beginGeldigheid";
+    rdfs:label "Begin geldigheid"@nl;
+    sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+    sh:datatype xsd:date;
+    sh:minCount 1;
+    sh:maxCount 1;
+  .
+  <urn:property:eindeGeldigheid> a sh:PropertyShape;
+    sh:order 19;
+    sh:name "eindeGeldigheid";
+    rdfs:label "Einde geldigheid"@nl;
+    sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+    sh:datatype xsd:date;
+    sh:maxCount 1;
+  .
+}

@@ -3,34 +3,34 @@ GRAPH config:Theatre {
   # ==========================
   #
   # Editor endpoint, representation en appearance
-  # Begrippen (aanpassen)
+  # Categorieen (aanpassen)
   #
   # ==========================
 
-  config:BegrippenEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/begrippen";
+  config:CategorieenEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/categorieen";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:BegrippenEditor;
+    elmo:getRepresentation config:CategorieenEditor;
   .
 
-  config:BegrippenEditor a elmo:Representation;
+  config:CategorieenEditor a elmo:Representation;
     elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
     elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
-    elmo:informationProduct config:BegrippenEditorData;
+    elmo:informationProduct config:CategorieenEditorData;
   .
 
-  config:BegrippenEditorData a elmo:InformationProduct;
+  config:CategorieenEditorData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX elmo: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
-          elmo:searchEndpoint "/beheer/begrippenlijst";
-          elmo:endpoint "/beheer/begrippen";
-          elmo:definition "/def/begrip?format=json"
+          elmo:searchEndpoint "/beheer/categorieenlijst";
+          elmo:endpoint "/beheer/categorieen";
+          elmo:definition "/def/categorie?format=json"
         .
       }
       WHERE {}
@@ -40,33 +40,33 @@ GRAPH config:Theatre {
   # ==========================
   #
   # Editor endpoint, representation en appearance
-  # Begrippen (toevoegen)
+  # Categorieen (toevoegen)
   #
   # ==========================
 
-  config:NieuwBegripEditorEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/nieuwbegrip";
+  config:NieuweCategorieEditorEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/nieuwecategorie";
     elmo:stage config:Stage;
-    elmo:getRepresentation config:NieuwBegripEditor;
+    elmo:getRepresentation config:NieuweCategorieEditor;
   .
 
-  config:NieuwBegripEditor a elmo:Representation;
+  config:NieuweCategorieEditor a elmo:Representation;
     elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
     elmo:contains config:BeheerMenu;
     elmo:contains config:Footer;
-    elmo:informationProduct config:NieuwBegripEditorData;
+    elmo:informationProduct config:NieuweCategorieEditorData;
   .
 
-  config:NieuwBegripEditorData a elmo:InformationProduct;
+  config:NieuweCategorieEditorData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:query """
       PREFIX elmo: <http://bp4mc2.org/elmo/def#>
       CONSTRUCT {
         <http://localhost:8080/editor>
           elmo:hostName "%{dotwebstack.config.host}:%{dotwebstack.config.port}";
-          elmo:endpoint "/beheer/begrippen";
-          elmo:definition "/def/begrip?format=json"
+          elmo:endpoint "/beheer/categorieen";
+          elmo:definition "/def/categorie?format=json"
         .
       }
       WHERE {}
@@ -75,20 +75,20 @@ GRAPH config:Theatre {
 
 # ==========================
 #
-# Begrippenlijst voor editor
+# Categorieenlijst voor editor
 #
 # ==========================
 
-config:BegrippenZoeklijstEndpoint a elmo:Endpoint;
-  elmo:pathPattern "/beheer/begrippenlijst";
+config:CategorieenZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/categorieenlijst";
   elmo:stage config:Stage;
-  elmo:getRepresentation config:BegrippenZoeklijst;
+  elmo:getRepresentation config:CategorieenZoeklijst;
 .
 
-config:BegrippenZoeklijst a elmo:Representation;
+config:CategorieenZoeklijst a elmo:Representation;
   elmo:stage config:Stage;
   elmo:appearance [a elmo:Appearance];
-  elmo:informationProduct config:BegrippenZoeklijstData;
+  elmo:informationProduct config:CategorieenZoeklijstData;
 .
 
 # ==========================
@@ -97,30 +97,20 @@ config:BegrippenZoeklijst a elmo:Representation;
 #
 # ==========================
 
-  config:BegrippenZoeklijstData a elmo:InformationProduct;
+  config:CategorieenZoeklijstData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
     elmo:optionalParameter config:TermParameter;
     elmo:query """
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT ?uri (concat(?urilabel,if(bound(?cata),concat(" (",?cata,")"),"")) as ?label)
+      SELECT ?uri ?label
       WHERE {
-        SELECT ?uri ?urilabel (group_concat(?catlabel; separator=", ") as ?cata)
-        WHERE {
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
-            ?uri a skos:Concept.
-            ?uri rdfs:label ?urilabel.
-            FILTER regex(?urilabel,concat("^",?term),"i")
-          }
-          OPTIONAL {
-            GRAPH <http://standaard.aquo.nl/data/categorieen> {
-              ?cat skos:member ?uri.
-              ?cat rdfs:label ?catlabel.
-            }
-          }
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?uri a skos:Concept.
+          ?uri rdfs:label ?label.
+          FILTER regex(?label,concat("^",?term),"i")
         }
-        GROUP BY ?uri ?urilabel
       }
     """;
   .
@@ -131,25 +121,25 @@ config:BegrippenZoeklijst a elmo:Representation;
 #
 # ==========================
 
-  config:BegrippenEditEndpoint a elmo:Endpoint;
-    elmo:pathPattern "/beheer/begrippen";
+  config:CategorieenEditEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/beheer/categorieen";
     elmo:stage config:Stage;
-    elmo:putService config:BegrippenPutService;
-    elmo:postService config:BegrippenPostService;
+    elmo:putService config:CategorieenPutService;
+    elmo:postService config:CategorieenPostService;
   .
 
-  config:BegrippenPutService a elmo:Service;
-    elmo:transaction config:BegrippenPutTransaction;
+  config:CategorieenPutService a elmo:Service;
+    elmo:transaction config:CategorieenPutTransaction;
   .
-  config:BegrippenPostService a elmo:Service;
-    elmo:transaction config:BegrippenPostTransaction;
+  config:CategorieenPostService a elmo:Service;
+    elmo:transaction config:CategorieenPostTransaction;
   .
 
 # =======
 # PUT
 # =======
 
-config:BegrippenPutTransaction a elmo:Transaction;
+config:CategorieenPutTransaction a elmo:Transaction;
   elmo:sequentialFlow (
     [
       a elmo:UpdateStep;
@@ -174,15 +164,21 @@ config:BegrippenPutTransaction a elmo:Transaction;
         PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         DELETE {
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?s ?pold ?oold.
             ?msold ?mpold ?moold.
             ?mstold ?mstpold ?mstoold.
+            ?coluri ?pcolold ?ocolold.
+            ?coluri foaf:isPrimaryTopicOf ?mcolold.
+            ?mcolold ?mpcolold ?mocolold.
+            ?mcolold dct:temporal ?mcoltold.
+            ?mcoltold ?mcoltpold ?mcoltoold.
           }
         }
         INSERT  {
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?s ?pnew ?onew.
             ?s foaf:isPrimaryTopicOf ?ms.
             ?ms dct:modified ?t.
@@ -190,11 +186,20 @@ config:BegrippenPutTransaction a elmo:Transaction;
             ?ms dct:temporal ?mst.
             ?mst dcmiperiod:start ?start.
             ?mst dcmiperiod:end ?end.
+            ?coluri rdfs:label ?label.
+            ?coluri foaf:isPrimaryTopicOf ?colmetauri.
+            ?colmetauri dct:created ?t.
+            ?colmetauri dct:modified ?t.
+            ?colmetauri prov:generatedAtTime ?t.
+            ?colmetauri dct:temporal ?tempuri.
+            ?coltempuri dcmiperiod:start ?start.
+            ?coltempuri dcmiperiod:start ?end.
           }
         }
         WHERE {
           GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
-            ?s ?pnew ?onew
+            ?s ?pnew ?onew.
+            ?s rdfs:label ?label.
             FILTER (?pnew != dct:created && ?pnew != dct:modified && ?pnew != dcmiperiod:start && ?pnew != dcmiperiod:end)
             BIND (now() as ?t)
             BIND (iri(replace(str(?s),"/id/","/doc/")) as ?ms)
@@ -202,14 +207,24 @@ config:BegrippenPutTransaction a elmo:Transaction;
             OPTIONAL {?s dcmiperiod:start ?startr}
             OPTIONAL {?s dcmiperiod:end ?end}
             BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
+            BIND (iri(replace(str(?s),"/categorie/","/collectie/")) as ?coluri)
+            BIND (iri(replace(str(?coluri),"/id/","/doc/")) as ?colmetauri)
+            BIND (iri(concat(replace(str(?coluri),"/id/","/doc/"),"#temporal")) as ?coltempuri)
           }
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?s ?pold ?oold.
             ?s foaf:isPrimaryTopicOf ?msold.
             ?msold ?mpold ?moold.
             ?msold dct:temporal ?mstold.
             ?mstold ?mstpold ?mstoold.
             FILTER (?mpold != dct:created && ?mpold != rdf:type)
+            ?coluri ?pcolold ?ocolold.
+            FILTER (?pcolold = rdfs:label)
+            ?coluri foaf:isPrimaryTopicOf ?mcolold.
+            ?mcolold ?mpcolold ?mocolold.
+            FILTER (?mpcolold != dct:created && ?mpcolold != rdf:type)
+            ?mcolold dct:temporal ?mcoltold.
+            ?mcoltold ?mcoltpold ?mcoltoold.
           }
         }
       """
@@ -221,7 +236,7 @@ config:BegrippenPutTransaction a elmo:Transaction;
 # POST
 # =======
 
-config:BegrippenPostTransaction a elmo:Transaction;
+config:CategorieenPostTransaction a elmo:Transaction;
   elmo:sequentialFlow (
     [
       a elmo:UpdateStep;
@@ -332,17 +347,17 @@ config:BegrippenPostTransaction a elmo:Transaction;
             {
               GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?s adms:identifier ?olduriterm.
-                BIND(iri(concat("http://standaard.aquo.nl/id/begrip/",?olduriterm)) as ?uri)
+                BIND(iri(concat("http://standaard.aquo.nl/id/categorie/",?olduriterm)) as ?uri)
               }
-              GRAPH <http://standaard.aquo.nl/data/begrippen> {
+              GRAPH <http://standaard.aquo.nl/data/categorieen> {
                 ?uri a skos:Concept.
               }
             }
             {
-              SELECT (count(?begrip) as ?cnt)
+              SELECT (count(?categorie) as ?cnt)
               WHERE {
-                GRAPH <http://standaard.aquo.nl/data/begrippen> {
-                  ?begrip a skos:Concept.
+                GRAPH <http://standaard.aquo.nl/data/categorieen> {
+                  ?categorie a skos:Concept.
                 }
               }
             }
@@ -363,7 +378,7 @@ config:BegrippenPostTransaction a elmo:Transaction;
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
         INSERT  {
-          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?uri a skos:Concept.
             ?uri ?pnew ?onew.
             ?uri foaf:isPrimaryTopicOf ?metauri.
@@ -372,6 +387,15 @@ config:BegrippenPostTransaction a elmo:Transaction;
             ?metauri prov:generatedAtTime ?t.
             ?metauri dct:temporal ?tempuri.
             ?tempuri dcmiperiod:start ?start.
+            ?coluri a skos:Collection.
+            ?coluri rdfs:label ?label.
+            ?coluri skos:member ?uri.
+            ?coluri foaf:isPrimaryTopicOf ?colmetauri.
+            ?colmetauri dct:created ?t.
+            ?colmetauri dct:modified ?t.
+            ?colmetauri prov:generatedAtTime ?t.
+            ?colmetauri dct:temporal ?tempuri.
+            ?coltempuri dcmiperiod:start ?start.
           }
         }
         WHERE {
@@ -379,10 +403,14 @@ config:BegrippenPostTransaction a elmo:Transaction;
             ?snew ?pnew ?onew.
             FILTER (?pnew != dct:created && ?pnew != dct:modified && ?pnew != dcmiperiod:start && ?pnew != dcmiperiod:end && ?pnew != adms:identifier)
             ?snew adms:identifier ?localname.
+            ?snew rdfs:label ?label.
             BIND (now() as ?t)
-            BIND(iri(concat("http://standaard.aquo.nl/id/begrip/",?localname)) as ?uri)
-            BIND(iri(concat("http://standaard.aquo.nl/doc/begrip/",?localname)) as ?metauri)
-            BIND(iri(concat("http://standaard.aquo.nl/doc/begrip/",?localname,"#temporal")) as ?tempuri)
+            BIND(iri(concat("http://standaard.aquo.nl/id/categorie/",?localname)) as ?uri)
+            BIND(iri(concat("http://standaard.aquo.nl/doc/categorie/",?localname)) as ?metauri)
+            BIND(iri(concat("http://standaard.aquo.nl/doc/categorie/",?localname,"#temporal")) as ?tempuri)
+            BIND(iri(concat("http://standaard.aquo.nl/id/collectie/",?localname)) as ?coluri)
+            BIND(iri(concat("http://standaard.aquo.nl/doc/collectie/",?localname)) as ?colmetauri)
+            BIND(iri(concat("http://standaard.aquo.nl/doc/collectie/",?localname,"#temporal")) as ?coltempuri)
             OPTIONAL {?snew dcmiperiod:start ?startr}
             BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
           }

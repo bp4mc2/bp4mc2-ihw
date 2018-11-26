@@ -1,0 +1,28 @@
+GRAPH config:CategorieenShapesGraph {
+
+  <urn:shape:categorie> a sh:NodeShape;
+    sh:targetClass skos:Concept;
+    sh:closed true;
+    sh:ignoredProperties (rdf:type foaf:isPrimaryTopicOf);
+    sh:property <urn:property:Categorie_label>;
+    sh:property <urn:property:Categorie_exactMatch>;
+  .
+
+  <urn:property:Categorie_label> a sh:PropertyShape;
+    sh:order 1;
+    sh:name "label";
+    rdfs:label "Te tonen label"@nl;
+    sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+    sh:datatype xsd:string;
+    sh:minCount 1;
+    sh:maxCount 1;
+  .
+  <urn:property:Categorie_exactMatch> a sh:PropertyShape;
+    sh:order 2;
+    sh:name "exactMatch";
+    rdfs:label "Gelijk aan"@nl;
+    sh:path <http://www.w3.org/2004/02/skos/core#exactMatch>;
+    sh:class skos:Concept;
+    elmo:endpoint "/beheer/begrippenlijst";
+  .
+}

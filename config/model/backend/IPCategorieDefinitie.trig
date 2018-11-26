@@ -1,0 +1,40 @@
+GRAPH config:Theatre {
+
+  # NB:
+  # Helaas kun je nog niet een query doen op de configuratie repo zelf
+  # Hieronder is een kopie van CategorieenShapesGraph.trig!!
+  #
+  config:CategorieDefinitieData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:query """
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX sh: <http://www.w3.org/ns/shacl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX elmo: <http://dotwebstack.org/def/elmo#>
+      CONSTRUCT {
+        <urn:property:label> a sh:PropertyShape;
+          sh:order 1;
+          sh:name "label";
+          rdfs:label "Te tonen label"@nl;
+          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+          sh:datatype xsd:string;
+          sh:minCount 1;
+          sh:maxCount 1;
+        .
+        <urn:property:exactMatch> a sh:PropertyShape;
+          sh:order 2;
+          sh:name "exactMatch";
+          rdfs:label "Gelijk aan"@nl;
+          sh:path <http://www.w3.org/2004/02/skos/core#exactMatch>;
+          sh:class skos:Concept;
+          elmo:endpoint "/beheer/begrippenlijst";
+        .
+      }
+      WHERE {
+      }
+
+    """
+  .
+
+}

@@ -50,13 +50,18 @@ Als je aanpassingen hebt gedaan aan de configuratie, stop dan de dotwebstack met
 ### Stap 5: Inladen bronbestanden
 
 1. Zorg ervoor dat de bronbestanden in de map `bp4mc2-ihw/data` staan.
-2. Laat de verschillende bronnen door het aanroepen van de betreffende upload scripts:
+2. Zorg dat je begint ingelogd voor de upload:
+    - `login` om in te loggen (er wordt dan een keycookie.txt aangemaakt)
+3. Laat de verschillende bronnen door het aanroepen van de betreffende upload scripts:
     - `upload-begrippen` voor de begrippen;
 		- `upload-categorieen` voor de categorieen;
 		- `upload-domeintabellen` voor alle domeintabellen;
 		- `upload-links` voor de links tussen domeintabelwaarden en begrippen;
 		- `upload-metadata` voor de metadata van de domeintabellen;
 		- `upload-vocabulaire` voor de aquo vocabulaire.
+    - `upload-shacl` voor de configuratie van domeintabellen
+4. Zorg dat je weer bent uitgelogd:
+    - `logout` (de keycookie.txt wordt weer verwijderd)
 
 ### Stap 6: Testen van de SOAP webservice
 
