@@ -181,7 +181,7 @@ GRAPH config:Theatre {
           FILTER (?type != prov:Entity && ?type != skos:Concept)
           OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
           BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
-          BIND(IF(BOUND(?end), "historisch","gepubliceerd") as ?status)
+          BIND(IF(BOUND(?endr), "historisch","gepubliceerd") as ?status)
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
