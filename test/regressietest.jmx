@@ -343,7 +343,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="subject" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                <stringProp name="Argument.value">http://standaard.aquo.nl/def/Bemonsteringsapparaat/Bodembemonstering</stringProp>
+                <stringProp name="Argument.value">http://standaard.aquo.nl/def/Bemonsteringsapparaat#Bodembemonstering</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">subject</stringProp>
@@ -376,7 +376,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">f0066c40c3648d55aeeedba9cc8ab68d</stringProp>
+            <stringProp name="MD5HexAssertion.size">167178d97341a2f88404a9d2ece48a97</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>
@@ -715,7 +715,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">ad70ec490e0dd4a1668856e34c686d56</stringProp>
+            <stringProp name="MD5HexAssertion.size">890edac7272638af9306a95049a36e3b</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>
@@ -758,7 +758,7 @@
           </ResponseAssertion>
           <hashTree/>
           <MD5HexAssertion guiclass="MD5HexAssertionGUI" testclass="MD5HexAssertion" testname="MD5Hex Assertion" enabled="true">
-            <stringProp name="MD5HexAssertion.size">133898a28ce9fd3578488c3213247505</stringProp>
+            <stringProp name="MD5HexAssertion.size">b94c2201fc36d1fb7c124cb30ef3973b</stringProp>
           </MD5HexAssertion>
           <hashTree/>
         </hashTree>

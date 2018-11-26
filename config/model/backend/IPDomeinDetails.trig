@@ -89,8 +89,11 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
+      PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+      
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
@@ -101,8 +104,14 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH ?domeintabel {
           ?id dct:type ?subject;
-            ?p ?o.
+            ?p ?o;
+            foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+          .
           OPTIONAL {?o rdfs:label ?olabel}
+          OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+          BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
+          FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
+          
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {

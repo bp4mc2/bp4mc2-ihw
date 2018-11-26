@@ -293,7 +293,7 @@ adms:status<y:LabelModel>
           <y:Geometry height="30.0" width="268.56" x="39.64705882352939" y="625.0"/>
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="241.48046875" x="13.539765624999973" y="-1.701171875">hebben we nu niet: 
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="241.48046875" x="13.539765625000001" y="-1.701171875">hebben we nu niet: 
 waarden zitten in de domeintabelwaarde zelf<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -957,8 +957,8 @@ dcmiperiod:end<y:LabelModel>
           <y:Geometry height="85.00884393063563" width="317.06319845857416" x="-416.0461521024595" y="949.5183044315993"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="300.89453125" x="8.084333604287053" y="4.0">Groep
-&lt;http://standaard.aquo.nl/def/{domeintabel}/{rdfs:label}&gt;</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="304.234375" x="6.414411729287053" y="4.0">Groep
+&lt;http://standaard.aquo.nl/def/{domeintabel}#{rdfs:label}&gt;</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="52.69140625" x="2.0" y="45.40234375">rdfs:label<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -1039,7 +1039,7 @@ dcmiperiod:end<y:LabelModel>
           <y:Geometry height="111.25" width="294.2054190751445" x="653.8780356199063" y="386.1077392421323"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="279.53125" x="7.337084537572196" y="4.0">prov:Entity
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="279.53125" x="7.337084537572309" y="4.0">prov:Entity
 &lt;http://standaard.aquo.nl/doc/categorie/{rdfs:label}&gt;</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="122.728515625" x="2.0" y="45.40234375">prov:generatedAtTime
 dct:created
@@ -1750,7 +1750,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e42" source="n23" target="n20">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-98.41666666666674" ty="0.0"/>
@@ -1761,7 +1760,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e43" source="n29" target="n29">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-11.357402055233706" sy="40.43327874116915" tx="-80.12169235709644" ty="28.728718689788252">
@@ -1784,7 +1782,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e44" source="n21" target="n49">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1803,7 +1800,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e45" source="n49" target="n50">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1814,7 +1810,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e46" source="n20" target="n51">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-90.26204238921002" sy="2.926140012845167" tx="39.34443146422973" ty="17.588070006422583">
@@ -1835,7 +1830,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e47" source="n51" target="n52">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-77.70116904957877" sy="11.735789980732136" tx="-59.21462813102096" ty="3.224179833012272"/>
