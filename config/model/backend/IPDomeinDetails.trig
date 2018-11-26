@@ -301,6 +301,7 @@ GRAPH config:Theatre {
               GRAPH ?staging {
                 ?s a ?t.
                 ?s ?p ?o
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               FILTER EXISTS {
                 GRAPH ?datagraph {
@@ -317,6 +318,7 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?staging {
                 ?s ?p ?o
+                FILTER (?p != foaf:isPrimaryTopicOf)
               }
               FILTER NOT EXISTS {
                 GRAPH ?datagraph {

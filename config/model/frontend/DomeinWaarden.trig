@@ -28,7 +28,7 @@ GRAPH config:Theatre {
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
-    elmo:informationProduct config:DomeinWaardenData;
+    elmo:informationProduct config:DomeinwaardenPlainData;
   .
 
   config:DomeinWaardenAppearance a elmo:ContentAppearance;
