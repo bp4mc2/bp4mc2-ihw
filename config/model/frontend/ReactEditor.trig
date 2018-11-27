@@ -20,6 +20,7 @@ GRAPH config:Theatre {
     elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
     elmo:contains config:BeheerMenu;
+    elmo:contains config:ReactEditorDomeinTitel;
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorDomeinwaardeData;
   .
@@ -27,6 +28,7 @@ GRAPH config:Theatre {
     elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
     elmo:contains config:BeheerMenu;
+    elmo:contains config:ReactEditorDomeinTitel;
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorNieuweDomeinwaardeData;
   .
@@ -34,8 +36,14 @@ GRAPH config:Theatre {
     elmo:appearance [a elmo:ReactEditorAppearance];
     elmo:stage config:Stage;
     elmo:contains config:BeheerMenu;
+    elmo:contains config:ReactEditorDomeinTitel;
     elmo:contains config:Footer;
     elmo:informationProduct config:ReactEditorDomeinwaardeLinkData;
+  .
+  config:ReactEditorDomeinTitel a elmo:Representation;
+    elmo:stage config:Stage;
+    elmo:appearance config:DomeinTitelAppearance;
+    elmo:informationProduct config:ReactEditorDomeinTitelData;
   .
 
   config:ReactEditorDomeinwaardeData a elmo:InformationProduct;
@@ -119,4 +127,26 @@ GRAPH config:Theatre {
     """
   .
 
+  config:ReactEditorDomeinTitelData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:query """
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+      SELECT ?domeintabel ?domeintabel_label ?beheerder ?beheerder_label
+      WHERE {
+        BIND(strafter(str(?subject),"/id/domeintabel/") as ?domeinnaamtest)
+        BIND(if(?domeinnaamtest="",strbefore(strafter(str(?subject),"/id/"),"/"),?domeinnaamtest) as ?domeinnaam)
+        BIND(iri(concat("http://standaard.aquo.nl/id/domeintabel/",?domeinnaam)) as ?domeintabel)
+        GRAPH <http://standaard.aquo.nl/data/domeintabelmetadata> {
+          ?domeintabel rdfs:label ?domeintabel_label.
+          OPTIONAL {
+            ?domeintabel dct:publisher ?beheerder.
+            ?beheerder rdfs:label ?beheerder_label.
+          }
+        }
+      }
+    """
 }
