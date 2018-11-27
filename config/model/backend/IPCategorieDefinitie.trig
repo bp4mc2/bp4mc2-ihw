@@ -30,6 +30,23 @@ GRAPH config:Theatre {
           sh:class skos:Concept;
           elmo:endpoint "/beheer/begrippenlijst";
         .
+        <urn:property:beginGeldigheid> a sh:PropertyShape;
+          sh:order 19;
+          sh:name "beginGeldigheid";
+          rdfs:label "Begin geldigheid"@nl;
+          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/start>;
+          sh:datatype xsd:date;
+          sh:minCount 1;
+          sh:maxCount 1;
+        .
+        <urn:property:eindeGeldigheid> a sh:PropertyShape;
+          sh:order 20;
+          sh:name "eindeGeldigheid";
+          rdfs:label "Einde geldigheid"@nl;
+          sh:path <http://dublincore.org/documents/2006/04/10/dcmi-period/end>;
+          sh:datatype xsd:date;
+          sh:maxCount 1;
+        .
       }
       WHERE {
       }
