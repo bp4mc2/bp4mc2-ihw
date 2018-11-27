@@ -292,6 +292,44 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # TOEVOEGEN van een domeinwaarde (dcmiperiod:start is gezet)
+        # Eerst de waarden kopieren naar een "oude" URI
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          prefix prov: <http://www.w3.org/ns/prov#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          insert {
+            graph ?datagraph {
+              ?s ?pnew ?onew.
+              ?s foaf:isPrimaryTopicOf ?meta.
+              ?meta a prov:Entity.
+              ?meta dct:temporal ?temp.
+              ?temp dcmiperiod:start ?startdate
+            }
+          }
+          where {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s ?pnew ?onew.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
+              ?s dcmiperiod:start ?startdate.
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              BIND (iri(replace(str(?s),"/id/","/doc/")) as ?meta)
+              BIND (iri(concat(str(?meta),"#temporal")) as ?temp)
+            }
+            FILTER NOT EXISTS {
+              GRAPH ?datagraph {
+                ?s a ?type.
+              }
+            }
+          }
+        """
+      ]
+      [
         # Staging opruimen
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
