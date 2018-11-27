@@ -59,14 +59,23 @@ GRAPH config:Theatre {
           sh:maxCount 1;
           sh:maxLength 2000;
         .
-        <urn:property:altLabel> a sh:PropertyShape;
+        #Categorie loopt eigenlijk van de skos:Collection naar het skos:Concept, voor editor platslaan
+        <urn:property:categorie> a sh:PropertyShape;
           sh:order 4;
+          sh:name "subject";
+          rdfs:label "Categorie"@nl;
+          sh:path <http://purl.org/dc/terms/subject>;
+          sh:class skos:Collection;
+          elmo:endpoint "/beheer/collectielijst";
+        .
+        <urn:property:altLabel> a sh:PropertyShape;
+          sh:order 5;
           sh:name "altLabel";
           rdfs:label "Synoniem"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
         .
         <urn:property:abbreviation> a sh:PropertyShape;
-          sh:order 5;
+          sh:order 6;
           sh:name "abbreviation";
           rdfs:label "Afkorting"@nl;
           sh:path <http://standaard.aquo.nl/def/aquo#abbreviation>;
@@ -74,14 +83,14 @@ GRAPH config:Theatre {
           sh:maxLength 59;
         .
         <urn:property:source> a sh:PropertyShape;
-          sh:order 6;
+          sh:order 7;
           sh:name "source";
           rdfs:label "Bron"@nl;
           sh:path <http://purl.org/dc/elements/1.1/source>;
           sh:maxLength 1000;
         .
         <urn:property:notation> a sh:PropertyShape;
-          sh:order 7;
+          sh:order 8;
           sh:name "notation";
           rdfs:label "Code"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#notation>;

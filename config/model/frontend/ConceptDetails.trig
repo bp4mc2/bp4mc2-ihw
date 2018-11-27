@@ -49,6 +49,14 @@ GRAPH config:Theatre {
     elmo:appearance elmo:HiddenAppearance;
 	  rdfs:label "Label"@nl;
 	];
+  elmo:fragment [
+	  elmo:appliesTo dcmiperiod:start;
+	  rdfs:label "Geldig vanaf"@nl;
+	];
+  elmo:fragment [
+	  elmo:appliesTo dcmiperiod:end;
+	  rdfs:label "Geldig tot en met"@nl;
+	];
   	elmo:fragment [
 	  elmo:index 01;
 	  elmo:appliesTo skos:definition;

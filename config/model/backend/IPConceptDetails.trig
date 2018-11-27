@@ -57,11 +57,13 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       CONSTRUCT {
         ?subject ?p ?o.
         ?subject dct:created ?created.
         ?subject dct:modified ?modified.
         ?subject ?ptemp ?otemp.
+        ?subject dct:subject ?categorie.
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -71,6 +73,11 @@ GRAPH config:Theatre {
           ?meta dct:modified ?modified.
           ?meta dct:temporal ?temp.
           ?temp ?ptemp ?otemp.
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/categorieen> {
+            ?categorie skos:member ?subject;
+          }
         }
       }
     """

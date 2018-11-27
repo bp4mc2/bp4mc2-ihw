@@ -84,11 +84,21 @@ config:CategorieenZoeklijstEndpoint a elmo:Endpoint;
   elmo:stage config:Stage;
   elmo:getRepresentation config:CategorieenZoeklijst;
 .
+config:CollectieZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/collectielijst";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:CollectieZoeklijst;
+.
 
 config:CategorieenZoeklijst a elmo:Representation;
   elmo:stage config:Stage;
   elmo:appearance [a elmo:Appearance];
   elmo:informationProduct config:CategorieenZoeklijstData;
+.
+config:CollectieZoeklijst a elmo:Representation;
+  elmo:stage config:Stage;
+  elmo:appearance [a elmo:Appearance];
+  elmo:informationProduct config:CollectieZoeklijstData;
 .
 
 # ==========================
@@ -108,6 +118,23 @@ config:CategorieenZoeklijst a elmo:Representation;
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/categorieen> {
           ?uri a skos:Concept.
+          ?uri rdfs:label ?label.
+          FILTER regex(?label,concat("^",?term),"i")
+        }
+      }
+    """;
+  .
+  config:CollectieZoeklijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      SELECT ?uri ?label
+      WHERE {
+        GRAPH <http://standaard.aquo.nl/data/categorieen> {
+          ?uri a skos:Collection.
           ?uri rdfs:label ?label.
           FILTER regex(?label,concat("^",?term),"i")
         }
@@ -206,7 +233,7 @@ config:CategorieenPutTransaction a elmo:Transaction;
             BIND (iri(concat(replace(str(?s),"/id/","/doc/"),"#temporal")) as ?mst)
             OPTIONAL {?s dcmiperiod:start ?startr}
             OPTIONAL {?s dcmiperiod:end ?end}
-            BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
+            BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(?t+xsd:duration("P1D"))),1,10))) as ?start)
             BIND (iri(replace(str(?s),"/categorie/","/collectie/")) as ?coluri)
             BIND (iri(replace(str(?coluri),"/id/","/doc/")) as ?colmetauri)
             BIND (iri(concat(replace(str(?coluri),"/id/","/doc/"),"#temporal")) as ?coltempuri)
@@ -412,7 +439,7 @@ config:CategorieenPostTransaction a elmo:Transaction;
             BIND(iri(concat("http://standaard.aquo.nl/doc/collectie/",?localname)) as ?colmetauri)
             BIND(iri(concat("http://standaard.aquo.nl/doc/collectie/",?localname,"#temporal")) as ?coltempuri)
             OPTIONAL {?snew dcmiperiod:start ?startr}
-            BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
+            BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(?t+xsd:duration("P1D"))),1,10))) as ?start)
           }
         }
       """

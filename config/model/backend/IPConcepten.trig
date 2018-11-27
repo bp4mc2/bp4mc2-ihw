@@ -29,7 +29,7 @@ GRAPH config:Theatre {
               rdfs:label ?categorie_label.
           }
         }
-        FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
+        FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
       }
       order by ?begrip_label
     """
