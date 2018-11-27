@@ -46,12 +46,6 @@ GRAPH config:Theatre {
       rdf:value "toevoegen"
     ];
     elmo:fragment [
-      elmo:appliesTo "link";
-      rdfs:label "Relaties"@nl;
-      xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellink";
-      rdf:value "link"
-    ];
-    elmo:fragment [
       elmo:appliesTo "staging";
       rdfs:label "Op stapel"@nl;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabel/staging";

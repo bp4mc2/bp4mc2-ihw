@@ -16,7 +16,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
     #elmo:contains config:Image;
-    elmo:contains config:Menu;
+    elmo:contains config:BeheerMenu;
     elmo:contains config:DomeinTitel;
     elmo:contains config:Footer;
     elmo:appearance config:DomeintabelEditorPublishAppearance;
@@ -36,43 +36,31 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:index 3;
-      elmo:appliesTo "@id";
-      rdfs:label "URI"@nl;
-      #elmo:valueTemplate "http://standaard.aquo.nl/id/domeintabel/{id}" #Niet helemaal goed: domeintabel zou dynamisch moeten zijn
-    ];
-    elmo:fragment [
-      elmo:index 4;
-      elmo:appliesTo rdf:type;
-      rdfs:label "Type"@nl;
-      #elmo:valueTemplate "http://model.aquo.nl/def/aquods#domeintabel" #Dit zou ook dynamisch moeten zijn
-    ];
-    elmo:fragment [
-      elmo:index 5;
       elmo:appliesTo dct:identifier;
       rdfs:label "ID"@nl;
       elmo:name "id";
     ];
     elmo:fragment [
-      elmo:index 6;
-      elmo:appliesTo aquo:Code;
-      rdfs:label "Code"@nl;
-    ];
-    elmo:fragment [
-      elmo:index 7;
+      elmo:index 4;
       elmo:appliesTo aquo:Omschrijving;
       rdfs:label "Omschrijving"@nl;
     ];
     elmo:fragment [
-      elmo:index 8;
-      elmo:appliesTo prov:generatedAtTime;
+      elmo:index 5;
+      elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
+    ];
+    elmo:fragment [
+      elmo:index 6;
+      elmo:appliesTo dcmiperiod:end;
+      rdfs:label "Einde geldigheid"@nl;
     ];
     elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
       elmo:appearance elmo:ChangeSubmitAppearance;
       xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabelpublish";
-      rdfs:label "Opslaan"@nl;
-      rdfs:label "Save"@en;
+      rdfs:label "Publiceren"@nl;
+      rdfs:label "Publish"@en;
     ];
   .
 
@@ -89,6 +77,7 @@ GRAPH config:Theatre {
     elmo:query """
     PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
     PREFIX prov: <http://www.w3.org/ns/prov#>
+    PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
     CONSTRUCT {
       ?s ?p ?o.
       ?s aquo:status ?status.
@@ -100,11 +89,12 @@ GRAPH config:Theatre {
           select ?s ?p ?o ("Verwijderen" as ?status)
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-            graph ?subject {
+            BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+            graph ?datagraph {
               ?s ?p ?o.
             }
             graph ?staging {
-              ?s prov:invalidatedAtTime ?t
+              ?s dcmiperiod:end ?t
             }
           }
         }
@@ -113,12 +103,13 @@ GRAPH config:Theatre {
           select ?s ?p ?o ("Wijzigen in" as ?status)
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+            BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             graph ?staging {
               ?s a ?t.
               ?s ?p ?o
             }
             FILTER EXISTS {
-              graph ?subject {
+              graph ?datagraph {
                 ?s a ?t.
               }
             }
@@ -129,11 +120,12 @@ GRAPH config:Theatre {
           select ?s ?p ?o ("Toevoegen" as ?status)
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+            BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             graph ?staging {
               ?s ?p ?o
             }
             FILTER NOT EXISTS {
-              graph ?subject {
+              graph ?datagraph {
                 ?s a ?t.
               }
             }
@@ -193,34 +185,20 @@ GRAPH config:Theatre {
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
           PREFIX dct: <http://purl.org/dc/terms/>
-          delete {
-            graph ?subject {
-              ?s ?p ?o
-            }
-          }
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
           insert {
-            graph ?versionedsubject {
-              ?versionedsubject dct:replacedBy ?subject.
-              ?sv ?p ?o.
-              ?sv prov:invalidatedAtTime ?enddate
+            graph ?datagraph {
+              ?s dcmiperiod:end ?enddate.
             }
           }
           where {
-            {
-              select ?s ?sv ?p ?o
-              where {
-                graph ?subject {
-                  ?s ?p ?o
-                  BIND (substr(str(now()),1,10) as ?date)
-                  BIND (iri(concat(str(?s),"#",?date)) as ?sv)
-                }
-              }
-            }
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s a ?t
+              ?s dcmiperiod:start ?start.
+              OPTIONAL {?s dcmiperiod:end ?end}
+              BIND(if(bound(?end),?end,xsd:date(?start-xsd:duration("P1D"))) as ?enddate)
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             }
-            BIND (substr(str(now()),1,10) as ?enddate)
-            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
           }
         """
       ]

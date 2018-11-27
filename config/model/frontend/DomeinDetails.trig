@@ -161,6 +161,10 @@ GRAPH config:Theatre {
       elmo:appearance elmo:HiddenAppearance;
     ];
     elmo:fragment [
+      elmo:appliesTo elmo:subject1;
+      elmo:appearance elmo:HiddenAppearance;
+    ];
+    elmo:fragment [
       elmo:appliesTo dct:identifier;
       rdfs:label "ID"@nl;
       elmo:index "01";
@@ -192,7 +196,7 @@ GRAPH config:Theatre {
     elmo:fragment [
       elmo:appliesTo owl:sameAs;
       xhtml:link "%{dotwebstack.config.aquoroot}/begrip";
-      rdfs:label "relatie"@nl;
+      rdfs:label "begrip"@nl;
       elmo:index "08";
     ];
     elmo:fragment [

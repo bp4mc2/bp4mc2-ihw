@@ -633,8 +633,8 @@ dcmiperiod:end<y:LabelModel>
           <y:Geometry height="85.00884393063563" width="317.06319845857416" x="-416.0461521024595" y="949.5183044315993"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="300.89453125" x="8.084333604287053" y="4.0">Groep
-&lt;http://standaard.aquo.nl/def/{domeintabel}/{rdfs:label}&gt;</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="304.234375" x="6.414411729287053" y="4.0">Groep
+&lt;http://standaard.aquo.nl/def/{domeintabel}#{rdfs:label}&gt;</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="52.69140625" x="2.0" y="45.40234375">rdfs:label<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
@@ -1520,7 +1520,6 @@ dct:replaces<y:LabelModel>
       </data>
     </edge>
     <edge id="e47" source="n32" target="n11">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-76.13763040574612" sy="-2.9271290944123507" tx="87.3728665703274" ty="-3.3340950545922396"/>

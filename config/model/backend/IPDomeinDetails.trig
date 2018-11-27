@@ -19,7 +19,9 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           elmo:subject ?id;
+          elmo:subject1 ?id;
           owl:sameAs ?begrip;
+          skos:exactMatch ?domeinwaarde;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start.
@@ -60,7 +62,11 @@ GRAPH config:Theatre {
             }
           }
         }
-
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?id skos:exactMatch ?domeinwaarde.
+          }
+        }
         FILTER (
           ?p != aquo:Opgeheven_per
           && ?p != aquo:Opgericht_in
@@ -84,7 +90,10 @@ GRAPH config:Theatre {
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX owl:<http://www.w3.org/2002/07/owl#>
+      PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+      PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
       CONSTRUCT {
         ?id ?p ?o;
@@ -96,8 +105,14 @@ GRAPH config:Theatre {
       WHERE {
         GRAPH ?domeintabel {
           ?id dct:type ?subject;
-            ?p ?o.
+            ?p ?o;
+            foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?start
+          .
           OPTIONAL {?o rdfs:label ?olabel}
+          OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
+          BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
+          FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
+
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
@@ -162,6 +177,7 @@ GRAPH config:Theatre {
       CONSTRUCT {
         ?id ?p ?o;
           owl:sameAs ?begrip;
+          skos:exactMatch ?domeinwaarde;
           aquo:opgeheven ?opgehevendate;
           aquo:opgericht ?opgerichtdate;
           dcmiperiod:start ?start;
@@ -194,11 +210,18 @@ GRAPH config:Theatre {
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
-            ?id owl:sameAs ?begrip
+            ?id owl:sameAs ?begrip;
           }
-          GRAPH  <http://standaard.aquo.nl/data/begrippen> {
-            ?begrip a skos:Concept;
-              skos:prefLabel ?begrip_label
+          OPTIONAL {
+            GRAPH  <http://standaard.aquo.nl/data/begrippen> {
+              ?begrip a skos:Concept;
+                skos:prefLabel ?begrip_label
+            }
+          }
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/links> {
+            ?id skos:exactMatch ?domeinwaarde.
           }
         }
 
@@ -259,14 +282,17 @@ GRAPH config:Theatre {
       PREFIX prov: <http://www.w3.org/ns/prov#>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       CONSTRUCT {
         ?s ?p ?o;
-         aquo:status ?status.
+          dcmiperiod:end ?end;
+          aquo:status ?status
+        .
       }
       WHERE {
         {
           {
-            SELECT ?s ?p ?o ("Verwijderen" as ?status)
+            SELECT ?s ?p ?o ("Verwijderen" as ?status) ?end
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
@@ -275,13 +301,13 @@ GRAPH config:Theatre {
                 FILTER (?p != foaf:isPrimaryTopicOf)
               }
               GRAPH ?staging {
-                ?s dcmiperiod:end ?t
+                ?s dcmiperiod:end ?end
               }
             }
           }
           UNION
           {
-            SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status)
+            SELECT (iri(concat(str(?sold),"#old")) as ?s) ?p ?o ("Wijzigen" as ?status) (xsd:date(?start-xsd:duration("P1D")) as ?end)
             WHERE {
               BIND (iri(concat(str(?subject),"#staging")) as ?staging)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
@@ -291,6 +317,7 @@ GRAPH config:Theatre {
               }
               GRAPH ?staging {
                 ?sold a ?t
+                OPTIONAL {?sold dcmiperiod:start ?start}
               }
             }
           }

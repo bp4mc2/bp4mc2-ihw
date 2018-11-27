@@ -29,11 +29,9 @@ GRAPH config:Theatre {
             elmo1:data [elmo1:index "1"; rdfs:label "Begrippen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/begrippen"];
             elmo1:data [elmo1:index "2"; rdfs:label "Nieuw begrip"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/nieuwbegrip"];
             elmo1:data [elmo1:index "3"; rdfs:label "Domeintabellen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/domeintabellen"];
-            elmo1:data [elmo1:index "3a"; rdfs:label "Domeintabellen (demo)"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/fase2-domein?subject=http://standaard.aquo.nl/id/domeintabel/AfsluitmiddelType"];
             elmo1:data [elmo1:index "4"; rdfs:label "Nieuwe domeintabel"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/nieuwedomeintabel"];
             elmo1:data [elmo1:index "5"; rdfs:label "Categorieen"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/categorieen"];
             elmo1:data [elmo1:index "6"; rdfs:label "Nieuwe Categorie"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/nieuwecategorie"];
-            elmo1:data [elmo1:index "7"; rdfs:label "Domeinwaarde-begrip relatie"; xhtml:link "%{dotwebstack.config.aquoroot}/beheer/relatie"];
           ];
           elmo1:data [
             elmo1:index "3"; rdfs:label "Site";

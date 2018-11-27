@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" lang="nl">
+<html lang="nl">
    
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -79,7 +79,7 @@
                   
                   <ul class="nav navbar-nav">
                      
-                     <li class="dropdown ">
+                     <li class="dropdown active">
                         <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Begrippen<span class="caret"></span>
                            </a>
                         
@@ -90,7 +90,7 @@
                               
                            </li>
                            
-                           <li class="">
+                           <li class="active">
                               <a href="/categorieen">Categorieen</a>
                               
                            </li>
@@ -235,50 +235,548 @@
 					elmo_language.searching = true;
 					elmo_language.info = true;
 					elmo_language.order = [];
-					$('#datatable2').dataTable(elmo_language);
+					$('#datatable1').dataTable(elmo_language);
 				} );
 			</script>
-               <table id="datatable2" class="table table-striped table-bordered">
+               <table id="datatable1" class="table table-striped table-bordered">
                   
                   <thead>
                      
                      <tr>
                         
-                        <th>Term</th>
+                        <th>categorie</th>
                         
-                        <th>Definitie</th>
+                        <th>aantal begrippen</th>
+                        
+                        <th>aantal domeintabellen</th>
                         
                      </tr>
                      
                   </thead>
                   
-                  <tbody></tbody>
-                  
-               </table>
-               <script type="text/javascript">
-				$(document).ready(function() {
-					elmo_language.paging = true;
-					elmo_language.searching = true;
-					elmo_language.info = true;
-					elmo_language.order = [];
-					$('#datatable3').dataTable(elmo_language);
-				} );
-			</script>
-               <table id="datatable3" class="table table-striped table-bordered">
-                  
-                  <thead>
+                  <tbody>
                      
                      <tr>
                         
-                        <th>Domeintabel</th>
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FAfvalwaterzuiveringsbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FAfvalwaterzuiveringsbeheer">afvalwaterzuiveringsbeheer</a>
+                           
+                        </td>
                         
-                        <th>beschrijving</th>
+                        <td>717</td>
+                        
+                        <td>14</td>
                         
                      </tr>
                      
-                  </thead>
-                  
-                  <tbody></tbody>
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBedrijfskunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBedrijfskunde">bedrijfskunde</a>
+                           
+                        </td>
+                        
+                        <td>304</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBelastingheffing&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBelastingheffing">belastingheffing</a>
+                           
+                        </td>
+                        
+                        <td>10</td>
+                        
+                        <td>3</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBodembeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBodembeheer">bodembeheer</a>
+                           
+                        </td>
+                        
+                        <td>5</td>
+                        
+                        <td>9</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCalamiteitenzorg&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCalamiteitenzorg">calamiteitenzorg</a>
+                           
+                        </td>
+                        
+                        <td>273</td>
+                        
+                        <td>2</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FChemie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FChemie">chemie</a>
+                           
+                        </td>
+                        
+                        <td>785</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCivieleTechniek&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCivieleTechniek">civiele techniek</a>
+                           
+                        </td>
+                        
+                        <td>1571</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FDrinkwaterbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FDrinkwaterbeheer">drinkwaterbeheer</a>
+                           
+                        </td>
+                        
+                        <td>21</td>
+                        
+                        <td>10</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FEcologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FEcologie">ecologie</a>
+                           
+                        </td>
+                        
+                        <td>368</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FElektrotechniek&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FElektrotechniek">elektrotechniek</a>
+                           
+                        </td>
+                        
+                        <td>58</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGegevenselement&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGegevenselement">gegevenselement</a>
+                           
+                        </td>
+                        
+                        <td>78</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeo-informatie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeo-informatie">geo-informatie</a>
+                           
+                        </td>
+                        
+                        <td>261</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeologie">geologie</a>
+                           
+                        </td>
+                        
+                        <td>547</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGroenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGroenbeheer">groenbeheer</a>
+                           
+                        </td>
+                        
+                        <td>5</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGrondwaterbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGrondwaterbeheer">grondwaterbeheer</a>
+                           
+                        </td>
+                        
+                        <td>5</td>
+                        
+                        <td>14</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHandhaving&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHandhaving">handhaving</a>
+                           
+                        </td>
+                        
+                        <td>1</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHydrologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHydrologie">hydrologie</a>
+                           
+                        </td>
+                        
+                        <td>998</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMMetingen&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMMetingen">IM Metingen</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>41</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAKRW&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAKRW">IMWA KRW</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>15</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWANormen&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWANormen">IMWA Normen</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>13</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWatersysteem&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWatersysteem">IMWA Watersysteem</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>10</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWaterveiligheid&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWaterveiligheid">IMWA Waterveiligheid</a>
+                           
+                        </td>
+                        
+                        <td></td>
+                        
+                        <td>25</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FKlimatologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FKlimatologie">klimatologie</a>
+                           
+                        </td>
+                        
+                        <td>51</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLandbouwkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLandbouwkunde">landbouwkunde</a>
+                           
+                        </td>
+                        
+                        <td>57</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLeidingenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLeidingenbeheer">leidingenbeheer</a>
+                           
+                        </td>
+                        
+                        <td>1</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FMeteorologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FMeteorologie">meteorologie</a>
+                           
+                        </td>
+                        
+                        <td>72</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FOceanografie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FOceanografie">oceanografie</a>
+                           
+                        </td>
+                        
+                        <td>211</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FPlanologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FPlanologie">planologie</a>
+                           
+                        </td>
+                        
+                        <td>628</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRecreatie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRecreatie">recreatie</a>
+                           
+                        </td>
+                        
+                        <td>48</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRelatiebeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRelatiebeheer">relatiebeheer</a>
+                           
+                        </td>
+                        
+                        <td>1</td>
+                        
+                        <td>3</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRioleringsbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRioleringsbeheer">rioleringsbeheer</a>
+                           
+                        </td>
+                        
+                        <td>44</td>
+                        
+                        <td>3</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVaarwegbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVaarwegbeheer">vaarwegbeheer</a>
+                           
+                        </td>
+                        
+                        <td>208</td>
+                        
+                        <td>3</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVergunningverlening&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVergunningverlening">vergunningverlening</a>
+                           
+                        </td>
+                        
+                        <td>42</td>
+                        
+                        <td>4</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterbodembeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterbodembeheer">waterbodembeheer</a>
+                           
+                        </td>
+                        
+                        <td>30</td>
+                        
+                        <td>21</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterkeringbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterkeringbeheer">waterkeringbeheer</a>
+                           
+                        </td>
+                        
+                        <td>1108</td>
+                        
+                        <td>15</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwaliteit&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwaliteit">watersysteembeheer kwaliteit</a>
+                           
+                        </td>
+                        
+                        <td>566</td>
+                        
+                        <td>27</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwantiteit&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwantiteit">watersysteembeheer kwantiteit</a>
+                           
+                        </td>
+                        
+                        <td>106</td>
+                        
+                        <td>11</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWegenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWegenbeheer">wegenbeheer</a>
+                           
+                        </td>
+                        
+                        <td>23</td>
+                        
+                        <td>2</td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWerktuigbouwkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWerktuigbouwkunde">werktuigbouwkunde</a>
+                           
+                        </td>
+                        
+                        <td>541</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td>
+                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FZeevaartkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FZeevaartkunde">zeevaartkunde</a>
+                           
+                        </td>
+                        
+                        <td>537</td>
+                        
+                        <td></td>
+                        
+                     </tr>
+                     
+                  </tbody>
                   
                </table>
                

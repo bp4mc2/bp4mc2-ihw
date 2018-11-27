@@ -230,105 +230,15 @@
             
             <div class="container">
                
-               <div class="panel panel-primary ">
-                  
-                  <div class="panel-heading">
-                     
-                     <h3 class="panel-title">
-                        <span></span>
-                        <a href="http://standaard.aquo.nl/id/domeintabel/BeschermdGebiedtype">BeschermdGebiedtype</a>
-                        
-                     </h3>
-                     
-                  </div>
-                  
-                  <div class="panel-body">
-                     
-                     <table class="table table-striped table-bordered">
-                        
-                        <tbody>
-                           
-                           <tr>
-                              
-                              <td>
-                                 <a href="http://www.w3.org/ns/dcat#landingPage">Domeintabel</a>
-                                 
-                              </td>
-                              
-                              <td>
-                                 <a href="/domeintabel?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fdomeintabel%2FBeschermdGebiedtype">BeschermdGebiedtype</a>
-                                 
-                              </td>
-                              
-                           </tr>
-                           
-                           <tr>
-                              
-                              <td>
-                                 <a href="http://purl.org/dc/terms/description">Tabelomschrijving</a>
-                                 
-                              </td>
-                              
-                              <td>Lijst met type beschermd gebied</td>
-                              
-                           </tr>
-                           
-                           <tr>
-                              
-                              <td>
-                                 <a href="http://purl.org/dc/terms/language">Taal</a>
-                                 
-                              </td>
-                              
-                              <td>NL</td>
-                              
-                           </tr>
-                           
-                           <tr>
-                              
-                              <td>
-                                 <a href="http://purl.org/dc/terms/publisher">Beheerder</a>
-                                 
-                              </td>
-                              
-                              <td>
-                                 <a href="/domeinmeta-agent?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fpublisher%2FInformatiehuis_Water">Informatiehuis Water</a>
-                                 
-                              </td>
-                              
-                           </tr>
-                           
-                           <tr>
-                              
-                              <td>
-                                 <a href="http://purl.org/vocommons/voaf#reliesOn">reliesOn</a>
-                                 
-                              </td>
-                              
-                              <td>
-                                 <a href="/resource?subject=http%3A%2F%2Finspire.ec.europa.eu%2Fcodelist%2F">http://inspire.ec.europa.eu/codelist/</a>
-                                 
-                              </td>
-                              
-                           </tr>
-                           
-                        </tbody>
-                        
-                     </table>
-                     
-                  </div>
-                  
-               </div>
-               
                <ul class="nav nav-tabs">
                   
                   <li>
-                     <a href="http://localhost:8080/domeinmeta?format=xml">xml</a>
+                     <a href="http://localhost:8080/beheer/relatie?format=xml">xml</a>
                      
                   </li>
                   
                   <li>
-                     <a href="http://localhost:8080/domeinmeta?format=csv">csv</a>
+                     <a href="http://localhost:8080/beheer/relatie?format=csv">csv</a>
                      
                   </li>
                   
@@ -339,84 +249,28 @@
 					elmo_language.searching = true;
 					elmo_language.info = true;
 					elmo_language.order = [];
-					$('#datatable6').dataTable(elmo_language);
+					$('#datatable2').dataTable(elmo_language);
 				} );
 			</script>
-               <table id="datatable6" class="table table-striped table-bordered">
+               <table id="datatable2" class="table table-striped table-bordered">
                   
                   <thead>
                      
                      <tr>
                         
-                        <th>Kolom</th>
+                        <th>Domeinwaarde</th>
                         
-                        <th>Naam</th>
+                        <th>Begrip</th>
                         
-                        <th>Omschrijving</th>
+                        <th>Domeintabel</th>
                         
-                        <th>Sleutel</th>
-                        
-                        <th>Datatype</th>
-                        
-                        <th>Veld</th>
-                        
-                        <th>Decimalen</th>
-                        
-                        <th>Verplicht</th>
-                        
-                        <th>Uniek</th>
+                        <th>edit</th>
                         
                      </tr>
                      
                   </thead>
                   
-                  <tbody>
-                     
-                     <tr>
-                        
-                        <td>1</td>
-                        
-                        <td>ID</td>
-                        
-                        <td>ID-kolom</td>
-                        
-                        <td></td>
-                        
-                        <td>Numeriek</td>
-                        
-                        <td>6</td>
-                        
-                        <td>0</td>
-                        
-                        <td>Ja</td>
-                        
-                        <td>Ja</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>3</td>
-                        
-                        <td>Omschrijving</td>
-                        
-                        <td>Omschrijving</td>
-                        
-                        <td></td>
-                        
-                        <td>Karakter</td>
-                        
-                        <td>60</td>
-                        
-                        <td></td>
-                        
-                        <td>Ja</td>
-                        
-                        <td>Ja</td>
-                        
-                     </tr>
-                     
-                  </tbody>
+                  <tbody></tbody>
                   
                </table>
                

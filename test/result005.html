@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" lang="nl">
+<html lang="nl">
    
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -79,7 +79,7 @@
                   
                   <ul class="nav navbar-nav">
                      
-                     <li class="dropdown active">
+                     <li class="dropdown ">
                         <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Begrippen<span class="caret"></span>
                            </a>
                         
@@ -90,7 +90,7 @@
                               
                            </li>
                            
-                           <li class="active">
+                           <li class="">
                               <a href="/categorieen">Categorieen</a>
                               
                            </li>
@@ -229,545 +229,401 @@
          <div class="content">
             
             <div class="container">
-               <script type="text/javascript">
-				$(document).ready(function() {
-					elmo_language.paging = true;
-					elmo_language.searching = true;
-					elmo_language.info = true;
-					elmo_language.order = [];
-					$('#datatable1').dataTable(elmo_language);
-				} );
-			</script>
-               <table id="datatable1" class="table table-striped table-bordered">
-                  
-                  <thead>
-                     
-                     <tr>
-                        
-                        <th>categorie</th>
-                        
-                        <th>aantal begrippen</th>
-                        
-                        <th>aantal domeintabellen</th>
-                        
-                     </tr>
-                     
-                  </thead>
-                  
-                  <tbody>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FAfvalwaterzuiveringsbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FAfvalwaterzuiveringsbeheer">afvalwaterzuiveringsbeheer</a>
-                           
-                        </td>
-                        
-                        <td>717</td>
-                        
-                        <td>14</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBedrijfskunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBedrijfskunde">bedrijfskunde</a>
-                           
-                        </td>
-                        
-                        <td>304</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBelastingheffing&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBelastingheffing">belastingheffing</a>
-                           
-                        </td>
-                        
-                        <td>10</td>
-                        
-                        <td>3</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBodembeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FBodembeheer">bodembeheer</a>
-                           
-                        </td>
-                        
-                        <td>4</td>
-                        
-                        <td>9</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCalamiteitenzorg&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCalamiteitenzorg">calamiteitenzorg</a>
-                           
-                        </td>
-                        
-                        <td>273</td>
-                        
-                        <td>2</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FChemie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FChemie">chemie</a>
-                           
-                        </td>
-                        
-                        <td>784</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCivieleTechniek&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCivieleTechniek">civiele techniek</a>
-                           
-                        </td>
-                        
-                        <td>1571</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FDrinkwaterbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FDrinkwaterbeheer">drinkwaterbeheer</a>
-                           
-                        </td>
-                        
-                        <td>21</td>
-                        
-                        <td>10</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FEcologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FEcologie">ecologie</a>
-                           
-                        </td>
-                        
-                        <td>365</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FElektrotechniek&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FElektrotechniek">elektrotechniek</a>
-                           
-                        </td>
-                        
-                        <td>58</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGegevenselement&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGegevenselement">gegevenselement</a>
-                           
-                        </td>
-                        
-                        <td>78</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeo-informatie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeo-informatie">geo-informatie</a>
-                           
-                        </td>
-                        
-                        <td>261</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGeologie">geologie</a>
-                           
-                        </td>
-                        
-                        <td>546</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGroenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGroenbeheer">groenbeheer</a>
-                           
-                        </td>
-                        
-                        <td>5</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGrondwaterbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FGrondwaterbeheer">grondwaterbeheer</a>
-                           
-                        </td>
-                        
-                        <td>5</td>
-                        
-                        <td>14</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHandhaving&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHandhaving">handhaving</a>
-                           
-                        </td>
-                        
-                        <td>1</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHydrologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FHydrologie">hydrologie</a>
-                           
-                        </td>
-                        
-                        <td>998</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMMetingen&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMMetingen">IM Metingen</a>
-                           
-                        </td>
-                        
-                        <td>0</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWANormen&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWANormen">IMWA Normen</a>
-                           
-                        </td>
-                        
-                        <td>0</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWatersysteem&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWatersysteem">IMWA Watersysteem</a>
-                           
-                        </td>
-                        
-                        <td>0</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWaterveiligheid&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FIMWAWaterveiligheid">IMWA Waterveiligheid</a>
-                           
-                        </td>
-                        
-                        <td>0</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FKlimatologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FKlimatologie">klimatologie</a>
-                           
-                        </td>
-                        
-                        <td>51</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLandbouwkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLandbouwkunde">landbouwkunde</a>
-                           
-                        </td>
-                        
-                        <td>57</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLeidingenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FLeidingenbeheer">leidingenbeheer</a>
-                           
-                        </td>
-                        
-                        <td>1</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FMeteorologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FMeteorologie">meteorologie</a>
-                           
-                        </td>
-                        
-                        <td>72</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FOceanografie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FOceanografie">oceanografie</a>
-                           
-                        </td>
-                        
-                        <td>210</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FPlanologie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FPlanologie">planologie</a>
-                           
-                        </td>
-                        
-                        <td>628</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRecreatie&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRecreatie">recreatie</a>
-                           
-                        </td>
-                        
-                        <td>47</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRelatiebeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRelatiebeheer">relatiebeheer</a>
-                           
-                        </td>
-                        
-                        <td>1</td>
-                        
-                        <td>3</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRioleringsbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FRioleringsbeheer">rioleringsbeheer</a>
-                           
-                        </td>
-                        
-                        <td>44</td>
-                        
-                        <td>3</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVaarwegbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVaarwegbeheer">vaarwegbeheer</a>
-                           
-                        </td>
-                        
-                        <td>208</td>
-                        
-                        <td>3</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVergunningverlening&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FVergunningverlening">vergunningverlening</a>
-                           
-                        </td>
-                        
-                        <td>42</td>
-                        
-                        <td>4</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterbodembeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterbodembeheer">waterbodembeheer</a>
-                           
-                        </td>
-                        
-                        <td>29</td>
-                        
-                        <td>21</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterkeringbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWaterkeringbeheer">waterkeringbeheer</a>
-                           
-                        </td>
-                        
-                        <td>1108</td>
-                        
-                        <td>15</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwaliteit&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwaliteit">watersysteembeheer kwaliteit</a>
-                           
-                        </td>
-                        
-                        <td>565</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwantiteit&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWatersysteembeheerKwantiteit">watersysteembeheer kwantiteit</a>
-                           
-                        </td>
-                        
-                        <td>106</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWegenbeheer&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWegenbeheer">wegenbeheer</a>
-                           
-                        </td>
-                        
-                        <td>23</td>
-                        
-                        <td>2</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWerktuigbouwkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWerktuigbouwkunde">werktuigbouwkunde</a>
-                           
-                        </td>
-                        
-                        <td>541</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                     <tr>
-                        
-                        <td>
-                           <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FZeevaartkunde&amp;categorie=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FZeevaartkunde">zeevaartkunde</a>
-                           
-                        </td>
-                        
-                        <td>537</td>
-                        
-                        <td>0</td>
-                        
-                     </tr>
-                     
-                  </tbody>
-                  
-               </table>
                
-            </div>
+               <div class="panel panel-primary ">
+                  
+                  <div class="panel-heading">
+                     
+                     <h3 class="panel-title">
+                        <span></span>
+                        <a href="http://standaard.aquo.nl/id/begrip/Gemaal">gemaal</a>
+                        
+                     </h3>
+                     
+                  </div>
+                  
+                  <div class="panel-body">
+                     
+                     <table class="table table-striped table-bordered">
+                        
+                        <tbody>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#definition">Definitie</a>
+                                 
+                              </td>
+                              
+                              <td>een gemaal dient in principe om water van een laag peil naar een hoog peil te brengen, waarvan de noodzaak kan liggen in wateroverschot
+                                 aan de lage kant (afvoer) of in waterbehoefte in het gebied aan de hoge kant (aanvoer).
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#note">Toelichting</a>
+                                 
+                              </td>
+                              
+                              <td>Het betreft hier alleen het verplaatsen van oppervlaktewater. Het gemaal kan ook bij gelijke peilen of laag verhang van hoog
+                                 naar laag peil ingezet worden.
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://purl.org/dc/elements/1.1/source">Bron</a>
+                                 
+                              </td>
+                              
+                              <td>Cultuurtechnisch vademecum, 1988</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://purl.org/dc/terms/subject">Categorie</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FCivieleTechniek">civiele techniek</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FPlanologie">planologie</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrippen-per-categorie?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fcollectie%2FWerktuigbouwkunde">werktuigbouwkunde</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://standaard.aquo.nl/def/aquo#englishLabel">Engels label</a>
+                                 
+                              </td>
+                              
+                              <td>pumpstation</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://standaard.aquo.nl/def/aquo#germanLabel">Duits label</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>schöpfwerk</p>
+                                 
+                                 <p>pumpwerk</p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#notation">Code</a>
+                                 
+                              </td>
+                              
+                              <td>KGM, 981</td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2002/07/owl#sameAs">Domeinwaarde</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/domeinwaarden?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FWaterketen_functienaam%2F39">http://standaard.aquo.nl/id/Waterketen_functienaam/39</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/domeinwaarden?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2FKunstwerktype%2F4">http://standaard.aquo.nl/id/Kunstwerktype/4</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#broader">Bredere term</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FKunstwerk">kunstwerk</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#narrower">Nauwere term</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FCentrifugaal-OfRadiaalpomp">centrifugaal- of radiaalpomp</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FRioolgemaal">rioolgemaal</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#related">Gerelateerde term</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2F1d-gemaal">1d-gemaal</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FBemalen">bemalen</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://purl.org/iso25964/skos-thes#broaderPartitive">Onderdeel van</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FPomp">pomp</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FWatersysteem">watersysteem</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://purl.org/iso25964/skos-thes#narrowerPartitive">Heeft onderdeel</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FPomp">pomp</a>
+                                    
+                                 </p>
+                                 
+                                 <p>
+                                    <a href="/begrip?subject=http%3A%2F%2Fstandaard.aquo.nl%2Fid%2Fbegrip%2FWatersysteem">watersysteem</a>
+                                    
+                                 </p>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                           <tr>
+                              
+                              <td>
+                                 <a href="http://www.w3.org/2004/02/skos/core#relatedMatch">Gerelateerde term in andere begrippencatalogus</a>
+                                 
+                              </td>
+                              
+                              <td>
+                                 <a href="http://data.gwsw.nl/Gemaal">http://data.gwsw.nl/Gemaal</a>
+                                 
+                              </td>
+                              
+                           </tr>
+                           
+                        </tbody>
+                        
+                     </table>
+                     
+                  </div>
+                  
+               </div>
+               
+               <div xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" id="graphcanvas" style="position: relative">
+                  
+                  <div class="panel panel-primary" style="position:absolute;right:20px;top:50px">
+                     
+                     <div class="panel-heading">
+                        <span class="glyphicon glyphicon-off" style="position:absolute;right:5px;margin-top:2px;cursor:pointer" onclick="this.parentNode.parentNode.style.display='none'"></span>
+                        
+                     </div>
+                     
+                     <table style="margin-left:10px">
+                        
+                        <tr>
+                           
+                           <td>
+                              <input name="begrip" type="checkbox" checked onclick="togglenode(this.checked,this.name);">
+                              
+                           </td>
+                           
+                           <td>
+                              
+                              <svg style="display: inline;" class="legend" width="140" height="30">
+                                 
+                                 <g>
+                                    
+                                    <rect x="5" y="5" width="120" height="22" class="sbegrip"></rect>
+                                    
+                                    <text x="15" y="20" class="graph-legend">begrip</text>
+                                    
+                                 </g>
+                                 
+                              </svg>
+                              
+                           </td>
+                           
+                        </tr>
+                        
+                        <tr>
+                           
+                           <td>
+                              <input name="categorie" type="checkbox" checked onclick="togglenode(this.checked,this.name);">
+                              
+                           </td>
+                           
+                           <td>
+                              
+                              <svg style="display: inline;" class="legend" width="140" height="30">
+                                 
+                                 <g>
+                                    
+                                    <rect x="5" y="5" width="120" height="22" class="scategorie"></rect>
+                                    
+                                    <text x="15" y="20" class="graph-legend">categorie</text>
+                                    
+                                 </g>
+                                 
+                              </svg>
+                              
+                           </td>
+                           
+                        </tr>
+                        
+                     </table>
+                     
+                  </div>
+                  
+                  <div id="propertybox" style="position:absolute; display:none" onmouseover="mouseoverPropertyBox();" onmouseout="mouseoutPropertyBox();">
+                     <i id="mbtninfo" class="btn btn-primary" style="padding: 1px 4px;" onclick="clickInfoBox();">
+                        <span class="glyphicon glyphicon-info-sign" style="cursor:pointer"></span>
+                        </i>
+                     <i id="mbtnexpand" class="btn btn-primary" style="padding: 1px 4px;" onclick="clickPropertyBox();">
+                        <span class="glyphicon glyphicon-zoom-in" style="cursor:pointer"></span>
+                        </i>
+                     
+                  </div>
+                  
+                  <div class="panel panel-primary panel-secondary">
+                     
+                     <div id="graphtitle" class="panel-heading"></div>
+                     
+                     <div id="graph" class="panel-body"></div>
+                     
+                  </div>
+                  
+               </div>
+               <style xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#">
+			.sbegrip {
+			
+      fill: blue;
+      fill-opacity: .3;
+      stroke #666;
+      
+			}
+		
+			.scategorie {
+			
+      fill: green;
+      fill-opacity: .3;
+      stroke #666;
+      
+			}
+		
+			.tbegrip {
+				visibility: visible
+			}
+		
+			.tcategorie {
+				visibility: visible
+			}
+		</style>
+               <script xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" type="text/javascript">
+		var jsonApiSubject = "http://standaard.aquo.nl/id/begrip/Gemaal";
+		var jsonApiIDSubject = "";
+		var jsonApiCall = "/resource?representation=http%3A%2F%2Fdotwebstack.org%2Fconfiguration%2FGraphDisplay&date=&subject=";
+		var uriEndpoint = "/resource?subject=";
+		var fragments = {
+			
+		}
+	</script>
+               <script xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" src="/assets/js/jsonld.min.js" type="text/javascript"></script>
+               <script xmlns:res="http://www.w3.org/2005/sparql-results#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:elmo="http://bp4mc2.org/elmo/def#" xmlns:html="http://www.w3.org/1999/xhtml/vocab#" src="/assets/js/d3graphs-inner.min.js" type="text/javascript"></script>
+               </div>
             
          </div>
          
