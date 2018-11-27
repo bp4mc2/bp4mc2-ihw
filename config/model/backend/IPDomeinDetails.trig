@@ -317,6 +317,9 @@ GRAPH config:Theatre {
               GRAPH ?staging {
                 ?sold a ?t
                 OPTIONAL {?sold dcmiperiod:start ?start}
+                FILTER NOT EXISTS {
+                  ?sold dcmiperiod:end ?endold
+                }
               }
             }
           }

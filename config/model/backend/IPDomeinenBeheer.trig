@@ -10,7 +10,7 @@ GRAPH config:Theatre {
       SELECT ?domeintabel ?domeintabel_label
   #      (?domeintabel as ?historie)
         (?domeintabel as ?edit)
-        (?domeintabel as ?add) (?domeintabel as ?staging) (count(?waarde) as ?staging_count)
+        (?domeintabel as ?add) (?domeintabel as ?staging) (count(distinct ?waarde) as ?staging_count)
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/domeintabellen> {
           <http://standaard.aquo.nl/id/dataset/domeintabellen> dct:hasPart ?domeintabel.
