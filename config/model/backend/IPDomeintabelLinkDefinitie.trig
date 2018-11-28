@@ -30,6 +30,14 @@ GRAPH config:Theatre {
           sh:class skos:Concept;
           elmo:endpoint "/beheer/begrippenlijst";
         .
+        <urn:property:Waarde_label> a sh:PropertyShape;
+          sh:order 3;
+          sh:name "label";
+          rdfs:label "-"@nl;
+          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+          sh:datatype xsd:string;
+          sh:maxCount 1;
+        .
       }
       WHERE {
       }

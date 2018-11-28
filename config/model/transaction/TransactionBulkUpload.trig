@@ -39,7 +39,7 @@ GRAPH config:Theatre {
             }
           }
       ''';
-      ]      
+      ]
       [
         a elmo:PersistenceStep;
         rdfs:label "voeg triples toe aan targetGraph";
@@ -376,15 +376,21 @@ GRAPH config:Theatre {
   config:DomeintabelShaclUploadEndpoint a elmo:Endpoint;
     elmo:pathPattern "/beheer/bulkupload/shacl";
     elmo:stage config:Stage;
-    elmo:putService config:DomeintabelShaclUploadService
+    elmo:putService config:DomeintabelShaclPutUploadService;
+    elmo:postService config:DomeintabelShaclPostUploadService
   .
 
-  config:DomeintabelShaclUploadService a elmo:Service;
+  config:DomeintabelShaclPutUploadService a elmo:Service;
     elmo:stage config:Stage;
-    elmo:transaction config:DomeintabelShaclUploadTransaction
+    elmo:transaction config:DomeintabelShaclPutUploadTransaction
+  .
+  config:DomeintabelShaclPostUploadService a elmo:Service;
+    elmo:stage config:Stage;
+    elmo:transaction config:DomeintabelShaclPostUploadTransaction
   .
 
-  config:DomeintabelShaclUploadTransaction a elmo:Transaction;
+  # Toevoegen van de shacl configuratie, alles
+  config:DomeintabelShaclPutUploadTransaction a elmo:Transaction;
     elmo:sequentialFlow (
       [
         a elmo:UpdateStep;
@@ -397,10 +403,62 @@ GRAPH config:Theatre {
         elmo:backend config:UpdateBackend;
         elmo:targetGraph <http://standaard.aquo.nl/def/domeintabel>
       ]
-
     )
+  .
 
-
+  # Toevoegen van de shacl configuratie, 1 tabel (oude configuratie voor deze tabel wordt verwijderd)
+  config:DomeintabelShaclPostUploadTransaction a elmo:Transaction;
+    elmo:sequentialFlow (
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query "clear graph <http://standaard.aquo.nl/beheer/shacleditor.tmp>"
+      ]
+      [
+        a elmo:PersistenceStep;
+        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
+        elmo:backend config:UpdateBackend;
+        elmo:targetGraph <http://standaard.aquo.nl/beheer/shacleditor.tmp>
+      ]
+      [
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
+          PREFIX owl:<http://www.w3.org/2002/07/owl#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          PREFIX sh: <http://www.w3.org/ns/shacl#>
+          DELETE {
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+              ?shape ?pshapeold ?oshapeold.
+              ?propold ?ppropold ?opropold.
+            }
+          }
+          INSERT {
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+              ?shape ?pshape ?oshape.
+              ?prop ?pprop ?oprop.
+            }
+          }
+          WHERE {
+            GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+              ?shape ?pshapeold ?oshapeold.
+              OPTIONAL {
+                ?shape sh:property ?propold.
+                ?propold ?ppropold ?opropold.
+              }
+            }
+            GRAPH <http://standaard.aquo.nl/beheer/shacleditor.tmp> {
+              ?shape a sh:NodeShape.
+              ?shape ?pshape ?oshape.
+              OPTIONAL {
+                ?shape sh:property ?prop.
+                ?prop ?pprop ?oprop.
+              }
+            }
+          }
+        """
+      ]
+    )
   .
 
 # ==========================
