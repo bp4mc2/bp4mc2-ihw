@@ -18,6 +18,7 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
     elmo:contains config:BeheerMenu;
+    elmo:contains config:DomeinTitel;
     elmo:contains config:Footer;
     elmo:informationProduct config:DomeintabelData;
   .

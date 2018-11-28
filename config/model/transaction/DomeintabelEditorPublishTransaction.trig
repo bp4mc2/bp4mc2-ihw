@@ -78,15 +78,17 @@ GRAPH config:Theatre {
     PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
     PREFIX prov: <http://www.w3.org/ns/prov#>
     PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     CONSTRUCT {
       ?s ?p ?o.
       ?s aquo:status ?status.
       ?s aquo:publiceren "".
+      ?s dcmiperiod:end ?t.
     }
     WHERE {
       {
         {
-          select ?s ?p ?o ("Verwijderen" as ?status)
+          SELECT ?s ?p ?o ("Verwijderen" as ?status) ?t
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
             BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
@@ -107,10 +109,16 @@ GRAPH config:Theatre {
             graph ?staging {
               ?s a ?t.
               ?s ?p ?o
+              FILTER (?p != foaf:isPrimaryTopicOf)
             }
             FILTER EXISTS {
               graph ?datagraph {
                 ?s a ?t.
+              }
+            }
+            FILTER NOT EXISTS {
+              graph ?staging {
+                ?s dcmiperiod:end ?t
               }
             }
           }
@@ -147,9 +155,6 @@ GRAPH config:Theatre {
     elmo:stage config:Stage;
     elmo:putService config:DomeintabelPublishService;
     elmo:deleteService config:DomeintabelDeleteStagingService;
-#    elmo:putService config:DomeintabelUpdateService;
-#    elmo:postService config:DomeintabelInsertService;
-#    elmo:deleteService config:DomeintabelDeleteService;
   .
 
   config:DomeintabelPublishService a elmo:Service;
@@ -158,16 +163,36 @@ GRAPH config:Theatre {
   config:DomeintabelDeleteStagingService a elmo:Service;
     elmo:transaction config:DomeintabelDeleteStagingTransaction;
   .
-  config:DomeintabelUpdateService a elmo:Service;
-    elmo:transaction config:DomeintabelUpdateTransaction;
-  .
-  config:DomeintabelInsertService a elmo:Service;
-    elmo:transaction config:DomeintabelInsertTransaction;
-  .
 
   config:DomeintabelPublishTransaction a elmo:Transaction;
     elmo:requiredParameter elmo:SubjectParameter;
     elmo:sequentialFlow (
+#      [ a elmo:AssertionStep;
+#        rdfs:label "De begindatum geldigheid moet in de toekomst liggen";
+#        elmo:assertNot """
+#          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+#          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+#          ASK {
+#            ?s dcmiperiod:start ?start
+#            FILTER (str(?start) <= str(now()))
+#          }
+#        """;
+#      ]
+      [ a elmo:AssertionStep;
+        rdfs:label "De einddatum geldigheid mag niet in het verleden liggen";
+        elmo:assertNot """
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          ASK {
+            ?s dcmiperiod:end ?end
+            FILTER (str(?end) < str(now()))
+          }
+        """;
+      ]
       [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
@@ -180,6 +205,7 @@ GRAPH config:Theatre {
         elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
       ]
       [
+        # VERWIJDEREN van een domeinwaarde (dcmiperiod:end is gezet)
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -187,52 +213,127 @@ GRAPH config:Theatre {
           PREFIX dct: <http://purl.org/dc/terms/>
           PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
           insert {
             graph ?datagraph {
-              ?s dcmiperiod:end ?enddate.
+              ?temp dcmiperiod:end ?enddate.
             }
           }
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s dcmiperiod:start ?start.
-              OPTIONAL {?s dcmiperiod:end ?end}
-              BIND(if(bound(?end),?end,xsd:date(?start-xsd:duration("P1D"))) as ?enddate)
+              ?s dcmiperiod:end ?enddate.
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             }
+            GRAPH ?datagraph {
+              ?s foaf:isPrimaryTopicOf/dct:temporal ?temp.
+            }
           }
         """
       ]
       [
+        # AANPASSEN van een domeinwaarde (dcmiperiod:start is gezet)
+        # Eerst de waarden kopieren naar een "oude" URI
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
-          prefix xs: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
           PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-          insert {
-            graph ?subject {
+          delete {
+            graph ?datagraph {
               ?s ?p ?o.
-              ?s prov:generatedAtTime ?begindate
+              ?s foaf:isPrimaryTopicOf ?ms.
+              ?ms ?mp ?mo.
+              ?ms dct:temporal ?ts.
+              ?ts ?tp ?to.
+            }
+          }
+          insert {
+            graph ?datagraph {
+              ?olduri ?p ?o.
+              ?olduri foaf:isPrimaryTopicOf ?oldurimeta.
+              ?oldurimeta ?mp ?mo.
+              ?oldurimeta dct:temporal ?olduritemp.
+              ?olduritemp ?tp ?to.
+              ?olduritemp dcmiperiod:end ?enddate.
+              ?s ?pnew ?onew.
+              ?s foaf:isPrimaryTopicOf ?ms.
+              ?ms a prov:Entity.
+              ?ms dct:temporal ?ts.
+              ?ts dcmiperiod:start ?startdate
             }
           }
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s ?p ?o
-              FILTER (?p != prov:generatedAtTime &&
-                      ?p != aquo:status &&
-                      ?p != aquo:publiceren
-              )
+              ?s ?pnew ?onew.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
+              ?s dcmiperiod:start ?startdate.
+              BIND (xsd:date(xsd:date(?startdate)-xsd:duration("P1D")) as ?enddate)
+              BIND (now() as ?t)
+              BIND (substr(str(xsd:date(?t)),1,10) as ?tslice)
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              BIND (iri(replace(str(?s),"/id/",concat("/id/",?tslice,"/"))) as ?olduri)
+              BIND (iri(replace(str(?olduri),"/id/","/doc/")) as ?oldurimeta)
+              BIND (iri(concat(str(?oldurimeta),"#temporal")) as ?olduritemp)
             }
-            BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
+            GRAPH ?datagraph {
+              ?s ?p ?o.
+              FILTER (?p != foaf:isPrimaryTopicOf)
+              ?s foaf:isPrimaryTopicOf ?ms.
+              ?ms ?mp ?mo.
+              FILTER (?mp != dct:temporal)
+              ?ms dct:temporal ?ts.
+              ?ts ?tp ?to.
+            }
           }
         """
       ]
       [
+        # TOEVOEGEN van een domeinwaarde (dcmiperiod:start is gezet)
+        # Eerst de waarden kopieren naar een "oude" URI
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
           prefix prov: <http://www.w3.org/ns/prov#>
-          prefix xs: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          insert {
+            graph ?datagraph {
+              ?s ?pnew ?onew.
+              ?s foaf:isPrimaryTopicOf ?meta.
+              ?meta a prov:Entity.
+              ?meta dct:temporal ?temp.
+              ?temp dcmiperiod:start ?startdate
+            }
+          }
+          where {
+            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s ?pnew ?onew.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
+              ?s dcmiperiod:start ?startdate.
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              BIND (iri(replace(str(?s),"/id/","/doc/")) as ?meta)
+              BIND (iri(concat(str(?meta),"#temporal")) as ?temp)
+            }
+            FILTER NOT EXISTS {
+              GRAPH ?datagraph {
+                ?s a ?type.
+              }
+            }
+          }
+        """
+      ]
+      [
+        # Staging opruimen
+        a elmo:UpdateStep;
+        elmo:backend config:UpdateBackend;
+        elmo:query """
           delete {
             graph ?staging {
               ?s ?p ?o.
@@ -240,169 +341,12 @@ GRAPH config:Theatre {
           }
           where {
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
-            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s ?p ?o
-            }
-          }
-        """
-      ]
-    )
-  .
-
-#
-# Hier nog goed naar kijken, deze kunnen mogelijk weg
-#
-  config:DomeintabelUpdateTransaction a elmo:Transaction;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
-      ]
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          prefix prov: <http://www.w3.org/ns/prov#>
-          PREFIX dct: <http://purl.org/dc/terms/>
-          delete {
-            graph ?subject {
-              ?s ?p ?o
-            }
-          }
-          insert {
-            graph ?versionedsubject {
-              ?versionedsubject dct:replacedBy ?subject.
-              ?sv ?p ?o.
-              ?sv prov:invalidatedAtTime ?enddate
-            }
-          }
-          where {
             {
-              select ?s ?sv ?p ?o
-              where {
-                graph ?subject {
-                  ?s ?p ?o
-                  BIND (substr(str(now()),1,10) as ?date)
-                  BIND (iri(concat(str(?s),"#",?date)) as ?sv)
-                }
-              }
-            }
-            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s a ?t
-            }
-            BIND (substr(str(now()),1,10) as ?enddate)
-            BIND (iri(concat(str(?subject),"#",?enddate)) as ?versionedsubject)
-          }
-        """
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          prefix prov: <http://www.w3.org/ns/prov#>
-          prefix xs: <http://www.w3.org/2001/XMLSchema#>
-          insert {
-            graph ?subject {
-              ?s ?p ?o.
-              ?s prov:generatedAtTime ?begindate
-            }
-          }
-          where {
-            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s ?p ?o
-              FILTER (?p != prov:generatedAtTime)
-            }
-            BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
-          }
-        """
-      ]
-    )
-  .
-
-  config:DomeintabelInsertTransaction a elmo:Transaction;
-    elmo:requiredParameter elmo:SubjectParameter;
-    elmo:sequentialFlow (
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
-      ]
-      [
-        a elmo:PersistenceStep;
-        elmo:persistenceStrategy elmo-ps:InsertIntoGraph;
-        elmo:backend config:UpdateBackend;
-        elmo:targetGraph <http://standaard.aquo.nl/beheer/editor.tmp>
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          PREFIX dct: <http://purl.org/dc/terms/>
-          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-          prefix prov: <http://www.w3.org/ns/prov#>
-          insert {
-            graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?subject aquo:count ?count
-            }
-          }
-          where {
-            select (max(?id) as ?count)
-            where {
-              {
-                graph ?subject {
-                  ?s dct:identifier ?id
-                }
-              }
-              UNION
-              {
-                graph ?versioned {
-                  ?versioned dct:replacedBy ?subject.
-                  ?s dct:identifier ?id
-                }
-              }
-            }
-          }
-        """
-      ]
-      [
-        a elmo:UpdateStep;
-        elmo:backend config:UpdateBackend;
-        elmo:query """
-          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
-          prefix prov: <http://www.w3.org/ns/prov#>
-          prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          PREFIX dct: <http://purl.org/dc/terms/>
-          prefix xs: <http://www.w3.org/2001/XMLSchema#>
-          insert {
-            graph ?subject {
-              ?suri ?p ?o.
-              ?suri a ?type.
-              ?suri dct:identifier ?id.
-              ?suri prov:generatedAtTime ?begindate
-            }
-          }
-          where {
-            select ?type ?suri ?p ?o ?begindate ?id
-            where {
-              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-                ?subject aquo:count ?count.
-                BIND (strafter(str(?subject),"/domeintabel/") as ?domeintabelnaam)
-                BIND (iri(concat("http://model.aquo.nl/def/aquods#",?domeintabelnaam)) as ?type)
-                BIND (iri(concat("http://model.aquo.nl/id/",?domeintabelnaam,"/",str(1+?count))) as ?suri)
-                BIND (substr(str(now()+xs:dayTimeDuration("P1D")),1,10) as ?begindate)
-                BIND (1+?count as ?id)
-              }
-              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+              graph ?staging {
                 ?s ?p ?o
-                FILTER (?p != aquo:beginDate && ?p != dct:identifier && ?p != rdf:type && ?s != ?subject)
+              }
+              graph <http://standaard.aquo.nl/beheer/editor.tmp> {
+                ?s a ?type
               }
             }
           }

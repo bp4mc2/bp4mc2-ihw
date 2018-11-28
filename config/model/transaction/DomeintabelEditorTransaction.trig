@@ -151,6 +151,7 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # AANPASSEN op stapel zetten
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -169,7 +170,7 @@ GRAPH config:Theatre {
               ?s ?p ?o
               FILTER (?p != dcmiperiod:start)
               OPTIONAL {?s dcmiperiod:start ?startr}
-              BIND (if(bound(?startr),?startr,xsd:date(?t+xsd:duration("P1D"))) as ?start)
+              BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(now()+xsd:duration("P1D"))),1,10))) as ?start)
               FILTER NOT EXISTS {
                 ?s dcmiperiod:end ?end
               }
@@ -179,6 +180,7 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # VERWIJDEREN Op stapel zetten
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -187,6 +189,7 @@ GRAPH config:Theatre {
           PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           insert {
             graph ?staging {
+              ?s a prov:Entity.
               ?s dcmiperiod:end ?end
             }
           }
@@ -249,6 +252,7 @@ GRAPH config:Theatre {
         """
       ]
       [
+        # TOEVOEGEN op stapel zetten
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -268,7 +272,7 @@ GRAPH config:Theatre {
               ?s ?p ?o.
               FILTER (?p != dcmiperiod:start && ?p != adms:identifier)
               OPTIONAL {?s dcmiperiod:start ?startr}
-              BIND (if(bound(?startr),?startr,xsd:date(now()+xsd:duration("P1D"))) as ?start)
+              BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(now()+xsd:duration("P1D"))),1,10))) as ?start)
               ?s adms:identifier ?id
               BIND (iri(concat(str(?subject),"/",str(?id))) as ?uri)
             }

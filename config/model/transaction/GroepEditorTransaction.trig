@@ -1,0 +1,73 @@
+GRAPH config:Theatre {
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Groep (aanpassen)
+  #
+  # ==========================
+
+  # Voorlopig niet
+
+  # ==========================
+  #
+  # Editor endpoint, representation en appearance
+  # Groep (toevoegen)
+  #
+  # ==========================
+
+  # Voorlopig niet
+
+# ==========================
+#
+# Groeplijst voor editor
+#
+# ==========================
+
+config:GroepZoeklijstEndpoint a elmo:Endpoint;
+  elmo:pathPattern "/beheer/groeplijst/{domeintabel}";
+  elmo:stage config:Stage;
+  elmo:getRepresentation config:GroepZoeklijst;
+.
+
+config:GroepZoeklijst a elmo:Representation;
+  elmo:stage config:Stage;
+  elmo:appearance [a elmo:Appearance];
+  elmo:informationProduct config:GroepZoeklijstData;
+  elmo:parameterMapper config:DomeintabelGraphFromUrl;
+.
+
+config:DomeintabelGraphFromUrl a elmo:UriParameterMapper;
+  elmo:source http:requestURI;
+  elmo:pattern "http://{domain}/beheer/groeplijst/{domaintablename}";
+  elmo:template "http://standaard.aquo.nl/data/domeintabel/{domaintablename}";
+  elmo:target elmo:SubjectParameter;
+.
+
+# ==========================
+#
+# Informatieproduct in de editor
+#
+# ==========================
+
+  config:GroepZoeklijstData a elmo:InformationProduct;
+    elmo:backend config:LocalBackend;
+    elmo:resultType elmo-rt:Tuple;
+    elmo:requiredParameter elmo:SubjectParameter;
+    elmo:optionalParameter config:TermParameter;
+    elmo:query """
+      PREFIX owl: <http://www.w3.org/2002/07/owl#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      SELECT ?uri ?label
+      WHERE {
+        GRAPH ?subject {
+          ?uri a owl:Class.
+          ?uri rdfs:subClassOf ?type.
+          ?uri rdfs:label ?label.
+          FILTER regex(?label,concat("^",?term),"i")
+        }
+      }
+    """;
+  .
+
+}

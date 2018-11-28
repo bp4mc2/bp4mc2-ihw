@@ -40,7 +40,7 @@ GRAPH config:Theatre {
           FILTER (?type != prov:Entity && ?type != skos:Concept)
           OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
           BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
-          FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
+          FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
           OPTIONAL {
             ?id aquo:Opgeheven_per ?dt;
               aquo:Opgericht_in ?odt.
@@ -111,8 +111,7 @@ GRAPH config:Theatre {
           OPTIONAL {?o rdfs:label ?olabel}
           OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?endr}
           BIND (if(bound(?endr),?endr,"2999-12-31") as ?end)
-          FILTER (xsd:dateTime(concat(str(?start),"T00:00:00")) < now() && now() < xsd:dateTime(concat(str(?end),"T00:00:00")))
-
+          FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/links> {
@@ -318,6 +317,9 @@ GRAPH config:Theatre {
               GRAPH ?staging {
                 ?sold a ?t
                 OPTIONAL {?sold dcmiperiod:start ?start}
+                FILTER NOT EXISTS {
+                  ?sold dcmiperiod:end ?endold
+                }
               }
             }
           }

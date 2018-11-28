@@ -36,8 +36,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?begrip_label),?begrip_label,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "term","") as ?found)
-          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
-        }
+          FILTER (str(?start) <= str(now()) && str(now()) < str(?end))        }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
             ?begrip a  skos:Concept;
@@ -57,7 +56,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?synoniem),?synoniem,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "synoniem","") as ?found)
-          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
+          FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
         }
         UNION {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -78,7 +77,7 @@ GRAPH config:Theatre {
           BIND(IF(BOUND(?definitie),?definitie,"") as ?search_label)
           FILTER regex(?search_label,?term,"i")
           BIND( IF(regex(?search_label,?term,"i"), "definitie","") as ?found)
-          FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
+          FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
         }
 
       }
@@ -98,9 +97,9 @@ GRAPH config:Theatre {
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-      
-      SELECT ?categorie ?categorie_label 
-      
+
+      SELECT ?categorie ?categorie_label
+
         WHERE {
           GRAPH <http://standaard.aquo.nl/data/categorieen> {
             ?categorie skos:member ?begrip.
@@ -114,7 +113,7 @@ GRAPH config:Theatre {
             }
           }
          FILTER regex(?categorie_label,?term,"i")
-         FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
+         FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
         }
       group by ?categorie ?categorie_label
       order by ?categorie_label
@@ -178,18 +177,18 @@ GRAPH config:Theatre {
           }
         }
         FILTER regex(?omschrijving,?term,"i")
-        FILTER (?start <= xsd:date(now()) && xsd:date(now()) < ?end)
+        FILTER (str(?start) <= str(now()) && str(now()) < str(?end))
         BIND( IF(regex(?omschrijving,?term,"i"), "omschrijving","") as ?gevonden_in)
       }
       order by ?domeintabel_label
     """
   .
 
-  
-  
+
+
   #-----------------------------------------------API SEARCH -----------------------------------------------------
   # Alleen de search op begrippen hoeft te worden aangepast aangezien de overige maar 1 waarde kunnen teruggeven op uniek onderdeel. Bij begrippen ligt dit anders omdat alleen de #combinatie van een begrip en een definitie uniek is.
-  
+
   config:ApiSearchConceptenData a elmo:InformationProduct;
     elmo:backend config:LocalBackend;
     elmo:resultType elmo-rt:Tuple;
@@ -200,14 +199,14 @@ GRAPH config:Theatre {
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
 
-      SELECT 
-      ?begrip 
-      ?begrip_label 
-      ?definitie 
-      (group_concat(distinct ?synoniemTp;separator="; ")as ?synoniem) 
+      SELECT
+      ?begrip
+      ?begrip_label
+      ?definitie
+      (group_concat(distinct ?synoniemTp;separator="; ")as ?synoniem)
       (group_concat(distinct ?categorie_begrip_label;separator="; ")as ?categorie)
       (group_concat(distinct ?found;separator="; ")as ?gevonden_in)
-      
+
       WHERE {
         {
           GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -271,9 +270,9 @@ GRAPH config:Theatre {
           FILTER regex(?search_label,concat(' ', ?term, ' '),"i")
           BIND( IF(regex(?search_label,concat(' ', ?term),"i"), "definitie","") as ?found)
         }
-       
+
       }
-      GROUP BY ?begrip ?begrip_label ?definitie 
+      GROUP BY ?begrip ?begrip_label ?definitie
       ORDER BY ?begrip_label
 
     """

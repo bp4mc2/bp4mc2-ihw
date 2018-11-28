@@ -103,10 +103,15 @@ GRAPH config:Theatre {
     elmo:informationProduct config:PublishDomeintabelData
   .
 
-  config:DomeinTitelAppearance a elmo:TableAppearance;
+  config:DomeinTitelAppearance a elmo:ShortTableAppearance;
     elmo:index "01";
     elmo:fragment [
       elmo:appliesTo "subject";
+      xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
+      rdfs:label "Domeintabel metadata"@nl;
+    ];
+    elmo:fragment [
+      elmo:appliesTo "domeintabel";
       xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta";
       rdfs:label "Domeintabel metadata"@nl;
     ];
