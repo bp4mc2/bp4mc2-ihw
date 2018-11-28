@@ -66,6 +66,7 @@ GRAPH config:Theatre {
         ?subject ?ptemp ?otemp.
         ?subject dct:subject ?categorie.
         ?o rdfs:label ?olabel.
+        ?categorie rdfs:label ?categorielabel.
       }
       WHERE {
         GRAPH <http://standaard.aquo.nl/data/begrippen> {
@@ -81,7 +82,8 @@ GRAPH config:Theatre {
         }
         OPTIONAL {
           GRAPH <http://standaard.aquo.nl/data/categorieen> {
-            ?categorie skos:member ?subject;
+            ?categorie skos:member ?subject.
+            ?categorie rdfs:label ?categorielabel
           }
         }
       }
