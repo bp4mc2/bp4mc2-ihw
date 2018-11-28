@@ -28,6 +28,7 @@ GRAPH config:Theatre {
       elmo:index 1;
       elmo:appliesTo aquo:publiceren;
       rdfs:label "Publiceren"@nl;
+      elmo:valueDatatype xsd:boolean;
     ];
     elmo:fragment [
       elmo:index 2;
@@ -49,11 +50,13 @@ GRAPH config:Theatre {
       elmo:index 5;
       elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
+      elmo:valueDatatype xsd:date;
     ];
     elmo:fragment [
       elmo:index 6;
       elmo:appliesTo dcmiperiod:end;
       rdfs:label "Einde geldigheid"@nl;
+      elmo:valueDatatype xsd:date;
     ];
     elmo:fragment [
       elmo:appliesTo "dummy"; # dotwebstack requires an elmo:appliesTo for every fragment
