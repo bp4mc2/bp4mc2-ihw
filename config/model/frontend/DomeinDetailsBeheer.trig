@@ -228,6 +228,18 @@ GRAPH config:Theatre {
       elmo:appliesTo aquo:Namespace;
       elmo:index "43";
     ];
+    elmo:fragment [
+      elmo:appliesTo skos:editorialNote;
+      rdfs:label "Wijzigingsvoorstel"@nl;
+      elmo:index "44";
+    ];
+    elmo:fragment [
+      elmo:appliesTo skos:exactMatch;
+      xhtml:link "";
+      elmo:appearance elmo:GlobalLink;
+      rdfs:label "relatie"@nl;
+      elmo:index "45";
+    ];
   .
 
 }
