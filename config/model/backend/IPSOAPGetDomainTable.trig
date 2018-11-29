@@ -49,13 +49,17 @@ GRAPH config:Theatre {
           }
           OPTIONAL {
             {
+              # Normale waarde
               BIND (false as ?isnull)
               GRAPH ?domaintablegraph {
+                ?id a ?type.
                 ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?begindate.
                 OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?enddater}
                 ?id ?prop ?value
               }
               GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+                ?shape sh:targetClass ?type.
+                ?shape sh:property ?meta.
                 ?meta sh:path ?prop.
                 ?meta rdfs:label ?property.
                 ?meta sh:order ?nr.
@@ -64,14 +68,18 @@ GRAPH config:Theatre {
             }
             UNION
             {
+              # Resource (groep)
               BIND (false as ?isnull)
               GRAPH ?domaintablegraph {
+                ?id a ?type.
                 ?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:start ?begindate.
                 OPTIONAL {?id foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?enddater}
                 ?id ?prop ?valueresource.
                 ?valueresource rdfs:label ?value
               }
               GRAPH <http://standaard.aquo.nl/def/domeintabel> {
+                ?shape sh:targetClass ?type.
+                ?shape sh:property ?meta.
                 ?meta sh:path ?prop.
                 ?meta rdfs:label ?property.
                 ?meta sh:order ?nr.
@@ -80,6 +88,7 @@ GRAPH config:Theatre {
             }
             UNION
             {
+              # Geen waarde, dan dit ook teruggeven (closed model)
               BIND (true as ?isnull)
               GRAPH ?domaintablegraph {
                 ?id a ?type.

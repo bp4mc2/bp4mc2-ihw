@@ -6,8 +6,18 @@ GRAPH config:Theatre {
     elmo:query """
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       CONSTRUCT {
-        ?prop ?pprop ?oprop
+        ?prop ?pprop ?oprop.
+        # Extra: rdfs:label ook meesturen, want anders gaat groep fout
+        <urn:property:label> a sh:PropertyShape;
+          sh:order 99;
+          sh:name "label";
+          rdfs:label "-"@nl;
+          sh:path <http://www.w3.org/2000/01/rdf-schema#label>;
+          sh:datatype xsd:string;
+          sh:maxCount 1;
+        .
       }
       WHERE {
         GRAPH  <http://standaard.aquo.nl/def/domeintabel> {

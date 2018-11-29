@@ -282,6 +282,7 @@ GRAPH config:Theatre {
       PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
         ?s ?p ?o;
           dcmiperiod:end ?end;
@@ -297,7 +298,7 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?datagraph {
                 ?s ?p ?o.
-                FILTER (?p != foaf:isPrimaryTopicOf)
+                FILTER (?p != foaf:isPrimaryTopicOf && ?p != rdf:type)
               }
               GRAPH ?staging {
                 ?s dcmiperiod:end ?end
@@ -312,7 +313,7 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?datagraph {
                 ?sold ?p ?o.
-                FILTER (?p != foaf:isPrimaryTopicOf)
+                FILTER (?p != foaf:isPrimaryTopicOf && ?p != rdf:type)
               }
               GRAPH ?staging {
                 ?sold a ?t
@@ -332,7 +333,7 @@ GRAPH config:Theatre {
               GRAPH ?staging {
                 ?s a ?t.
                 ?s ?p ?o
-                FILTER (?p != foaf:isPrimaryTopicOf)
+                FILTER (?p != foaf:isPrimaryTopicOf && ?p != rdf:type)
               }
               FILTER EXISTS {
                 GRAPH ?datagraph {
@@ -349,7 +350,7 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               GRAPH ?staging {
                 ?s ?p ?o
-                FILTER (?p != foaf:isPrimaryTopicOf)
+                FILTER (?p != foaf:isPrimaryTopicOf && ?p != rdf:type)
               }
               FILTER NOT EXISTS {
                 GRAPH ?datagraph {

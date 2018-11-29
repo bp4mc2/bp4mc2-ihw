@@ -43,17 +43,23 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:index 4;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
+      elmo:name "code";
+    ];
+    elmo:fragment [
+      elmo:index 5;
       elmo:appliesTo aquo:Omschrijving;
       rdfs:label "Omschrijving"@nl;
     ];
     elmo:fragment [
-      elmo:index 5;
+      elmo:index 6;
       elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
       elmo:valueDatatype xsd:date;
     ];
     elmo:fragment [
-      elmo:index 6;
+      elmo:index 7;
       elmo:appliesTo dcmiperiod:end;
       rdfs:label "Einde geldigheid"@nl;
       elmo:valueDatatype xsd:date;
@@ -197,6 +203,74 @@ GRAPH config:Theatre {
         """;
       ]
       [
+        a elmo:AssertionStep;
+        rdfs:label "De code moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          ASK {
+            ?s aquo:Code ?code.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old aquo:Code ?code
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
+          }
+        """;
+      ]
+      [
+        a elmo:AssertionStep;
+        rdfs:label "Het ID moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          ASK {
+            ?s dct:identifier ?id.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old dct:identifier ?id
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
+          }
+        """;
+      ]
+      [
+        a elmo:AssertionStep;
+        rdfs:label "De omschrijving moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          ASK {
+            ?s aquo:Omschrijving ?omschrijving.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old aquo:Omschrijving ?omschrijving
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
+          }
+        """;
+      ]
+      [
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query "clear graph <http://standaard.aquo.nl/beheer/editor.tmp>"
@@ -224,7 +298,8 @@ GRAPH config:Theatre {
           }
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s dcmiperiod:end ?enddate.
+              ?s dcmiperiod:end ?enddater.
+              BIND (xsd:date(?enddater) as ?enddate)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             }
             GRAPH ?datagraph {
@@ -263,6 +338,8 @@ GRAPH config:Theatre {
               ?olduritemp ?tp ?to.
               ?olduritemp dcmiperiod:end ?enddate.
               ?s ?pnew ?onew.
+              ?s dct:type ?groep.
+              ?s dct:identifier ?id.
               ?s foaf:isPrimaryTopicOf ?ms.
               ?ms a prov:Entity.
               ?ms dct:temporal ?ts.
@@ -272,8 +349,9 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?pnew ?onew.
-              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
-              ?s dcmiperiod:start ?startdate.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren && ?pnew != dct:type && ?pnew != dct:identifier)
+              ?s dcmiperiod:start ?startdater.
+              BIND (xsd:date(?startdater) as ?startdate)
               BIND (xsd:date(xsd:date(?startdate)-xsd:duration("P1D")) as ?enddate)
               BIND (now() as ?t)
               BIND (substr(str(xsd:date(?t)),1,10) as ?tslice)
@@ -281,6 +359,16 @@ GRAPH config:Theatre {
               BIND (iri(replace(str(?s),"/id/",concat("/id/",?tslice,"/"))) as ?olduri)
               BIND (iri(replace(str(?olduri),"/id/","/doc/")) as ?oldurimeta)
               BIND (iri(concat(str(?oldurimeta),"#temporal")) as ?olduritemp)
+              # Workaround om van groep weer een uri te maken
+              OPTIONAL {
+                ?s dct:type ?groepstr.
+                BIND (iri(?groepstr) as ?groep)
+              }
+              # Workaround om van een id weer een integer te maken
+              OPTIONAL {
+                ?s dct:identifier ?idstr.
+                BIND (xsd:integer(?idstr) as ?id)
+              }
             }
             GRAPH ?datagraph {
               ?s ?p ?o.
@@ -296,7 +384,6 @@ GRAPH config:Theatre {
       ]
       [
         # TOEVOEGEN van een domeinwaarde (dcmiperiod:start is gezet)
-        # Eerst de waarden kopieren naar een "oude" URI
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
@@ -309,6 +396,8 @@ GRAPH config:Theatre {
           insert {
             graph ?datagraph {
               ?s ?pnew ?onew.
+              ?s dct:type ?groep.
+              ?s dct:identifier ?id.
               ?s foaf:isPrimaryTopicOf ?meta.
               ?meta a prov:Entity.
               ?meta dct:temporal ?temp.
@@ -318,11 +407,22 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?pnew ?onew.
-              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
-              ?s dcmiperiod:start ?startdate.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren && ?pnew != dct:type && ?pnew != dct:identifier)
+              ?s dcmiperiod:start ?startdater.
+              BIND (xsd:date(?startdater) as ?startdate)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               BIND (iri(replace(str(?s),"/id/","/doc/")) as ?meta)
               BIND (iri(concat(str(?meta),"#temporal")) as ?temp)
+              # Workaround om van groep weer een uri te maken
+              OPTIONAL {
+                ?s dct:type ?groepstr.
+                BIND (iri(?groepstr) as ?groep)
+              }
+              # Workaround om van een id weer een integer te maken
+              OPTIONAL {
+                ?s dct:identifier ?idstr.
+                BIND (xsd:integer(?idstr) as ?id)
+              }
             }
             FILTER NOT EXISTS {
               GRAPH ?datagraph {

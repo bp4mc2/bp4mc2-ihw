@@ -159,6 +159,7 @@ GRAPH config:Theatre {
           PREFIX dct: <http://purl.org/dc/terms/>
           PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX owl: <http://www.w3.org/2002/07/owl#>
           insert {
             graph ?staging {
               ?s ?p ?o.
@@ -168,7 +169,7 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
-              FILTER (?p != dcmiperiod:start)
+              FILTER (?p != dcmiperiod:start && ?p != owl:sameAs)
               OPTIONAL {?s dcmiperiod:start ?startr}
               BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(now()+xsd:duration("P1D"))),1,10))) as ?start)
               FILTER NOT EXISTS {
@@ -223,29 +224,37 @@ GRAPH config:Theatre {
         a elmo:UpdateStep;
         elmo:backend config:UpdateBackend;
         elmo:query """
-          PREFIX adms: <http://www.w3.org/ns/adms#>
-          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          DELETE {
+            GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
+              ?s dct:identifier ?id
+            }
+          }
           INSERT {
             GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s adms:identifier ?cnt.
+              ?s dct:identifier ?newid.
               ?s a ?type
             }
           }
           WHERE {
-            SELECT DISTINCT ?s ?cnt ?type
+            SELECT DISTINCT ?s ?id (if(bound(?id),xsd:integer(?id),if(bound(?cnt),1+?cnt,1)) as ?newid) ?type
             WHERE {
-              BIND (iri(concat(str(?subject),"#staging")) as ?staging)
+              BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
+              BIND (iri(concat(str(?subject),"#Staging")) as ?datagraph)
               BIND (iri(concat("http://standaard.aquo.nl/def/aquo#",strafter(str(?subject),"/id/domeintabel/"))) as ?type)
               GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?s ?p ?o
+                OPTIONAL {?s dct:identifier ?id}
               }
               {
-                SELECT (count(?item) as ?cnt)
+                SELECT ?datagraph (max(?ident) as ?cnt)
                 WHERE {
-                  GRAPH ?staging {
-                    ?item a ?type
+                  GRAPH ?datagraph {
+                    ?item dct:identifier ?ident
                   }
                 }
+                GROUP BY ?datagraph
               }
             }
           }
@@ -258,7 +267,6 @@ GRAPH config:Theatre {
         elmo:query """
           PREFIX prov: <http://www.w3.org/ns/prov#>
           PREFIX dct: <http://purl.org/dc/terms/>
-          PREFIX adms: <http://www.w3.org/ns/adms#>
           PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
           insert {
@@ -270,11 +278,12 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o.
-              FILTER (?p != dcmiperiod:start && ?p != adms:identifier)
+              FILTER (?p != dcmiperiod:start)
               OPTIONAL {?s dcmiperiod:start ?startr}
               BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(now()+xsd:duration("P1D"))),1,10))) as ?start)
-              ?s adms:identifier ?id
-              BIND (iri(concat(str(?subject),"/",str(?id))) as ?uri)
+              ?s dct:identifier ?id
+              BIND (concat(substr("00000000",1,8-strlen(str(?id))),str(?id)) as ?idstr)
+              BIND (iri(concat(replace(str(?subject),"/id/domeintabel/","/id/"),"/",?idstr)) as ?uri)
             }
             BIND (iri(concat(str(?subject),"#staging")) as ?staging)
           }

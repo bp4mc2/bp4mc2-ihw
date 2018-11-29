@@ -115,8 +115,10 @@ GRAPH config:Theatre {
 #          ?meta dct:modified ?modified.
           ?meta dct:temporal ?temp.
           ?temp ?ptemp ?otemp.
-          OPTIONAL {
-            ?o rdfs:label ?olabel
+        }
+        OPTIONAL {
+          GRAPH <http://standaard.aquo.nl/data/begrippen> {
+          ?o rdfs:label ?olabel
           }
         }
       }
