@@ -22,10 +22,10 @@ GRAPH config:Theatre {
     elmo:appearance config:DomeinMetaAppearance;
     elmo:informationProduct config:DomeinMetaData;
   .
-  
+
   config:DomeinMetaURI a elmo:Representation;
     elmo:stage config:Stage;
-    elmo:parameterMapper config:SubjectFromUrl;    
+    elmo:parameterMapper config:SubjectFromUrl;
     elmo:contains config:ConceptImage;
     elmo:contains config:Menu;
     elmo:contains config:Footer;
@@ -146,6 +146,12 @@ GRAPH config:Theatre {
 	  elmo:appliesTo  dct:publisher;
     xhtml:link "%{dotwebstack.config.aquoroot}/domeinmeta-agent";
 	  rdfs:label "Beheerder"@nl;
+	];
+  elmo:fragment [
+	  elmo:index 43;
+	  elmo:appliesTo  voaf:reliesOn;
+    elmo:appearance elmo:GlobalLink;
+	  rdfs:label "Gebaseerd op"@nl;
 	];
   .
 
