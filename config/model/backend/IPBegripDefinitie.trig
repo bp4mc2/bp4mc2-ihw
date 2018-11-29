@@ -10,6 +10,7 @@ GRAPH config:Theatre {
 #                 - xsd:int    => nummeric input field
 #                 - xsd:date or xsd:dateTime => date picker input field
 #                 - xsd:boolean => Three state radio button or checkbox (undefined, true, false)
+#                 - rdf:langString => Input field with the option for adding a language (optional)
 #                 - If this element is missing, use xsd:string as default
 # rdfs:label => The label to be displayed
 # sh:class => Indicates a search input field (select from dynamic list), use elmo:endpoint for the location of the list
@@ -30,6 +31,7 @@ GRAPH config:Theatre {
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
       PREFIX elmo: <http://dotwebstack.org/def/elmo#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       CONSTRUCT {
         <urn:property:prefLabel> a sh:PropertyShape;
           sh:order 1;
@@ -82,6 +84,7 @@ GRAPH config:Theatre {
           sh:name "altLabel";
           rdfs:label "Synoniem"@nl;
           sh:path <http://www.w3.org/2004/02/skos/core#altLabel>;
+          sh:datatype rdf:langString;
         .
         <urn:property:abbreviation> a sh:PropertyShape;
           sh:order 7;
