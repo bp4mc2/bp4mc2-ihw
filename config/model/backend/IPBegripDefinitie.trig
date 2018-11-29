@@ -203,6 +203,14 @@ GRAPH config:Theatre {
           sh:datatype xsd:date;
           sh:maxCount 1;
         .
+        <urn:property:TIJDELIJK> a sh:PropertyShape;
+          sh:order 99;
+          sh:name "identifier";
+          rdfs:label "Identifier"@nl;
+          sh:path <http://purl.org/dc/terms/identifier>;
+          sh:datatype xsd:int;
+          sh:maxCount 1;
+        .
       }
       WHERE {
       }
