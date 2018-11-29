@@ -122,6 +122,9 @@ config:BegrippenZoeklijst a elmo:Representation;
         }
         GROUP BY ?uri ?urilabel
       }
+      ORDER BY ?uri
+      LIMIT 20
+      #OFFSET 0
     """;
   .
 

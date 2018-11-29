@@ -13,4 +13,11 @@ GRAPH config:Theatre {
     elmo:target elmo:SubjectParameter;
   .
 
+  config:SubjectFromDataUrl a elmo:UriParameterMapper;
+    elmo:source http:requestURI;
+    elmo:pattern "http://{domain}/data/domeintabel/{domeintabel}";
+    elmo:template "http://standaard.aquo.nl/id/domeintabel/{domeintabel}";
+    elmo:target elmo:SubjectParameter;
+  .
+
 }

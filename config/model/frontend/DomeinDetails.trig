@@ -13,6 +13,12 @@ GRAPH config:Theatre {
     elmo:getRepresentation config:Domeintabel
   .
 
+  config:DomeinDataURIEndpoint a elmo:Endpoint;
+    elmo:pathPattern "/data/domeintabel/{id}";
+    elmo:stage config:Stage;
+    elmo:getRepresentation config:DomeinDataURI;
+  .
+
   config:DomeintabelGroepEndpoint a elmo:Endpoint;
     elmo:pathPattern "/domeintabelgroep";
     elmo:stage config:Stage;
@@ -33,6 +39,18 @@ GRAPH config:Theatre {
 
   config:Domeintabel a elmo:Representation;
     elmo:appearance config:DomeintabelAppearance;
+    elmo:stage config:Stage;
+    elmo:contains config:ConceptImage;
+    elmo:contains config:DomeinTitel;
+    elmo:contains config:ExportIndex;
+    elmo:contains config:Menu;
+    elmo:contains config:Footer;
+    elmo:informationProduct config:DomeintabelData;
+  .
+
+  config:DomeinDataURI a elmo:Representation;
+    elmo:appearance config:DomeintabelAppearance;
+    elmo:parameterMapper config:SubjectFromDataUrl;
     elmo:stage config:Stage;
     elmo:contains config:ConceptImage;
     elmo:contains config:DomeinTitel;
