@@ -118,6 +118,7 @@ config:DomeintabellenPostTransaction a elmo:Transaction;
                     replace(
                     replace(
                     replace(
+                    replace(
                     replace(?term
                     ,"^a| a","A")
                     ,"^b| b","B")
@@ -145,6 +146,7 @@ config:DomeintabellenPostTransaction a elmo:Transaction;
                     ,"^x| x","X")
                     ,"^y| y","Y")
                     ,"^z| z","Z")
+                    ,"[^a-zA-Z0-9:\\\\.\\\\-_~=]","")
                     as ?uriterm) ?s
             where {
               GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
