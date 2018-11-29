@@ -224,7 +224,8 @@ GRAPH config:Theatre {
           }
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
-              ?s dcmiperiod:end ?enddate.
+              ?s dcmiperiod:end ?enddater.
+              BIND (xsd:date(?enddater) as ?enddate)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
             }
             GRAPH ?datagraph {
@@ -264,6 +265,7 @@ GRAPH config:Theatre {
               ?olduritemp dcmiperiod:end ?enddate.
               ?s ?pnew ?onew.
               ?s dct:type ?groep.
+              ?s dct:identifier ?id.
               ?s foaf:isPrimaryTopicOf ?ms.
               ?ms a prov:Entity.
               ?ms dct:temporal ?ts.
@@ -273,8 +275,9 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?pnew ?onew.
-              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren && ?pnew != dct:type)
-              ?s dcmiperiod:start ?startdate.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren && ?pnew != dct:type && ?pnew != dct:identifier)
+              ?s dcmiperiod:start ?startdater.
+              BIND (xsd:date(?startdater) as ?startdate)
               BIND (xsd:date(xsd:date(?startdate)-xsd:duration("P1D")) as ?enddate)
               BIND (now() as ?t)
               BIND (substr(str(xsd:date(?t)),1,10) as ?tslice)
@@ -286,6 +289,11 @@ GRAPH config:Theatre {
               OPTIONAL {
                 ?s dct:type ?groepstr.
                 BIND (iri(?groepstr) as ?groep)
+              }
+              # Workaround om van een id weer een integer te maken
+              OPTIONAL {
+                ?s dct:identifier ?idstr.
+                BIND (xsd:integer(?idstr) as ?id)
               }
             }
             GRAPH ?datagraph {
@@ -314,6 +322,8 @@ GRAPH config:Theatre {
           insert {
             graph ?datagraph {
               ?s ?pnew ?onew.
+              ?s dct:type ?groep.
+              ?s dct:identifier ?id.
               ?s foaf:isPrimaryTopicOf ?meta.
               ?meta a prov:Entity.
               ?meta dct:temporal ?temp.
@@ -323,11 +333,22 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?pnew ?onew.
-              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren)
-              ?s dcmiperiod:start ?startdate.
+              FILTER (?pnew != dcmiperiod:start && ?pnew != aquo:status && ?pnew != aquo:publiceren && ?pnew != dct:type && ?pnew != dct:identifier)
+              ?s dcmiperiod:start ?startdater.
+              BIND (xsd:date(?startdater) as ?startdate)
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
               BIND (iri(replace(str(?s),"/id/","/doc/")) as ?meta)
               BIND (iri(concat(str(?meta),"#temporal")) as ?temp)
+              # Workaround om van groep weer een uri te maken
+              OPTIONAL {
+                ?s dct:type ?groepstr.
+                BIND (iri(?groepstr) as ?groep)
+              }
+              # Workaround om van een id weer een integer te maken
+              OPTIONAL {
+                ?s dct:identifier ?idstr.
+                BIND (xsd:integer(?idstr) as ?id)
+              }
             }
             FILTER NOT EXISTS {
               GRAPH ?datagraph {

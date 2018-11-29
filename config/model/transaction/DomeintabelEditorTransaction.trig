@@ -159,6 +159,7 @@ GRAPH config:Theatre {
           PREFIX dct: <http://purl.org/dc/terms/>
           PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
           PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+          PREFIX owl: <http://www.w3.org/2002/07/owl#>
           insert {
             graph ?staging {
               ?s ?p ?o.
@@ -168,7 +169,7 @@ GRAPH config:Theatre {
           where {
             graph <http://standaard.aquo.nl/beheer/editor.tmp> {
               ?s ?p ?o
-              FILTER (?p != dcmiperiod:start)
+              FILTER (?p != dcmiperiod:start && ?p != owl:sameAs)
               OPTIONAL {?s dcmiperiod:start ?startr}
               BIND (if(bound(?startr),?startr,xsd:date(substr(str(xsd:date(now()+xsd:duration("P1D"))),1,10))) as ?start)
               FILTER NOT EXISTS {
