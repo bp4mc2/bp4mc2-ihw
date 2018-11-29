@@ -43,17 +43,23 @@ GRAPH config:Theatre {
     ];
     elmo:fragment [
       elmo:index 4;
+      elmo:appliesTo aquo:Code;
+      rdfs:label "Code"@nl;
+      elmo:name "code";
+    ];
+    elmo:fragment [
+      elmo:index 5;
       elmo:appliesTo aquo:Omschrijving;
       rdfs:label "Omschrijving"@nl;
     ];
     elmo:fragment [
-      elmo:index 5;
+      elmo:index 6;
       elmo:appliesTo dcmiperiod:start;
       rdfs:label "Begin geldigheid"@nl;
       elmo:valueDatatype xsd:date;
     ];
     elmo:fragment [
-      elmo:index 6;
+      elmo:index 7;
       elmo:appliesTo dcmiperiod:end;
       rdfs:label "Einde geldigheid"@nl;
       elmo:valueDatatype xsd:date;
@@ -193,6 +199,74 @@ GRAPH config:Theatre {
           ASK {
             ?s dcmiperiod:end ?end
             FILTER (str(?end) < str(now()))
+          }
+        """;
+      ]
+      [
+        a elmo:AssertionStep;
+        rdfs:label "De code moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          ASK {
+            ?s aquo:Code ?code.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old aquo:Code ?code
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
+          }
+        """;
+      ]
+      [
+        a elmo:AssertionStep;
+        rdfs:label "Het ID moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX dct: <http://purl.org/dc/terms/>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          ASK {
+            ?s dct:identifier ?id.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old dct:identifier ?id
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
+          }
+        """;
+      ]
+      [
+        a elmo:AssertionStep;
+        rdfs:label "De omschrijving moet uniek zijn (historie niet meegeteld)";
+        elmo:assertNot """
+          PREFIX aquo: <http://standaard.aquo.nl/def/aquo#>
+          PREFIX config: <http://dotwebstack.org/configuration/>
+          PREFIX dcmiperiod: <http://dublincore.org/documents/2006/04/10/dcmi-period/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX dct: <http://purl.org/dc/terms/>
+          ASK {
+            ?s aquo:Omschrijving ?omschrijving.
+            ?s a ?type.
+            BIND (iri(concat("http://standaard.aquo.nl/data/domeintabel/",strafter(str(?type),"#"))) as ?domeintabel)
+            SERVICE config:LocalBackend {
+              GRAPH ?domeintabel {
+                ?old aquo:Omschrijving ?omschrijving
+                OPTIONAL {?old foaf:isPrimaryTopicOf/dct:temporal/dcmiperiod:end ?end}
+              }
+            }
+            FILTER (?s != ?old && (!bound(?end)))
           }
         """;
       ]
