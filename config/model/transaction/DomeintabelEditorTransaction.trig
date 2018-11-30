@@ -241,7 +241,7 @@ GRAPH config:Theatre {
             SELECT DISTINCT ?s ?id (if(bound(?id),xsd:integer(?id),if(bound(?cnt),1+?cnt,1)) as ?newid) ?type
             WHERE {
               BIND (iri(replace(str(?subject),"/id/","/data/")) as ?datagraph)
-              BIND (iri(concat(str(?subject),"#Staging")) as ?datagraph)
+              BIND (iri(concat(str(?subject),"#Staging")) as ?staging)
               BIND (iri(concat("http://standaard.aquo.nl/def/aquo#",strafter(str(?subject),"/id/domeintabel/"))) as ?type)
               GRAPH <http://standaard.aquo.nl/beheer/editor.tmp> {
                 ?s ?p ?o
